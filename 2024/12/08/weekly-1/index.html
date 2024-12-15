@@ -50,6 +50,8 @@
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/latest/katex.min.css/katex.min.css" />
+
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -239,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          365 字
+          361 字
         
       </span>
     
@@ -305,12 +307,12 @@
             
               <div class="markdown-body">
                 
-                <h3 id="ddl与期中周"><a class="markdownIt-Anchor" href="#ddl与期中周"></a> · DDL与期中周</h3>
+                <h3 id="·-DDL与期中周">· DDL与期中周</h3>
 <p>作为一年一度的期中寄，霉耗的期中寄促使我的周末不得安宁。<s>真的感觉要坏掉了，哒咩哒咩哒咩</s>从上周六开始就忙于复习，<s>虽然并没什么卵用</s>，八章化学概论，三大块数学（一直到中值定理），两大本化学的习题册看完了，数学前些年的期中看了，然后就第二天买了麦麦，然后就去考试了。</p>
 <p>平心而论，我的期中寄准备得实在是一般，化学最后是绩点3.6，卷面分换下来也就是80出头（qwq），还是有很多地方没复习好，数学更是离谱，<s>全书院挂科率都60%了</s>，虽然但是极限那道题甚至还求错了qwq，但是期中寄第一波算是结束了。</p>
 <p>然后便是四大章节的C语言DDL，周四的工图上机考试和思政的影视汇报，总之是十分友好的精神状态。</p>
-<h3 id="书院制"><a class="markdownIt-Anchor" href="#书院制"></a> · 书院制</h3>
-<h3 id="从线性代数到学习"><a class="markdownIt-Anchor" href="#从线性代数到学习"></a> · 从线性代数到学习</h3>
+<h3 id="·-书院制">· 书院制</h3>
+<h3 id="·-从线性代数到学习">· 从线性代数到学习</h3>
 <blockquote>
 <p>“尽管一批教授和教科书编者用关于矩阵的荒唐至极的理论掩盖了线性代数的简明性，但是鲜有与之相较更为初等的理论。”</p>
 <p>——让 · 迪厄多内</p>
@@ -319,10 +321,10 @@
 <p>”很遗憾，矩阵是什么是说不清的，你必须要自己去看&quot;</p>
 </blockquote>
 <blockquote>
-<p>我们可以说<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo fence="true">[</mo><mtable rowspacing="0.15999999999999992em" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>1</mn></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mo>−</mo><mn>2</mn></mrow></mstyle></mtd></mtr></mtable><mo fence="true">]</mo></mrow><annotation encoding="application/x-tex">\begin{bmatrix}
-    1 \\
-    -2
-\end{bmatrix}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.40003em;vertical-align:-0.95003em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">[</span></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.45em;"><span style="top:-3.61em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span><span style="top:-2.4099999999999997em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">−</span><span class="mord">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9500000000000004em;"><span></span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">]</span></span></span></span></span></span>，抑或是$ (1,-2)$</p>
+<p>我们可以说$\begin{bmatrix}<br>
+1 \<br>
+-2<br>
+\end{bmatrix}$，抑或是$ (1,-2)$</p>
 </blockquote>
 
                 
@@ -527,7 +529,6 @@
 
 
 
-
     
 
     
@@ -713,49 +714,6 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
-
-  
-      <script>
-        if (!window.MathJax) {
-          window.MathJax = {
-            tex    : {
-              inlineMath: { '[+]': [['$', '$']] }
-            },
-            loader : {
-              load: ['ui/lazy']
-            },
-            options: {
-              renderActions: {
-                insertedScript: [200, () => {
-                  document.querySelectorAll('mjx-container').forEach(node => {
-                    let target = node.parentNode;
-                    if (target.nodeName.toLowerCase() === 'li') {
-                      target.parentNode.classList.add('has-jax');
-                    }
-                  });
-                }, '', false]
-              }
-            }
-          };
-        } else {
-          MathJax.startup.document.state(0);
-          MathJax.texReset();
-          MathJax.typeset();
-          MathJax.typesetPromise();
-        }
-
-        Fluid.events.registerRefreshCallback(function() {
-          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
-            MathJax.startup.document.state(0);
-            MathJax.texReset();
-            MathJax.typeset();
-            MathJax.typesetPromise();
-          }
-        });
-      </script>
-    
-
-  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
