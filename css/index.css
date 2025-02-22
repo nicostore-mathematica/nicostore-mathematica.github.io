@@ -2937,7 +2937,7 @@ table td {
   border: var(--style-border-always);
 }
 *::selection {
-  background: #b4ccb4;
+  background: #fac8c8;
   color: #f7f7f7;
 }
 button {
