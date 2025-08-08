@@ -2,5 +2,9 @@
 @font-face{
   font-family: "LXGW WenKai"; 
   font-display: swap;
-  src: url('LXGWWenKai-Light.ttf') format("truetype");
+  src: url('https://s4.zstatic.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css') format("truetype");
+}
+body {
+    /* 原版 */
+    font-family: "LXGW WenKai", sans-serif;
 }
