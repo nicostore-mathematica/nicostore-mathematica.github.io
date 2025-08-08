@@ -1,7 +1,6 @@
 /* 字体css */
 @font-face{
   font-family: "LXGW WenKai"; 
-  font-weight: normal;
   font-display: swap;
   src: url('https://fontsapi.zeoseven.com/292/main/result.css') format("truetype");
 }
