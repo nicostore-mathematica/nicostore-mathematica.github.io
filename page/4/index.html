@@ -60,7 +60,7 @@
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2025-08-08 17:05:16',
+  postUpdate: '2025-08-08 19:17:53',
   postMainColor: '',
 }</script><noscript><style type="text/css">
   #nav {
@@ -189,7 +189,7 @@
         }
       }
       detectApple()
-    })(window)</script><link rel="stylesheet" href="source/css/font.css" media="defer" onload="this.media='all'"><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://nicostore-mathematica.github.io/picx-images-hosting/1_compressed.3nrq13hx7x.webp"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+    })(window)</script><link rel="stylesheet" href="source\css\font.css" media="defer" onload="this.media='all'"><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://nicostore-mathematica.github.io/picx-images-hosting/1_compressed.3nrq13hx7x.webp"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
   endLoading: () => {
     document.getElementById('loading-box').classList.add("loaded");
   },
@@ -265,15 +265,15 @@ if (true) {
       </a>
     </div>
     
-    <div class="catalog-list-item" id="/categories/Langugae/">
-      <a href="/categories/Langugae/">
-        Langugae
-      </a>
-    </div>
-    
     <div class="catalog-list-item" id="/categories/物理/">
       <a href="/categories/物理/">
         物理
+      </a>
+    </div>
+    
+    <div class="catalog-list-item" id="/categories/Langugae/">
+      <a href="/categories/Langugae/">
+        Langugae
       </a>
     </div>
     
@@ -291,20 +291,13 @@ if (true) {
 
 /proof/
 先证明  a+b2=0⇒a=b=0a + b\sqrt{2} = 0 \Rightarrow a = b = 0a+b2​=0⇒a=b=0
-(a+b2)±(c+d2)=(a±c)±(b±d)2∈Q(2)(a+b2)⋅(c+d2)=(ac+2bd)+(ad+bc)2∈Q(2)c+d2≠0⇒c≠0 or d≠0⇒c−d2≠0a+b2c+d2=(a+b2)(c−d2)(c+d2)(c−d2)=ac−2bdc2−2d2+bc−adc2−2d22∈Q(2)(a + b\sqrt{2}) \pm (c + d\sqr ...</div></div></div><div class="recent-post-item" onclick="pjax.loadUrl('/notes/algebra/algebra-1/')"><div class="post_cover left"><a href="/notes/algebra/algebra-1/" title="线性代数-行列式" style="display: flex;height: 100%;"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://nicostore-mathematica.github.io/picx-images-hosting/122489616_p0_compressed.5j4ah2rpbb.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="线性代数-行列式" style="pointer-events: none"></a></div><div class="recent-post-info"><div class="recent-post-info-top"><div class="recent-post-info-top-tips"><div class="article-categories-original">笔记</div><div class="article-categories-original">线性代数</div><a class="unvisited-post" href="/notes/algebra/algebra-1/" title="线性代数-行列式">未读</a></div><a class="article-title" href="/notes/algebra/algebra-1/" title="线性代数-行列式">线性代数-行列式</a></div><div class="article-meta-wrap"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-01-16T00:59:10.000Z" title="发表于 2025-01-16 08:59:10" time="2025-01-16 08:59:10">2025-01-16</time><span class="article-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history" style="font-size: 15px; "></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-02-27T13:21:26.438Z" title="更新于 2025-02-27 21:21:26" time="2025-02-27 21:21:26">2025-02-27</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/Math/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Math</span></a></span></div><div class="content">· Determinant
-Fragment 1 二阶行列式
-线性代数研究步骤：引入问题 →\rightarrow→ 概念方法 →\rightarrow→ 解决问题
-Q：如何进行线性方程组求解？
-给出nnn元线性方程：
-{a11x1+a12x2+⋯+a1nxn=B1a21x1+a22x2+⋯+a2nxn=B2…am1x1+am2x2+⋯+amnxn=Bm\begin{equation*}
-\begin{cases}
-a_{11} x_1 + a_{12} x_2 + \cdots + a_{1n} x_n = B_1 \\
-a_{21} x_1 + a_{22} x_2 + \cdots + a_{2n} x_n = B_2 \\
-\ldots \\
-a_{m1} x_1 + a_{m2} x_2 + \cdots + a_{mn} x_n = B_m
-\end{cases}
-\end{equation*}
-⎩⎨⎧​a11​x1​+a12​x2​+⋯+a1n​xn​=B1​a21​x1​+a22​x2​+⋯+a2n​xn​=B2​…am1​x1​+am2​x2​+⋯+amn​xn​=B ...</div></div></div><div class="recent-post-item" onclick="pjax.loadUrl('/notes/integral/integral-7/')"><div class="post_cover left"><a href="/notes/integral/integral-7/" title="基础微积分-微分方程" style="display: flex;height: 100%;"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://nicostore-mathematica.github.io/picx-images-hosting/121941479_p0_compressed.3d4wc37u4v.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基础微积分-微分方程" style="pointer-events: none"></a></div><div class="recent-post-info"><div class="recent-post-info-top"><div class="recent-post-info-top-tips"><div class="article-categories-original">笔记</div><div class="article-categories-original">基础微积分</div><a class="unvisited-post" href="/notes/integral/integral-7/" title="基础微积分-微分方程">未读</a></div><a class="article-title" href="/notes/integral/integral-7/" title="基础微积分-微分方程">基础微积分-微分方程</a></div><div class="article-meta-wrap"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-01-10T16:04:00.000Z" title="发表于 2025-01-11 00:04:00" time="2025-01-11 00:04:00">2025-01-11</time><span class="article-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history" style="font-size: 15px; "></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-07-07T03:19:14.325Z" title="更新于 2025-07-07 11:19:14" time="2025-07-07 11:19:14">2025-07-07</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/Math/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Math</span></a></span></div><div class="content">Chapter 4 微分方程基础
+(a+b2)±(c+d2)=(a±c)±(b±d)2∈Q(2)(a+b2)⋅(c+d2)=(ac+2bd)+(ad+bc)2∈Q(2)c+d2≠0⇒c≠0 or d≠0⇒c−d2≠0a+b2c+d2=(a+b2)(c−d2)(c+d2)(c−d2)=ac−2bdc2−2d2+bc−adc2−2d22∈Q(2)(a + b\sqrt{2}) \pm (c + d\sqr ...</div></div></div><div class="recent-post-item" onclick="pjax.loadUrl('/notes/algebra/algebra-2/')"><div class="post_cover left"><a href="/notes/algebra/algebra-2/" title="线性代数-矩阵" style="display: flex;height: 100%;"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://nicostore-mathematica.github.io/picx-images-hosting/122489616_p0_compressed.5j4ah2rpbb.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="线性代数-矩阵" style="pointer-events: none"></a></div><div class="recent-post-info"><div class="recent-post-info-top"><div class="recent-post-info-top-tips"><div class="article-categories-original">笔记</div><div class="article-categories-original">线性代数</div><a class="unvisited-post" href="/notes/algebra/algebra-2/" title="线性代数-矩阵">未读</a></div><a class="article-title" href="/notes/algebra/algebra-2/" title="线性代数-矩阵">线性代数-矩阵</a></div><div class="article-meta-wrap"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-01-16T00:59:10.000Z" title="发表于 2025-01-16 08:59:10" time="2025-01-16 08:59:10">2025-01-16</time><span class="article-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history" style="font-size: 15px; "></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-28T05:38:46.209Z" title="更新于 2025-06-28 13:38:46" time="2025-06-28 13:38:46">2025-06-28</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/Math/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Math</span></a></span></div><div class="content">· Matrix
+Fragment 1 矩阵概念
+
+/Define/
+将 mnmnmn 个数 aija_{ij}aij​ (1≤i≤m1 \leq i \leq m1≤i≤m, 1≤j≤n1 \leq j \leq n1≤j≤n) 排成一个矩阵，称为一个 m×nm \times nm×n 阶矩阵：
+A=[a11a12⋯a1na21a22⋯a2n⋮⋮⋱⋮am1am2⋯amn]=(aij)m×nA = \begin{bmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\ a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn} \end{bmatrix} = (a_{ij})_{m \times n}
+A=​a11​a21​⋮am1​​a12​a22​⋮am2​​⋯⋯⋱⋯​a1n​a2n​⋮amn​​​= ...</div></div></div><div class="recent-post-item" onclick="pjax.loadUrl('/notes/integral/integral-7/')"><div class="post_cover left"><a href="/notes/integral/integral-7/" title="基础微积分-微分方程" style="display: flex;height: 100%;"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://nicostore-mathematica.github.io/picx-images-hosting/121941479_p0_compressed.3d4wc37u4v.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基础微积分-微分方程" style="pointer-events: none"></a></div><div class="recent-post-info"><div class="recent-post-info-top"><div class="recent-post-info-top-tips"><div class="article-categories-original">笔记</div><div class="article-categories-original">基础微积分</div><a class="unvisited-post" href="/notes/integral/integral-7/" title="基础微积分-微分方程">未读</a></div><a class="article-title" href="/notes/integral/integral-7/" title="基础微积分-微分方程">基础微积分-微分方程</a></div><div class="article-meta-wrap"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-01-10T16:04:00.000Z" title="发表于 2025-01-11 00:04:00" time="2025-01-11 00:04:00">2025-01-11</time><span class="article-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history" style="font-size: 15px; "></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-07-07T03:19:14.325Z" title="更新于 2025-07-07 11:19:14" time="2025-07-07 11:19:14">2025-07-07</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/Math/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Math</span></a></span></div><div class="content">Chapter 4 微分方程基础
 好吧，我感觉这个更像是熟练工种
 2024.12.25更新，我不同意我昨天说的观点
 Fragment 1 一阶线性微分方程
