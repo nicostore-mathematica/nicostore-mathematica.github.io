@@ -1,10 +1,6 @@
-/* 字体css */
-@font-face{
-  font-family: "LXGW WenKai"; 
-  font-display: swap;
-  src: url('https://s4.zstatic.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css') format("truetype");
-}
+/* 方式二：直接引入远程CSS */
+@import url('https://s4.zstatic.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css');
+
 body {
-    /* 原版 */
-    font-family: "LXGW WenKai", sans-serif;
+  font-family: "LXGW WenKai", sans-serif;
 }
