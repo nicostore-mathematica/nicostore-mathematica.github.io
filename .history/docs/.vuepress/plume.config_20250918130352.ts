@@ -38,7 +38,7 @@ export default defineThemeConfig({
   profile: {
     avatar: 'https://nicostore-mathematica.github.io/picx-images-hosting/1_compressed.3nrq13hx7x.webp',
     name: '猫条',
-    description: 'This is soda\'s personal <br/> diary \& notebook.',
+    description: 'This is soda-official\'s personal <br/> blog \& notebook.',
     // circle: true,
     location: 'Antarctica',
     organization: '七域-假期快乐',

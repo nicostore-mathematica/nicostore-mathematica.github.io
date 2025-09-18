@@ -38,15 +38,15 @@ export default defineThemeConfig({
   profile: {
     avatar: 'https://nicostore-mathematica.github.io/picx-images-hosting/1_compressed.3nrq13hx7x.webp',
     name: '猫条',
-    description: 'This is soda\'s personal <br/> diary \& notebook.',
+    description: 'This is soda\'s personal <br/> blog \& notebook.',
     // circle: true,
     location: 'Antarctica',
     organization: '七域-假期快乐',
   },
 
   social: [
-    { icon: 'github', link: 'https://github.com/nicostore-mathematica' },
-    /*{ icon: 'mastodon', link: 'https://scg.owu.one/@physnya' },*/
+    { icon: 'github', link: 'https://github.com/physnya' },
+    { icon: 'mastodon', link: 'https://scg.owu.one/@physnya' },
   ],
 
   navbar,
