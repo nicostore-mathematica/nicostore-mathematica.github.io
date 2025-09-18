@@ -1,8 +1,8 @@
 import { defineNoteConfig } from "vuepress-theme-plume";
 
 export default defineNoteConfig({
-	dir: "integral",
-	link: "/integral/",
+	dir: "circuit",
+	link: "/circuit/",
 	sidebar: [
 		{
 			text: "微积分",
@@ -18,6 +18,9 @@ export default defineNoteConfig({
 				"integral-7",
 				"integral-8",
 				"integral-9",
+				"integral-10",
+				"integral-11",
+				"integral-12",
 			],
 		},
 	],

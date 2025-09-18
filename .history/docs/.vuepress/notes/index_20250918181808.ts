@@ -3,7 +3,7 @@ import circuit from "./circuit.ts";
 import integral from "./integral.ts";
 import statistics from "./statistics.ts";
 import physics from "./physics.ts";
-import numerical from "./numerical.ts";
+
 export const notes = defineNotesConfig({
 	dir: "notes",
 	link: "/",
@@ -12,6 +12,5 @@ export const notes = defineNotesConfig({
 		integral,
 		statistics,
 		physics,
-		numerical,
 	],
 });
