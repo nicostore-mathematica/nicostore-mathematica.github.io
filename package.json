@@ -25,6 +25,8 @@
   },
   "dependencies": {
     "@chinese-fonts/lxgwwenkaibright": "^2.0.0",
-    "hexo-next-twikoo": "^1.0.3"
+    "@vuepress/plugin-comment": "^2.0.0-rc.112",
+    "@vuepress/theme-default": "^1.9.10",
+    "twikoo": "^1.6.44"
   }
 }
