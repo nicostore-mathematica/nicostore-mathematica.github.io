@@ -8,13 +8,13 @@ config:
     list:
       -
         title: 查找
-        description: 可以点击顶栏左侧的搜索栏或者使用快捷键 `ctrl + K` 进行笔记内容的搜索. 如果没什么想法，~~可以点击 <a href='/random/'>此处</a> 随机跳转到一个页面~~ 随机跳转我还没抄.
+        description: 可以点击顶栏左侧的搜索栏或者使用快捷键 `ctrl + K` 进行笔记内容的搜索. 如果没什么想法，可以点击 <a href='/random/'>此处</a> 随机跳转到一个页面，随机跳转抄抄的作业（）
       -
         title: 评论
-        description: 已经配置了 Twikoo 评论系统，评论的回复会用邮件进行通知，请及时查收；同时欢迎发表观点.
+        description: 还没配置 Twikoo 评论系统，后续评论的回复会用邮件进行通知，请及时查收；同时欢迎发表观点.
       - 
         title: 笔记
-        description: 点击 <a href='/notes/'>此处</a> 进入笔记，或者从顶部导航栏进入笔记.
+        description: 点击 <a href='/notes/'>此处</a> 进入笔记（在考虑配置与否），或者从顶部导航栏进入笔记.
       -
         title: 博客
         description: 点击 <a href='/blog/'>此处</a> 进入 blog 文章页面.
