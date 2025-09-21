@@ -5,7 +5,6 @@ import statistics from "./statistics.ts";
 import physics from "./physics.ts";
 import numerical from "./numerical.ts";
 import algebra from "./algebra.ts";
-import CS from "./CS.ts";
 export const notes = defineNotesConfig({
 	dir: "notes",
 	link: "/",
@@ -16,6 +15,5 @@ export const notes = defineNotesConfig({
 		statistics,
 		physics,
 		numerical,
-		CS,
 	],
 });

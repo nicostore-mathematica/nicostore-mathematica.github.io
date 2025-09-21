@@ -27,12 +27,11 @@ export const navbar = defineNavbarConfig([
 		items: [
 			{ text: "微积分", link: "/notes/integral/README.md" },
 			{ text: "代数", link: "/notes/algebra/README.md" },
-			{ text: "编程", link: "/notes/CS/README.md" },
       		{ text: "电路", link: "/notes/circuit/README.md" },
 			{ text: "普通物理", link: "/notes/physics/README.md" },
 			{ text: "数理统计", link: "/notes/statistics/README.md" },
 			{
-				text: "自学",
+				text: "自学笔记",
 				items: [{ text: "数值分析", link: "/notes/numerical/README.md" }],
 			},
 		],
