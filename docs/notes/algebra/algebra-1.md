@@ -162,7 +162,7 @@ $$
 > $$
 > |A| = \left| \begin{array}{cccc} a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{n1} & a_{n2} & \cdots & a_{nn} \end{array} \right|
 > $$
-> 有时也记为  $ \det(A) $  (determinant)
+> 有时也记为  $\det(A)$  (determinant)
 >
 >  $a_{ij}$ 称为第 $i$ 行第 $j$ 列元素， $a_{ij}$ 称为主对角线（对角线第  $i,j$  元素，删去  $a_{ij}$  所在的第  $i$  行，第  $j$  列，剩余元素按原来的顺序构成一个 $n-1$ 阶行列式，称为 $a_{ij}$ 的余子式，记为 $M_{ij}$ 
 
@@ -772,7 +772,7 @@ $$
 
 > [!important]
 >
-> 逆序数的求法是：设排列为  $(k_1, k_2, \ldots, k_n)$ ，先看  $k_1$  后面有多少个数小于  $k_1$ ，不妨设为  $m_1$ ；再看  $ k_2 $  后面有多少个数小于  $ k_2 $ ，不妨设为  $m_2$ ；最后看  $k_{n-1}$  后面有多少个数小于  $k_{n-1}$ ，不妨设为  $m_{n-1}$ 。由定义，排列  $(k_1, k_2, \ldots, k_n)$  的逆序数就等于  $m_1 + m_2 + \cdots + m_{n-1}$ ，通常记为  $N(k_1, k_2, \ldots, k_n)$ 。例如，常序排列  $(1, 2, \ldots, n)$  的逆序数为零。
+> 逆序数的求法是：设排列为  $(k_1, k_2, \ldots, k_n)$ ，先看  $k_1$  后面有多少个数小于  $k_1$ ，不妨设为  $m_1$ ；再看  $k_2$  后面有多少个数小于  $k_2$ ，不妨设为  $m_2$ ；最后看  $k_{n-1}$  后面有多少个数小于  $k_{n-1}$ ，不妨设为  $m_{n-1}$ 。由定义，排列  $(k_1, k_2, \ldots, k_n)$  的逆序数就等于  $m_1 + m_2 + \cdots + m_{n-1}$ ，通常记为  $N(k_1, k_2, \ldots, k_n)$ 。例如，常序排列  $(1, 2, \ldots, n)$  的逆序数为零。
 
 **引理1**：设  $(k_1, k_2, \ldots, k_n) \in S_n$ ，若将其中  $k_i$  与  $k_j$  的位置对换，其余数不动，则排列的奇偶性改变。即奇排列变为偶排列，偶排列变为奇排列。
 
@@ -824,11 +824,11 @@ A_{j_1 j_2 \ldots j_k}^{i_1 i_2 \ldots i_k}  =  \begin{vmatrix} a_{i_1 j_1} & a_
 $$
 删去第  $i_1$ ， $i_2$ ，…， $i_k$  行，第  $j_1$ ， $j_2$ ，…， $j_k$  列，
 
-剩余的按原来顺序构成一个 $(n-k)$  阶子式，称为前面 k 阶子式的余子式记为  $M_{j_1 j_2 \ldots j_k}^{i_1 i_2 \ldots i_k}$ 
+剩余的按原来顺序构成一个 $(n-k)$  阶子式，称为前面 k 阶子式的余子式记为  $M(_{j_1 j_2 \ldots j_k}^{i_1 i_2 \ldots i_k})$ 
 
 代表余式 
 $$
-\hat{A}_{j_1 j_2 \ldots j_k}^{i_1 i_2 \ldots i_k} = (-1)^{i_1 + i_2 + \cdots + i_k + j_1 + j_2 + \cdots + j_k} M_{j_1 j_2 \ldots j_k}^{i_1 i_2 \ldots i_k}
+\hat{A}(_{j_1 j_2 \ldots j_k}^{i_1 i_2 \ldots i_k}) = (-1)^{i_1 + i_2 + \cdots + i_k + j_1 + j_2 + \cdots + j_k} M(_{j_1 j_2 \ldots j_k}^{i_1 i_2 \ldots i_k})
 $$
 **定理 2 (Laplace 定理)** 
 
@@ -836,13 +836,13 @@ $|A|$  中给定 k 行 (列)，则包含于这 k 行 (列) 中所有 k 阶子式
 
 给定  $1 \leq i_1 < i_2 < \cdots < i_k \leq n$ ，则
 $$
-|A| = \sum_{1 \leq j_1 < j_2 < \cdots < j_k \leq n} A_{j_1 j_2 \ldots j_k}^{i_1 i_2 \ldots i_k} \hat{A}_{j_1 j_2 \ldots j_k}^{i_1 i_2 \ldots i_k} \cdots (*)
+|A| = \sum_{1 \leq j_1 < j_2 < \cdots < j_k \leq n} A(_{j_1 j_2 \ldots j_k}^{i_1 i_2 \ldots i_k}) \hat{A}(_{j_1 j_2 \ldots j_k}^{i_1 i_2 \ldots i_k}) \cdots (*)
 $$
 给定  $1 \leq i_1 < i_2 < \cdots < i_k \leq n$ ，则
 
 
 $$
-|A| = \sum_{1 \leq j_1 < j_2 < \cdots < j_k \leq n} A_{j_1 j_2 \ldots j_k}^{i_1 i_2 \ldots i_k} \hat{A}_{j_1 j_2 \ldots j_k}^{i_1 i_2 \ldots i_k}
+|A| = \sum_{1 \leq j_1 < j_2 < \cdots < j_k \leq n} A(_{j_1 j_2 \ldots j_k}^{i_1 i_2 \ldots i_k}) \hat{A}(_{j_1 j_2 \ldots j_k}^{i_1 i_2 \ldots i_k})
 $$
 
 ### · 分块行列式

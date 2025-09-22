@@ -1,5 +1,5 @@
 ---
-title: Chapter 0 线性代数知识点
+title: 线性代数知识点
 createTime: 2025/09/17 23:22:15
 permalink: /algebra/algebra-0/
 ---
@@ -358,11 +358,11 @@ $$
 
 > 设 $A$ 为 $m \times n$ 矩阵，则：
 >
-> (1). $0 \leq r(A) \leq \min\{m, n\}$\
+> (1). $0 \leq r(A) \leq \min\{m, n\}$
 >
 > (2). $r(A^T) = r(A)$
 >
-> (3). 若 $A \neq 0 $，则 $ r(A) \geq 1$
+> (3). 若 $A \neq 0$，则 $r(A) \geq$
 >
 > (4). $r(A \pm B) \leq r(A) + r(B)$
 >
@@ -436,7 +436,7 @@ $$
 \beta = (b_1, b_2, \ldots, b_n)^T,
 $$
 
-这里 $ m \leq n $。
+这里 $m \leq n$。
 
 > (1).  $\beta$ 可由 $\alpha_1, \alpha_2, \ldots, \alpha_m$ 线性表示的充要条件是线性方程组 $x_1 \alpha_1 + x_2 \alpha_2 + \cdots + x_m \alpha_m = \beta$ 有解，即 $Ax=b$ 有解：
 >
@@ -450,7 +450,7 @@ $$
 >
 > (3). 向量组 $\alpha_1, \alpha_2, \ldots, \alpha_m$ 线性相关的充要条件是齐次线性方程组 $Ax=0$ 有非零解，且当 $m = n$ 时，其线性相关的充要条件是$|A|  = 0.$ 
 >
-> (4) 向量组 $\alpha_1, \alpha_2, \ldots, \alpha_m$ 线性无关的充要条件是齐次线性方程组 $Ax=0$ 只有零解。只有零解，且当 $ m = n $ 时，其线性无关的充要条件是 $|A| \neq 0.$ 
+> (4) 向量组 $\alpha_1, \alpha_2, \ldots, \alpha_m$ 线性无关的充要条件是齐次线性方程组 $Ax=0$ 只有零解。只有零解，且当 $m = n$ 时，其线性无关的充要条件是 $|A| \neq 0.$ 
 >
 > (5) 向量组 $\alpha_1, \alpha_2, \ldots, \alpha_m$ 线性相关的充要条件是以 $\alpha_1, \alpha_2, \ldots, \alpha_m$ 为列向量的矩阵的秩小于向量个数 $m$。
 >
@@ -492,13 +492,13 @@ $$
 
 #### · 向量组的秩
 
-> (1) 若 $ r(\alpha_1, \alpha_2, \ldots, \alpha_m) = r $，则
+> (1) 若 $r(\alpha_1, \alpha_2, \ldots, \alpha_m) = r$，则
 >
 > ​	① $\alpha_1, \alpha_2, \ldots, \alpha_m$ 的任何含有多于 $r$ 个向量的部分组一定线性相关；
 >
 > ​	② $\alpha_1, \alpha_2, \ldots, \alpha_m$ 的任何含 $r$ 个向量的线性无关部分组一定是极大无关组。
 >
-> (2) $ r(\alpha_1, \alpha_2, \ldots, \alpha_m) \leq m $，且 $ r(\alpha_1, \alpha_2, \ldots, \alpha_m) = m \Leftrightarrow \alpha_1, \alpha_2, \ldots, \alpha_m $ 线性无关。
+> (2) $r(\alpha_1, \alpha_2, \ldots, \alpha_m) \leq m$，且 $r(\alpha_1, \alpha_2, \ldots, \alpha_m) = m \Leftrightarrow \alpha_1, \alpha_2, \ldots, \alpha_m$ 线性无关。
 >
 > (3) 向量 $\beta$ 可用 $\alpha_1, \alpha_2, \ldots, \alpha_m$ 线性表示 $\Leftrightarrow r(\alpha_1, \alpha_2, \ldots, \alpha_m, \beta) = r(\alpha_1, \alpha_2, \ldots, \alpha_m)$。
 >
@@ -698,7 +698,7 @@ a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n = b_m.
 \end{cases}
 $$
 
-如果 $ b_1, b_2, \ldots, b_m $ 不全为零，则称为非齐次线性方程组。矩阵
+如果 $b_1, b_2, \ldots, b_m$ 不全为零，则称为非齐次线性方程组。矩阵
 $$
 A = \begin{pmatrix}
 a_{11} & a_{12} & \cdots & a_{1n} \\
@@ -718,7 +718,7 @@ a_{m1} & a_{m2} & \cdots & a_{mn} & b_m
 $$
 分别称为非齐次线性方程组①的系数矩阵和增广矩阵。
 
-如果线性方程组中的 $ b_1 = b_2 = \cdots = b_m = 0 $，即
+如果线性方程组中的 $b_1 = b_2 = \cdots = b_m = 0$，即
 $$
 \begin{cases}
 a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n = 0, \\
@@ -743,7 +743,7 @@ $$
 Ax = 0.
 $$
 
-(3) 向量形式：若系数矩阵按列分块为 $ A = (\alpha_1, \alpha_2, \cdots, \alpha_n) $，则非齐次线性方程组可写为
+(3) 向量形式：若系数矩阵按列分块为 $A = (\alpha_1, \alpha_2, \cdots, \alpha_n)$，则非齐次线性方程组可写为
 
 $$
 x_1 \alpha_1 + x_2 \alpha_2 + \cdots + x_n \alpha_n = b.
@@ -988,9 +988,9 @@ $$
 
 > (1) 矩阵 $A$ 可相似对角化的充要条件是 $A$ 有 $n$ 个线性无关的特征向量；
 >
-> (2) 矩阵 $A$ 可相似对角化的充要条件是对 $A$ 的任意特征值 $\lambda$，属于 $\lambda$ 的线性无关的特征向量的个数等于 $\lambda$ 的重数，亦即 $n - r(\lambda E - A) $ 等于 $ \lambda$ 的重数；
+> (2) 矩阵 $A$ 可相似对角化的充要条件是对 $A$ 的任意特征值 $\lambda$，属于 $\lambda$ 的线性无关的特征向量的个数等于 $\lambda$ 的重数，亦即 $n - r(\lambda E - A)$ 等于 $\lambda$ 的重数；
 >
-> (3) 矩阵 $ A $ 可相似对角化的充分条件是 $ A $ 有 $ n $ 个互不相同的特征值。
+> (3) 矩阵 $A$ 可相似对角化的充分条件是 $A$ 有 $n$ 个互不相同的特征值。
 
 #### · 相似对角化步骤
 
@@ -1067,7 +1067,7 @@ $$
 $$
 
 
-其中 $x = (x_1, x_2, \cdots, x_n)^T$，$ A = (a_{ij})$，且 $A^T = A$ 是对称矩阵，称 $A$ 为二次型的矩阵。$r(A)$ 称为二次型的秩，记为 $r(f)$。
+其中 $x = (x_1, x_2, \cdots, x_n)^T$，$A = (a_{ij})$，且 $A^T = A$ 是对称矩阵，称 $A$ 为二次型的矩阵。$r(A)$ 称为二次型的秩，记为 $r(f)$。
 
 (3) 如果二次型中只含有变量的平方项，所有混合项 $x_i x_j (i \neq j)$ 的系数全是零，即
 
