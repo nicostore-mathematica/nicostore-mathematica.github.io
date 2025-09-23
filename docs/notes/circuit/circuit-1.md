@@ -1,5 +1,5 @@
 ---
-title: 电路理论
+title: Chapter 1 线性电路分析
 createTime: 2025/09/17 19:33:08
 permalink: /circuit/circuit-system/
 ---
