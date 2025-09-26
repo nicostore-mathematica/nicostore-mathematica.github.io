@@ -4,7 +4,7 @@ createTime: 2025/09/17 19:33:08
 permalink: /circuit/circuit-system/
 ---
 
-# Chapter 1 
+# Chapter 1 线性电路分析
 
 ## Part 1 电路基础
 
@@ -766,3 +766,50 @@ $$
 > $$
 > 联立即可得到结果.
 
+### · 最大功率传输定理
+
+> taffy: 这就是均值不等式！！
+
+![pV5njxg.png](https://s21.ax1x.com/2025/09/23/pV5njxg.png)
+
+针对这个电路提出来一个问题：什么时候 $R_L$ 能够取得最大功率？
+
+> 负载电流:
+> $$
+> I = \frac{U_S}{R_0 + R_L}
+> $$
+> 负载功率:
+> $$
+> P_L = I^2 R_L = \left( \frac{U_S}{R_0 + R_L} \right)^2 R_L\\
+> $$
+>
+> $$
+>  P_L = f(R_L)
+> $$
+>
+> 不妨令
+> $$
+>  \frac{\mathrm{d}P_L}{\mathrm{d}R_L} = \frac{(R_0 - R_L)}{(R_0 + R_L)^3} \times U_S^2 = 0 \quad \Rightarrow \quad R_L = R_0 
+> $$
+> 并且
+> $$
+>  \frac{\mathrm{d}^2P_L}{\mathrm{d}R_L^2} = -\frac{U_S^2}{8R_0^3} < 0 
+> $$
+> 说明是极大值 最大功率
+> $$
+> P_{L_{\max}} = \frac{U_S^2}{4R_0}
+> $$
+
+> [!important]
+>
+> 对给定的电源，当负载电阻等于该电源的内阻（匹配）时，负载可以从电源获得最大功率.
+
+![pV5nxMQ.png](https://s21.ax1x.com/2025/09/23/pV5nxMQ.png)
+
+当负载与电源匹配时，实际电路电能传输效率最多 50%.
+
+> 由于课时紧张，以往我们还会讲后面的替代定理，特勒根定理.
+>
+> 这回我们就不讲了，直接开始交流部分相量法那里的学习.
+
+PS：后续有时间我会自学补上.
