@@ -154,19 +154,19 @@ $$
 $$
 g_d = \frac{\mathrm{d}i_{\mathrm{D}}}{\mathrm{d}v_{\mathrm{D}}} = \frac{\mathrm{d}}{\mathrm{d}v_{\mathrm{D}}} \left[ I_S \left( \mathrm{e}^{v_{\mathrm{D}} / V_T} - 1 \right) \right] = \frac{I_S}{V_T} \mathrm{e}^{v_{\mathrm{D}} / V_T}
 $$
-在 $Q$ 点处 $v_{\mathrm{D}} \gg V_T = 26\ \mathrm{mV}$，所以 $i_{\mathrm{D}} \approx I_S \mathrm{e}^{v_{\mathrm{D}} / V_T}$，则
+在交点处 $v_{\mathrm{D}} \gg V_T = 26\ \mathrm{mV}$，所以 $i_{\mathrm{D}} \approx I_S \mathrm{e}^{v_{\mathrm{D}} / V_T}$，则
 
 $$
 g_d = \frac{I_S}{V_T} \mathrm{e}^{v_{\mathrm{D}} / V_T} \bigg|_Q \approx \frac{i_{\mathrm{D}}}{V_T} \bigg|_Q = \frac{I_{\mathrm{D}}}{V_T}
 $$
 
-式中 $I_{\mathrm{D}}$ 是 $Q$ 点处的电流。由此可得
+式中 $I_{\mathrm{D}}$ 是交点处的电流。由此可得
 
 $$
 r_d = \frac{1}{g_d} = \frac{V_T}{I_{\mathrm{D}}} = \frac{26\ \mathrm{mV}}{I_{\mathrm{D}}}，\quad  T = 300\ \mathrm{K}
 $$
 
-例如，当 $Q$ 点上的 $I_{\mathrm{D}} = 2\ \mathrm{mA}$ 时，$r_d = 26\ \mathrm{mV} / 2\ \mathrm{mA} = 13\ \Omega$。
+例如，当交点上的 $I_{\mathrm{D}} = 2\ \mathrm{mA}$ 时，$r_d = 26\ \mathrm{mV} / 2\ \mathrm{mA} = 13\ \Omega$。
 
 要特别注意，小信号模型中的微变电阻 $r_d$ 与静态工作点 $Q$ 有关，$Q$ 点位置不同，$r_d$ 的值也不同。该模型主要用于二极管处于正向偏置，且 $v_{\mathrm{D}} \gg V_T$ 条件下。
 
