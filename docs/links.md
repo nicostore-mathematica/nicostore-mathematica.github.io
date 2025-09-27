@@ -19,7 +19,7 @@ list:
     
 - name: Nakanomk
   desc: Never Can We Suspend The Time.
-  link: https://nakanomk.github.io/
+  link: https://nkns.cc/
   avatar: https://nicostore-mathematica.github.io/picx-images-hosting/56832666.wint0l2qe.webp
     
 - name: Kyon

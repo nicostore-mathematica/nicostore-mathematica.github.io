@@ -1,5 +1,5 @@
 ---
-title: Chapter 1 
+title: Chapter 1 二极管
 createTime: 2025/09/23 13:34:31
 permalink: /circuit/electronic-1/
 ---
@@ -186,6 +186,10 @@ $$
 > $$
 > I_{ZM}= I_{Z\max}  = \frac{P_{ZM}}{U_Z}
 > $$
+> **电压温度系数**：稳压值受温度影响的系数.
+> $$
+> \alpha=\frac{\Delta U_Z}{\Delta T}
+> $$
 
 工作状态：
 
@@ -197,12 +201,20 @@ $$
 > $$
 > |u| = U_Z,\quad I_{Z\min} < |i| < I_{Z\max}
 > $$
-> **反向击穿——烧毁**：假设 $|u| = U_Z$ 而 $|i| > I_{Z\max}$**正向导通**：$u > 0$  
->
-> **反向截止**：$u < 0$ 且 $|u| < U_Z$，即假设 $|u| = U_Z$ 而 $|i| < I_{Z\min}$
->
-> **反向击穿——稳压区**：
-> $$
-> |u| = U_Z,\quad I_{Z\min} < |i| < I_{Z\max}
-> $$
 > **反向击穿——烧毁**：假设 $|u| = U_Z$ 而 $|i| > I_{Z\max}$
+
+### · 二极管电路
+
+**(1). 整流电路**：利用二极管单向导电性将交流电转化为直流电
+
+> 单相半波整流电路：
+>
+> ![pVI4Npd.png](https://s21.ax1x.com/2025/09/27/pVI4Npd.png)
+>
+> 单相桥式整流电路：
+>
+> ![pVI4U1A.png](https://s21.ax1x.com/2025/09/27/pVI4U1A.png)
+
+**(2). 限幅电路**：限制电压输入范围保护晶体管不被击穿
+
+![pVI4a6I.png](https://s21.ax1x.com/2025/09/27/pVI4a6I.png)
