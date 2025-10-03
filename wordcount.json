@@ -1,0 +1,91 @@
+{
+  "timeline": 186,
+  "random": 71,
+  "links": 356,
+  "about": 205,
+  "README": 231,
+  "weekly": {
+    "weekly-8": 382,
+    "weekly-7": 1250,
+    "weekly-6": 1212,
+    "weekly-5": 757,
+    "weekly-4": 3748,
+    "weekly-3": 1057,
+    "weekly-2": 1045,
+    "weekly-1": 283
+  },
+  "article": {
+    "r1s3vxud": 613,
+    "pyvvujxp": 17,
+    "resources": 483,
+    "article-3": 4312,
+    "article-2": 3947,
+    "article-1": 1440
+  },
+  "notes": {
+    "index": 70
+  },
+  "statistics": {
+    "statistics-2": 1869,
+    "statistics-1": 5125,
+    "index": 16
+  },
+  "physics": {
+    "physics-4": 6,
+    "physics-3": 5255,
+    "physics-2": 5288,
+    "physics-1": 3480,
+    "physics-0": 4130,
+    "index": 116
+  },
+  "numerical": {
+    "index": 9
+  },
+  "integral": {
+    "integral-9": 8076,
+    "integral-8": 6746,
+    "integral-7": 4000,
+    "integral-6": 6178,
+    "integral-5": 12,
+    "integral-4": 5602,
+    "integral-3": 3499,
+    "integral-2": 4196,
+    "integral-1": 3706,
+    "index": 47
+  },
+  "complex": {
+    "complex-2": 12,
+    "complex-1": 5816,
+    "index": 92
+  },
+  "circuit": {
+    "electronic-2": 2493,
+    "electronic-1": 2764,
+    "circuit-2": 790,
+    "circuit-1": 6096,
+    "index": 208
+  },
+  "algebra": {
+    "matrix-1": 6,
+    "algebra-4": 6669,
+    "algebra-3": 7143,
+    "algebra-2": 5551,
+    "algebra-1": 5173,
+    "algebra-0": 9452,
+    "index": 110
+  },
+  "RoboMaster": {
+    "RoboMaster-2": 1905,
+    "RoboMaster-1": 2335,
+    "index": 796
+  },
+  "CS": {
+    "python-0": 3905,
+    "index": 10,
+    "C-mooc": 5243,
+    "C-class": 8533
+  },
+  "total": 164123,
+  "lastUpdated": "2025-10-03T16:47:22.602Z",
+  "fileCount": 62
+}
