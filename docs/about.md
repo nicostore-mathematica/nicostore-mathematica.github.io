@@ -1,0 +1,23 @@
+---
+changelog: false
+title: 关于我
+permalink: /about/
+pageLayout: doc
+createTime: 2025/02/14 22:55:26
+copyright: false
+feed: false
+article: false
+aside: false
+---
+
+欢迎光临星河旅馆！
+
+这里是猫条，或者说是正在学习音乐和绘画以期望成为P主的soda（叉腰），目前也是一位 24 级的仪器系本科生，这个网站的很多部分是我很崇拜的大佬 [physnya](physnya.top) 菲喵开发（然后我这个代码小透明抄了抄），我也希望能够在喜欢的领域工作生活.
+
+期望与大家一起进步，在个人博客的海洋里面也期望和大家多多交朋友！
+
+猫条老师也会尽可能把这个小站做的更加完善一些！
+
+那么期待与屏幕前的你的相遇！
+
+生活状态：`尚未秃头的猫粮一袋`

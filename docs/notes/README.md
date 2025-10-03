@@ -1,0 +1,31 @@
+---
+title: Notes
+permalink: /notes/
+---
+
+笔记目前总字数：<WordCount type="circuit, integral, algebra, physics, CS, statistics , complex, numerical, RoboMaster" />
+
+
+### · math
+
+[基础微积分](/notes/integral/)
+
+[代数学基础](/notes/algebra/)
+
+[概率论与数理统计](/notes/statistics/)
+
+[数学物理方法](/notes/complex/)
+
+[数值分析](/notes/numerical/)
+
+### · physics
+
+[基础物理学](/notes/physics/)
+
+### · Technology
+
+[编程](/notes/CS/)
+
+[电路](/notes/circuit/)
+
+[RoboMaster](/notes/RoboMaster/)

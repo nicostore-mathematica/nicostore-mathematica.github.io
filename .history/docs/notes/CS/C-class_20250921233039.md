@@ -1,0 +1,2702 @@
+---
+title: C语言程序设计基础
+createTime: 2024-12-03 15:36:57
+description: Hello world
+permalink: /CS/class/
+---
+
+~~为了期末复习的产物，死人微活~~
+
+~~期中寄之后期末就来了~~
+
+~~听得人都牡蛎牡蛎牡蛎了~~
+
+这是小车埋土的C语言自学笔记，但是我还是建议看速成然后背题库
+
+### **· 核心语法**
+
+e.g.   Hello world 
+
+```c
+#include <stdio.h>
+ int main()
+{
+ printf("hello world\n");
+ return 0;
+ }
+```
+ stdio.h :  使⽤的 头⽂件。因为程序中使⽤了 printf() 函数。就必须使⽤该头⽂件
+
+###### 1. 常量
+   整型常量：正数  负数  0		实型常量：带小数点的数字
+   字符常量：'0'  'a' 'A' 	      	字符串常量："Hello World"
+   PS：.93  等同于  0.93	科学计数法为实型常量，写E
+
+   ```c
+   // 1.23*10^7=1.23E7
+   ```
+
+   输出常量：
+
+   ```c
+   // 输出整数
+   // printf("%d",18);
+   // 输出小数
+   // printf("%f",1.8);
+   // 输出字符
+   // printf("%c",'A');
+   // 输出字符串
+   // printf("%s","Hello World");
+   ```
+
+###### 2. 数据类型
+
+   ```c
+   /*
+     整数
+       short	int(默认)	   long	   long long
+     小数
+       float（6位）	double（15位，默认）	long double(18~19)
+     字符 char
+   */
+   ```
+
+   sizeof 关键字
+
+   获取数据类型的最小值，最大值，可以使用 #include <limits.h>
+
+   ```C
+   #include <stdio.h>
+    #include <limits.h>
+    int main(void)
+    {
+       printf("int大小 = %u\n", sizeof(int));
+       printf("int最小值：%d, 最大值：%d\n", INT_MIN, INT_MAX);
+        
+       printf("short大小 = %u\n", sizeof(short));
+       printf("short最小值：%hd, 最大值：%hd\n", SHRT_MIN, SHRT_MAX);
+        
+       printf("long大小 = %u\n", sizeof(long));
+       printf("long最小值：%ld, 最大值：%ld\n", LONG_MIN, LONG_MAX);
+       
+       printf("long long大小 = %u\n", sizeof(long long));
+       printf("long long最小值：%lld, 最大值：%lld\n", LLONG_MIN, LLONG_MAX);
+        
+       return 0;
+    }
+   ```
+
+### · 运算符
+
+###### 1. 算数运算符
+
+```c
+//基本运算：+	-	*	/	%
+//隐式转换：运算类型一致直接计算，类型不一致小范围变大范围
+
+//强制转换：
+#include<stdio.h>
+
+int main()
+{
+    //隐式转换: short类型的数据在参与计算时候,提升为int
+    //要求:强制转换需要自己手动书写
+    short s1 = 10;
+    short s2 = 20;
+    short result = (short)(s1 + s2);
+    printf("%d\n", result);
+    //printf("%zu\n", sizeof((short)(s1 + s2)));
+    return 0;
+}
+//字符和数字转换：ASCII 码表
+```
+
+
+
+###### 2. 自增自减运算符
+
+```c
+//先用后加，b=10
+int a = 10;
+int b = a++;
+//现加后用，b=11
+int a = 10;
+int b = ++a;
+
+#include<stdio.h>
+int main()
+{
+    int a = 10;
+    int b = a++; // 先用后加，使用的是原来的值 
+    			 // a=11
+    int c = ++a; // 先加后用，使用的是自增之后的值
+    printf("%d\n", a); // 12
+    printf("%d\n", b); // 10
+    printf("%d\n", c); // 12
+    return 0;
+}
+
+
+
+#include<stdio.h>
+int main()
+{
+    int i = 10;
+    int j = 5;
+    int k = i++ + ++i - --j - i--;
+    // windows: 11 11-4 11=7
+
+    printf("%d\n", k);
+
+    //windows: 结果7
+    //前缀优先于后缀
+    //前缀统一自增/自减，再把结果拿出来用
+    // int i = 10;
+    // ++i + ++i;
+    // 12 12 = 24
+
+    //后缀统一先用，等整个表达式中变量用完了，再进行自增
+    // int i = 10;
+    // i+++ i++;
+
+    //mac、Linux:6
+    return 0;
+}
+
+```
+
+
+
+###### 3. 赋值运算符
+
+```c
+/*
+运算符 	 描述         	 例子         	
+ =      	 直接赋值     	 int a=10,将10赋值给a 	
+ +=     	 加后赋值     	 a+=b,将a+b的值给a   	
+ -=     	 减后赋值     	 a-=b,将a-b的值给a   	
+ *=     	 乘后赋值     	 a*=b,将axb的值给a   	
+ /=     	 除后赋值     	 a/=b,将a÷b的商给a   	
+ %=     	 取余赋值     	 a%=b,将a÷b的余数给a 	
+*/
+```
+
+
+
+###### 4. 关系运算符
+
+```c
+/*
+ 运算符 	 描述             	 例子   	
+ ==     	 a==b           	 判断a是否等于b 	
+ !=     	 a!=b           	 判断a是否不等于b 	
+ >      	 a>b            	 判断a是否大于b 	
+ >=     	 a>=b           	 判断a是否大于等于b 	
+ <      	 a<b            	 判断a是否小于b 	
+ <=     	 a<=b           	 判断a是否小于等于b 	
+*/
+```
+
+
+
+###### 5.逻辑运算符
+
+```c
+/*
+运算符 	 描述       	 	例子     	
+ &&      与（而且） 	 两边都为真，结果才是真 	
+ ||   	 或（或者）   两边都为假，结果才是假 	
+ !       非（取反） 	 		取反     	
+*/
+# include <stdio.h>
+int main ()
+{
+    // &&(与): 并且，而且
+    //计算规则: 只有两边都成立，那么最终的结果才是成立的，只要有一个不成立，最终的结果都是不成立的
+    printf("%d\n", 1 && 1); // 1
+    printf("%d\n", 1 && 0); // 0
+    printf("%d\n", 1 && 0); // 0
+    printf("%d\n", 0 && 1); // 0
+    printf("--\n");
+
+    // ||(或): 或者
+    //计算规则: 两边都不成立，那么最终的结果才是不成立的，只要有一个成立的，最终的结果就是成立的。
+    printf("%d\n", 1 || 1); // 1
+    printf("%d\n", 1 || 0); // 1
+    printf("%d\n", 1 || 0); // 1
+    printf("%d\n", 0 || 1); // 1
+    printf("\n");
+
+    // 取反
+    //实际开发中一般只用一个
+    printf("%d\n", !1); // 0
+    printf("%d\n", !0); // 1
+
+    return 0;
+}
+```
+
+
+
+###### 6. 三元运算符
+
+```c
+#include<stdio.h>
+
+int main()
+{
+    // 三元运算符、三元表达式、问号冒号运算符
+    // 格式：
+    // 关系表达式？表达式1：表达式2：
+
+    // 练习1：获取两个变量中的较大值
+    // int a = 10;
+    // int b = 20;
+    // int c = a > b ? a : b;
+    // printf("%d\n", c);
+    // printf("%d\n", a > b ? a : b);
+
+    // 练习2：获取三个变量中的最大值
+    int a = 30;
+    int b = 10;
+    int c = 20;
+
+    // 先求出两个数据之间的较大值
+    int temp = a > b ? a : b;
+
+    // 再拿着较大值跟第三个数据进行比较
+    int max = temp > c ? temp : c;
+
+    // 输出打印
+    printf("%d\n", max);
+
+    return 0;
+}
+
+```
+
+
+
+###### 7. 逗号运算符
+
+```c
+#include<stdio.h>
+
+int main()
+{
+    // 逗号运算符(分隔符)
+    int i;
+    printf("%d\n",(i=3,++i, i++, i+5));
+
+    /*
+    注意:每个小朋友都是拿着前一个的结果进行的操作
+    第一个小朋友:变成该数字的绝对值
+    第二个小朋友:除以3获取余数
+    第三个小朋友:乘以10
+    请问该数字最终为多少?
+    */
+
+    // 1.定义变量
+    int number = -17;
+
+    // 2.变成该数字的绝对值
+    number = number >= 0 ? number : -number;
+
+    // 3.除以3获取余数
+    // number = number % 3;
+    number %= 3;
+
+    // 4.乘以10
+    // number = number * 10;
+    number *= 10;
+
+    printf("%d\n", number);
+
+    // 1.定义变量
+    int number2 = -17;
+
+    // 2.利用逗号运算符得到最终的结果
+    printf("%d\n", (number2 = (number2 >= 0 ? number2 : -number2), number2 %= 3, number2 *= 10));
+
+    return 0;
+}
+
+```
+
+
+
+###### 8. 优先级
+
+```c
+//小括号优先于所有
+//一元  > 二元 > 三元
+// && > || > 赋值
+```
+
+
+
+### · 流程控制语句
+
+###### 1. if
+
+   ```c
+   # include <stdio.h>
+   int main ()
+   {
+   int score;
+   printf("请输入数字：");
+   scanf("%d", &score);
+   
+   if(score>=0 && score<=100)
+   {    
+       if (score >= 90)
+        {
+        	printf("A\n");
+        }
+        else if (score >=70 && score < 90)
+        {
+        	printf("B\n");
+        }
+    	 else if (score >= 60 && score < 70) 
+        {
+        	printf("C\n");
+        }
+        else
+        {
+           printf("D\n");
+        }
+   }
+   else
+   {
+       printf("error");
+   }
+   return 0;
+   }
+   ```
+
+
+###### 2. switch
+
+   ```c
+   # include <stdio.h>
+   int main()
+    {
+       int score;
+       printf("请输入数字：");
+       scanf("%d", &score);
+       switch (score/10)
+       {
+           case 10:
+               printf("A\n");
+               break;  
+           case 9:
+               printf("A\n");
+               break;  
+           case 8:
+               printf("B\n");
+               break;  
+           case 7:
+               printf("B\n");
+               break;  
+           case 6:
+               printf("C\n");
+               break;  
+           default: 
+               printf("D");
+               break;  
+       }
+       return 0;
+    }
+   
+   //流程控制语句————case 穿透
+   
+   switch (score/10)
+    {
+       case 10:
+       case 9:
+           printf("A\n");
+           break;  
+       case 8:
+       case 7:
+           printf("B\n");
+           break;  
+       case 6:
+           printf("C\n");
+           break;  
+       default:
+           printf("D");
+           break;  
+   }
+   ```
+
+###### 3. for
+
+   ```c
+   //累加求和
+   # include <stdio.h>
+   int main()
+   {
+       int sum = 0;
+           
+       for(int i=1; i<=100; i++)
+       {
+           sum = i+sum;
+       }
+       return 0;
+   }
+   
+   //偶数求和
+   # include <stdio.h>
+   int main()
+   {
+       int sum = 0;
+           
+       for(int i=1; i<=100; i++)
+       {
+           if(i % 2 == 0);
+           {
+             sum = i+sum;
+           }
+       }
+       return 0;
+   }
+   
+   //统计思想
+   //求一个范围内能被6和8整除的数字
+   # include <stdio.h>
+   int main()
+   {
+       int num1;
+       int num2;
+       int count=0;
+       printf("请录入两个整数：\n");
+       scanf("%d %d",&num1,&num2);
+           
+       int min = num1 < num2 ? num1 : num2;
+       int max = num1 > num2 ? num1 : num2;
+       
+       for (int i = min; i <= max; i++)
+       {
+           if(i % 6 == 0 && i % 8 == 0)
+           {
+               count++;
+           }
+       }
+       
+       printf("%d\n",count);
+       return 0;
+   }
+   
+   ```
+
+###### 4. while
+
+   ```c
+   //for循环：知道循环次数或循环范围
+   //while循环：不知道循环次数或循环范围，只知道循环的结束条件
+   
+   //while循环的基本格式
+   # include <stdio.h>
+   int main()
+   {
+   	int i= 1;
+   	while(i<=3)
+   	{
+      		printf("twikoo!\n");
+       	i++;
+   	}
+   
+       return 0;
+   }
+   
+   //案例1：累加求和 for
+   //案例2：循环读取文件内容：while
+   
+   //例题：一个数字是否写为2的多少次幂
+   # include <stdio.h>
+   int main()
+   {
+       int n;
+       scanf("%d",&n);
+       while(n>1 && n % 2 == 0)
+       {
+           n = n / 2;
+       }
+       if(n == 1)
+       {
+           printf("yes\n");
+       }
+       else
+       {
+           printf("no\n");
+       }
+       
+       return 0;
+   }
+   
+   //折纸问题：折纸多少次使纸张厚度大于珠峰
+   # include <stdio.h>
+   int main()
+   {
+       int height = 8844430;
+       double paper = 0.1;
+       int count = 0;
+       
+       while(paper <= height)
+       {
+           //折叠纸张
+           paper = paper * 2;
+           count++;
+       }
+       printf("%d\n",count);
+       
+       return 0;
+   }
+   
+   
+   //整数反转：例如输入123，输出321
+   # include <stdio.h>
+   int main()
+   {
+       //定义两个变量
+       int number = 123;
+       int rev = 0;
+       //从右面开始，依次获取number的每一位数字，再拼接
+       while(number != 0)
+       {
+           int temp = number % 10;
+           number = number / 10;
+           rev = rev * 10 + temp;
+       }
+       return 0;
+   }
+   
+   
+   
+   //平方根，给一个非负整数x，计算并返回x的平方根，只保留整数部分，用循环结构
+   /*
+   思路：
+   任意数字，从1开始一个一个找，知道第一个相乘结果大于原来的数字
+   那么前一个数字就是他平方根的整数部分
+   */
+   # include <stdio.h>
+   int main()
+   {
+       int number = 17;
+       int i = 17;
+       while(i * i <= number)
+       {
+           i++;
+       }
+       printf("%d\n",i - 1);
+       
+       
+       return 0; 
+   }
+   // end
+   ```
+
+   ~~非常好学生工作，使我的素质旋转~~
+   ~~正在以一个很好（确信）的状态programming~~
+
+###### 5. do while
+
+   ```c
+   //考试中出现
+   //举例：打印1~5
+   # include <stdio.h>
+   int main()
+   {
+       int i = 1;
+       do
+       {
+           printf("%d\n",i);
+               i++;
+       } while (i <= 5)
+       
+       return 0;
+   }
+   ```
+
+   ~~睡了，明天再说~~
+
+   ~~早上一看新闻感觉很不对劲，今天不是12.4，我还以为是12.12~~
+
+### · 循环高级
+
+###### 1. 无限循环
+
+```c
+//格式1
+for( ; ; )
+{
+    printf("Is this the real life\n");
+}
+//格式2
+while(1)
+{
+    printf("Is this the real life\n");
+}
+//格式3
+do
+{
+    printf("Is this the real life\n");
+}while(1)
+```
+
+###### 2. break
+
+```c
+//标准格式
+for(int i = 1; i <= 100; i++)
+{
+    if(i == 15)
+    {
+        break;
+    }
+}
+
+//在1~100间，找到第一个即能被3又能被5整除的数字
+# include <stdio.h>
+int main()
+{
+    for (int i = 1; i <+ 100; i++)
+    {
+        if(i % 3 == 0 && i % 5 == 0)
+        {
+            printf("%d\n", i);
+            break;
+        }
+    }
+    
+    return 0;
+}
+```
+
+###### 3. continue
+
+```c
+//continue:结束本次循环，继续下次循环
+for(int i = 1; i <= 100; i++)
+{
+    if(i == 15)
+    {
+        continue;
+    }
+}
+
+//练习：吃包子，跳过第三个包子
+# include <stdio.h>
+int main()
+{
+    
+    for(int i = 1; i <= 5; i++)
+	{
+    	if(i == 3)
+    	{
+        	continue;
+   		}
+	}
+    
+    return 0;
+}
+```
+
+###### 4.循环嵌套
+
+```c
+//打印矩形
+# include <stdio.h>
+int main()
+{
+    for(int i = 1; i <= 3; i++)
+    {
+        
+        for(int j = 1; j <= 5; j++)
+        {
+            printf("*");
+        }
+        
+        printf("\n");
+    }
+    
+    
+    return 0;
+}
+
+//打印三角形
+# include <stdio.h>
+int main()
+{
+    for(int i = 1; i <= 5; i++)
+    {
+        
+        // i = 1：表示打印第一行*	内循环 1~5
+        for(int j = i; j <= 5; j++)
+        {
+            printf("*");
+        }
+        
+        printf("\n");
+    }
+    
+    
+    return 0;
+}
+
+//打印乘法表
+# include <stdio.h>
+int main()
+{
+    for(int i = 1; i <= 9; i++)
+    {
+        
+        for(int j = 1; j <= i; j++)
+        {
+            printf("%d * %d = %d\t", j, i, i * j);
+        }
+        
+        printf("\n");
+    }
+    
+    
+    return 0;
+}
+
+//制表符 \t 打印表格案例的时候可以对齐
+
+//给定正整数n ，获取小于等于n的所有质数
+//这个题一点也不简单
+# include <stdio.h>
+int main()
+{
+    
+}
+
+
+//幂级数列：计算 1^1+...+10^10
+# include <stdio.h>
+int main()
+{
+    long long res = 0;
+    
+    for(int i = 1; i <= 10; i++)
+    {
+        long long pow = 1;
+            
+        for(int j = 1; j <= i; j++)
+        {
+            pow = pow * i;
+        }
+        
+        res = res + pow
+    }
+    
+    return 0;
+}
+```
+
+###### 5. goto
+
+```c
+//一般只用于跳出循环嵌套
+```
+
+
+
+### · 函数
+
+###### 1.函数基本格式
+
+```c
+// 函数格式
+# include <stdio.h>
+
+void playGame()
+{
+    printf("准备人物\n");
+    printf("准备开局\n");
+    printf("开始对线\n");
+    printf("碾压崩盘\n");
+    printf("问候队友\n");
+    printf("疯送人头\n");
+    printf("下吧继续\n");
+}
+
+int main()
+{
+    /*
+    函数最基本定义格式：
+    void 函数名()
+    {
+        函数体;
+    }
+    
+    函数的调用方式：
+    	函数名();
+    */
+    //调用playGame函数
+    playGame();
+    printf("------"\n);
+    playGame();
+    
+    return 0;
+}
+
+//练习题：定义一个函数，求10+20
+# include <stdio.h>
+
+void sum()
+{
+    int num1 = 10;
+    int num2 = 20;
+    int sum = num1 + num2;
+    printf("%d", sum);
+}
+
+
+int main()
+{
+    sum();
+    return 0;
+}
+```
+
+~~天知道我在打这段话的时候有多难受，感觉人已经坏掉了~~
+
+~~期中寄真的太霉耗了~~
+
+###### 2. 函数定义：形参，返回值
+
+```c
+//带有形参的函数
+# include <stdio.h>
+
+void sum(int num1, int num2)
+{
+    int sum = num1 + num2;
+    printf("%d", sum);
+}
+
+
+int main()
+{
+    sum(10 , 20);
+    return 0;
+}
+
+//带有返回值的函数
+# include <stdio.h>
+
+int sum(int base, int additional)
+{
+    int sum = base + additional;
+    return sum;
+}
+
+int main()
+{
+    int score1 = sum(93, 10);
+    int score2 = sum(87, 9);
+    if(score1 > score2)
+    {
+        printf("1");
+    }
+    else if(score1 < score2)
+    {
+        printf("21");
+    }
+    else if(score1 = score2)
+    {
+        printf("3");
+    }
+    
+    return 0;
+}
+```
+
+###### 3.  include<math.h>
+
+```c
+/*
+math.h:
+pow()		幂
+sqrt()		平方根
+ceil()		向上取整
+floor()		向下取整
+abs()		绝对值
+*/
+```
+
+### · 数组
+
+###### 1. 数组的初始化
+
+```c
+//整数默认值：0	小数默认值：0.0	字符默认值："\0"	字符串默认值：NULL
+
+//定义储存五个学生的年龄并初始化
+# include <stdio.h>
+int main()
+{
+    int arr[5] = {17, 18, 19, 20, 21};
+    return 0;
+}
+```
+
+###### 2. 元素访问
+
+```c
+/*
+定义一个长度为5的数组，并进行初始化：1，2，3，4，5
+获取索引为0，2，4的元素并求和
+把最后一个索引的元素改为10
+*/
+# include <stdio.h>
+int main()
+{
+    int arr[] = {1, 2, 3, 4, 5};
+    int num1 = arr[0];
+    int num2 = arr[2];
+    int num3 = arr[4];
+    int sum = num1 + num2 + num3;
+    printf("%d\n",sum);
+    
+    arr[4] = 10;
+    return 0;
+}
+```
+
+~~牡蛎牡蛎牡蛎牡蛎牡蛎牡蛎牡蛎牡蛎~~
+
+~~啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊~~
+
+###### 3. 数组遍历
+
+```c
+//遍历：获取数组中每一个元素
+//定义一个长度为5的数组，并进行初始化：1，2，3，4，5，遍历数组，把元素打印到控制台
+# include <stdio.h>
+int main()
+{
+    int arr[5] = {1, 2, 3, 4, 5};
+    
+    /*
+    printf("%d\n",arr[0]);
+    printf("%d\n",arr[1]);
+    printf("%d\n",arr[2]);
+    printf("%d\n",arr[3]);
+    printf("%d\n",arr[4]);
+    */
+    for(int i = 0; i < 5; i++)
+    {
+        //i表示数组的每一个索引
+        printf("%d\n",arr[i]);
+    }
+    
+    return 0;
+}
+```
+
+###### 4. 内存 内存地址
+
+```c
+//内存：软件运行用于临时存储数据
+//内存地址：编号
+# include<stdio.h>
+int main()
+
+
+	//获取变量内存地址
+{
+	int a =0;
+	printf("%p\n",&a);
+
+	int b = 20;
+	int c = 30;
+	printf("%p\n",&b);
+	printf("%p\n",&c);
+
+	printf("-------------------------------\n");
+
+	//获取数组的内存地址
+	int arr[] = {1,2,3};
+	printf("%p\n",&arr[0]);//数组的首地址
+	printf("%p\n",&arr[1]);//内存的角度：偏移量
+	printf("%p\n",&arr[2]);
+
+	return 0;
+}
+
+
+//数组作为函数的参数
+//定义处：arr表示的就是完整的数组
+//函数中的arr；只是一个变量，用于记录数组的首地址
+# include<stdio.h>
+int main()
+{
+
+	int arr[]={1,2,3,4,5,4,5,4,5,4,5,4,5,4,5,4,5,4,5};
+	int len = sizeof(arr) /sizeof(int);
+	printArr(arr,len);
+
+
+
+	return 0;
+
+}
+
+void printArr(int arr[], int len)
+{
+	for (int i = 0; i<len; i++)
+	{
+		printf("%d\n",arr[i]);
+	}
+}
+
+```
+
+###### 5. 数组练习
+
+```c
+
+//数组算法题
+//求最值：已知数组元素为{33,5,22,44,55},找出数组最大值并打印在控制台
+# include<stdio.h>
+int main()
+
+{
+	int arr[]={33,5,22,44,55};
+	int max = arr[0];
+	int len = sizeof(arr) /sizeof(int);
+	for(int i=0; i<len;i++)
+	{
+		if(arr[i]>max)
+		{
+			max =arr[i];
+		}
+	}
+
+	printf("%d\n",max);
+
+	return 0;
+}
+
+//遍历数组求和：生成10个1~100之间的随机数存入数组，求出数组值和
+# include<stdio.h>
+# include<stdlib.h>
+# include<time.h>
+
+int main()
+{
+	//定义数组
+    int arr[10]={0};
+	int len =sizeof(arr) /sizeof(int);
+    
+    //生成10个1~100之间的随机数存入数组
+    //设置种子
+	srand(time(NULL));
+    //生成随机数
+	for(int i=0;i<len;i++)
+	{
+		int num = rand() % 100 + 1;
+        //把随机数存入数组
+		arr[i] = num;
+	}
+	
+    //利用累加求和思想求数组所有数据的和
+	int sum = 0;
+	for(int i= 0;i<len; i++)
+	{
+		sum=sum+arr[i];
+	}
+	printf("%d\n",sum);
+
+	
+	return 0;
+}
+
+
+
+//数组求和：生成10个1~100之间的随机数存入数组，要求数据不能重复
+//1. 求出所有数据的和
+//2. 求所有数据平均数
+//3. 统计多少个数据比平均值小
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+// 判断num是否在数组中存在
+int contains(int arr[], int len, int num) {
+    for (int i = 0; i < len; i++) {
+        if (arr[i] == num) {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+int main() {
+    // 定义数组
+    int arr[10] = {0};
+    int len = sizeof(arr) / sizeof(int);
+
+    // 生成10个1~100之间的随机数存入数组
+    srand(time(NULL));
+    for (int i = 0; i < len;) {
+        int num = rand() % 100 + 1;
+        // 存入前先做判断，如果不存在再添加
+        if (!contains(arr, i, num)) { // 注意这里传递的是i而不是len
+            arr[i] = num;
+            i++;
+        }
+    }
+
+    // 利用累加求和思想求数组所有数据的和
+    double sum = 0;
+    for (int i = 0; i < len; i++) {
+        sum += arr[i];
+    }
+    printf("Sum: %.2f\n", sum);
+
+    // 求平均数
+    double average = sum / len;
+    printf("Average: %.2f\n", average);
+
+    // 统计有多少个数字比平均数小
+    int count = 0;
+    for (int i = 0; i < len; i++) {
+        if (arr[i] < average) {
+            count++;
+        }
+    }
+    printf("Numbers less than average: %d\n", count);
+
+    // 保持控制台窗口打开（可选）
+    system("pause");
+
+    return 0;
+}
+```
+
+~~先去吃饭，回来再说~~
+
+```c
+//反转数组
+//键盘录入5个数据并存入数组，并遍历反转再次遍历
+# include <stdio.h>
+
+void printArr(int arr[], int len)
+{
+    for(int i=0; i<len; i++)
+    {
+        printf("%d",arr[i]);
+    }
+}
+
+
+int main()
+{
+    //定义数组
+    int arr[5]={0};
+    int len = sizeof(arr) / sizeof(int);
+    //键盘录入数据
+    for(int i=0; i<len;i++)
+    {
+        printf("请输入%d个元素\n",i+1);
+        scanf("%d",&arr[i]);
+    }
+    
+    //遍历数组
+    printArr(arr,len);
+    
+    //反转数组
+    int i=0;
+    int j=len -1;
+    while(i<j)
+    {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+        
+        
+        i++;
+        j--;
+    }
+    printArr(arr,len);
+    
+    
+    return 0;
+}
+
+
+
+//例题：打乱数组中的数据
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main()
+{
+    int arr[]={1,2,3,4,5};
+    int len = sizeof(arr) / sizeof(int);
+    
+    
+    srand(time(NULL));
+    for (int i = 1; i < len; i++)
+    {
+        int index = rand() % len;
+        int temp = arr[i];
+        arr[i]=arr[index];
+        arr[index]=temp;
+    } 
+       
+    for(int i = 0; i< len;i++)
+    {
+        printf("%d\n",arr[i]);
+    }
+    
+    
+    return 0;
+}
+```
+
+
+
+###### 6. 数组常见算法
+
+
+
+### · 指针
+
+###### 1. 指针定义
+
+```c
+//指针：内存地址
+//定义格式：
+//int a = 10;
+//int* p = &a;
+
+//利用指针查询内存地址
+# include <stdio.h>
+int main()
+{
+    //利用指针获取变量中数据 / 存储数据
+    int a = 10;
+    int* p = &a;
+    printf("%d\n",*p)；
+    //利用指针存储数据 / 修改数据
+    *p = 200；
+    printf("%d\n",*p)；    
+    printf("%d\n",a)；
+    
+    
+    return 0;
+}
+
+//给指针变量赋值的时候，不能把一个数值赋给指针变量
+
+```
+
+###### 2. 指针作用
+
+```c
+//作用1：操作其它函数中的变量
+//作用2：函数返回多个值
+//作用3：函数结果和计算状态分开
+//作用4：更好操作数组和函数
+
+//作用1：代码实现
+#include <stdio.h>
+
+//定义两个变量，交换其在变量中记录的值
+
+// 定义一个交换函数
+void swap(int* p1, int* p2) {
+    int temp = *p1;
+    *p1 = *p2;
+    *p2 = temp;
+}
+
+int main() {
+    // 1. 定义两个变量
+    int a = 10;
+    int b = 20;
+
+    // 2. 调用swap函数
+    printf("调用前:%d,%d\n", a, b);
+    swap(&a, &b);
+    printf("调用后:%d,%d\n", a, b);
+
+    return 0;
+}
+
+
+/*
+作用1：细节
+*/
+#include <stdio.h>
+int* method();
+
+int main() {
+    // 调用method函数，并使用该函数中的变量a
+    int* p = method();
+    printf("%d\n", *p); // 这里可能会有问题，因为method函数结束后，局部变量a的生命周期结束
+    return 0;
+}
+
+int* method() 
+{
+    static int a = 10;//此时变量一直保存
+    return &a; // 返回局部变量a的地址
+}
+
+
+//指针作用2：函数返回多个值
+#include <stdio.h>
+
+void findMinMax(int *arr, int size, int *min, int *max) {
+    if (size <= 0) return; // 如果数组大小为0，则返回
+
+    *min = *max = arr[0]; // 初始化最小值和最大值为数组的第一个元素
+
+    for (int i = 1; i < size; i++) {
+        if (arr[i] < *min) {
+            *min = arr[i]; // 更新最小值
+        }
+        if (arr[i] > *max) {
+            *max = arr[i]; // 更新最大值
+        }
+    }
+}
+
+int main() {
+    int arr[] = {3, 5, 1, 8, 2};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int min, max;
+
+    findMinMax(arr, size, &min, &max);
+
+    printf("最小值: %d\n", min);
+    printf("最大值: %d\n", max);
+
+    return 0;
+}
+
+//指针作用3：函数的结果和计算状态分开
+//练习：定义一个函数，将两数相除，求出余数
+#include <stdio.h>
+
+
+void findRemainder(int dividend, int divisor, int *remainder) 
+{
+    if (divisor == 0)
+    {
+        printf("除数不能为0\n");
+        return;
+    }
+    *remainder = dividend % divisor;
+}
+
+
+int main() 
+{
+    int dividend = 10;
+    int divisor = 3;
+    int remainder;
+
+    findRemainder(dividend, divisor, &remainder);
+
+    printf("余数: %d\n", remainder);
+
+    return 0;
+}
+
+```
+
+### · 指针高级
+
+###### 1. 指针运算
+
+```c
+//基础的指针运算
+#include <stdio.h>
+
+int main() {
+    // 定义变量
+    int a = 10; // 假设 a 的值为 10
+    int *p = &a; // p 是指向 a 的指针
+
+    // 打印 p 的地址
+    printf("%p\n", p);
+
+    // 打印 p - 1 的地址，即 p 往前移动 sizeof(int) 步
+    printf("%p\n", p - 1);
+
+    // 打印 p - 2 的地址，即 p 往前移动 2 * sizeof(int) 步
+    printf("%p\n", p - 2);
+
+    return 0; // 返回 0 表示程序正常退出
+}
+
+
+
+
+/*
+指针运算有意义的操作:
+指针跟整数进行加、减操作(每次移动一个步长)
+指针跟指针进行减操作(间隔步长)
+指针运算无意义的操作:
+指针跟整数进行乘除操作指针跟指针进行加、乘、除操作
+*/
+#include <stdio.h>
+
+int main() {
+    // 前提条件：保证内存空间是连续的
+
+    // 数组
+    int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+    // 获取0索引的内存地址
+    int *p1 = &arr[0];
+
+    // 通过内存地址（指针p）获取数据
+    printf("%d\n", *p1);
+    printf("%d\n", *(p1 + 1));
+
+    // 获取5索引的内存地址
+    int *p2 = &arr[5];
+
+    // p2 - p1间隔了多少步长
+    printf("%d\n", p2 - p1); // 5 * sizeof(int) = 20
+    printf("%p\n", p1);
+    printf("%p\n", p2);
+
+    return 0;
+}
+
+
+
+
+
+/*
+野指针：指针指向的空间未分配
+悬空指针：指针指向的空间已分配，但是被释放了
+*/
+
+// 野指针：指针指向的空间未分配
+#include <stdio.h>
+
+int* method();
+    
+int main() 
+{
+    // 野指针：指针指向的空间未分配
+    int a = 10;
+    int *p1 = &a;
+    printf("%p\n", p1);
+    printf("%d\n", *p1);
+
+    // p2 野指针
+    int *p2 = p1 + 10;
+
+    printf("%p\n", p2);
+    printf("%d\n", *p2);
+    
+    // 忌空指针：指针指向的空间已分配，但是被释放了
+    int* p3 = method();
+    printf("拖点时间\n");
+    printf("%p\n", p3);
+    printf("%d\n", *p3);
+    
+    return 0;
+}
+
+int* method() 
+{
+    int num = 10; // 假设 num 的值为 10
+    int* p = &num;
+    return p;
+}
+
+
+
+
+//void类型指针
+#include <stdio.h>
+
+int main() {
+    /* void类型的指针 */
+
+    // 1.定义两个变量
+    int a = 10;
+    short b = 20;
+
+    // 2.定义两个指针
+    int *p1 = &a;
+    short *p2 = &b;
+
+    // 3.输出打印
+    printf("%d\n", *p1);
+    printf("%d\n", *p2);
+
+    // 不同类型的指针之间，是不能互相赋值的
+    // void类型的指针打破上面的观念
+    // void没有任何类型，好处是可以接受任意类型指针记录的内存地址
+    void *p3 = p1;
+    void *p4 = p2;
+	
+    //缺点：void类型指针无法获得里面数据，也不能加减运算
+    
+    return 0;
+}
+```
+
+
+
+###### 2.二级指针与多级指针
+
+```c
+#include<stdio.h>
+int main()
+{
+// 定义变量
+int a = 10;
+int b = 20;
+
+// 定义一级指针
+int* p = &a;
+
+// 定义二级指针
+int** pp = &p;
+
+// 作用一：利用二级指针修改一级指针里面记录的内存地址
+*pp = &b;
+
+// 作用二：利用二级指针获取到变量中记录的数据
+
+// 输出打印
+printf("%p\n", &a);
+printf("%p\n", &b);
+printf("%p\n", p);
+printf("%d\n", **pp);
+
+    return 0；
+}
+```
+
+
+
+###### 3. 数组+指针
+
+```c
+#include<stdio.h>
+int main()
+{
+
+// 1. 定义数组
+int arr[] = {10, 20, 30, 40, 50};
+int len = sizeof(arr) / sizeof(int);
+
+// 2. 获取数组的指针
+// 实际上获取的：数组的首地址
+int* p1 = arr;
+// int* p2 = &arr[0]; // 这一行被注释掉了，但可以作为另一种获取数组首地址的方式
+
+// 3. 利用循环和指针遍历数组获取里面的每一个元素
+for (int i = 0; i < len; i++) {
+    printf("%d\n", *p1++);
+}
+
+return 0;
+}
+
+
+
+
+
+//arr参与运算，退化成第一个元素的指针
+
+//sizeof运算的时候，不会退化，arr还是整体
+//&arr获取地址的时候，不会退化
+
+#include <stdio.h>
+int main()
+{
+// 练习: 数组指针的细节
+// arr参与计算的时候,会退化为第一个元素的指针
+// 特殊情况:
+// sizeof运算的时候,不会退化,arr还是整体
+// &arr获取地址的时候,不会退化
+
+// 1. 定义数组
+int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+// 2. sizeof运算的时候,不会退化,arr还是整体
+printf("%zu\n", sizeof(arr)); // 40
+
+// 3. &arr获取地址的时候，不会退化，记录的内存地址第一个元素的首地址，也是数组的首地址，步长:数据类型*数组的长度 40
+// arr参与计算的时候,会退化为第一个元素的指针,记录的内存地址第一个元素的首地址,也是数组的首地址,步长:数据类型 int 4
+printf("%p\n", arr);
+printf("%p\n", arr + 1); // 4
+printf("%p\n", &arr + 1); // 40
+
+return 0;
+}
+
+
+
+
+
+
+
+//利用索引遍历第一种格式的二维数组
+#include <stdio.h>
+
+//### 二维数组
+// 定义格式和遍历方式
+
+// 定义格式方式一:
+// m:表示二维数组的长度
+// n:表示每一个一维数组的长度
+// 数据类型 arr[m][n]=
+// { {1,2,3,4,5}, {1,2,3,4,5}, {1,2,3,4,5} };
+#include <stdio.h>
+int main()
+{
+    
+    //### // 1.定义一个二维数组
+    int arr[3][5] = {
+        {1, 2, 3, 4, 5},
+        {11, 22, 33, 44, 55},
+        {111, 222, 333, 444, 555}
+    };
+
+    // 2.利用索引的方式进行遍历
+    // arr[0]:表示二维数组当中的第一个一维数组,{1,2,3,4,5}
+    // arr[1]:表示二维数组当中的第二个一维数组,{11,22,33,44,55}
+
+    for(int i = 0; i < 3; i++) {
+        // i:依次表示二维数组中的索引
+        for(int j = 0; j < 5; j++) {
+            // j:依次表示一维数组中的索引
+            // 内循环:遍历每一个一维数组
+            printf("%d ", arr[i][j]);
+        }
+        // 当内循环结束之后,表示一维数组遍历完毕了
+        printf("\n");
+    }
+
+    return 0;
+}
+
+
+
+
+
+
+//利用索引遍历第二种格式二维数组
+#include <stdio.h>
+int main()
+{
+    
+    // 1.定义三个一维数组
+    int arr1[3] = {1, 2, 3};
+    int arr2[5] = {1, 2, 3, 4, 5};
+    int arr3[9] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+    // 预先计算每一个数组真实的长度
+    int len1 = sizeof(arr1) / sizeof(int);
+    int len2 = sizeof(arr2) / sizeof(int);
+    int len3 = sizeof(arr3) / sizeof(int);
+
+    // 再定义一个数组,装所有数组的长度
+    int lenArr[3] = {len1, len2, len3};
+
+    // 2.把三个一维数组放入到二维数组当中
+    // 数组的数据类型,跟内部存储的元素类型保持一致
+    // arr1:使用数组名进行计算的时候,退化为指向第一个元素的指针,此时不再表示数组的那个整体了
+    // 指针---内存地址 64位win 8个字节
+    int* arr[3] = {arr1, arr2, arr3};
+
+    // 3.利用索引遍历arr
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < lenArr[i]; j++) {
+            printf("%d ", arr[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+
+
+
+
+
+
+//利用指针遍历第一种格式二维数组
+#include <stdio.h>
+
+int main() 
+{
+    // 定义一个二维数组
+    int arr[3][5] = 
+    {
+        {1, 2, 3, 4, 5},
+        {11, 22, 33, 44, 55},
+        {111, 222, 333, 444, 555}
+    };
+
+    // 获取二维数组的指针
+    // 数组指针的数据类型：要跟数组内部元素的类型保持一致
+    int (*p)[5] = arr;
+
+    for (int i = 0; i < 3; i++) 
+    {
+        // 遍历一维数组
+        for (int j = 0; j < 5; j++) 
+        {
+            printf("%d ", *(*p + j));
+        }
+        // 换行
+        printf("\n");
+
+        // 移动二维数组的指针，继续遍历下一个一维数组
+        p++;
+    }
+
+    return 0;
+}
+
+
+
+
+
+
+
+//利用指针遍历第二种格式二维数组
+#include <stdio.h>
+
+int main() {
+    // 1.定义三个一维数组
+    int arr1[5] = {1, 2, 3, 4, 5};
+    int arr2[5] = {11, 22, 33, 44, 55};
+    int arr3[5] = {111, 222, 333, 444, 555};
+
+    // 2.把三个一维数组的内存地址,再放入到二维数组当中
+    int* arr[3] = {arr1, arr2, arr3};
+
+    // 3.获取指针
+    int** p = arr;
+
+    // 4.遍历数组
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 5; j++) {
+            printf("%d ", *(*p + j));
+        }
+        // 换行
+        printf("\n");
+
+        // 移动指针
+        p++;
+    }
+
+    return 0;
+}
+
+
+//数组指针：指向数组的指针
+//指针数组：存放指针的数组
+```
+
+
+
+###### 4. 函数+指针
+
+```c
+#include <stdio.h>
+
+// 声明两个函数，提前告知编译器这些函数的存在和签名
+void method1(); // 无参数，返回void
+int method2(int num1, int num2); // 接受两个int参数，返回int
+
+// 主函数，程序的入口点
+int main() {
+    // 1.定义指针指向两个函数
+    // 定义一个指向void类型函数的指针，并将其初始化为指向method1函数
+    void (*p1)() = method1;
+    // 定义一个指向返回int类型，接受两个int参数的函数的指针，并将其初始化为指向method2函数
+    int (*p2)(int, int) = method2;
+
+    // 2.利用函数指针去调用函数
+    // 使用函数指针p1调用method1函数，相当于直接调用method1()
+    p1();
+    // 使用函数指针p2调用method2函数，并传递参数10和20，相当于直接调用method2(10, 20)
+    int num = p2(10, 20);
+    // 打印method2函数的返回值，即两个参数的和
+    printf("%d\n", num);
+
+    return 0; // 返回0表示程序正常结束
+}
+
+// method1函数的定义，无参数，返回void
+void method1() {
+    printf("method1\n"); // 打印字符串"method1"
+}
+
+// method2函数的定义，接受两个int参数，返回int
+int method2(int num1, int num2) {
+    printf("method2\n"); // 打印字符串"method2"
+    return num1 + num2; // 返回两个参数的和
+}
+
+
+
+
+
+
+
+
+#include <stdio.h>
+
+// 声明四个数学运算函数
+int add(int num1, int num2);
+int subtract(int num1, int num2);
+int multiply(int num1, int num2); // 修正函数名拼写错误
+int divide(int num1, int num2);
+
+// 实现加法函数
+int add(int num1, int num2) 
+{
+    return num1 + num2;
+}
+
+// 实现减法函数
+int subtract(int num1, int num2) 
+{
+    return num1 - num2;
+}
+
+// 实现乘法函数
+int multiply(int num1, int num2) 
+{ // 修正函数名拼写错误
+    return num1 * num2;
+}
+
+// 实现除法函数
+int divide(int num1, int num2) 
+{
+    return num1 / num2; // 这里应该检查除数是否为0，以避免除以0的错误
+}
+
+int main() 
+{
+    // 定义一个数组去装四个函数的指针
+    int (*arr[4])(int, int) = {add, subtract, multiply, divide}; // 修正函数名拼写错误
+
+    // 用户键盘录入三个数据
+    printf("请录入两个数字参与计算\n");
+    int num1, num2;
+    scanf("%d %d", &num1, &num2); // 修正格式字符串，添加空格以分隔变量
+    printf("%d\n", num1);
+    printf("%d\n", num2);
+
+    int choose;
+    printf("请录入一个数字表示要进行的计算（1:加法，2:减法，3:乘法，4:除法）:\n");
+    scanf("%d", &choose);
+
+    // 3.根据用户的选择，来调用不同的函数
+    // 这里应该检查用户输入是否在有效范围内
+    if (choose >= 1 && choose <= 4) 
+    {
+        int res = (arr[choose - 1])(num1, num2);
+        // 4.输出打印
+        printf("%d\n", res);
+    } 
+    else 
+    {
+        printf("输入错误，请输入1-4之间的数字。\n");
+    }
+
+    return 0;
+}
+
+```
+
+### · 字符串
+
+###### 1. 字符串定义
+
+```c
+//获取字符串的两种方式：
+//char str[4] = "abc";
+//char* str = "abc";
+#include <stdio.h>
+int main() 
+{
+    // 1.利用字符数组+双引号的方式定义字符串
+    char str1[4] = "abc"; // 注意：这里数组长度应该大于字符串长度+1，以存储结束符'\0'
+    printf("%s\n", str1); // 打印字符串str1
+
+    // 细节1：在底层，实际存储的时候，C语言还是会帮我们把字符串"abc"转换成字符数组进行保存，并且在末尾还要再加上"\0"
+    // (a, b, c, '\0')
+    // 细节2：数组的长度，要么不写，如果要写的话，记得要把结束标记的空间给预留出来
+    // 细节3：字符数组+双引号的方式定义字符串，内容是可以发生改变的
+    str1[3] = 'Q'; // 修改字符串内容
+    printf("%s\n", str1); // 打印修改后的字符串
+
+    // 2.利用指针+双引号的方式定义字符串
+    char* str2 = "abcd";
+    char* str3 = "abcd";
+
+    // 细节1：在底层，实际存储的时候，C语言还是会帮我们把字符串"abcd"转换成字符数组进行保存，并且在末尾还要再加上"\0"
+    // 细节2：利用指针+双引号的方式定义字符串，会把底层的字符数组放在只读常量区
+    // 只读常量区特点：内容不可以修改的，里面定义的字符串是可以复用的
+    // 在创建"abcd"的时候，会检查只读常量区里面有没有"abcd"，如果没有才会创建新的，如果已经有了，不会创建新的，而是进行复用
+    // str2[4] = 'Q'; // 这将导致运行时错误，因为尝试修改只读内存区域
+
+    printf("%p\n", (void*)str2); // 打印str2的内存地址
+    printf("%p\n", (void*)str3); // 打印str3的内存地址
+
+    return 0;
+}
+
+
+
+
+
+
+
+//键盘录入字符串并遍历
+#include <stdio.h>
+int main()
+{
+    // 1.键盘录入一个字符串
+    // 底层逻辑：程序在运行的时候，首先会创建一个长度为100的字符数组str
+    // 在进行键盘录入的时候，会把每一个字符存入到上面的str数组当中，并加上结束标记'\0'
+    // 在这个过程中，需要修改字符数组的内容，所以第一种方式可以，第二种方式不可以
+    char str[100];
+    printf("请录入一个字符串\n");
+    scanf("%99s", str); // 使用%99s限制输入长度，防止缓冲区溢出
+    printf("接收到的字符串为: %s\n", str);
+
+    // 2.遍历字符串得到每一个字符
+    char* p = str; // 定义一个字符指针p，并让它指向字符串str的首地址
+    while (*p) 
+    { 
+        // 利用指针获取字符串中的每一个字符，直到遇到'\0'为止
+        // 利用指针获取当前指向的字符
+        char c = *p;
+
+        // 判断当前获取到的字符是否为结束标记
+        if (c == '\0') 
+        {
+            // 如果是结束标记,循环结束
+            break;
+        }
+
+        // 打印当前遍历到的字符
+        printf("%c\n", c);
+
+        // 指针往后移动一个位置
+        p++;
+    }
+
+    return 0;
+}
+```
+
+
+
+###### 2. 字符串数组
+
+```c
+#include <stdio.h>
+
+int main()
+{
+    // 第一种方式：定义一个二维数组，存储多个学生的名字
+    char strArr[5][100] = 
+    {
+        "zhangsan",
+        "lisi",
+        "wangwu",
+        "zhaoliu",
+        "qianqi"
+    };
+
+    // 2.遍历二维数组
+    for (int i = 0; i < 5; i++) 
+    {
+        // i:依次表示二维数组中的每一个索引
+        char* str = strArr[i]; // 将二维数组的每一行首地址赋给指针str
+        printf("%s\n", str); // 打印字符串
+    }
+
+    // 第二种方式：把五个字符串的指针放入到一个数组当中
+    // 指针数组
+    char* strArr2[5] = 
+    {
+        "zhangsan",
+        "lisi",
+        "wangwu",
+        "zhaoliu",
+        "qianqi"
+    };
+
+    // 遍历指针数组
+    for (int i = 0; i < 5; i++) 
+    {
+        // i:依次表示数组中的每一个索引
+        char* str = strArr2[i]; // 将指针数组的每一个元素赋给指针str
+        printf("%s\n", str); // 打印字符串
+    }
+
+    return 0;
+}
+
+```
+
+###### 3. 字符串常见函数
+
+```c
+/*
+#include <string,h>
+strlen  ：获取字符串的长度
+strcat  ：拼接两个字符串
+strcpy  ：复制字符串
+strcmp  ：比较两个字符串
+strlwr  ：将字符串变成小写
+strupr  ：将字符串变成大写
+*/
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    // 定义字符串
+    char* str1 = "你abc"; // 底层会把字符数组放在只读常量区（只能读，不能修改复用）
+    char str2[100] = "abc";
+    char str3[5] = "qwer";
+
+    // strlen（长度）
+    printf("strlen（长度）\n");
+    // 细节1：str1en这个函数在统计长度的时候，是不计算结束标记的
+    // 细节2：在windows中，默认情况下，一个中文占两个字节
+    int len1 = strlen(str1); // 3
+    int len2 = strlen(str2); // 3
+    int len3 = strlen(str3); // 4
+    printf("%d\n", len1);
+    printf("%d\n", len2);
+    printf("%d\n", len3);
+
+    // strcmp（比较）
+    printf("strcmp（比较）\n");
+    // 细节：在比较的时候，要求顺序和内容完全一致，才叫做字符串一样
+    // 完全一样：0
+    // 只要有一个不一样：非0
+    //int res = strcmp(str1, str2);
+    //printf("%d\n", res);
+
+    // strlwr（变小写）
+    printf("-strlwr（变小写）\n");
+    // 细节：只能转换英文的大小写，不能修改中文的大小写
+    //strlwr(str2);
+    //printf("%s\n", str2);
+
+    // strupr（变大写）
+    //printf("-strupr（变大写）\n");
+    // 细节：只能转换英文的大小写，不能修改中文的大小写
+    //strupr(str2);
+    //printf("%s\n", str2);
+
+    // strcat（拼接）
+    printf("-strcat（拼接）\n");
+    // 细节1:把第二个字符串中全部的内容,拷贝到第一个字符串的末尾
+    // 前提1:第一个字符串是可以被修改的
+    // 前提2:第一个字符串中剩余的空间可以容纳拼接的字符串
+    //strcat(str2, str3);
+    //printf("%s\n", str2); // abcqwer
+
+    // strcpy（拷贝）
+    printf("-strcpy（拷贝）\n");
+    // 细节:把第二个字符串中全部的内容，拷贝到第一个字符串中，把第一个字符串里面原有的内容给覆盖了
+    // 前提1:第一个字符串是可以被修改的
+    // 前提2:第一个字符串中空间可以容纳第二个字符串的完整内容
+    //strcpy(str2, str3);
+    //printf("%s\n", str2); // qwer
+
+    return 0;
+}
+
+```
+
+###### 4. 练习
+
+```c
+//练习1：用户登录
+#include <stdio.h>
+#include <string.h>
+
+int main() 
+{
+    // 1.定义两个变量表示正确的用户名和密码
+    char* rightUsername = "zhangsan";
+    char* rightPassword = "1234qwer";
+
+    // 2.键盘录入两个字符串，表示用户输入的用户名和密码
+    char username[100];
+    char password[100];
+    int attempts = 3; // 总共给三次机会
+
+    for (int i = 1; i <= 3; i++) 
+    {
+        printf("请输入用户名\n");
+        scanf("%s", username);
+        printf("请输入密码\n");
+        scanf("%s", password);
+
+        // 3.比较用户名和密码
+        if (!strcmp(username, rightUsername) && !strcmp(password, rightPassword)) 
+        {
+            printf("登录成功\n");
+            break;
+        } 
+        else 
+        {
+            if (i == 3) 
+            {
+                printf("用户%s被锁定，请联系猫条\n", username);
+            } else {
+                printf("登录失败，还剩下%d次机会\n", 3 - i);
+            }
+        }
+    }
+
+    return 0;
+}
+
+
+
+
+
+
+
+//练习2：统计次数
+#include <stdio.h>
+#include <string.h>
+
+int main() 
+{
+    // 键盘录入一个字符串，统计该字符串中大写字母字符，小写字母字符，数字字符出现的次数(不考虑其他字符)
+    printf("请输入一个字符串 \n");
+    char str[100];
+    scanf("%s", str);
+
+    // 统计该字符串中大写字母字符，小写字母字符，数字字符出现的次数
+    int bigCount = 0;
+    int smallCount = 0;
+    int numberCount = 0;
+
+    // 遍历字符串得到里面的每一个字符
+    for (int i = 0; i < strlen(str); i++) 
+    {
+        char c = str[i];
+        if (c >= 'a' && c <= 'z')
+            smallCount++;
+        else if (c >= 'A' && c <= 'Z')
+            bigCount++;
+        else if (c >= '0' && c <= '9')
+            numberCount++;
+    }
+
+    // 输出结果
+    printf("大写字符出现了%d次\n", bigCount);
+    printf("小写字符出现了%d次\n", smallCount);
+    printf("数字字符出现了%d次\n", numberCount);
+
+    return 0;
+}
+
+```
+
+### · 结构体
+
+###### 1. 定义
+
+这个是视频给的练习，我还在单身qwq
+
+```C
+#include <stdio.h>
+#include <string.h> // 用于strcpy函数
+
+// 结构体: 自定义的数据类型
+// 就是由很多的数据组合成的一个整体
+// 每一个数据, 都是结构体的成员
+// 书写的位置:
+// 函数的里面: 局部位置, 只能再本函数中使用
+// 函数的外面: 全局位置, 在所有的函数中都可以使用
+
+struct GirlFriend
+{
+    char name[100];
+    int age;
+    char gender;
+    double height;
+};
+
+int main() 
+{
+    // 使用结构体，定义一个女朋友类型的变量
+    struct GirlFriend gfi;
+    strcpy(gfi.name, "小诗诗");
+    gfi.age = 23;
+    gfi.gender = 'F';
+    gfi.height = 1.63;
+
+    // 输出打印
+    printf("我女朋友的名字为：%s\n", gfi.name);
+    printf("我女朋友的年龄为：%d\n", gfi.age);
+    printf("我女朋友的性别为：%c\n", gfi.gender);
+    printf("我女朋友的身高为：%lf\n", gfi.height);
+
+    return 0;
+}
+
+
+
+
+
+//结构体＋数组练习题
+#include <stdio.h>
+
+struct Student 
+{
+    char name[100];
+    int age;
+};
+
+int main() 
+{
+    // 1.定义三个学生，同时并进行赋值
+    struct Student stu1 = {"zhangsan", 23};
+    struct Student stu2 = {"lisi", 24};
+    struct Student stu3 = {"wangwu", 25};
+
+    // 2.把三个学生放入到数组当中
+    struct Student stuArr[3] = {stu1, stu2, stu3};
+
+    // 3.遍历数组得到每一个元素
+    for (int i = 0; i < 3; i++) {
+        struct Student temp = stuArr[i];
+        printf("学生的信息为:姓名%s,年龄%d\n", temp.name, temp.age);
+    }
+
+    return 0;
+}
+```
+
+###### 2. 起别名
+
+```c
+/*
+定义一个结构体表示游戏人物
+属性：姓名 攻击力 防御力 血量
+要求：把三个任务放入数组并遍历数组
+*/
+#include <stdio.h>
+
+typedef struct 
+{
+    char name[100];
+    int attack;
+    int defense;
+    int blood;
+} M;
+
+int main() 
+{
+    // 1.定义三个奥特曼
+    M taro = {"泰罗", 180, 90, 500};
+    M rem = {"雷欧", 90, 80, 450};
+    M eddie = {"艾迪", 120, 70, 698};
+
+    // 2.定义数组
+    M arr[3] = {taro, rem, eddie};
+
+    // 3.遍历数组
+    for (int i = 0; i < 3; i++) 
+    {
+        M temp = arr[i];
+        printf("奥特曼的名字为%s，攻击力是%d，防御力是%d，血量是%d\n", temp.name, temp.attack, temp.defense, temp.blood);
+    }
+
+    return 0;
+}
+
+```
+
+###### 3. 结构体作为函数参数
+
+```c
+#include <stdio.h>
+#include <string.h> // 用于strcpy和scanf函数
+
+typedef struct Student {
+    char name[100];
+    int age;
+} S;
+
+// 细节：因为这个函数用到了结构体，所以函数的声明必须写在结构体的下面，否则代码会报错
+void method(S st);
+void method2(S* p);
+
+int main() {
+    // 定义一个结构体表示学生
+    // 学生的属性：姓名、年龄
+    // 要求：
+    // 定义一个函数，修改学生中的数据
+    // 1.定义一个学生
+    S stu;
+    // 2.给学生赋初始值
+    strcpy(stu.name, "aaa");
+    stu.age = 0;
+    // 3.输出打印
+    printf("学生的初始数据为:%s,%d\n", stu.name, stu.age); // aaa 0
+    // 4.调用函数修改学生中的数据
+    method(stu);
+    // 5.输出打印
+    printf("学生的信息修改为:%s,%d\n", stu.name, stu.age); // aaa 0
+    // 调用method2函数
+    method2(&stu);
+    // 最终打印
+    printf("学生的信息最终修改为:%s,%d\n", stu.name, stu.age);
+    return 0;
+}
+
+// 如果函数中写的是结构体类型的变量，相当于是定义了一个新的变量
+// 此时是把main函数中stu中的数据，传递给了method函数，并把stu中的数据赋值给了新的变量st
+// 我们在函数中，仅仅是修改了变量st中的值，对main函数中stu的值，是没有进行修改的
+void method(S st) {
+    printf("接收到main函数中学生的初始数据为：%s，%d\n", st.name, st.age); // aaa 0
+    // 修改
+    printf("请输入要修改的学生名字\n");
+    scanf("%s", st.name);
+    printf("请输入要修改的学生年龄\n");
+    scanf("%d", &st.age);
+    printf("在method函数中修改之后，学生的信息为：%s，%d\n", st.name, st.age); // zhangsan 23
+}
+
+// 如果要在函数中修改stu的值，此时就不要再定义新的变量了
+// 直接接收stu的内存地址，通过内存地址就可以修改stu中的数据了
+// 指针p里面记录的是main函数中stu的内存地址（stu学生）
+void method2(S* p) {
+    printf("接收到main函数中学生的初始数据为：%s，%d\n", (*p).name, (*p).age); // aaa
+    // 修改
+    printf("请输入要修改的学生名字\n");
+    scanf("%s", (*p).name);
+    printf("请输入要修改的学生年龄\n");
+    scanf("%d", &((*p).age));
+    printf("在method函数中修改之后，学生的信息为：%s，%d\n", (*p).name, (*p).age); // zhangsan 23
+}
+
+```
+
+###### 4. 结构体嵌套
+
+```c
+#include <stdio.h>
+#include <string.h> // 用于strcpy函数
+
+// 定义一个结构体表示联系方式
+struct Message {
+    char phone[12];
+    char mail[100];
+};
+
+// 定义一个结构体表示学生Student
+// Student成员如下:
+// 名字、年龄、性别、身高、联系方式
+struct Student {
+    char name[100];
+    int age;
+    char gender;
+    double height;
+    struct Message msg;
+};
+
+int main() {
+    // 1.定义学生类型的变量
+    struct Student stu;
+
+    // 2.给里面的每一个成员进行赋值
+    strcpy(stu.name, "zhangsan");
+    stu.age = 23;
+    stu.gender = 'M';
+    stu.height = 1.78;
+    strcpy(stu.msg.phone, "13112345678");
+    strcpy(stu.msg.mail, "12345678@qq.com");
+
+    //### //批量进行赋值
+    // struct Student stu2 = {"lisi", 24, 'F', 1.65, {"13112347890", "5678@qq.com"}};
+
+    // 3.输出打印
+    printf("学生的信息为:\n");
+    printf("姓名为:%s\n", stu.name);
+    printf("年龄为:%d\n", stu.age);
+    printf("性别为:%c\n", stu.gender);
+    printf("身高为:%lf\n", stu.height);
+    printf("手机号为:%s\n", stu.msg.phone);
+    printf("邮箱为:%s\n", stu.msg.mail);
+
+    return 0;
+}
+
+```
+
+###### 5. 练习
+
+```c
+
+```
+
+
+
+###### 6. 内存对齐
+
+```C
+//确定变量位置：只能放在自己整数倍的内存地址上
+//最后一个补位：结构体的总大小，是最大类型的整数倍
+#include <stdio.h>
+
+struct Num 
+{
+    char b; // 字符类型，占用1个字节
+    char d; // 字符类型，占用1个字节
+    int c;  // 整型，占用4个字节
+    double a; // 双精度浮点型，占用8个字节
+}; // 结构体定义结束
+
+int main() 
+{
+    struct Num n; 
+	printf("%zu\n", sizeof(n)); 
+    // int a = 10; // 定义一个int类型的变量a，并赋值为10
+    // int b = 10; // 定义一个int类型的变量b，并赋值为10，这里的"|"可能是一个误打的字符
+    //printf("%d\n", &a); // 打印变量a的地址
+    //printf("%d\n", &b); // 打印变量b的地址
+    return 0;
+}
+
+// 规则:
+// 只能放在自己类型整数倍的内存地址上
+// 简单理解:
+// 内存地址/占用字节=结果可以整除
+// 举例:
+// int存放的位置:内存地址一定能被4整除
+// long long存放的位置:内存地址一定能被8整除
+// double存放的位置:内存地址一定能被8整除
+// 结构体的内存对齐:
+// 结构体在上面的基础上又多了一条，结构体的总大小，是最大类型的整数倍(用来确定最后一个数据补位的情况)
+// 切记!!
+// 对齐的时候会补空白字节，但是不会改变原本字节的大小char补位之后，本身还是1个字节
+// 心得:
+// 我们会把小的数据类型，写在最上面，大的数据类型，写在最下面(节约空间)
+
+```
+
+### · 共同体/联合体
+
+###### 1. 定义
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+// 定义一个联合体，用于存储不同类型的钱
+union MoneyType {
+    int moneyi;      // 整数形式的钱
+    double moneyd;   // 小数形式的钱
+    char moneystr[100]; // 字符串形式的钱
+};
+
+int main() {
+    // 利用联合体定义钱的变量
+    union MoneyType money;
+
+    // 赋值
+    // 整数moneyi、小数moneyd、字符串moneystr
+    // 而且每次只能赋一个值
+    // money.moneyi = 99999;
+    // money.moneyd = 123.32;
+    strcpy(money.moneystr, "100万");
+
+    // 输出打印
+    // 上面赋值给哪个类型，下面就从哪个类型取出来
+    // printf("%d\n", money.moneyi);
+    // printf("%lf\n", money.moneyd);
+    printf("%s\n", money.moneystr);
+
+    return 0;
+}
+
+```
+
+
+
+###### 2. 特点
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+// 定义一个联合体，用于存储不同类型的钱
+union MoneyType {
+    int moneyi;      // 整数形式的钱
+    double moneyd;   // 小数形式的钱
+    char moneystr[100]; // 字符串形式的钱
+};
+
+int main() {
+    // 利用联合体定义钱的变量
+    union MoneyType money;
+
+    // 获取内存地址
+    // printf("%p\n", &(money.moneyi));
+    // printf("%p\n", &(money.moneyd));
+    // printf("%p\n", &(money.moneystr));
+    // printf("%zu\n", sizeof(money.moneyi)); // 4
+    // printf("%zu\n", sizeof(money.moneyd)); // 8
+    // printf("%zu\n", sizeof(money.moneystr)); // 100
+    // printf("%zu\n", sizeof(money)); // 由于内存对齐，可能会大于100
+
+    // 赋值
+    money.moneyi = 99;
+    money.moneyd = 1.23;
+
+    // 输出打印
+    printf("%lf\n", money.moneyd); // 打印小数形式的钱
+    printf("%lf\n", money.moneyd); // 再次打印小数形式的钱，注意这会覆盖之前的moneyi的值
+
+    return 0;
+}
+
+```
+
+###### 3. 区别
+
+```c
+//结构体：一个事物有多种属性
+//共同体：一个属性有多种类型
+```
+
+### · 动态内存分配
+
+这部分仅作了解，我咕了。
+
+###### 1. 常用函数
+
+```c
+//malloc	memory allocation	申请空间（连续） 	
+//calloc	contiguous allocation	申请空间+数据初始化	
+//realloc	re-allocation	修改空间大小 	
+//free	free	释放空间 	
+//include <stdlib.h>
+#include <stdio.h>
+#include <stdlib.h> // 包含标准库头文件，用于内存分配和释放函数
+
+int main() {
+    int *array1, *array2, *array3; // 定义三个指向整数的指针
+    int size = 5; // 初始数组大小
+    int newSize = 10; // 新的数组大小
+
+    // 使用malloc分配内存
+    array1 = (int *)malloc(size * sizeof(int)); // 分配size个整数大小的内存
+    if (array1 == NULL) { // 检查内存分配是否成功
+        fprintf(stderr, "Memory allocation failed\n"); // 如果失败，输出错误信息
+        return 1; // 返回错误码
+    }
+    printf("Memory allocated using malloc.\n"); // 输出成功分配内存的信息
+
+    // 使用calloc分配内存并初始化为0
+    array2 = (int *)calloc(size, sizeof(int)); // 分配size个整数大小的内存，并初始化为0
+    if (array2 == NULL) { // 检查内存分配是否成功
+        fprintf(stderr, "Memory allocation failed\n"); // 如果失败，输出错误信息
+        free(array1); // 释放之前分配的内存
+        return 1; // 返回错误码
+    }
+    printf("Memory allocated using calloc.\n"); // 输出成功分配内存的信息
+
+    // 使用realloc重新分配内存
+    array3 = (int *)realloc(array1, newSize * sizeof(int)); // 将array1指向的内存重新分配为newSize个整数大小
+    if (array3 == NULL) { // 检查内存重新分配是否成功
+        fprintf(stderr, "Memory reallocation failed\n"); // 如果失败，输出错误信息
+        free(array1); // 释放原始分配的内存
+        free(array2); // 释放calloc分配的内存
+        return 1; // 返回错误码
+    }
+    array1 = array3; // 更新指针以指向新分配的内存
+    printf("Memory reallocated using realloc.\n"); // 输出成功重新分配内存的信息
+
+    // 释放内存
+    free(array1); // 释放array1指向的内存
+    free(array2); // 释放array2指向的内存
+    printf("Memory freed using free.\n"); // 输出成功释放内存的信息
+
+    return 0; // 返回成功码
+}
+
+```
+
+
+
+###### 2. 函数细节点
+
+```c
+
+```
+
+
+
+###### 3. C语言内存结构
+
+```c
+
+```
+
+
+
+###### 4.变量数组运行
+
+```c
+
+```
+
+
+
+###### 5.全局变量和static变量运行
+
+```c
+
+```
+
+
+
+###### 6. 字符串运行
+
+```c
+
+```
+
+
+
+###### 7. malloc函数运行
+
+```c
+
+```
+
+
+
+### · 文件
