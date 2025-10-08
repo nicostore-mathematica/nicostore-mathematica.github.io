@@ -31,7 +31,7 @@
     "index": 16
   },
   "RoboMaster": {
-    "RoboMaster-2": 6,
+    "RoboMaster-2": 1905,
     "RoboMaster-1": 2335,
     "index": 796
   },
@@ -47,16 +47,21 @@
     "index": 9
   },
   "integral": {
-    "index": 47,
+    "index": 90,
     "integral-9": 8076,
     "integral-8": 6746,
     "integral-7": 4000,
     "integral-6": 6178,
-    "integral-5": 12,
+    "integral-5": 3954,
     "integral-4": 5602,
     "integral-3": 3499,
     "integral-2": 4196,
     "integral-1": 3706
+  },
+  "cybernetics": {
+    "index": 6,
+    "cybernetics-2": 6,
+    "cybernetics-1": 6
   },
   "CS": {
     "index": 10,
@@ -71,9 +76,9 @@
   },
   "circuit": {
     "index": 208,
-    "electronic-2": 2493,
-    "electronic-1": 2764,
-    "circuit-2": 790,
+    "electronic-2": 4258,
+    "electronic-1": 3320,
+    "circuit-2": 1504,
     "circuit-1": 6096
   },
   "algebra": {
@@ -85,7 +90,7 @@
     "algebra-1": 5173,
     "algebra-0": 9452
   },
-  "total": 162224,
-  "lastUpdated": "2025-10-03T11:14:04.676Z",
-  "fileCount": 62
+  "total": 171161,
+  "lastUpdated": "2025-10-08T10:38:07.963Z",
+  "fileCount": 65
 }

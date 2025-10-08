@@ -34,7 +34,7 @@ export const navbar = defineNavbarConfig([
 			{ text: "数学物理方法", link: "/notes/complex/README.md" },
 			{ text: "数值分析", link: "/notes/numerical/README.md" },
 			{ text: "RoboMaster", link: "/notes/RoboMaster/README.md" },
-			{ text: "控制理论", link: "/notes/cybernetics/README.md" },
+			{ text: "控制科学基础", link: "/notes/cybernetics/README.md" },
 
 		],
 	},

@@ -66,7 +66,6 @@ permalink: /statistics/statistics-1/
    P(\bigcup_{i=1}^{\infty} A_i) = \sum_{i=1}^{\infty} P(A_i)
    $$
    
-   
 3. **归一性**：整个样本空间也被称为必然事件，它的概率为 $1$，$P(\Omega)=1$。
 
 ### · 运算性质

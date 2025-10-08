@@ -118,7 +118,167 @@ $$
 > \varphi_u=\varphi_i - 90^\circ
 > $$
 
-
+![pVTvQx0.png](https://s21.ax1x.com/2025/10/04/pVTvQx0.png)
 
 相量变换的重要优点：采用相量变换，并引入感抗和容抗作为 “参数”，则电感和电容元件的微分方程均变为代数方程。
 
+### · 导纳 阻抗
+
+(1). 阻抗
+
+![pVTvM2q.png](https://s21.ax1x.com/2025/10/04/pVTvM2q.png)
+
+> 对上图电路使用KVL： 
+> $$
+> \dot{U} = \dot{U}_R + \dot{U}_L + \dot{U}_C = RI + \text{j}\omega L\dot{I} + \frac{1}{\text{j}\omega C}\dot{I}
+> $$
+>
+> $$
+> = [R + j(\omega L - \frac{1}{\omega C})]\dot{I}
+> $$
+>
+> 令其为 $Z$ ，称为阻抗
+> $$
+> Z = R + \text{j}X = |Z| \angle \varphi
+> $$
+> 易推出欧姆定律的相量形式：
+> $$
+> \dot{U} = Z\dot{I}
+> $$
+
+**阻抗** $Z$ **的电路意义**：
+$$
+Z = R + j(\omega L - \frac{1}{\omega C}) = R + j(X_L - X_C)
+$$
+**阻抗模**：
+$$
+|Z| = \sqrt{R^2 + (X_L - X_C)^2}
+$$
+**阻抗角**：
+$$
+\varphi = \arctan \frac{X}{R} = \arctan \frac{X_L - X_C}{R}
+$$
+**阻抗三角形**：
+
+![pVTvKGn.png](https://s21.ax1x.com/2025/10/04/pVTvKGn.png)
+
+**欧姆定律的相量形式**：
+
+> 形式：
+> $$
+> \dot{U} = Z\dot{I} \Rightarrow Z = \frac{\dot{U}}{\dot{I}} = |Z| \angle \varphi
+> $$
+>
+> - 阻抗模等于电压与电流有效值（振幅）之比。
+> - 阻抗角等于电压与电流的相位差。
+>
+> $$
+> |Z| = \frac{U}{I} = \frac{U_m}{I_m},\quad
+> \varphi = \varphi_u - \varphi_i
+> $$
+
+下面我们给出阻抗角的可能：
+$$
+\varphi = \arctan \frac{X_L - X_C}{R}
+$$
+
+> - 当  $\varphi > 0$  时， $X_L - X_C > 0$ ，总电压超前于电流。
+> - 当  $\varphi = 0$  时， $X_L - X_C = 0$ ，总电压、电流同相。
+> - 当  $\varphi < 0$  时， $X_L - X_C < 0$ ，总电压滞后于电流。
+
+仍旧是针对阻抗给出的电路图例，我们这次希望求出 $R,\ L,\ C$ 的分压：
+
+> 电流大小：
+> $$
+> \dot{I} = \frac{\dot{U}}{Z}
+> $$
+> 使用元件方程：
+> $$
+> \dot{U}_R &= R\dot{I}, \\
+> \dot{U}_L &= \text{j}\omega L\dot{I}, \\
+> \dot{U}_C &= \frac{\dot{I}}{\text{j}\omega C}
+> $$
+> 或者直接使用分压公式：
+> $$
+> \dot{U}_R &= \frac{R\dot{U}}{R + \text{j}\omega L + 1/(\text{j}\omega C)}, \\
+> \dot{U}_L &= \frac{\text{j}\omega L\dot{U}}{R + \text{j}\omega L + 1/(\text{j}\omega C)}, \\
+> \dot{U}_C &= \frac{(1/\text{j}\omega C)\dot{U}}{R + j\omega L + 1/(\text{j}\omega C)}
+> $$
+> 结束.
+
+(2). 导纳
+
+![pV7KNnO.png](https://s21.ax1x.com/2025/10/05/pV7KNnO.png)
+
+> 根据 KCL 
+>
+> $$
+> i = i_G + i_C + i_L
+> $$
+>
+>
+> $$
+> \dot{i} = G\dot{U} + j\omega C\dot{U} + \frac{\dot{U}}{j\omega L} = \left[ G + j\left( \omega C - \frac{1}{\omega L} \right) \right] \dot{U}
+> $$
+>
+> 令
+> $$
+> Y = \left[ G + j\left( \omega C - \frac{1}{\omega L} \right) \right] = G + jB = |Y| \angle \varphi_Y
+> $$
+>
+>
+> $$
+> \Rightarrow \dot{i} = Y\dot{U}
+> $$
+>
+> 此为并联电路欧姆定律的相量形式。
+>
+> 称 $Y$ 为RLC并联电路的**导纳**，单位西门子，S
+
+![pV7KYjK.png](https://s21.ax1x.com/2025/10/05/pV7KYjK.png)
+
+导纳 $Y$ 的电路意义
+
+$$
+Y = G + jB = |Y| \angle \varphi_Y
+$$
+
+
+$$
+Y = \frac{\dot{I}}{\dot{U}} = \frac{I \angle \varphi_i}{U \angle \varphi_u} = \frac{I}{U} \angle \varphi_i - \varphi_u
+$$
+
+
+$$
+\Rightarrow |Y| = \frac{I}{U}, \quad \varphi_Y = \varphi_i - \varphi_u
+$$
+
+**导纳的模等于电流与电压有效值（幅值）之比；导纳角等于电流超前于电压的相位角。**
+
+画相量图，以  $\dot{U}$  为参考
+
+
+$$
+I = \sqrt{I_G^2 + (I_C - I_L)^2}
+$$
+
+### · 等效电路![pV7MAVe.png](https://s21.ax1x.com/2025/10/05/pV7MAVe.png)
+
+> **数学推导**：
+>
+> 阻抗计算公式：
+> $$
+> \frac{\dot{U}}{\dot{I}} = Z = R + jX
+> $$
+> 导纳计算：
+> $$
+> Y = \frac{1}{R + j\omega L}= \frac{R}{R^2 + (\omega L)^2} + j(-\frac{\omega L}{R^2 + (\omega L)^2})= G + jB
+> $$
+>
+> $$
+> \frac{1}{\omega L'} = \frac{\omega L}{R^2 + (\omega L)^2} = L + \frac{R^2}{\omega^2 L}
+> $$
+
+我们这时候就可以用如下方法分析正弦电路：
+
+![pV7MEUH.png](https://s21.ax1x.com/2025/10/05/pV7MEUH.png)
