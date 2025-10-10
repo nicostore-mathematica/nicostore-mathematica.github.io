@@ -93,6 +93,8 @@ sticky: 100
 
 [哈鲁鲁的UTAU教程站 - Home](https://utaujc.jimdofree.com/)
 
+[vsqx.top](https://www.vsqx.top/)
+
 #### · 资源
 
 [蜜柑计划 - Mikan Project](https://mikanani.me/)

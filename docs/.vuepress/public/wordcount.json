@@ -17,13 +17,14 @@
   "article": {
     "r1s3vxud": 613,
     "pyvvujxp": 17,
-    "resources": 483,
+    "resources": 489,
+    "article-4": 3551,
     "article-3": 4312,
     "article-2": 3947,
     "article-1": 1440
   },
   "notes": {
-    "index": 70
+    "index": 76
   },
   "statistics": {
     "statistics-2": 1869,
@@ -56,6 +57,7 @@
     "integral-4": 5602,
     "integral-3": 3499,
     "integral-2": 4196,
+    "integral-10": 4870,
     "integral-1": 3706
   },
   "cybernetics": {
@@ -90,7 +92,7 @@
     "algebra-1": 5173,
     "algebra-0": 9452
   },
-  "total": 171161,
-  "lastUpdated": "2025-10-08T10:38:07.963Z",
-  "fileCount": 65
+  "total": 179594,
+  "lastUpdated": "2025-10-10T05:02:31.694Z",
+  "fileCount": 67
 }
