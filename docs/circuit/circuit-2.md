@@ -194,15 +194,15 @@ $$
 > $$
 > 使用元件方程：
 > $$
-> \dot{U}_R &= R\dot{I}, \\
-> \dot{U}_L &= \text{j}\omega L\dot{I}, \\
-> \dot{U}_C &= \frac{\dot{I}}{\text{j}\omega C}
+> \dot{U}_R = R\dot{I}, \\
+> \dot{U}_L = \text{j}\omega L\dot{I}, \\
+> \dot{U}_C = \frac{\dot{I}}{\text{j}\omega C}
 > $$
 > 或者直接使用分压公式：
 > $$
-> \dot{U}_R &= \frac{R\dot{U}}{R + \text{j}\omega L + 1/(\text{j}\omega C)}, \\
-> \dot{U}_L &= \frac{\text{j}\omega L\dot{U}}{R + \text{j}\omega L + 1/(\text{j}\omega C)}, \\
-> \dot{U}_C &= \frac{(1/\text{j}\omega C)\dot{U}}{R + j\omega L + 1/(\text{j}\omega C)}
+> \dot{U}_R = \frac{R\dot{U}}{R + \text{j}\omega L + 1/(\text{j}\omega C)}, \\
+> \dot{U}_L = \frac{\text{j}\omega L\dot{U}}{R + \text{j}\omega L + 1/(\text{j}\omega C)}, \\
+> \dot{U}_C = \frac{(1/\text{j}\omega C)\dot{U}}{R + j\omega L + 1/(\text{j}\omega C)}
 > $$
 > 结束.
 
