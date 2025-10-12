@@ -282,3 +282,110 @@ $$
 我们这时候就可以用如下方法分析正弦电路：
 
 ![pV7MEUH.png](https://s21.ax1x.com/2025/10/05/pV7MEUH.png)
+
+### · 功率
+
+在电路中，电压  $u = \sqrt{2}U \cos(\omega t)$  和电流  $i = \sqrt{2}I \cos(\omega t - \varphi)$  通过阻抗 $Z$ 时，
+
+电压和电流的关系可以表示为
+$$
+Z = \frac{U}{I} \angle \varphi = R + jX
+$$
+瞬时功率： $p(t) = ui$ 
+
+> 我们知道和差化积公式：
+> $$
+> 2 \cos \alpha \cos \beta = \cos(\alpha + \beta) + \cos(\alpha - \beta)
+> $$
+> 功率表达式：
+>
+> $$
+> p(t) = 2UI \cos \alpha \cos(\omega t - \varphi)
+> $$
+>
+> $$
+> = UI \cos \varphi + UI \cos(2 \omega t - \varphi)
+> $$
+>
+> $$
+> = UI \cos \varphi (1 + \cos 2 \omega t) + UI \sin \varphi \sin 2 \omega t
+> $$
+>
+>  $UI \cos \varphi (1 + \cos 2 \omega t) \geq 0$ ，被  $R$  消耗；$UI \sin \varphi \sin 2 \omega t$ 正负交替，在电源与  $L-C$  间交换
+
+所以我们可以给出以下定义
+
+> [!important]
+>
+> 平均功率： $P = UI \cos \varphi$ ，单位：W
+>
+> 无功功率： $Q = UI \sin \varphi$ ，单位：var
+>
+> 视在功率： $S = UI$ ，单位：VA
+>
+> 功率因数： $\lambda = \cos \varphi$ 
+>
+> > 因为，有功功率
+> > $$
+> > P = S \cos \varphi
+> > $$
+> > 无功功率
+> > $$
+> > Q = S \sin \varphi = P \tan \varphi
+> > $$
+> > 所以，视在功率
+> > $$
+> > S = \sqrt{P^2 + Q^2}
+> > $$
+> > 功率因数代表了视在功率中，有功功率所占的比重。
+
+我们可以在这里给出如下关系：
+
+> [!important]
+>
+> **阻抗**：
+> $$
+> Z = |Z| \angle \varphi
+> $$
+>
+> > **相位角**：$\varphi = \angle \varphi_u - \angle \varphi_i$  
+> >
+> > **有功功率**： $P = UI \cos \varphi$ 
+> >
+> > **无功功率**： $Q = UI \sin \varphi$  
+> >
+> > **视在功率**：$S=UI$ 
+>
+> **阻抗**：$Z = R$ 
+>
+> > **相位角**：$\varphi = 0^\circ$  
+> >
+> > **有功功率**： $UI = \frac{U^2}{R} = RI^2$ 
+> >
+> > **无功功率**： $0$  
+> >
+> > **视在功率**：$S=I^2R=\frac{U^2}{R}$ 
+>
+> **阻抗**：$Z = j \omega L$ 
+>
+> > **相位角**：$\varphi = 90^\circ$  
+> >
+> > **有功功率**： $0$ 
+> >
+> > **无功功率**： $Q = UI = \omega LI^2$  
+> >
+> > **视在功率**：$S=\omega LI^2$ 
+>
+> **阻抗**：$Z = -j \frac{1}{\omega C}$
+>
+> > **相位角**：$\varphi = -90^\circ$  
+> >
+> > **有功功率**： $0$ 
+> >
+> > **无功功率**： $Q = -UI = - \frac{1}{\omega C} I^2$  
+> >
+> > **视在功率**：$S=\frac{1}{\omega C}I^2$ 
+
+有功功率对应电源的为对外做功的能量的变化率。如电机对外做功转化成机械能的能量。
+
+无功功率对应电源不对外做功的那部分电能，用于建立和维持电磁场，保证设备正常运转，无功功率不是无用功率。

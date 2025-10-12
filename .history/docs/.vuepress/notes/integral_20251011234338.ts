@@ -1,7 +1,7 @@
 import { defineCollection } from "vuepress-theme-plume";
 
 export default defineCollection({
-	dir: "integral",
+	dir: "physics",
 	sidebar: [
 		{
 			text: "微积分",

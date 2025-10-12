@@ -2,30 +2,9 @@
   "timeline": 186,
   "README": 231,
   "random": 71,
-  "links": 356,
+  "notes": 65,
+  "links": 388,
   "about": 205,
-  "weekly": {
-    "weekly-8": 382,
-    "weekly-7": 1250,
-    "weekly-6": 1212,
-    "weekly-5": 757,
-    "weekly-4": 3748,
-    "weekly-3": 1057,
-    "weekly-2": 1045,
-    "weekly-1": 283
-  },
-  "article": {
-    "r1s3vxud": 613,
-    "pyvvujxp": 17,
-    "resources": 489,
-    "article-4": 3551,
-    "article-3": 4312,
-    "article-2": 3947,
-    "article-1": 1440
-  },
-  "notes": {
-    "index": 76
-  },
   "statistics": {
     "statistics-2": 1869,
     "statistics-1": 5125,
@@ -57,7 +36,7 @@
     "integral-4": 5602,
     "integral-3": 3499,
     "integral-2": 4196,
-    "integral-10": 4870,
+    "integral-10": 7233,
     "integral-1": 3706
   },
   "cybernetics": {
@@ -78,10 +57,29 @@
   },
   "circuit": {
     "index": 208,
-    "electronic-2": 4258,
-    "electronic-1": 3320,
-    "circuit-2": 1504,
+    "electronic-2": 4802,
+    "electronic-1": 3439,
+    "circuit-2": 1844,
     "circuit-1": 6096
+  },
+  "weekly": {
+    "weekly-8": 382,
+    "weekly-7": 1250,
+    "weekly-6": 1212,
+    "weekly-5": 757,
+    "weekly-4": 3748,
+    "weekly-3": 1057,
+    "weekly-2": 1045,
+    "weekly-1": 283
+  },
+  "article": {
+    "r1s3vxud": 613,
+    "pyvvujxp": 17,
+    "resources": 489,
+    "article-4": 3551,
+    "article-3": 4312,
+    "article-2": 3947,
+    "article-1": 1440
   },
   "algebra": {
     "index": 110,
@@ -92,7 +90,7 @@
     "algebra-1": 5173,
     "algebra-0": 9452
   },
-  "total": 179594,
-  "lastUpdated": "2025-10-10T05:02:31.694Z",
+  "total": 182981,
+  "lastUpdated": "2025-10-12T15:05:56.889Z",
   "fileCount": 67
 }

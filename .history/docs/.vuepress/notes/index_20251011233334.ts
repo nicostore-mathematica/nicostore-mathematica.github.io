@@ -22,4 +22,4 @@ export const notes = defineCollections([
 		RoboMaster,
 		cybernetics,
 
-]);
+});

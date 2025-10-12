@@ -6,7 +6,7 @@ permalink: /integral/integral-10/
 
 ~~我们要坚定相信重积分是一元函数定积分的推广~~
 
-## Part 1 重积分定义
+## Part 1 重积分
 
 定积分解决的是一维连续变量求和的问题，而重积分解决的是多维连续变量求和的问题。
 
@@ -242,7 +242,7 @@ $$
 > \iint_D f_1(x) f_2(y) \, dx \, dy = \int_a^b f_1(x) \, dx \int_c^d f_2(y) \, dy,
 > $$
 
-**推论1**： 设  $f(x, y)$  在  $D = [a, b] \times [c, d]$  上连续，则
+**推论**： 设  $f(x, y)$  在  $D = [a, b] \times [c, d]$  上连续，则
 $$
 \iint_D f(x, y) \, dx \, dy = \int_a^b dx \int_c^d f(x, y) \, dy = \int_c^d dy \int_a^b f(x, y) \, dx.
 $$
@@ -255,7 +255,7 @@ $$
 > $$
 > 都存在。由定理1立得结论成立。
 
-定理1告诉我们在定理的条件下，二重积分可以化为累次积分来计算。而推论1告诉我们，当  $f$  连续时，两个累次积分可以任意交换次序，或说累次积分与次序无关。
+定理1告诉我们在定理的条件下，二重积分可以化为累次积分来计算。而推论告诉我们，当  $f$  连续时，两个累次积分可以任意交换次序，或说累次积分与次序无关。
 
 下面要把定理1的矩形区域推广到一般的非矩形区域。我们先讨论简单区域 $D$ 
 
@@ -420,7 +420,7 @@ $$
 > 假设  $\varphi$ ， $\psi$  在  $\Delta$  有连续的二阶偏导数。显然，重积分换元公式不可能是把 (2) 代入 (1) 得到，因为若把  $dx$ ， $dy$  看作微分的话，我们根本就不知道
 >
 > $$
-> \iint_{\Delta} f(\varphi(u, v), \psi(u, v)) \left( \frac{\partial \varphi}{\partial u} \, du + \frac{\partial \varphi}{\partial v} \, dv \right) \left( \frac{\partial \psi}{\partial u} \, du + \frac{\partial \psi}{\partial v} \, dv \right) 
+> \iint_{\Delta} f(\varphi(u, v), \psi(u, v)) \left( \frac{\partial \varphi}{\partial u} \, du + \frac{\partial \varphi}{\partial v} \, dv \right) \left( \frac{\partial \psi}{\partial u} \, du + \frac{\partial \psi}{\partial v} \, dv \right)
 > $$
 > 表示什么？实际上当时用 (1) 表示重积分，完全是一个记号，并说明没有理由把  $dx \, dy$  看作是微分的乘积。
 >
@@ -595,5 +595,288 @@ $$
 > $$
 > 之和.
 
+**柱坐标变换**：
 
+> 三重积分的柱坐标变换：
+> $$
+>  \begin{cases} 
+> x = r \cos \theta, & 0 \leq r < +\infty, \\
+> y = r \sin \theta, & 0 \leq \theta < 2\pi, \\
+> z = z, & -\infty < z < +\infty,
+> \end{cases} 
+> $$
+>
+> 这时
+>
+> $$
+>  J(r, \theta, z) = \frac{\partial (x, y, z)}{\partial (r, \theta, z)} = \begin{vmatrix} \cos \theta & -r \sin \theta & 0 \\ \sin \theta & r \cos \theta & 0 \\ 0 & 0 & 1 \end{vmatrix} = r. 
+> $$
+>
+> 因此变量代换公式为
+>
+> $$
+>  \iiint_V f(x, y, z) \, dx \, dy \, dz = \iiint_{\Omega} f(r \cos \theta, r \sin \theta, z) \, r \, dr \, d\theta \, dz. 
+> $$
+>
+> 下面从微元的观点来看看这个公式。在  $Oxyz$  空间中，柱坐标中的  $r$  表示  $(x, y, z)$  在  $Oxy$  平面上的投影点  $P$  与原点的距离，而  $\theta$  则表原点和投影点  $P$  连线  $OP$  与  $x$  轴正向的夹角。
+>
+> 坐标曲面  $r =$  常数是以  $z$  轴为中心的圆柱面； $\theta =$  常数是过  $z$  轴的半平面； $z =$  常数是垂直于  $z$  轴的平面。显然如果  $(x, y, z)$  的柱坐标是  $(r, \theta, z)$ ，则  $(r, \theta)$  就是  $(x, y)$  的极坐标。
+>
+> 用柱坐标曲面网对  $V$  作分法后，体积元的底面积近似于极坐标网下的面积元  $r \, dr \, d\theta$ ，而高为  $dz$ ，因此在柱坐标下，体积元为  $r \, dr \, d\theta \, dz$ 。这是显然的。
+>
+> 变量代换公式右边的积分通常化为累次积分来计算。将  $V$  投影到  $Oxy$  平面上，记该投影区域为  $D$ ，它的极坐标表示为  $\Delta$ ，则  $V$  的柱坐标表示为
+>
+> $$
+>  \Omega = \{(r, \theta, z) \mid z_1(r, \theta) \leq z \leq z_2(r, \theta), (r, \theta) \in \Delta\}. 
+> $$
+>
+> 因此
+>
+> $$
+> \iiint_V f(x, y, z) \, dx \, dy \, dz = \iiint_{\Delta} r \, dr \, d\theta \int_{z_1(r, \theta)}^{z_2(r, \theta)} f(r \cos \theta, r \sin \theta, z) \, dz.
+> $$
+
+**球坐标变换**：
+
+> 三重积分下的球坐标变换：
+> $$
+>  \begin{cases} 
+> x = r \cos \theta \sin \varphi, & 0 \leq r < +\infty, \\
+> y = r \sin \theta \sin \varphi, & 0 \le \theta < 2\pi, \\
+> z = r \cos \varphi, & 0 \le \varphi \le \pi.
+> \end{cases}
+> $$
+>
+> 这时
+>
+> $$
+>  J(r, \theta, \varphi) = \frac{\partial (x, y, z)}{\partial (r, \theta, \varphi)} = \begin{vmatrix} \cos \theta \sin \varphi & -r \sin \theta \sin \varphi & r \cos \theta \cos \varphi \\ \sin \theta \sin \varphi & r \cos \theta \sin \varphi & r \sin \theta \cos \varphi \\ \cos \varphi & 0 & -r \sin \varphi \end{vmatrix} = -r^2 \sin \varphi, 
+> $$
+>
+> 因此变量代换公式为
+>
+> $$
+>  \iiint_V f(x, y, z) \, dx \, dy \, dz = \iiint_{\Omega} f(r \cos \theta \sin \varphi, r \sin \theta \sin \varphi, r \cos \varphi) r^2 \sin \varphi \, dr \, d\theta \, d\varphi. 
+> $$
+>
+> 下面从微元的观点来看看这个公式。在  $Oxyz$  空间中，球坐标中的 $r$ 是点 $M(x, y, z)$ 到原点的距离，$\varphi$ 是矢径  $\overrightarrow{OM}$  与  $z$  轴正向的夹角， $\theta$  则是矢径  $\overrightarrow{OM}$  在  $Oxy$  平面上的投影与 $x$ 轴正向的夹角。
+>
+> 因此球坐标的三束坐标面组成的曲面网分别为： $r =$  常数，它是以原点为球心的球面； $\theta =$  常数，它是过  $z$  轴的半平面； $\varphi =$  常数则是以原点为顶点，以  $z$  轴为中心轴的圆锥面。
+>
+> 这时，体积元由半径为  $r$  和  $r + dr$  的两块半球面，与  $Oxz$  夹角为  $\theta$  和  $\theta + d\theta$  的两块半平面以及与  $z$  轴夹角为  $\varphi$  和  $\varphi + d\varphi$  的两块锥面包围而成，其体积为
+>
+> $$
+> dr \cdot r \, d\varphi \cdot r \sin \varphi \, d\theta = r^2 \sin \varphi \, dr \, d\theta \, d\varphi.
+> $$
+
+## Part 2 应用
+
+### · 曲面面积
+
+在局部，曲线的弧长也是可以用切线近似的，这可以从微分三角形看出：
+$$
+ ds^2 = dx^2 + dy^2. 
+$$
+
+下面我们用这个办法来定义曲面的面积。先考虑曲面  $S$  由函数
+
+$$
+ z = f(x, y), \quad (x, y) \in D
+$$
+
+给出，其中  $D$  是由逐段光滑的曲线围成。若  $f$  具有对 $x$ ， $y$  的连续偏导数，则称这曲面是光滑的。这时曲面上任一点都存在切平面。
+
+任意给  $D$  一个分法  $\Delta D_i (i = 1, 2, \cdots, n)$  。对应于这个分法，曲面被分为  $n$  小块  $\Delta S_i$ ，使得  $\Delta S_i$  在  $Oxy$  平面上的投影恰为  $\Delta D_i$ 。任取  $(\xi, \eta_i) \in \Delta D_i$  ，在曲面上的点  $(\xi, \eta_i)$   处作切平面，
+
+并记切平面上与  $\Delta S_i$  有公共投影  $\Delta D_i$  的一小块为  $\Delta \sigma_i$ ，它的面积应是小块曲面  $\Delta S_i$  面积 (如果存在的话) 的近似。
+
+记  $\lambda = \max \{d(\Delta D_i)\}$  ，其中  $d(\Delta D_i)$   是  $\Delta D_i$  的直径。如果当  $\lambda \to 0$  时， $\sum_{i=1}^n \Delta \sigma_i$  的极限存在，则称曲面  $S$  是有面积的，且这极限便是曲面的面积：
+
+$$
+S = \lim_{\lambda \to 0} \sum_{i=1}^n \Delta \sigma_i.
+$$
+
+下面我们来计算  $\Delta \sigma_i$ 。若  $\Delta \sigma_i$  的法向量  $n_i$  的方向余弦为
+
+$$
+ (\cos \alpha_i, \cos \beta_i, \cos \gamma_i),
+$$
+
+则显然
+
+$$
+ \Delta \sigma_i = \frac{\Delta D_i}{|\cos \gamma_i|}. 
+$$
+
+回忆光滑曲面  $z = f(x, y)$  在 $(\xi, \eta_i)$  点的法向量的求法，知
+
+$$
+ n_i = \pm (f_x(\xi, \eta_i), f_y(\xi, \eta_i), -1), 
+$$
+
+它与  $z$  轴的夹角余弦为
+
+$$
+ \cos \gamma_i = \frac{\pm 1}{\sqrt{1 + f_x^2(\xi, \eta_i) + f_y^2(\xi, \eta_i)}}, 
+$$
+
+因此
+
+$$
+ \sum_{i=1}^n \Delta \sigma_i = \sum_{i=1}^n \frac{\Delta D_i}{|\cos \gamma_i|} = \sum_{i=1}^n \sqrt{1 + f_x^2(\xi, \eta_i) + f_y^2(\xi, \eta_i)} \Delta D_i, 
+$$
+
+上述右端恰是函数
+$$
+F(x, y) = \sqrt{1 + f_x^2(x, y) + f_y^2(x, y)}
+$$
+ 的黎曼和。而  $f_x$  和  $f_y$  在  $D$  上连续，故  $F(x, y)$  在  $D$  连续，从而可积，即存在极限
+
+$$
+S = \lim_{\lambda \to 0} \sum_{i=1}^n \sqrt{1 + f_x^2(\xi, \eta_i) + f_y^2(\xi, \eta_i)} \Delta D_i
+$$
+
+$$
+= \iint_D \sqrt{1 + f_x^2(x, y) + f_y^2(x, y)} \, dx \, dy.
+$$
+
+这就是曲面  $S$  的面积计算公式，它是  $D$  上的一个二重积分。记
+
+$$
+ dS = \sqrt{1 + f_x^2(x, y) + f_y^2(x, y)} \, dx \, dy = \frac{dx \, dy}{|\cos \gamma|}, 
+$$
+
+并称之为曲面的面积元，它的几何意义是：曲面的面积元  $dS$  在  $Oxy$  平面上的投影就是  $Oxy$  平面上的面积元  $dx \, dy$ 。
+
+### · 物理应用
+
+**质心**：
+
+> 设  $\Omega$  是空间的一块物体， $\rho(P)$  是  $\Omega$  的密度函数，它在  $\Omega$  上连续。将  $\Omega$  分为  $n$  小块  $\Delta \Omega_i (i = 1, 2, \cdots, n)$ 。由  $\rho(P)$  的连续性，当  $\lambda = \max \{|\Delta \Omega_i| \mid 1 \leq i \leq n\}$  的直径充分小时， $\Delta \Omega_i$  的质量  $\Delta m_i$  有近似式
+>
+> $$
+> \Delta m_i \approx \rho(P_i) \Delta \Omega_i,
+> $$
+> 其中  $P_i$  是  $\Delta \Omega_i$  上的任一点。这时  $\Omega$  可近似地视为  $n$  个质量为  $\Delta m_i$  的质点构成的质点系，质点分别位于点  $P_i(x_i, y_i, z_i)$ 。因此质点系的质心坐标为
+> $$
+>  \bar{x}_n = \frac{\sum_{i=1}^n x_i \rho(P_i) \Delta \Omega_i}{\sum_{i=1}^n \rho(P_i) \Delta \Omega_i}, 
+> $$
+>
+> $$
+>  \bar{y}_n = \frac{\sum_{i=1}^n y_i \rho(P_i) \Delta \Omega_i}{\sum_{i=1}^n \rho(P_i) \Delta \Omega_i}, 
+> $$
+>
+> $$
+>  \bar{z}_n = \frac{\sum_{i=1}^n z_i \rho(P_i) \Delta \Omega_i}{\sum_{i=1}^n \rho(P_i) \Delta \Omega_i}.
+> $$
+>
+> 令  $\lambda \to 0$ ，由连续函数的可积性即得
+>
+> $$
+>  \bar{x} = \frac{\int_{\Omega} x \rho(P) \, d\Omega}{\int_{\Omega} \rho(P) \, d\Omega} = \frac{\int_{\Omega} x \, dm}{\int_{\Omega} \, dm}, 
+> $$
+>
+> $$
+>  \bar{y} = \frac{\int_{\Omega} y \rho(P) \, d\Omega}{\int_{\Omega} \rho(P) \, d\Omega} = \frac{\int_{\Omega} y \, dm}{\int_{\Omega} \, dm}, 
+> $$
+>
+> $$
+>  \bar{z} = \frac{\int_{\Omega} z \rho(P) \, d\Omega}{\int_{\Omega} \rho(P) \, d\Omega} = \frac{\int_{\Omega} z \, dm}{\int_{\Omega} \, dm}. 
+> $$
+>
+> 这就是  $\Omega$  的质心坐标公式，其中  $dm = \rho(P) \, d\Omega$  是质量微元， $\int_{\Omega} \, dm$  就是  $\Omega$  的质量。
+>
+> 若  $\Omega$  是平面薄板  $D$ ，则  $D$  的质心坐标为
+>
+> $$
+>  \bar{x} = \frac{\iint_D x \rho(x, y) \, dx \, dy}{\iint_D \rho(x, y) \, dx \, dy}, 
+> $$
+>
+> $$
+>  \bar{y} = \frac{\iint_D y \rho(x, y) \, dx \, dy}{\iint_D \rho(x, y) \, dx \, dy}.
+> $$
+>
+> 若  $\Omega$  是空间立体  $V$ ，则  $V$  的质心坐标为
+>
+> $$
+>  \bar{x} = \frac{\iiint_V x \rho(x, y, z) \, dx \, dy \, dz}{\iiint_V \rho(x, y, z) \, dx \, dy \, dz}, 
+> $$
+>
+> $$
+>  \bar{y} = \frac{\iiint_V y \rho(x, y, z) \, dx \, dy \, dz}{\iiint_V \rho(x, y, z) \, dx \, dy \, dz}, 
+> $$
+>
+> $$
+> \bar{z} = \frac{\iiint_V z \rho(x, y, z) \, dx \, dy \, dz}{\iiint_V \rho(x, y, dz)}.
+> $$
+
+**转动惯量**：
+
+> 设  $V$  是空间的一块物体，其密度函数  $\rho(x, y, z)$  在  $V$  上连续。我们来求  $V$  对三坐标轴的转动惯量。对于  $V$  上的任一体积元素  $dV$ ，其质量微元为  $d m = \rho(x, y, z) dV$ ，这时  $dV$  对  $x$  轴， $y$  轴， $z$  轴的转动惯量分别为
+>
+> $$
+>  dI_x = (y^2 + z^2) \rho(x, y, z) dV = (y^2 + z^2) dm, 
+> $$
+>
+> $$
+>  dI_y = (x^2 + z^2) \rho(x, y, z) dV = (x^2 + z^2) dm,
+> $$
+>
+> $$
+>  dI_z = (x^2 + y^2) \rho(x, y, z) dV = (x^2 + y^2) dm.
+> $$
+>
+> 由于  $V$  对坐标轴的转动惯量就是所有质量微元对坐标轴的转动惯量的总和，这是三维连续量作用的总和，因此就是对  $dI_x$ ， $dI_y$ ， $dI_z$  求三重积分，故  $V$  对三坐标轴的转动惯量为
+>
+> $$
+>  I_x = \iiint_V (y^2 + z^2) \rho(x, y, z) \, dx \, dy \, dz, 
+> $$
+>
+> $$
+>  I_y = \iiint_V (x^2 + z^2) \rho(x, y, z) \, dx \, dy \, dz,
+> $$
+>
+> $$
+>  I_z = \iiint_V (x^2 + y^2) \rho(x, y, z) \, dx \, dy \, dz. 
+> $$
+>
+> 同理可得  $V$  对坐标面的转动惯量为
+>
+> $$
+>  I_{xy} = \iiint_V z^2 \rho(x, y, z) \, dx \, dy \, dz, 
+> $$
+>
+> $$
+>  I_{yz} = \iiint_V x^2 \rho(x, y, z) \, dx \, dy \, dz, 
+> $$
+>
+> $$
+>  I_{zx} = \iiint_V y^2 \rho(x, y, z) \, dx \, dy \, dz.
+> $$
+>
+> 平面薄板对轴的转动惯量可类似地讨论。
+
+**引力**：
+
+> 设  $V$  是空间的一块物体，密度函数  $\rho(x, y, z)$ $  在  $V$  上连续。求  $V$  对  $V$  外一点  $(x_0, y_0, z_0)$  处质量为 1 的质点  $A$  的引力  $F$ 。任取  $V$  上的质量微元  $dm = \rho(x, y, z) dV$ 。 $A$  到  $dm$  的向量为  $r = (x - x_0, y - y_0, z - z_0)$ 。这时  $dm$  对  $A$  的引力为
+>
+> $$
+>  dF = \frac{k \rho(x, y, z)}{r^3} (x - x_0, y - y_0, z - z_0) dV,
+> $$
+>
+> 其中  $k$  是引力常数， $r = \sqrt{(x - x_0)^2 + (y - y_0)^2 + (z - z_0)^2}$ 。对  $V$  求和，便得  $F$  在三坐标轴上的投影分别为
+>
+> $$
+>  F_x = \iiint_V k \frac{x - x_0}{r^3} \rho(x, y, z) \, dx \, dy, dz,
+> $$
+>
+> $$
+>  F_y = \iiint_V k \frac{y - y_0}{r^3} \rho(x, y, z) \, dx \, dy, dz, 
+> $$
+>
+> $$
+> F_z = \iiint_V k \frac{z - z_0}{r^3} \rho(x, y, z) \, dx \, dy, dz.
+> $$
+
+结束.
 

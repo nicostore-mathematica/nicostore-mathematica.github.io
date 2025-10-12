@@ -60,7 +60,7 @@ export default defineUserConfig({
         postCover: 'left', // 文章封面位置
         pagination: 10, // 每页显示文章数量
       },
-      ...notes,
+      ...(Array.isArray(notes.notes) ? notes.notes : []),
     ],
 
     /**

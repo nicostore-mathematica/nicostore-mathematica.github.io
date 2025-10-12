@@ -1,17 +1,17 @@
-import { defineNoteConfig } from "vuepress-theme-plume";
+import { defineCollection } from "vuepress-theme-plume";
 
-export default defineNoteConfig({
+export default defineCollection({
 	dir: "statistics",
-	link: "/statistics/",
 	sidebar: [
 		{
 			text: "数理统计",
 			collapsed: false,
-			link: "/statistics/",
 			items: [
 				"statistics-1",
 				"statistics-2",
 			],
 		},
 	],
+	type: "doc",
+	title: "数理统计"
 });

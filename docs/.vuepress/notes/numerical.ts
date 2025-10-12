@@ -1,13 +1,13 @@
-import { defineNoteConfig } from "vuepress-theme-plume";
+import { defineCollection } from "vuepress-theme-plume";
 
-export default defineNoteConfig({
+export default defineCollection({
 	dir: "numerical",
-	link: "/numerical/",
+	type: "doc",
+	title: "数值分析",
 	sidebar: [
 		{
 			text: "数值分析",
 			collapsed: false,
-			link: "/numerical/",
 			items: [
 				"numerical-1",
 				"numerical-2",

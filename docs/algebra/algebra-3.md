@@ -589,7 +589,7 @@ $V$ 为 $K$ 上的线性空间，向量族为 $V$ 中向量的集合；向量组
 > [!important]
 >
 > - $\{\alpha_1, \alpha_2, \cdots, \alpha_r\}$ 线性无关。  
-> - $\forall \alpha \in S $，$ \{\alpha_1, \alpha_2, \cdots, \alpha_r, \alpha\}$ 线性相关。
+> - $\forall \alpha \in S$ ，$\{\alpha_1, \alpha_2, \cdots, \alpha_r, \alpha\}$ 线性相关。
 
 **命题2**：包含非零向量的向量组 $S$ 必存在极大无关组。
 
@@ -845,7 +845,7 @@ $$
 >     \varphi(\alpha) = \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} = x
 >   $$
 >
->    $\Rightarrow\varphi $ 是双射（一一对应）
+>    $\Rightarrow\varphi$ 是双射（一一对应）
 
 **定义2**：线性同构
 

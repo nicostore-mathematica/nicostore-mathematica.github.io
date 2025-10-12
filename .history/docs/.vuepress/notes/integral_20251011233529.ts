@@ -1,11 +1,13 @@
-import { defineCollection } from "vuepress-theme-plume";
+import { defineNoteConfig } from "vuepress-theme-plume";
 
-export default defineCollection({
+export default defineNoteConfig({
 	dir: "integral",
+	link: "/integral/",
 	sidebar: [
 		{
 			text: "微积分",
 			collapsed: false,
+			link: "/integral/",
 			items: [
 				"integral-1",
 				"integral-2",

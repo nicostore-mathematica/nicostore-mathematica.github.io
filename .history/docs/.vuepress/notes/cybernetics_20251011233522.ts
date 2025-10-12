@@ -1,11 +1,13 @@
-import { defineCollection } from "vuepress-theme-plume";
+import { defineNoteConfig } from "vuepress-theme-plume";
 
-export default defineCollection({
+export default defineNoteConfig({
 	dir: "cybernetics",
+	link: "/cybernetics/",
 	sidebar: [
 		{
 			text: "控制理论",
 			collapsed: false,
+			link: "/cybernetics/",
 			items: [
 				"cybernetics-1",
 				"cybernetics-2",

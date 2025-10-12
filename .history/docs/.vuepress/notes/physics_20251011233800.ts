@@ -1,17 +1,20 @@
 import { defineCollection } from "vuepress-theme-plume";
 
 export default defineCollection({
-	dir: "complex",
+	dir: "physics",
 	sidebar: [
 		{
-			text: "数学物理方法",
+			text: "普通物理",
 			collapsed: false,
 			items: [
-				"complex-1",
-				"complex-2",
+				"physics-0",
+				"physics-1",
+				"physics-2",
+				"physics-3",
+				"physics-4",
 			],
 		},
 	],
 	type: "doc",
-	title: "数学物理方法"
+	title: "普通物理"
 });

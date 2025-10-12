@@ -1,17 +1,17 @@
-import { defineNoteConfig } from "vuepress-theme-plume";
+import { defineCollection } from "vuepress-theme-plume";
 
-export default defineNoteConfig({
+export default defineCollection({
 	dir: "RoboMaster",
-	link: "/RoboMaster/",
 	sidebar: [
 		{
 			text: "RoboMaster",
 			collapsed: false,
-			link: "/RoboMaster/",
 			items: [
 				"RoboMaster-1",
 				"RoboMaster-2",
 			],
 		},
 	],
+	type: "doc",
+	title: "RoboMaster"
 });

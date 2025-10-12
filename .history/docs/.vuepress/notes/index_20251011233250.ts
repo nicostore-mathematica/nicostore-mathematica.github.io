@@ -9,8 +9,10 @@ import CS from "./CS.ts";
 import complex from "./complex.ts";
 import RoboMaster from "./RoboMaster.ts";
 import cybernetics from "./cybernetics.ts";
-
-export const notes = defineCollections([
+export const notes = defineNotesConfig({
+	dir: "notes",
+	link: "/",
+	notes: [
 		circuit,
 		integral,
 		algebra,
@@ -21,5 +23,5 @@ export const notes = defineCollections([
 		complex,
 		RoboMaster,
 		cybernetics,
-
-]);
+	],
+});

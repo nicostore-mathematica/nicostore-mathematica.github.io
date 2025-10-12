@@ -11,6 +11,7 @@ import RoboMaster from "./RoboMaster.ts";
 import cybernetics from "./cybernetics.ts";
 
 export const notes = defineCollections([
+
 		circuit,
 		integral,
 		algebra,
@@ -22,4 +23,4 @@ export const notes = defineCollections([
 		RoboMaster,
 		cybernetics,
 
-]);
+});

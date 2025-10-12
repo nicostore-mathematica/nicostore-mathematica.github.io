@@ -59,7 +59,7 @@ $$
 
 **引理**：设 $A^{m \times n} = (\beta_1, \beta_2, \dots, \beta_n)$ 为列分块，$Q$ 为 $m$ 阶非异阵（可逆矩阵）, 若 $\{\beta_{i_1}, \beta_{i_2}, \dots, \beta_{i_r}\}$ 是 $A$ 的列向量的极大无关组，则 $\{Q\beta_{i_1}, Q\beta_{i_2}, \dots, Q\beta_{i_r}\}$ 是 $QA = (Q\beta_1, Q\beta_2, \dots, Q\beta_n)$ 的列向量的极大无关组。
 
-> 第一步：先证 $ Q\beta_{i_1}, \dots, Q\beta_{i_r} $ 线性无关。
+> 第一步：先证 $Q\beta_{i_1}, \dots, Q\beta_{i_r}$ 线性无关。
 >
 > 设：
 > $$
@@ -80,7 +80,7 @@ $$
 >
 >  $\Rightarrow Q\beta_{i_1}, \dots, Q\beta_{i_r}$ 线性无关 ✅
 >
-> 第二步：再证 $Q\beta_j$ 都是 $ Q\beta_{i_1}, \dots, Q\beta_{i_r} $ 的线性组合。
+> 第二步：再证 $Q\beta_j$ 都是 $Q\beta_{i_1}, \dots, Q\beta_{i_r}$ 的线性组合。
 >
 > 由 $\beta_j$ 是 $A$ 列向量的极大无关组可知：
 >
@@ -94,7 +94,7 @@ $$
 > Q\beta_j = \mu_1 Q\beta_{i_1} + \cdots + \mu_r Q\beta_{i_r}
 > $$
 >
->  $\Rightarrow Q\beta_j$ 是 $ Q\beta_{i_1}, \dots, Q\beta_{i_r} $ 的线性组合 ✅
+>  $\Rightarrow Q\beta_j$ 是 $Q\beta_{i_1}, \dots, Q\beta_{i_r}$ 的线性组合 ✅
 > $$
 > \Rightarrow Q\beta_j = \mu_1 Q\beta_{i_1} + \mu_2 Q\beta_{i_2} + \cdots + \mu_r Q\beta_{i_r}, \quad \forall 1 \leq j \leq n
 > $$
@@ -284,7 +284,7 @@ $$
 > \alpha_{r+1}
 > \end{bmatrix}
 > $$
-> 因为 $r(A) = r$ ⇒ $ \alpha_1, \dots, \alpha_{r+1}$ 线性相关
+> 因为 $r(A) = r$ ⇒ $\alpha_1, \dots, \alpha_{r+1}$ 线性相关
 >
 > 设 $\alpha = (\alpha_1, \dots, \alpha_n) \in K^n$，且 $T_{r+1}\alpha = (\alpha_1, \dots, \alpha_r)$
 >
@@ -423,7 +423,7 @@ $$
 >
 > (通过列变换消元)
 > $$
-> \Rightarrow r(C) = r_1 + r_2 = r(A) + r(B)$​
+> \Rightarrow r(C) = r_1 + r_2 = r(A) + r(B)
 > $$
 >
 > > 注：若 $D = 0$，则 $r(C) = r(A) + r(B)$；否则可能更大，但至少等于。
@@ -514,7 +514,7 @@ $$
 > $$
 > 推出等式成立.
 
-**定理11** (Sylvester 不等式)：设 $A \in M_{m\times n}(K) $，$ B \in M_{n\times p}(K)$，则  
+**定理11** (Sylvester 不等式)：设 $A \in M_{m\times n}(K)$ ， $B \in M_{n\times p}(K)$，则  
 $$
 r(A) + r(B) - n \leq r(AB) \leq \min\{r(A), r(B)\}
 $$
@@ -1082,7 +1082,7 @@ $(*)$ 有解 $\iff r(A) = r(\widetilde{A})$
 >
 > 从而  $\dim V_A = n - r = n - r(A)$ 
 
-定理4 (结构定理) 设  $r(A) = r(\widehat{A}) = r$ ，$r$ 是 (*) 的解。 $\{\eta_1, \eta_2, \cdots, \eta_{n-r}\}$  是相伴齐次线性方程组 (#) 的基础解系，则 $AX = \beta$ 的通解为  $
+**定理4** (结构定理) 设  $r(A) = r(\widehat{A}) = r$ ，$r$ 是 (*) 的解。 $\{\eta_1, \eta_2, \cdots, \eta_{n-r}\}$  是相伴齐次线性方程组 (#) 的基础解系，则 $AX = \beta$ 的通解为
 $$
 r + k_1\eta_1 + k_2\eta_2 + \cdots + k_{n-r}\eta_{n-r},\quad k_i \in k
 $$
@@ -1091,7 +1091,7 @@ $$
 >
 > 引理2  $\Rightarrow \alpha - Y$  是  $AX = 0$  的解
 >
-> 定理3  $
+> 定理3
 > $$
 > \Rightarrow \alpha - Y = k_1\eta_1 + k_2\eta_2 + \cdots + k_{n-r}\eta_{n-r}
 > $$
@@ -1272,13 +1272,13 @@ $$
 > > $$
 > > AX = 0 \Rightarrow AA'X = 0 \subseteq V_A \subseteq V_{AA'}
 > > $$
-> > 
+> >
 > >
 > > 任取 $x_0 \in V_{A'A}$ ，此时  $x_0 \in R^n$ 且 $A'Ax_0 = 0$ 
 > >
-> > 令 $X_0 = \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{pmatrix} \in R^m$ ， $ (Ax_0)'(Ax_0) = 0$ 
+> > 令 $X_0 = \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{pmatrix} \in R^m$ ， $(Ax_0)'(Ax_0) = 0$ 
 > >
-> >  
+> >
 > > $$
 > > \Rightarrow [a_1, \cdots, a_m] \begin{bmatrix} a_1 \\ \vdots \\ a_m \end{bmatrix} = 0 \Rightarrow \sum_{i=1}^{m} a_i^2 = 0 \Rightarrow \forall i, a_i = 0
 > > $$
