@@ -370,19 +370,19 @@ $$
 
 因此，我们解得
 $$
- \frac{1}{r} - \frac{1}{p} = \frac{e}{p} \cos(\theta + C$ , 
+\frac{1}{r} - \frac{1}{p} = \frac{e}{p} \cos(\theta + C) ,
 $$
 
 或是
 
 $$
- \frac{1}{r} = \frac{1 + e \cos(\theta + C$ }{p}. 
+\frac{1}{r} = \frac{1 + e \cos(\theta + C)}{p}.
 $$
 
 取倒数后，我们得到
 
 $$
- r = \frac{p}{1 + e \cos(\theta + C$ }. 
+r = \frac{p}{1 + e \cos(\theta + C) }.
 $$
 
 这是一个二次曲线方程。为了确定起见，我们可以令  $C = 0$ 。这样，当  $\theta = 0$  时， $r = r$  近。因此，我们最后有

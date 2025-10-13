@@ -1,12 +1,10 @@
-name: deploy
+name: docs
 
 on:
   # 每当 push 到 main 分支时触发部署
-  # Deployment is triggered whenever a push is made to the main branch.
   push:
     branches: [main]
   # 手动触发部署
-  # Manually trigger deployment
   workflow_dispatch:
 
 jobs:
@@ -17,30 +15,34 @@ jobs:
       - uses: actions/checkout@v4
         with:
           # "最近更新时间" 等 git 日志相关信息，需要拉取全部提交记录
-          # "Last updated time" and other git log-related information require fetching all commit records.
           fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          # 选择要使用的 pnpm 版本
+          version: 10
+          # 使用 pnpm 安装依赖
+          run_install: true
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           # 选择要使用的 node 版本
           node-version: 22
+          # 缓存 pnpm 依赖
+          cache: pnpm
 
-      # 安装依赖
-      # Install dependencies
-      - name: Install Dependencies
-        run: npm ci
-
-      # 生成静态文件
-      - name: Build
-        run: npm install && export NODE_OPTIONS=--max_old_space_size=50000 
+      # 生成字数统计
+      # Generate word count
+      - name: Generate Word Count
+        run: node scripts/wordcount.cjs
 
       # 运行构建脚本
-      # Run the build script
       - name: Build VuePress site
-        run: npm run docs:build
         env:
           NODE_OPTIONS: --max-old-space-size=50000
+        run: pnpm docs:build
 
       # 查看 workflow 的文档来获取更多信息
       # @see https://github.com/crazy-max/ghaction-github-pages
@@ -51,8 +53,8 @@ jobs:
           target_branch: gh-pages
           # 部署目录为 VuePress 的默认输出目录
           build_dir: docs/.vuepress/dist
-          # 添加 keep_history: false 配置来替代 force_orphan: true
-          keep_history: false
+          # 添加 force_orphan: true 配置
+          force_orphan: true
         env:
           # @see https://docs.github.com/cn/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
