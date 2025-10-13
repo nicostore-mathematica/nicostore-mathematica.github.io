@@ -1,39 +1,39 @@
 {
-  "timeline": 186,
-  "README": 231,
+  "timeline": 184,
+  "README": 227,
   "random": 71,
   "notes": 65,
-  "links": 388,
+  "links": 367,
   "about": 205,
   "statistics": {
-    "statistics-2": 1869,
-    "statistics-1": 5125,
+    "statistics-2": 1860,
+    "statistics-1": 5096,
     "index": 16
   },
   "RoboMaster": {
-    "RoboMaster-2": 1905,
-    "RoboMaster-1": 2335,
-    "index": 796
+    "RoboMaster-2": 1902,
+    "RoboMaster-1": 2327,
+    "index": 791
   },
   "physics": {
     "index": 116,
     "physics-4": 6,
-    "physics-3": 5255,
+    "physics-3": 5254,
     "physics-2": 5288,
     "physics-1": 3480,
-    "physics-0": 4130
+    "physics-0": 4110
   },
   "numerical": {
     "index": 9
   },
   "integral": {
     "index": 90,
-    "integral-9": 8076,
-    "integral-8": 6746,
-    "integral-7": 4000,
-    "integral-6": 6178,
-    "integral-5": 3954,
-    "integral-4": 5602,
+    "integral-9": 8071,
+    "integral-8": 6741,
+    "integral-7": 3995,
+    "integral-6": 6166,
+    "integral-5": 3950,
+    "integral-4": 5601,
     "integral-3": 3499,
     "integral-2": 4196,
     "integral-10": 7233,
@@ -47,50 +47,50 @@
   "CS": {
     "index": 10,
     "python-0": 3905,
-    "C-mooc": 5243,
-    "C-class": 8533
+    "C-mooc": 5242,
+    "C-class": 8530
   },
   "complex": {
     "index": 92,
     "complex-2": 12,
-    "complex-1": 5816
+    "complex-1": 5799
   },
   "circuit": {
     "index": 208,
-    "electronic-2": 4802,
-    "electronic-1": 3439,
-    "circuit-2": 1844,
-    "circuit-1": 6096
+    "electronic-2": 4797,
+    "electronic-1": 3435,
+    "circuit-2": 1981,
+    "circuit-1": 6092
   },
   "weekly": {
-    "weekly-8": 382,
+    "weekly-8": 377,
     "weekly-7": 1250,
-    "weekly-6": 1212,
+    "weekly-6": 1209,
     "weekly-5": 757,
-    "weekly-4": 3748,
+    "weekly-4": 3745,
     "weekly-3": 1057,
     "weekly-2": 1045,
     "weekly-1": 283
   },
   "article": {
-    "r1s3vxud": 613,
+    "r1s3vxud": 603,
     "pyvvujxp": 17,
-    "resources": 489,
+    "resources": 485,
     "article-4": 3551,
     "article-3": 4312,
     "article-2": 3947,
-    "article-1": 1440
+    "article-1": 1439
   },
   "algebra": {
     "index": 110,
     "matrix-1": 6,
-    "algebra-4": 6669,
+    "algebra-4": 6584,
     "algebra-3": 7143,
-    "algebra-2": 5551,
-    "algebra-1": 5173,
-    "algebra-0": 9452
+    "algebra-2": 5544,
+    "algebra-1": 5125,
+    "algebra-0": 9451
   },
-  "total": 182981,
-  "lastUpdated": "2025-10-12T15:05:56.889Z",
+  "total": 182783,
+  "lastUpdated": "2025-10-13T01:21:51.304Z",
   "fileCount": 67
 }
