@@ -17,7 +17,7 @@
   },
   "physics": {
     "index": 116,
-    "physics-4": 6,
+    "physics-4": 2592,
     "physics-3": 5254,
     "physics-2": 5288,
     "physics-1": 3480,
@@ -90,7 +90,7 @@
     "algebra-1": 5125,
     "algebra-0": 9451
   },
-  "total": 182783,
-  "lastUpdated": "2025-10-13T01:21:51.304Z",
+  "total": 185369,
+  "lastUpdated": "2025-10-13T03:53:47.627Z",
   "fileCount": 67
 }
