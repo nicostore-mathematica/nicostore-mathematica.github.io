@@ -601,3 +601,130 @@ $$
 
 ### · 小信号分析
 
+**(1). H参数的引出**（从数学模型角度）
+
+适用范围：低频（忽略寄生电容）交流小信号分析；基本思想为小范围内，可以把非线性问题进行线性化处理。小信号分析的数学实质是在静态工作点处求偏导数。
+
+BJT双口网络，以共发射极连接为例：
+
+> 由输入特性： 
+> $$
+> v_{BE} = f_1(i_B, v_{CE})
+> $$
+> 由输出特性： 
+> $$
+> i_c = f_2(i_B, v_{CE})
+> $$
+> 把曲线变量线性化——两式取全微分
+
+对正弦信号，用小信号交流分量表示
+
+$$
+\begin{cases} 
+v_{be} = h_{ie}i_b + h_{re}v_{ce}  \\
+i_c = h_{fe}i_b + h_{oe}v_{ce} 
+\end{cases}
+$$
+
+> $i$: 输入；$o$: 输出； $r$: 反向传输； $f$: 正向传输； $e$: 共射极接法
+>
+> $h_{ie}$ ：输出端交流短路 $v_{ce} = 0$ ， $v_{CE} = V_{CEQ}$ 时的输入电阻，小信号下 b-e 间动态电阻  $r_{be}$ 
+> $$
+> h_{ie} = \frac{\partial v_{BE}}{\partial i_B} \bigg|_{v_{CEQ}}
+> $$
+> $h_{fe}$：输出端交流短路时的正向电流传输比，电流放大系数为 $\beta$ 
+> $$
+> h_{fe} = \frac{\partial i_c}{\partial i_B} \bigg|_{v_{CEQ}}
+> $$
+> $h_{re}$：输入端交流开路 $i_{B} = 0$ ， $i_{B} = I_{BQ}$ 的反向电压传输比 $\mu_r$ 
+> $$
+> h_{re} = \frac{\partial v_{BE}}{\partial v_{CE}} \bigg|_{I_{BQ}}
+> $$
+> $h_{oe}$：输入端交流开路时的输出电导 $1/r_{ce}$ 
+> $$
+>  h_{oe} = \frac{\partial i_c}{\partial v_{CE}} \bigg|_{I_{BQ}} 
+> $$
+> 四个参数量纲各不相同，故称为混合参数（H参数）
+
+**(2). BJT的H参数小信号模型**（微变等效电路）
+$$
+ \begin{cases} v_{be} = h_{ie}i_b + h_{re}v_{ce} \\ i_c = h_{fe}i_b + h_{oe}v_{ce} \end{cases} 
+$$
+
+$$
+\begin{bmatrix} v_{be} \\ i_c \end{bmatrix} = \begin{bmatrix} h_{ie} & h_{re} \\ h_{fe} & h_{oe} \end{bmatrix} \begin{bmatrix} i_b \\ v_{ce} \end{bmatrix} = \begin{bmatrix} r_{be} & \mu_r \\ \beta & 1/r_{ce} \end{bmatrix} \begin{bmatrix} i_b \\ v_{ce} \end{bmatrix}
+$$
+
+我们可以就此给出下图的等效电路：
+
+![pVb5Gkt.png](https://s21.ax1x.com/2025/10/13/pVb5Gkt.png)
+
+**(3). H参数的确定**（放大区，从物理模型角度）
+
+> ① 输入回路
+>
+>
+> $$
+>  i_{be} = \frac{\partial v_{BE}}{\partial i_B} \bigg|_{V_{CEQ}} = r_{bb'} + (1 + \beta)(r_e' + r_e) 
+> $$
+>
+> 基区体电阻，几十至几百欧；发射区体电阻，很小可忽略
+>
+> 对于小功率三极管：  
+>
+> $$
+> r_{be} = 200\Omega + (1 + \beta) \frac{26 \text{mV}}{I_{EQ} \text{(mA)}}
+> $$
+>
+> 适用范围：$0.1mA < I_{EQ} < 5mA$  
+>
+> 交流电阻  $r_{be}$  的量级：几百  $\Omega \sim$ 几千  $\Omega$   
+>
+> 放大区低频工作的BJT， $v_{CE}$ 对 $i_B$  的影响可忽略，  
+>
+> $$
+>  \mu_r = 10^{-3} \sim 10^{-4} 
+> $$
+>
+>  可忽略不计。
+>
+> ***
+>
+> ② 输出回路
+>
+> (1) 输出端相当于一个受  $i_b$  控制的电流源， $i_c = \beta i_b$ 
+>
+> (2) 考虑  $v_{CE}$  对  $i_c$  的影响，输出端要并联电阻  $r_{ce}$ 。
+>
+>
+> $$
+>  r_{ce} = \frac{\partial v_{CE}}{\partial i_c} \bigg|_{I_{BQ}} \approx \frac{\Delta v_{CE}}{\Delta i_c} 
+> $$
+>
+> 工作在放大区时  $i_c$  曲线近似平行于电压轴， $r_{ce}$  很大，$M\Omega$ 量级，常视为无穷大而省略。
+
+$$
+i_{be} = r_{bb'} + (1 + \beta) V_T / I_{EQ}
+$$
+
+
+先静态分析获得  $I_{EQ}$  
+
+ $i_b$  是流过  $r_{be}$  的电流， $ i_c = \beta i_b$  是受控电流源  
+
+ $i_b$  和  $i_c$  参考方向均指向e极（流入电极），NPN和PNP管的模型相同
+
+![pVb53TI.png](https://s21.ax1x.com/2025/10/13/pVb53TI.png)
+
+于是我们可以给出简化的交流小信号等效电路模型（实际分析常用）
+
+其中：
+
+$$
+r_{be} = \frac{U_{be}}{I_b} = r_{bb} + r_{be} \approx r_{bb} + (1 + \beta) \frac{U_T}{I_{EQ}}
+$$
+ $r_{bb}$  和放大系数  $\beta$  可查阅手册（题目已知条件）
+
+## Part 4 典型放大电路
+
+这部分未来会补上，我要先去睡觉力（）
