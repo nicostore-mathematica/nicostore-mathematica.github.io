@@ -1,5 +1,5 @@
 ---
-title: physics-3
+title: Chapter 3 机械能守恒定理
 createTime: 2025/09/18 18:19:08
 permalink: /physics/physics-3/
 ---

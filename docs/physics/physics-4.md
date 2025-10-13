@@ -1,10 +1,8 @@
 ---
-title: physics-4
+title: Chapter 4 角动量
 createTime: 2025/09/18 18:19:38
 permalink: /physics/physics-4/
 ---
-
-1
 
 ## Part 1 角动量定理
 

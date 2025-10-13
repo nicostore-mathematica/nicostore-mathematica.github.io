@@ -1,5 +1,5 @@
 ---
-title: physics-2
+title: Chapter 2 质点动力学
 createTime: 2025/09/18 18:19:28
 permalink: /physics/physics-2/
 ---
