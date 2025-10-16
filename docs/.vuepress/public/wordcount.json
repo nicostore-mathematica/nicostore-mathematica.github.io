@@ -17,11 +17,16 @@
   },
   "physics": {
     "index": 116,
-    "physics-4": 2592,
-    "physics-3": 5254,
-    "physics-2": 5288,
-    "physics-1": 3480,
-    "physics-0": 4110
+    "physics-9": 6,
+    "physics-8": 2073,
+    "physics-7": 6,
+    "physics-6": 6,
+    "physics-5": 14,
+    "physics-4": 2595,
+    "physics-3": 5261,
+    "physics-2": 5293,
+    "physics-1": 3485,
+    "physics-0": 4112
   },
   "numerical": {
     "index": 9
@@ -57,9 +62,9 @@
   },
   "circuit": {
     "index": 208,
-    "electronic-2": 4797,
+    "electronic-2": 5669,
     "electronic-1": 3435,
-    "circuit-2": 1981,
+    "circuit-2": 2011,
     "circuit-1": 6092
   },
   "weekly": {
@@ -81,6 +86,9 @@
     "article-2": 3947,
     "article-1": 1439
   },
+  "mark": {
+    "mark-1": 900
+  },
   "algebra": {
     "index": 110,
     "matrix-1": 6,
@@ -90,7 +98,7 @@
     "algebra-1": 5125,
     "algebra-0": 9451
   },
-  "total": 185369,
-  "lastUpdated": "2025-10-13T03:53:47.627Z",
-  "fileCount": 67
+  "total": 189298,
+  "lastUpdated": "2025-10-16T12:11:30.463Z",
+  "fileCount": 73
 }
