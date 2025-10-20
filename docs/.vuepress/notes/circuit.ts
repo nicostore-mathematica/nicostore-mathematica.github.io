@@ -17,6 +17,7 @@ export default defineCollection({
 			items: [
 				"electronic-1",
 				"electronic-2",
+				"electronic-3",
 			],
 		},
 	],
