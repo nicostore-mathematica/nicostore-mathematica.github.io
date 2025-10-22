@@ -6,6 +6,84 @@ permalink: /statistics/statistics-2/
 
 # Chapter 2 数理统计
 
+## Part 1 大数定理与中心极限定理
+
+### · 切比雪夫不等式
+
+设随机变量 $X$ 的期望为 $E(X)$，方差为 $D(X)$，则对于任意给定的 $\epsilon > 0$，有：
+
+$$
+P\{|X - E(X)| \geq \epsilon\} \leq \frac{D(X)}{\epsilon^{2}}
+$$
+
+或等价地
+
+$$
+P\{|X - E(X)| < \epsilon\} \geq 1 - \frac{D(X)}{\epsilon^{2}}
+$$
+
+> **说明**：
+>
+> 1. 该不等式给出了随机变量偏离期望值的概率上界
+> 2. 方差 $D(X)$ 越小，偏离概率的上界越小
+> 3. 适用于任何具有有限方差的随机变量
+
+### · 大数定律
+
+**大数定理**：在大量重复试验中，样本平均数会趋近于理论期望值。换句话说，当试验次数足够多时，实验结果的平均值会接近预期的长期平均值。
+
+> **切比雪夫大数定律 (Chebyshev's LLN)**.
+>
+> **条件**：
+>
+> 1. 随机变量序列 $X_{1},X_{2},\cdots,X_{n},\cdots$ 相互独立
+> 2. 数学期望 $EX_{i}$ 和方差 $DX_{i}$ 都存在
+> 3. 方差有公共上界：$DX_{i}\leq c$ ($i=1,2,\cdots$)
+>
+> **结论**：  对任意 $\epsilon>0$，有
+> $$
+> \lim_{n\to\infty}P\left\{\left|\frac{1}{n}\sum_{i=1}^{n}X_{i}-\frac{1}{n}\sum_{i=1}^{n}EX_{i}\right|<\epsilon\right\}=1
+> $$
+>
+> **核心思想**：  "只要方差有限，大量重复试验的平均值会接近期望值"
+>
+> ---
+>
+> **伯努利大数定律 (Bernoulli's LLN)**.
+>
+> **条件**：  设 $X_{n}\sim B(n,p)$，$\mu_{n}$ 是 $n$ 次伯努利试验中事件 $A$ 发生的次数
+>
+> **结论**：  对任意 $\epsilon>0$，有
+> $$
+> \lim_{n\to\infty}P\left\{\left|\frac{\mu_{n}}{n}-p\right|<\epsilon\right\}=1
+> $$
+>
+> **核心思想**：  "投硬币这类事情，大量地实验结果里，频率会接近概率"
+>
+> ---
+>
+> **辛钦大数定律 (Khinchin's LLN)**.
+>
+> **条件**：  随机变量序列 $X_{1},X_{2},\cdots,X_{n},\cdots$ 相互独立同分布，且 $EX_{i}=\mu$
+>
+> **结论**：  对任意 $\epsilon>0$，有
+> $$
+> \lim_{n\to\infty}P\left\{\left|\frac{1}{n}\sum_{i=1}^{n}X_{i}-\mu\right|<\epsilon\right\}=1
+> $$
+>
+> **核心思想**：  "同一类型的随机变量，大量样本的平均值会接近期望值"
+
+### · 中心极限定理
+
+$n$个随机变量$X_1, X_2, X_3, \cdots, X_n$，它们相互独立且服从同一种分布规律（独立同分布），期望值为$\mu$，方差为$D$，有：
+$$
+\frac{\sum_{i=1}^{n} X_i - n\mu}{\sqrt{nD}} \sim N(0, 1) \quad \text{or} \quad \sum_{i=1}^{n} X_i \sim N(n\mu, nD)
+$$
+
+$$
+\frac{\overline{X} - \mu}{\sqrt{D/n}} \sim N(0, 1) \quad \text{or} \quad \overline{X} \sim N\left(\mu, \frac{D}{n}\right)
+$$
+
 ## Part 1  数理统计基本概念
 
 **样本统计量定义**：从总体中抽出n个独立同分布的个体 $X_{1}$, $X_{2}$, $\cdots$, $X_{n}$，记为样本（样本容量为n）。

@@ -32,7 +32,10 @@ $$
 \frac{dy}{dx} = g\left(\frac{y}{x}\right) \Rightarrow u = \frac{y}{x}，  y = ux \Rightarrow y' = u + xu' \Rightarrow \frac{du}{dx} = \frac{g(u) - u}{x}
 $$
 
-/example/	$xy' = y + 2\sqrt{xy}$ 
+/example/  求解：
+$$
+xy' = y + 2\sqrt{xy}
+$$
 
 > /proof/  设 $y = xu$ 则 $ y' = xu' + u$ ，方程化为 $x(xu' + u) = xu + 2|x|\sqrt{u}$ 
 > $$
@@ -100,9 +103,9 @@ $$
 在这里介绍一阶线性常微分方程的基本解法
 
 > > 1). $Q=0$ ， 
->
+> >
 > > $$
-> > y' + P(x)y \Rightarrow \frac{dy}{y} = -P(x)dx  ,\quad  \ln|y| = -\int P(x)dx \\ 
+> > y' + P(x)y \Rightarrow \frac{dy}{y} = -P(x)dx  ,\quad  \ln|y| = -\int P(x)dx \\
 > > $$
 > >
 > > 两侧同时带入指数函数
@@ -154,16 +157,28 @@ $$
 > $$
 > ( C  为任意常数)
 
-/example/
+/example/  求解
 $$
 \int_0^1 f(ux) du = \frac{1}{x} f(x) + 1
 $$
 
 > $$
 > \int_0^1 f(ux) \, du \quad \stackrel{v=ux}{=} \quad \frac{1}{x} \int_0^x f(v) \, dv\\
+> $$
+>
+> $$
 > \int_{0}^{x} f(v) \, dv = \frac{1}{2} x f(x) + x\Rightarrow f(x) = \frac{1}{2} f(x) + \frac{1}{2} f(x) \cdot x + 1\\
+> $$
+>
+> $$
 > \Rightarrow x f'(x) - f(x) + 2 = 0 \Rightarrow  f(x) - \frac{1}{x} f(x) = -\frac{2}{x}\\
+> $$
+>
+> $$
 > \int -\frac{1}{x} \, dx = -\ln x\\
+> $$
+>
+> $$
 > f(x) = e^{\ln x} \left( \int -\frac{2}{x} e^{-\ln x} dx + C \right) = x(\frac{2}{x} + C) = 2 + Cx
 > $$
 

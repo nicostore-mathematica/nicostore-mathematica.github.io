@@ -1,8 +1,10 @@
 ---
-title: Chapter 1
+title: Chapter 1 绪论
 createTime: 2025/10/05 00:01:01
 permalink: /cybernetics/cybernetics-1/
 ---
 
 1
+
+### · 动态系统
 

@@ -194,16 +194,28 @@ $$
 > $$
 > 使用元件方程：
 > $$
-> \dot{U}_R = R\dot{I}, \\
-> \dot{U}_L = \text{j}\omega L\dot{I}, \\
+> \dot{U}_R = R\dot{I}, 
+> $$
+> $$
+> \dot{U}_L = \text{j}\omega L\dot{I}, 
+> $$
+>
+> $$
 > \dot{U}_C = \frac{\dot{I}}{\text{j}\omega C}
 > $$
+>
 > 或者直接使用分压公式：
 > $$
-> \dot{U}_R = \frac{R\dot{U}}{R + \text{j}\omega L + 1/(\text{j}\omega C)}, \\
-> \dot{U}_L = \frac{\text{j}\omega L\dot{U}}{R + \text{j}\omega L + 1/(\text{j}\omega C)}, \\
+> \dot{U}_R = \frac{R\dot{U}}{R + \text{j}\omega L + 1/(\text{j}\omega C)}, 
+> $$
+> $$
+> \dot{U}_L = \frac{\text{j}\omega L\dot{U}}{R + \text{j}\omega L + 1/(\text{j}\omega C)}, 
+> $$
+>
+> $$
 > \dot{U}_C = \frac{(1/\text{j}\omega C)\dot{U}}{R + j\omega L + 1/(\text{j}\omega C)}
 > $$
+>
 > 结束.
 
 (2). 导纳
@@ -311,7 +323,15 @@ $$
 > = UI \cos \varphi (1 + \cos 2 \omega t) + UI \sin \varphi \sin 2 \omega t
 > $$
 >
->  $UI \cos \varphi (1 + \cos 2 \omega t) \geq 0$ ，被  $R$  消耗；$UI \sin \varphi \sin 2 \omega t$ 正负交替，在电源与  $L-C$  间交换
+> 不难观测到：
+> $$
+> UI \cos \varphi (1 + \cos 2 \omega t) \geq 0
+> $$
+> 被  $R$  消耗；
+> $$
+> UI \sin \varphi \sin 2 \omega t
+> $$
+> 正负交替，在电源与  $L-C$  间交换
 
 所以我们可以给出以下定义
 
@@ -348,46 +368,229 @@ $$
 > Z = |Z| \angle \varphi
 > $$
 >
-> > **相位角**：$\varphi = \angle \varphi_u - \angle \varphi_i$  
-> >
-> > **有功功率**： $P = UI \cos \varphi$ 
-> >
-> > **无功功率**： $Q = UI \sin \varphi$  
-> >
-> > **视在功率**：$S=UI$ 
+> > **相位角**
+> > $$
+> > \varphi = \angle \varphi_u - \angle \varphi_i
+> > $$
+> > **有功功率**：
+> > $$
+> > P = UI \cos \varphi
+> > $$
+> > **无功功率**：
+> > $$
+> > Q = UI \sin \varphi
+> > $$
+> > **视在功率**：
+> > $$
+> > S=UI
+> > $$
 >
-> **阻抗**：$Z = R$ 
+> **电阻元件**：
+> $$
+> Z = R
+> $$
 >
-> > **相位角**：$\varphi = 0^\circ$  
-> >
-> > **有功功率**： $UI = \frac{U^2}{R} = RI^2$ 
-> >
+> > **相位角**：
+> > $$
+> > \varphi = 0^\circ
+> > $$
+> > **有功功率**：
+> > $$
+> > UI = \frac{U^2}{R} = RI^2
+> > $$
 > > **无功功率**： $0$  
 > >
-> > **视在功率**：$S=I^2R=\frac{U^2}{R}$ 
+> > **视在功率**：
+> > $$
+> > S=I^2R=\frac{U^2}{R}
+> > $$
 >
-> **阻抗**：$Z = j \omega L$ 
+> **电感元件**：
+> $$
+> Z = j \omega L
+> $$
 >
-> > **相位角**：$\varphi = 90^\circ$  
-> >
+> > **相位角**：
+> > $$
+> > \varphi = 90^\circ
+> > $$
 > > **有功功率**： $0$ 
 > >
-> > **无功功率**： $Q = UI = \omega LI^2$  
-> >
-> > **视在功率**：$S=\omega LI^2$ 
+> > **无功功率**：
+> > $$
+> > Q = UI = \omega LI^2
+> > $$
+> > **视在功率**：
+> > $$
+> > S=\omega LI^2
+> > $$
 >
-> **阻抗**：$Z = -j \frac{1}{\omega C}$
+> **电容元件**：
+> $$
+> Z = -j \frac{1}{\omega C}
+> $$
 >
-> > **相位角**：$\varphi = -90^\circ$  
-> >
+> > **相位角**：
+> > $$
+> > \varphi = -90^\circ
+> > $$
 > > **有功功率**： $0$ 
 > >
-> > **无功功率**： $Q = -UI = - \frac{1}{\omega C} I^2$  
-> >
-> > **视在功率**：$S=\frac{1}{\omega C}I^2$ 
+> > **无功功率**：
+> > $$
+> > Q = -UI = - \frac{1}{\omega C} I^2
+> > $$
+> > **视在功率**：
+> > $$
+> > S=\frac{1}{\omega C}I^2
+> > $$
 
 有功功率对应电源的为对外做功的能量的变化率。如电机对外做功转化成机械能的能量。
 
 无功功率对应电源不对外做功的那部分电能，用于建立和维持电磁场，保证设备正常运转，无功功率不是无用功率。
 
 **功率表**：测得的功率为有用功率，有时读数并不代表某个具体元件的功率
+
+![pVOshO1.png](https://s21.ax1x.com/2025/10/21/pVOshO1.png)
+
+**复功率**：
+
+![pVOsWl9.png](https://s21.ax1x.com/2025/10/21/pVOsWl9.png)
+
+> 复功率是纯计算量，是交流电路功率大综合
+> $$
+> \tilde{S} = P + \mathrm{j}Q = UI\cos\varphi + \mathrm{j}UI\sin\varphi
+> $$
+>
+> **复功率的相量计算法：**
+>
+> $$
+> \tilde{S} = UIe^{\mathrm{j}\varphi} = UIe^{\mathrm{j}(\psi_u - \psi_i)} = (Ue^{\mathrm{j}\psi_u})(Ie^{-\mathrm{j}\psi_i}) = \vec{U}\vec{I}^*
+> $$
+>
+> $$
+> S = |\tilde{S}| = \sqrt{P^2 + Q^2} = UI
+> $$
+>
+> 复功率模为视在功率
+>
+> $$
+> \varphi = \arctan\frac{Q}{P} = \arccos\lambda 
+> $$
+>
+> 复功率辐角即功率因数角
+>
+> $$
+> P = \operatorname{Re}[\tilde{S}]
+> $$
+>
+> 复功率的实部为有功功率
+>
+> $$
+> Q = \operatorname{Im}[\tilde{S}]
+> $$
+>
+> 复功率的虚部为无功功率
+
+### · 例题
+
+已知电路的有用功率为 $P$，电流表和电压表的读数为 $I$ 和 $U$ ，电容大小为 $C$ ，电压源的频率为 $f$ 
+
+求解电路的功率因数 $\cos\varphi$ 以及电阻 $R$ 和电感 $L$ 的具体值是多少
+
+![pVOsfyR.png](https://s21.ax1x.com/2025/10/21/pVOsfyR.png)
+
+> **解法一**：
+> $$
+> \omega = 2\pi f
+> $$
+> 电容电流大小：
+> $$
+> I_C = \omega C U
+> $$
+> 设 R 与 L 支路的电流为 $I_L$，则：
+>
+> 有功功率：
+> $$
+> P = U I_L \cos\varphi_L = U I \cos\varphi
+> $$
+>
+> $$
+> \cos\varphi=\frac{P}{UI}  \quad \Rightarrow \quad \arccos\varphi =\pm \varphi
+> $$
+>
+> 总电流平方关系（由相量合成）：
+> $$
+> I^2 = (I_L \cos\varphi_L)^2 + (I_C - I_L \sin\varphi_L)^2
+> $$
+>
+> 根据 **代数学基本定理** ，我们很容易知道有两组解
+>
+> 代入已知条件：
+> $$
+> I_L \cos\varphi_L = \frac{P}{U}
+> $$
+> 不妨令
+> $$
+> I_L \sin\varphi_L = s,\quad
+> I_L \cos\varphi_L = a
+> $$
+> 可以推出：
+> $$
+> (I_C - s)^2 = \text{const}
+> $$
+> 求支路功率因数角：
+>
+> $$
+> \varphi_{L1} = \arctan\frac{s_1}{a}
+> $$
+> $$
+> \varphi_{L2} = \arctan\frac{s_2}{a}
+> $$
+>
+> 电阻与电感参数计算：
+>
+> $$
+> P = I_L^2 R \quad \Rightarrow \quad R = \frac{P}{I_L^2}
+> $$
+>
+> $$
+> \frac{U}{I_L} = Z_L \quad \Rightarrow \quad Z_L \sin\varphi_L = \omega L
+> $$
+>
+> $$
+> X_L = \omega L = Z_L \sin\varphi_L
+> $$
+>
+> 代数即可.
+>
+> ***
+>
+> **解法二**：使用相量法
+>
+> 电容电流大小：
+> $$
+> I_C = \omega C U
+> $$
+> 且电流方向：
+> $$
+> \cos\varphi=\frac{P}{UI}  \quad \Rightarrow \quad \arccos\varphi =\pm \varphi
+> $$
+> 所以我们可以设定主干路电流为
+> $$
+> \dot{I}=I\angle \pm \varphi
+> $$
+> 电容支路电流为：
+> $$
+> \dot{I}_C = \omega C U\angle 90^\circ
+> $$
+> 然后我们可以根据功率：
+> $$
+> P=|\dot{I}-\dot{I}_C|^2R
+> $$
+> 求出电阻阻值,
+>
+> 进而求出电感.
+
+## Part 2 电路频率特性
+
