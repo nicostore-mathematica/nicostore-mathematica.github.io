@@ -6,8 +6,8 @@
   "links": 367,
   "about": 205,
   "statistics": {
-    "statistics-2": 1860,
-    "statistics-1": 5096,
+    "statistics-2": 2415,
+    "statistics-1": 6284,
     "index": 16
   },
   "RoboMaster": {
@@ -17,8 +17,8 @@
   },
   "physics": {
     "index": 116,
-    "physics-9": 6,
-    "physics-8": 2073,
+    "physics-9": 1733,
+    "physics-8": 2793,
     "physics-7": 6,
     "physics-6": 6,
     "physics-5": 14,
@@ -35,7 +35,7 @@
     "index": 90,
     "integral-9": 8071,
     "integral-8": 6741,
-    "integral-7": 3995,
+    "integral-7": 3999,
     "integral-6": 6166,
     "integral-5": 3950,
     "integral-4": 5601,
@@ -45,9 +45,9 @@
     "integral-1": 3706
   },
   "cybernetics": {
-    "index": 6,
+    "index": 498,
     "cybernetics-2": 6,
-    "cybernetics-1": 6
+    "cybernetics-1": 12
   },
   "CS": {
     "index": 10,
@@ -62,9 +62,13 @@
   },
   "circuit": {
     "index": 208,
-    "electronic-2": 5879,
+    "electronic-5": 12,
+    "electronic-4": 10,
+    "electronic-3": 4214,
+    "electronic-2": 5700,
     "electronic-1": 3435,
-    "circuit-2": 2011,
+    "circuit-3": 417,
+    "circuit-2": 2572,
     "circuit-1": 6092
   },
   "weekly": {
@@ -98,7 +102,7 @@
     "algebra-1": 5125,
     "algebra-0": 9451
   },
-  "total": 189508,
-  "lastUpdated": "2025-10-17T13:33:29.258Z",
-  "fileCount": 73
+  "total": 199235,
+  "lastUpdated": "2025-10-24T15:27:11.017Z",
+  "fileCount": 77
 }
