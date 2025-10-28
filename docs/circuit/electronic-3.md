@@ -1,5 +1,5 @@
 ---
-title: Chapter 3 BJT放大电路
+title: Chapter 3 放大电路分析
 createTime: 2025/09/27 13:34:31
 permalink: /circuit/electronic-3/
 ---
@@ -571,3 +571,4 @@ $$
 
 ## Part 3 多级放大电路
 
+### · 达林顿管

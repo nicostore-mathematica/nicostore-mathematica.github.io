@@ -592,5 +592,332 @@ $$
 >
 > 进而求出电感.
 
-## Part 2 电路频率特性
+## Part 2 磁耦合元件
 
+### · 互感
+
+一个线圈电流所产生的磁通会穿过邻近的另一个线圈，称为**磁耦合现象**
+
+![pVxeNrR.png](https://s21.ax1x.com/2025/10/27/pVxeNrR.png)
+
+磁耦合一般可以用于能量传输和信号传递（无线充电）
+
+**互感磁链**：
+
+![pVxedVx.png](https://s21.ax1x.com/2025/10/27/pVxedVx.png)
+
+- $\Phi_{11}$：线圈1的自感磁通
+- $\Phi_{22}$：线圈2的自感磁通
+- $\Phi_{21}$：线圈1对线圈2的互感磁通
+- $\Phi_{12}$：线圈2对线圈1的互感磁通
+
+![pVxeUq1.png](https://s21.ax1x.com/2025/10/27/pVxeUq1.png)
+
+自感磁链：
+
+$$
+\begin{cases}
+\Psi_{11} = n_1 \Phi_{11} = L_1 i_1 \\
+\Psi_{22} = n_2 \Phi_{22} = L_2 i_2
+\end{cases}
+$$
+
+互感磁链：
+
+$$
+\begin{cases}
+\Psi_{21} = n_2 \Phi_{21} = M_{21} i_1 \\
+\Psi_{12} = n_1 \Phi_{12} = M_{12} i_2
+\end{cases}
+$$
+
+-  $L_1$ 、 $L_2$ 称为自感系数，简称自感
+-  $M_{12}$ 、 $M_{21}$ 称为互感系数，简称互感，单位：H
+-  $M_{12} = M_{21} = M$ ，表示一个线圈对临近线圈产生感生电压的能力。
+
+**定义耦合系数**
+$$
+k = \sqrt{\frac{\Psi_{21} \Psi_{12}}{\Psi_{11} \Psi_{22}}} = \frac{M}{\sqrt{L_1 L_2}}\quad 0 \leq k \leq 1
+$$
+互感磁链相对自感磁链越大，则  $k$  越大，因此  $k$  的大小代表了线圈磁耦合的紧密程度。
+
+ $k = 1$ ，称为全耦合。
+
+由耦合系数算互感：
+$$
+M = k \sqrt{L_1 L_2}
+$$
+![pVxewa6.png](https://s21.ax1x.com/2025/10/27/pVxewa6.png)
+
+**自感与互感磁链方向相同**
+
+$$
+\begin{cases}
+\Psi_1 = \Psi_{11} + \Psi_{12} = L_1 i_1 + M i_2 \\
+\Psi_2 = \Psi_{21} + \Psi_{22} = M i_1 + L_2 i_2
+\end{cases}
+$$
+
+**自感与互感磁链方向相反**
+
+$$
+\begin{cases}
+\Psi_1 = \Psi_{11} - \Psi_{12} = L_1 i_1 - M i_2 \\
+\Psi_2 = -\Psi_{21} + \Psi_{22} = -M i_1 + L_2 i_2
+\end{cases}
+$$
+
+**问题：** 如果不画出线圈绕向，如何知道自感磁链与互感磁链的方向关系？
+
+**规定：** 当两个线圈中的自感磁通和互感磁通方向相同时，流入（或流出）电流的两个端子称为**同名端**，标记*。
+
+![pVxe0IK.png](https://s21.ax1x.com/2025/10/27/pVxe0IK.png)
+
+$$
+u_1 = -e_1 = \frac{d\Psi_1}{dt} = L_1 \frac{di_1}{dt} \pm M \frac{di_2}{dt} \\
+u_2 = -e_2 = \frac{d\Psi_2}{dt} = \pm M \frac{di_1}{dt} + L_2 \frac{di_2}{dt}
+$$
+
+互感电压，可正可负，取决于  $i_2$  的方向和同名端
+
+自感电压，若  $u_2$  和  $i_2$  为关联方向，则为正
+
+**相量表示**：
+
+![pVxesRe.png](https://s21.ax1x.com/2025/10/27/pVxesRe.png)
+
+![pVxerGD.png](https://s21.ax1x.com/2025/10/27/pVxerGD.png)
+
+$$
+u_1 = L_1 \frac{di_1}{dt} \pm M \frac{di_2}{dt} \\
+u_2 = \pm M \frac{di_1}{dt} + L_2 \frac{di_2}{dt}
+$$
+
+转换为相量表示：
+
+
+$$
+\dot{U}_1 = j\omega L_1 \dot{I}_1 \pm j\omega M \dot{I}_2 \\
+\dot{U}_2 = \pm j\omega M \dot{I}_1 + j\omega L_2 \dot{I}_2
+$$
+
+### · 耦合元件化简
+
+(1). **串联等效化简**.
+
+![pVxeDPO.png](https://s21.ax1x.com/2025/10/27/pVxeDPO.png)
+
+> **正串**：
+>
+> 列KVL方程得：
+>
+>
+> $$
+> u = u_1 + u_2 = \left( L_1 \frac{di}{dt} + M \frac{di}{dt} \right) + \left( M \frac{di}{dt} + L_2 \frac{di}{dt} \right)
+> $$
+>
+>
+> $$
+> = \left( L_1 + L_2 + 2M \right) \frac{di}{dt} = L_{eq} \frac{di}{dt}
+> $$
+>
+> 等效电感
+> $$
+> L_{eq} = L_1 + L_2 + 2M \geq L_1 + L_2
+> $$
+> **反串**：
+>
+> 列KVL方程得：
+>
+>
+> $$
+> u = u_1 + u_2 = \left( L_1 \frac{di}{dt} - M \frac{di}{dt} \right) + \left( L_2 \frac{di}{dt} - M \frac{di}{dt} \right)
+> $$
+>
+>
+> $$
+> = \left( L_1 + L_2 - 2M \right) \frac{di}{dt}
+> $$
+>
+> 等效电感
+> $$
+> L_{eq} = L_1 + L_2 - 2M
+> $$
+
+(2). **并联等效化简**.
+
+> **同名端并联**：
+>
+> ![](https://pic1.imgdb.cn/item/6900504c3203f7be00a9b318.png)
+>
+> 
+>
+> **异名端并联**：
+>
+> ![](https://pic1.imgdb.cn/item/6900504c3203f7be00a9b31a.png)
+
+(3). **T形等效**.
+
+![](https://pic1.imgdb.cn/item/6900504c3203f7be00a9b319.png)
+
+### · 空心变压器
+
+空心变压器的两个耦合线圈分别称为一次侧线圈和二次侧线圈，当一次侧线圈连接电源（或信号源），二次侧线圈连接负载时，电能（或信号）从一次侧线圈通过磁场耦合方式传递到二次侧线圈。
+
+![](https://pic1.imgdb.cn/item/69005d3d3203f7be00aa4de0.png)
+
+空心变压器中我们要做的假设很简单——为了便于计算，我们需要将耦合元件两侧的电路等效到一侧，所以我们需要引入反射阻抗的概念使得计算相对更为便捷和直接。
+
+> **一次侧等效**：
+>
+> ![](https://pic1.imgdb.cn/item/69005d3d3203f7be00aa4de2.png)
+>
+> 一次侧、二次侧电压方程
+>
+> $$
+> \begin{cases} 
+> j\omega L_1 \dot{I}_1 + j\omega M \dot{I}_2 = \dot{U}_1 \\
+> j\omega M \dot{I}_1 + j\omega L_2 \dot{I}_2 + Z_2 \dot{I}_2 = 0 
+> \end{cases}
+> $$
+>
+> 一次侧看进去的等效阻抗
+>
+> $$
+> Z_{eq} = \frac{\dot{U}_1}{\dot{I}_1} = \frac{(\omega M)^2}{Z_2 + j\omega L_2} + j\omega L_1 = Z_{r1} + j\omega L_1
+> $$
+>
+> 二次侧对一次侧的反射阻抗
+>
+> $$
+> Z_{r1} = \frac{(\omega M)^2}{Z_2 + j\omega L_2} = R_{r1} + jX_{r1} = \frac{(\omega M)^2}{Z_2}
+> $$
+> **二次侧等效**：
+>
+> ![](https://pic1.imgdb.cn/item/69005d3d3203f7be00aa4de4.png)
+>
+> 一次侧电流
+>
+> $$
+> \dot{I}_1 = \frac{\dot{U}_s}{R_1 + j\omega L_1} 
+> $$
+>
+> 开路电压
+>
+> $$
+> \dot{U}_{oc} = j\omega M \dot{I}_1 = \frac{j\omega M}{R_1 + j\omega L_1} \dot{U}_s 
+> $$
+>
+> 等效阻抗
+>
+> $$
+> Z_{eq} = \frac{(\omega M)^2}{R_1 + j\omega L_1} + j\omega L_2 = Z_{r2} + j\omega L_2 
+> $$
+>
+> 一次侧对二次侧的反射阻抗
+>
+> $$
+> Z_{r2} = \frac{(\omega M)^2}{Z_1}
+> $$
+>
+
+### · 理想变压器
+
+![pVxeNrR.png](https://s21.ax1x.com/2025/10/27/pVxeNrR.png)
+
+我们以常见变压器为例：
+
+> **假设一**：全耦合，耦合系数  $k = 1$ 。
+>
+> $$
+> \begin{cases} 
+> \psi_1 = N_1 \Phi \\
+> \psi_2 = N_2 \Phi 
+> \end{cases}
+> $$
+>
+>
+> $$
+> \frac{\psi_1}{\psi_2} = \frac{N_1}{N_2} = n
+> $$
+>
+> 磁链之比，等于匝数之比。
+>
+>
+> $$
+> \frac{e_1}{e_2} = \frac{-\frac{d\psi_1}{dt}}{-\frac{d\psi_2}{dt}} = \frac{N_1}{N_2} = n
+> $$
+>
+> 感应电动势之比，等于匝数之比。内部表现。
+>
+> **假设二**：忽略线圈电阻
+>
+> $$
+> \begin{cases} 
+> u_1 = -e_1 = \frac{d\psi_1}{dt} = N_1 \frac{d\Phi}{dt} \\
+> u_2 = -e_2 = \frac{d\psi_2}{dt} = N_2 \frac{d\Phi}{dt} 
+> \end{cases}
+> $$
+>
+>
+> $$
+> \frac{u_1}{u_2} = \frac{N_1}{N_2} = n
+> $$
+>
+> 电压之比，等于匝数之比。
+>
+> **假设三**：不计涡流损耗
+>
+> 安培环路定律
+>
+>
+> $$
+> \oint_{l} \vec{H} \cdot d\vec{l} = N_1 i_1 + N_2 i_2
+> $$
+>
+> 不含涡流，只含线圈电流
+>
+> **假设四**：磁导率  $\mu$  为无限大
+>
+> $$
+> \oint_{l} \vec{H} \cdot d\vec{l} = \oint_{l} \frac{\vec{B}}{\mu} d\vec{l} = \oint_{l} 0 d\vec{l} = 0
+> $$
+>
+>
+> $$
+> N_1 i_1 + N_2 i_2 = 0
+> $$
+>
+>
+> $$
+> \frac{i_1}{i_2} = -\frac{N_2}{N_1} = -\frac{1}{n}
+> $$
+>
+> 或者不计损耗且磁导率为无限大，则磁场能量密度
+>
+>
+> $$
+> W_{m0} = 0.5 \vec{B} \cdot \vec{H} = 0
+> $$
+>
+> 不耗能、不储能，变压器的瞬时功率为：
+>
+>
+> $$
+> p = u_1 i_1 + u_2 i_2 = 0 \quad \Rightarrow \quad \frac{i_1}{i_2} = -\frac{u_2}{u_1} = -\frac{1}{n}
+> $$
+
+对实际变压器做如下假设便成为理想变压器：
+
+（1）全耦合，耦合系数 $k=1$；
+
+（2）忽略损耗，包括铜损耗和铁损耗；
+
+（3）磁导率 $\mu$ 为无限大。
+
+理想变压器只有一个参数，并且用代数方程来描述；而互感要用微分方程组来描述，极端量变导致质变。
+
+![](https://pic1.imgdb.cn/item/690063a23203f7be00aa8969.png)
+$$
+\frac{i_1}{i_2} = -\frac{u_2}{u_1} = \frac{1}{n}
+$$

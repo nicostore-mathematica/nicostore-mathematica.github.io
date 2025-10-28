@@ -1,5 +1,5 @@
 ---
-title: Chapter 3 线性电路暂态响应
+title: Chapter 3 时域分析
 createTime: 2025/09/17 19:34:31
 permalink: /circuit/circuit-3/
 ---
