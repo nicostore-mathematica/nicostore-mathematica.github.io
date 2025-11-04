@@ -7,7 +7,7 @@
   "about": 205,
   "statistics": {
     "statistics-2": 6391,
-    "statistics-1": 6284,
+    "statistics-1": 6285,
     "index": 16
   },
   "RoboMaster": {
@@ -62,15 +62,18 @@
   },
   "circuit": {
     "index": 208,
-    "electronic-6": 12,
+    "electronic-9": 12,
+    "electronic-8": 9,
+    "electronic-7": 11,
+    "electronic-6": 25,
     "electronic-5": 12,
     "electronic-4": 10,
     "electronic-3": 4219,
     "electronic-2": 5700,
     "electronic-1": 3435,
     "circuit-4": 10,
-    "circuit-3": 413,
-    "circuit-2": 4094,
+    "circuit-3": 2461,
+    "circuit-2": 4103,
     "circuit-1": 6092
   },
   "weekly": {
@@ -104,7 +107,7 @@
     "algebra-1": 5125,
     "algebra-0": 9451
   },
-  "total": 205860,
-  "lastUpdated": "2025-10-28T06:51:10.436Z",
-  "fileCount": 79
+  "total": 207963,
+  "lastUpdated": "2025-11-04T11:23:07.120Z",
+  "fileCount": 82
 }

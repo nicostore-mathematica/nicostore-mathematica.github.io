@@ -4,7 +4,7 @@ createTime: 2025/09/17 19:34:31
 permalink: /circuit/circuit-2/
 ---
 
-# Chapter 2 正弦电路分析
+# Chapter 2 交流电路分析
 
 首先让我们复习一下复数。
 
@@ -468,29 +468,31 @@ $$
 > \tilde{S} = UIe^{\mathrm{j}\varphi} = UIe^{\mathrm{j}(\psi_u - \psi_i)} = (Ue^{\mathrm{j}\psi_u})(Ie^{-\mathrm{j}\psi_i}) = \vec{U}\vec{I}^*
 > $$
 >
+> 复功率模为视在功率
 > $$
 > S = |\tilde{S}| = \sqrt{P^2 + Q^2} = UI
-> $$
->
-> 复功率模为视在功率
->
-> $$
-> \varphi = \arctan\frac{Q}{P} = \arccos\lambda 
 > $$
 >
 > 复功率辐角即功率因数角
 >
 > $$
-> P = \operatorname{Re}[\tilde{S}]
+> \varphi = \arctan\frac{Q}{P} = \arccos\lambda 
 > $$
 >
 > 复功率的实部为有功功率
 >
 > $$
-> Q = \operatorname{Im}[\tilde{S}]
+> P = \operatorname{Re}[\tilde{S}]
 > $$
 >
 > 复功率的虚部为无功功率
+>
+> $$
+> Q = \operatorname{Im}[\tilde{S}]
+> $$
+>
+
+
 
 ### · 例题
 
@@ -921,3 +923,8 @@ $$
 $$
 \frac{i_1}{i_2} = -\frac{u_2}{u_1} = \frac{1}{n}
 $$
+
+## Part 3 电路频率响应
+
+### · 谐振
+

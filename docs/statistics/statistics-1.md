@@ -366,10 +366,6 @@ $$
 | **应用场景** |       关注特定区间的概率情况        |             关注左侧 ($\leq$) 的整体累积情况             |
 | **关联**     |            $F'(x)=f(x)$             |             $\int_{-\infty}^{x} f(t)dt=F(x)$             |
 
-
-
-***
-
 #### · 均匀分布
 
 ![](https://nicostore-mathematica.github.io/picx-images-hosting/s1-2.32iaqop0ru.webp)
@@ -553,16 +549,18 @@ $$
 
 $F(x, y)$  的性质：
 
->       (1).  $0 \leq F(x, y) \leq 1$ ，且  $F(-\infty, y) = F(x, -\infty) = F(-\infty, -\infty) = 0$ ， $F(+\infty, +\infty) = 1$ 。
+> (1).  $0 \leq F(x, y) \leq 1$ ，且
+> $$
+> F(-\infty, y) = F(x, -\infty) = F(-\infty, -\infty) = 0,\quad F(+\infty, +\infty) = 1
+> $$
+> (2). $F(x, y)$  是变量  $x$  或  $y$  的单调不减函数。
 >
->       (2).  $F(x, y)$  是变量  $x$  或  $ y$  的单调不减函数。
+> (3). $F(x, y) = F(x + 0, y)$ ， $F(x, y) = F(x, y + 0)$ ， $F(x, y)$  关于  $x$  或  $y$  都是右连续的。
 >
->       (3).  $F(x, y) = F(x + 0, y)$ ， $F(x, y) = F(x, y + 0)$ ， $F(x, y)$  关于  $x$  或  $ y$  都是右连续的。
->
->       (4).  对任意  $(x_1, y_1)$ ， $(x_2, y_2)$ ：当  $x_1 < x_2$ ， $y_1 < y_2$  时，有
->       $$
->       P\{x_1 < X \leq x_2, y_1 < Y \leq y_2\} = F(x_2, y_2) - F(x_2, y_1) + F(x_1, y_1).
->       $$
+> (4).  对任意  $(x_1, y_1)$ ， $(x_2, y_2)$ ：当  $x_1 < x_2$ ， $y_1 < y_2$  时，有
+> $$
+> P\{x_1 < X \leq x_2, y_1 < Y \leq y_2\} = F(x_2, y_2) - F(x_2, y_1) + F(x_1, y_1).
+> $$
 
 **二维离散型随机变量**：
 
