@@ -25,6 +25,7 @@ export default defineCollection({
 				"electronic-6",
 				"electronic-7",
 				"electronic-8",
+				"electronic-9",
 			],
 		},
 	],

@@ -9,6 +9,8 @@ export default defineCollection({
 			items: [
 				"circuit-1",
 				"circuit-2",
+				"circuit-3",
+				"circuit-4",
 			],
 		},
 		{
@@ -17,6 +19,12 @@ export default defineCollection({
 			items: [
 				"electronic-1",
 				"electronic-2",
+				"electronic-3",
+				"electronic-4",
+				"electronic-5",
+				"electronic-6",
+				"electronic-7",
+				"electronic-8",
 			],
 		},
 	],

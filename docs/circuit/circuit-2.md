@@ -813,7 +813,7 @@ $$
 > 等效阻抗
 >
 > $$
-> Z_{eq} = \frac{(\omega M)^2}{R_1 + j\omega L_1} + j\omega L_2 = Z_{r2} + j\omega L_2 
+> Z_{eq} = \frac{(\omega M)^2}{R_1 + j\omega L_1} + j\omega L_2 = Z_{r2} + j\omega L_2
 > $$
 >
 > 一次侧对二次侧的反射阻抗

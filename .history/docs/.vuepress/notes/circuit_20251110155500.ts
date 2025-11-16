@@ -10,7 +10,6 @@ export default defineCollection({
 				"circuit-1",
 				"circuit-2",
 				"circuit-3",
-				"circuit-4",
 			],
 		},
 		{
@@ -25,6 +24,7 @@ export default defineCollection({
 				"electronic-6",
 				"electronic-7",
 				"electronic-8",
+				"electronic-9",
 			],
 		},
 	],
