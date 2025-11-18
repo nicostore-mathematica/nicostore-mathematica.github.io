@@ -1,0 +1,5 @@
+---
+title: Chapter 2
+createTime: 2025/11/18 19:50:40
+permalink: /electrodynamics/electrodynamics-2/
+---

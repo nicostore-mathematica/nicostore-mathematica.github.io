@@ -1,8 +1,8 @@
 {
   "timeline": 184,
-  "README": 227,
+  "README": 251,
   "random": 71,
-  "notes": 65,
+  "notes": 73,
   "links": 367,
   "about": 205,
   "statistics": {
@@ -25,8 +25,14 @@
     "physics-4": 2595,
     "physics-3": 5261,
     "physics-2": 5293,
+    "physics-10": 13,
     "physics-1": 3485,
     "physics-0": 4112
+  },
+  "optics": {
+    "index": 10,
+    "optics-2": 6,
+    "optics-1": 6
   },
   "numerical": {
     "index": 9
@@ -43,6 +49,9 @@
     "integral-2": 4196,
     "integral-10": 7233,
     "integral-1": 3706
+  },
+  "electrodynamics": {
+    "index": 12
   },
   "cybernetics": {
     "index": 498,
@@ -62,15 +71,14 @@
   },
   "circuit": {
     "index": 208,
-    "electronic-9": 12,
-    "electronic-8": 9,
+    "electronic-8": 13,
     "electronic-7": 11,
-    "electronic-6": 25,
-    "electronic-5": 12,
-    "electronic-4": 10,
-    "electronic-3": 4219,
-    "electronic-2": 5700,
-    "electronic-1": 3435,
+    "electronic-6": 1970,
+    "electronic-5": 6611,
+    "electronic-4": 19,
+    "electronic-3": 451,
+    "electronic-2": 6988,
+    "electronic-1": 5625,
     "circuit-4": 10,
     "circuit-3": 2461,
     "circuit-2": 4103,
@@ -107,7 +115,7 @@
     "algebra-1": 5125,
     "algebra-0": 9451
   },
-  "total": 207963,
-  "lastUpdated": "2025-11-04T11:23:07.120Z",
-  "fileCount": 82
+  "total": 216297,
+  "lastUpdated": "2025-11-18T11:48:10.277Z",
+  "fileCount": 86
 }
