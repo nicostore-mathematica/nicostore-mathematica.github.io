@@ -12,7 +12,6 @@
 import { viteBundler } from '@vuepress/bundler-vite'
 import { defineUserConfig } from 'vuepress'
 import { plumeTheme } from 'vuepress-theme-plume'
-import { commentPlugin } from '@vuepress/plugin-comment'
 import { notes } from './notes/index'
 
 export default defineUserConfig({

@@ -51,7 +51,9 @@
     "integral-1": 3706
   },
   "electrodynamics": {
-    "index": 12
+    "index": 12,
+    "electrodynamics-2": 6,
+    "electrodynamics-1": 6
   },
   "cybernetics": {
     "index": 498,
@@ -115,7 +117,7 @@
     "algebra-1": 5125,
     "algebra-0": 9451
   },
-  "total": 216297,
-  "lastUpdated": "2025-11-18T11:48:10.277Z",
-  "fileCount": 86
+  "total": 216309,
+  "lastUpdated": "2025-11-18T12:04:07.978Z",
+  "fileCount": 88
 }

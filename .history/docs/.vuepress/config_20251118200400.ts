@@ -12,6 +12,7 @@
 import { viteBundler } from '@vuepress/bundler-vite'
 import { defineUserConfig } from 'vuepress'
 import { plumeTheme } from 'vuepress-theme-plume'
+import { notes } from './notes/index'
 
 export default defineUserConfig({
   base: '/',
@@ -22,6 +23,7 @@ export default defineUserConfig({
   head: [
     // 配置站点图标
     ['link', { rel: 'icon', type: 'image/png', href: 'https://nicostore-mathematica.github.io/picx-images-hosting/favicon-192x192.3uuyusuowr.webp' }],
+    ['meta', { name: 'keywords', content: '猫条,博客,技术,学习笔记,微积分,代数,编程,电路,物理,统计,RoboMaster,控制理论' }],
   ],
 
   bundler: viteBundler(),
@@ -40,7 +42,26 @@ export default defineUserConfig({
     // editLink: true,
     // lastUpdated: true,
     // contributors: true,
-    // changelog: false,
+    /* 页内信息 */
+    // editLink: true,
+    // lastUpdated: true,
+    // contributors: true,
+    changelog: true,
+
+    collections: [
+      {
+        type: 'post', // 替代原博客功能
+        dir: 'blog', // 指向 docs/blog 目录
+        title: '博客', // 集合显示名称
+        postList: true, // 是否启用文章列表页
+        tags: true, // 是否启用标签页
+        archives: true, // 是否启用归档页
+        categories: true, // 是否启用分类页
+        postCover: 'left', // 文章封面位置
+        pagination: 10, // 每页显示文章数量
+      },
+      ...notes,
+    ],
 
     /**
      * 博客
