@@ -32,7 +32,7 @@ export const navbar = defineNavbarConfig([
       		{ text: "电路系统", link: "/circuit/README.md" },
 			{ text: "光学", link: "/optics/README.md" },
 			{ text: "数学物理方法", link: "/complex/README.md" },
-			{ text: "工程力学", link: "/applied-mechanics/README.md" },
+			{ text: "数学物理方法", link: "/applied-machanics/README.md" },
 			{ text: "数值分析", link: "/numerical/README.md" },
 			{ text: "控制理论", link: "/cybernetics/README.md" },
 			{ text: "电动力学", link: "/electrodynamics/README.md" },

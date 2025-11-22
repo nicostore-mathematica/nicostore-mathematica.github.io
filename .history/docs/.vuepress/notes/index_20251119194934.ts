@@ -26,7 +26,6 @@ export const notes = defineCollections([
 		cybernetics,
 		optics,
 		electrodynamics,
-		appliedMechanics,
 
 
 ]);

@@ -30,7 +30,9 @@ permalink: /notes/
 
 [编程](/CS/)
 
-[电路](/circuit/)
+[电路系统](/circuit/)
+
+[工程力学](//)
 
 [RoboMaster](/RoboMaster/)
 

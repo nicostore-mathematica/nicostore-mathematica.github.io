@@ -37,11 +37,19 @@ $$
 xy' = y + 2\sqrt{xy}
 $$
 
-> /proof/  设 $y = xu$ 则 $ y' = xu' + u$ ，方程化为 $x(xu' + u) = xu + 2|x|\sqrt{u}$ 
+> 设 $y = xu$ 则 $ y' = xu' + u$ ，方程化为
+> $$
+> x(xu' + u) = xu + 2|x|\sqrt{u}
+> $$
+>
 > $$
 > \Rightarrow u' = \begin{cases} 2\frac{\sqrt{u}}{x} & x > 0 \\ -2\frac{\sqrt{u}}{x} & x < 0 \end{cases} \text{ } \Rightarrow \frac{du}{2\sqrt{u}} = \pm\frac{dx}{x}
 > $$
-> 两边积分，$\sqrt{u} = \pm\ln|x| + C$ ， $u = (\pm\ln|x| + C)^2$ ，另外，$u=0$ 也是解
+> 两边积分，
+> $$
+> \sqrt{u} = \pm\ln|x| + C,\quad u = (\pm\ln|x| + C)^2
+> $$
+>  ，另外，$u=0$ 也是解
 >
 > 代换后即可解出关于 $y$ 的表达式。
 
@@ -54,7 +62,10 @@ $$
 > \quad y' = f(ax+by+c) \quad \Rightarrow \quad z=ax+by+c \quad \Rightarrow \quad \frac{dz}{dx} = bf(z) + a
 > $$
 
-/example/	求解$\quad y' = \cos(x - y)$
+/example/  求解
+$$
+\quad y' = \cos(x - y)
+$$
 
 > 令 $z = x - y$ ，方程化为
 > $$
@@ -195,49 +206,71 @@ $$
 >
 > 
 >
-> 解法：代换  $z = y^{1-n}$  则  $z' + (1-n)Pz = (1-n)Q$ 。（线性方程）
+> 解法：代换  $z = y^{1-n}$  则
+> $$
+> z' + (1-n)Pz = (1-n)Q
+> $$
+> （线性方程）
+>
+> **此外还有几种特殊形式**：
+>
+> (1). $y^{(n)} = f(x)$  →  逐次积分
+>
+> (2). $y'' = f(x, y) \rightarrow$ 设  $y' = p, \quad \frac{dp}{dx} = f(x, y)$ 
+>
+> (3). $y'' = f(y, y') \rightarrow$ 设 $y' = p \Rightarrow\frac{dp}{dy} = f(y, p)$
+> $$
+> y'' = \frac{dp}{dx} = \frac{dp}{dy} \cdot \frac{dy}{dx} = p \frac{dp}{dy}
+> $$
 
-/example/	求解  $y' - \frac{y}{x} + xy^2 = 0$ 
+/example/ 求解方程
+$$
+y' - \frac{y}{x} + xy^2 = 0
+$$
 
 >$$
 >\text{if} \quad  z = y^{-1} ,\quad z' + \frac{6}{x}z = x ,\quad \int \frac{6}{x}dx=6\ln|x|
 >\\
+>$$
+>
+>$$
 >z = e^{-\int \frac{6}{x} \, dx} \left[ \int xe^{6\ln|x|} \, dx + C \right] = \frac{1}{x^6} \left( \frac{x^8}{8} + C \right)
 >$$
 
-(1).   $y^{(n)} = f(x)$  →  逐次积分
-
-(2). $y'' = f(x, y) \rightarrow \text{设 } y' = p, \quad \frac{dp}{dx} = f(x, y)$ 
-
-/example/	$xy'' + y' = 4x$
+/example/ 求解方程
+$$
+xy'' + y' = 4x
+$$
 
 >$$
 >y' = p\Rightarrow p' + \frac{1}{x}p = 4 \\
+>$$
+>
+>$$
 >\int \frac{1}{x} \, dx = \ln|x| = \frac{1}{2} \ln x^2 \\
+>$$
+>
+>$$
 >P = e^{-\ln|x|} \left( \int e^{\frac{1}{2} \ln x^2} \cdot 4 \, dx + C \right) 
 >= \frac{1}{|x|} \left( \int 4|x| \, dx + C \right) 
 >= \begin{cases} 
 >\frac{1}{x} (2x^2 + C) & x > 0 \\
 >-\frac{1}{x} (-2x^2 + C) & x < 0 
 >\end{cases} \\
->p = 2x + \frac{C}{x} \quad \quad
+>$$
+>
+>$$
+>p = 2x + \frac{C}{x}
+>$$
+>
+>$$
 >y = x^2 + C \ln|x| + C_1
 >$$
 
-(3). $y'' = f(y, y') \rightarrow \text{设 } y' = p \Rightarrow\frac{dp}{dy} = f(y, p)$
+/example/ 求解方程
 $$
-y'' = \frac{dp}{dx} = \frac{dp}{dy} \cdot \frac{dy}{dx} = p \frac{dp}{dy}
+y'' + y' = 2e^{-y}
 $$
-/example/	$2yy'' = y'^2 + 1$  
-
->$$
->p = y'  ,\quad2yp \frac{dp}{dy} = p^2 + 1  \Rightarrow  \frac{2p}{p^2 + 1} dp = \frac{1}{y} dy\\
->\ln(p^2 + 1) = \ln|y| + C_{01},  \quad p^2 + 1 = C_1y\\
->\frac{dy}{\sqrt{C_1y - 1}} = dx \quad \Rightarrow  \quad  \frac{C_1dy}{\sqrt{C_1y - 1}} = C_1 dx\\
->\Rightarrow  \quad 2\sqrt{C_1y - 1} = C_1x + C_2
->$$
-
-/example/	$y'' + y' = 2e^{-y}$ 
 
 > $$
 > p \frac{dp}{dy} + p^2 = 2e^{-y}  ,\quad  \frac{1}{2} \frac{d^2p}{dy^2} + p^2 = 2e^{-y}
@@ -247,21 +280,28 @@ $$
 
 ### · 线性方程解的结构
 
-$y^{(n)} + p_n(x)y^{(n-1)} + \cdots + p_1(x)y' = f(x)$ ， $f(x)$  为非齐次项。
+$$
+y^{(n)} + p_n(x)y^{(n-1)} + \cdots + p_1(x)y' = f(x)
+$$
 
-齐次线性微分方程： $y^{(n)} + p_n(x)y^{(n-1)} + \cdots + p_1(x)y = 0$ 
+，$f(x)$  为非齐次项。
 
-(1). 线性方程的叠加原理：
+齐次线性微分方程：
+$$
+y^{(n)} + p_n(x)y^{(n-1)} + \cdots + p_1(x)y = 0
+$$
 
--  $y_1(x)$  是方程  $y^{(n)} + \cdots + p_1(x)y = f_1(x)$  的解。
--  $y_2(x)$  是方程  $y^{(n)} + \cdots + p_1(x)y = f_2(x)$  的解。
--  $\Rightarrow C_1y_1(x) + C_2y_2(x)$  是方程  $y^{(n)} + \cdots + p_1(x)y = C_1f_1(x) + C_2f_2(x)$  的解。
-
-(2). 推论：齐次线性微分方程的性质
-
-- $y_1(x), y_2(x)$  是方程  $y^{(n)} + \cdots + p_1(x)y = 0$  的解 
-
-  $\Rightarrow C_1y_1(x) + C_2y_2(x)$  也是此方程的解。
+> (1). 线性方程的叠加原理：
+>
+> -  $y_1(x)$  是方程  $y^{(n)} + \cdots + p_1(x)y = f_1(x)$  的解。
+> -  $y_2(x)$  是方程  $y^{(n)} + \cdots + p_1(x)y = f_2(x)$  的解。
+> -  $\Rightarrow C_1y_1(x) + C_2y_2(x)$  是方程  $y^{(n)} + \cdots + p_1(x)y = C_1f_1(x) + C_2f_2(x)$  的解。
+>
+> (2). 推论：齐次线性微分方程的性质
+>
+> - $y_1(x), y_2(x)$  是方程  $y^{(n)} + \cdots + p_1(x)y = 0$  的解 
+>
+>   $\Rightarrow C_1y_1(x) + C_2y_2(x)$  也是此方程的解。
 
 ### · 二阶线性齐次方程
 
@@ -286,7 +326,10 @@ $$
 - 求（HL）的解归结为求出一个非零特解。
 - 简单形式方程常用观察法找出特解， $x^n, e^{ax}, \sin(bx)$  或  $\cos(bx)$ 。
 
-/example/	 $(2x+1)y'' + 4xy' - 4y = 0$  
+/example/ 求解方程 
+$$
+(2x+1)y'' + 4xy' - 4y = 0
+$$
 
 > $$
 > \begin{align*}
@@ -298,15 +341,23 @@ $$
 > \end{align*}
 > $$
 
-/example/	 $xy'' -y' - (x-1)y = 0$  
+/example/ 求解方程
+$$
+xy'' -y' - (x-1)y = 0
+$$
 
 > 解法同上 （猫条の恶趣味）(其实我也不想做 qwq )
 
 ### · 二阶线性非齐次方程
 
-标准形式： $y'' + Py' + Q(x)y = f(x)$ 。
-
-解的结构定理：设 $y^*(x)$ 是非齐次方程(NHL)的解，而 $y_1(x)$ ， $y_2(x)$ 是对应齐次方程的基本解组，那么通解$y = y*(x) + C_1y_1(x) + C_2y_2(x)$ 。
+标准形式：
+$$
+y'' + Py' + Q(x)y = f(x)
+$$
+解的结构定理：设 $y^*(x)$ 是非齐次方程(NHL)的解，而 $y_1(x)$ ， $y_2(x)$ 是对应齐次方程的基本解组，那么通解
+$$
+y = y*(x) + C_1y_1(x) + C_2y_2(x)
+$$
 
 > 如何求出方程特解？常用方法为常数变易法。
 
@@ -435,27 +486,62 @@ $$
 
 写出下列方程一个特解的特定形式：
 
-> /example/	$y'' - 6y' + 10y = (x + 1)e^{3x}$  
+> /example/
+> $$
+> y'' - 6y' + 10y = (x + 1)e^{3x}
+> $$
 >
-> > 特征方程： $r^2 - 6r + 10 = 0 $ ， $r = 3 \pm i$ 
-> >
-> > 原方程特解形式： $y^* = (ax + b)e^{3x}$ 
+> > 特征方程： 
+> > $$
+> > r^2 - 6r + 10 = 0,\quad r = 3 \pm i
+> > $$
+> > 原方程特解形式：
+> > $$
+> > y^* = (ax + b)e^{3x}
+> > $$
 >
-> /example/	$y'' + y' = x^2 + 1$  
+> /example/
+> $$
+> y'' + y' = x^2 + 1
+> $$
 >
-> > 特征方程： $r^2 + r = 0$ ， $r = 0, -1$ 
-> >
-> > 原方程特解形式： $y^* = x(ax^2 + bx + c)$ 
+> > 特征方程：
+> > $$
+> > r^2 + r = 0,\quad r = 0, -1
+> > $$
+> > 原方程特解形式：
+> > $$
+> > y^* = x(ax^2 + bx + c)
+> > $$
 >
-> /example/	$y'' + 3y' - 4y = e^x$   
+> /example/
+> $$
+> y'' + 3y' - 4y = e^x
+> $$
 >
-> > 特征方程： $r^2 + 3r - 4 = 0$ ， $r = 1, -4$ 
-> >
-> > 原方程特解形式： $y^* = axe^x$ 
+> > 特征方程：
+> > $$
+> > r^2 + 3r - 4 = 0,\quad r = 1, -4
+> > $$
+> > 原方程特解形式：
+> > $$
+> > y^* = axe^x
+> > $$
 
-/example/	求解方程  $y'' - 3y' + 2y = 3xe^{-x}$
+/example/  求解方程
+$$
+y'' - 3y' + 2y = 3xe^{-x}
+$$
 
-> 特征方程  $r^2 - 3r + 2 = 0$ ,  $r = 1, 2$ , 原方程特解  $y^* = (ax + b)e^{-x}$ 
+> 特征方程 
+> $$
+> r^2 - 3r + 2 = 0,\quad r = 1, 2
+> $$
+> 原方程特解
+> $$
+> y^* = (ax + b)e^{-x}
+> $$
+> 求导
 >
 > $$
 > (y^*)' = ae^{-x} - (ax + b)e^{-x} = e^{-x}(-ax + a - b),\quad(y^*)'' = e^{-x}(ax - 2a + b)\\
@@ -470,7 +556,10 @@ $$
 > y = \left(\frac{1}{2}x + \frac{5}{12}\right)e^{-x} + C_1e^x + C_2e^{2x}
 > $$
 
-/example/	求解方程  $y'' - 2y' + y = 3xe^x$ 
+/example/ 求解方程
+$$
+y'' - 2y' + y = 3xe^x
+$$
 
 > 特征方程  $r^2 - 2r + 1 = 0$ ， $r = 1$ （二重根）， $y^* = x^2(ax + b)e^x$ 
 >
@@ -530,10 +619,25 @@ $$
 
 > $$
 > \quad r^2 + 1 = 0, \quad r = \pm i, \quad \alpha + \beta i = i \\
+> $$
+>
+> $$
 > \quad  y^* = x(A\cos x + B\sin x) \\
+> $$
+>
+> $$
 > \quad (y^*)' = A\cos x + x(-A\sin x + B\cos x) + B\sin x + x(A\cos x + B\sin x) \\
+> $$
+>
+> $$
 > \quad (y^*)'' = -2A\sin x + 2A\cos x - A\cos x - A\sin x - A\sin x + B\cos x \\
+> $$
+>
+> $$
 > \quad  A_1 = 0, \quad y^* = x\sin x \\
+> $$
+>
+> $$
 > \quad  y = x\sin x + C_1\cos x + C_2\sin x \\
 > $$
 
@@ -544,8 +648,17 @@ $$
 
 >$$
 >\quad  r^2 - 2r + 2 = 0, \quad r = 1 \pm i, \quad \alpha + \beta i = 1 + i \\
+>$$
+>
+>$$
 >\quad  y^* = x[A\cos x + B\sin x]e^x \\
+>$$
+>
+>$$
 >\quad (y^*)' = (A\cos x + B\sin x - Ax\sin x + Bx\cos x + Ax\cos x + Bx\sin x)e^x \\
+>$$
+>
+>$$
 >\quad B = 0, \quad A = \frac{1}{2}, \quad y^* = \frac{1}{2}x\cos x e^x
 >$$
 
