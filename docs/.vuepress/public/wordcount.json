@@ -6,8 +6,8 @@
   "links": 367,
   "about": 205,
   "statistics": {
-    "statistics-2": 6391,
-    "statistics-1": 6285,
+    "statistics-2": 6392,
+    "statistics-1": 6286,
     "index": 16
   },
   "RoboMaster": {
@@ -41,12 +41,13 @@
     "index": 90,
     "integral-9": 8071,
     "integral-8": 6741,
-    "integral-7": 3999,
+    "integral-7": 3976,
     "integral-6": 6166,
     "integral-5": 3950,
     "integral-4": 5601,
     "integral-3": 3499,
     "integral-2": 4196,
+    "integral-12": 4884,
     "integral-10": 7233,
     "integral-1": 3706
   },
@@ -56,7 +57,7 @@
     "electrodynamics-1": 6
   },
   "cybernetics": {
-    "index": 498,
+    "index": 501,
     "cybernetics-2": 6,
     "cybernetics-1": 12
   },
@@ -124,7 +125,7 @@
     "algebra-1": 5125,
     "algebra-0": 9451
   },
-  "total": 216353,
-  "lastUpdated": "2025-11-19T11:57:17.341Z",
-  "fileCount": 93
+  "total": 221219,
+  "lastUpdated": "2025-11-26T07:14:30.693Z",
+  "fileCount": 94
 }
