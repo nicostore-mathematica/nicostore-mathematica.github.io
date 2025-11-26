@@ -27,6 +27,7 @@
   "dependencies": {
     "@chinese-fonts/lxgwwenkaibright": "^2.0.0",
     "@vuepress/plugin-comment": "^2.0.0-rc.118",
+    "@vuepress/plugin-feed": "^2.0.0-rc.3",
     "@vuepress/theme-default": "2.0.0-rc.118",
     "glob": "^11.0.3",
     "twikoo": "^1.6.44"

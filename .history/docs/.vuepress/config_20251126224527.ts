@@ -13,7 +13,6 @@ import { viteBundler } from '@vuepress/bundler-vite'
 import { defineUserConfig } from 'vuepress'
 import { plumeTheme } from 'vuepress-theme-plume'
 import { notes } from './notes/index'
-import { feedPlugin } from '@vuepress/plugin-feed'
 
 export default defineUserConfig({
   base: '/',
@@ -203,10 +202,10 @@ export default defineUserConfig({
      * @see https://theme-plume.vuejs.press/guide/features/encryption/
      */
     // encrypt: {},
-    
-    /**
-     * Feed/RSS 配置
-     */
-
   }),
+
+
+
+
+  
 })

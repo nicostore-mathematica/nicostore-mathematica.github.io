@@ -44,6 +44,8 @@ jobs:
           NODE_OPTIONS: --max-old-space-size=50000
         run: pnpm docs:build
 
+      - name: Create CNAME file
+        run: echo "soda-official.top" > docs/.vuepress/dist/CNAME
       # 查看 workflow 的文档来获取更多信息
       # @see https://github.com/crazy-max/ghaction-github-pages
       - name: Deploy to GitHub Pages

@@ -13,7 +13,6 @@ import { viteBundler } from '@vuepress/bundler-vite'
 import { defineUserConfig } from 'vuepress'
 import { plumeTheme } from 'vuepress-theme-plume'
 import { notes } from './notes/index'
-import { feedPlugin } from '@vuepress/plugin-feed'
 
 export default defineUserConfig({
   base: '/',
@@ -203,10 +202,19 @@ export default defineUserConfig({
      * @see https://theme-plume.vuejs.press/guide/features/encryption/
      */
     // encrypt: {},
-    
-    /**
-     * Feed/RSS 配置
-     */
-
   }),
+plugins: [
+    feedPlugin({
+      hostname: 'https://soda-official.top',
+      atom: true,
+      count: 100,
+     // icon: 'images/Physics_nya.jpg',
+     // image: 'images/Physics_nya.jpg',
+      devServer: true,
+      devHostname: 'http://localhost:8080',
+      atomOutputFilename: 'atom.xml',
+    }),
+  ]
+
+  
 })

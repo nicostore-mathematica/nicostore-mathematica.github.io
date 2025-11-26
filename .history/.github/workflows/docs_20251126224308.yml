@@ -44,6 +44,8 @@ jobs:
           NODE_OPTIONS: --max-old-space-size=50000
         run: pnpm docs:build
 
+      - name: Create CNAME file
+        run: echo "soda-official.top" > docs/.vuepress/dist/CNAME
       # 查看 workflow 的文档来获取更多信息
       # @see https://github.com/crazy-max/ghaction-github-pages
       - name: Deploy to GitHub Pages
@@ -53,8 +55,8 @@ jobs:
           target_branch: gh-pages
           # 部署目录为 VuePress 的默认输出目录
           build_dir: docs/.vuepress/dist
-          # 添加 force_orphan: true 配置
-          # force_orphan: true
+          # 添加 keep_history: false 配置来替代 force_orphan: true
+          keep_history: false
         env:
           # @see https://docs.github.com/cn/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -204,9 +204,4 @@ export default defineUserConfig({
      */
     // encrypt: {},
     
-    /**
-     * Feed/RSS 配置
-     */
-
-  }),
-})
+}
