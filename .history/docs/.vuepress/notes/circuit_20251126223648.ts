@@ -5,11 +5,12 @@ export default defineCollection({
 	sidebar: [
 		{
 			text: "电路分析基础",
-			collapsed: false,
+			collapsed: true,
 			items: [
 				"circuit-1",
 				"circuit-2",
 				"circuit-3",
+				"circuit-4",
 			],
 		},
 		{
@@ -21,6 +22,9 @@ export default defineCollection({
 				"electronic-3",
 				"electronic-4",
 				"electronic-5",
+				"electronic-6",
+				"electronic-7",
+				"electronic-8",
 			],
 		},
 	],

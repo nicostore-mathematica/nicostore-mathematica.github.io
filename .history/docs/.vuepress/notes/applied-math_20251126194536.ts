@@ -1,7 +1,7 @@
 import { defineCollection } from "vuepress-theme-plume";
 
 export default defineCollection({
-	dir: "statistics",
+	dir: "applied-mechanics",
 	sidebar: [
 		{
 			text: "数理统计",
@@ -11,7 +11,15 @@ export default defineCollection({
 				"statistics-2",
 			],
 		},
+		{
+			text: "数值分析",
+			collapsed: false,
+			items: [
+				"numerical-1",
+				"numerical-2",
+			],
+		},
 	],
 	type: "doc",
-	title: "数理统计"
+	title: "应用数学"
 });

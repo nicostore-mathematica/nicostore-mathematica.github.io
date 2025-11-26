@@ -1,26 +1,25 @@
 import { defineCollection } from "vuepress-theme-plume";
 
 export default defineCollection({
-	dir: "circuit",
+	dir: "applied-mechanics",
 	sidebar: [
 		{
-			text: "电路分析基础",
+			text: "数理统计",
 			collapsed: false,
 			items: [
-				"circuit-1",
-				"circuit-2",
+				"Theoretical-1",
+				"Theoretical-2",
 			],
 		},
 		{
-			text: "模拟电子线路",
+			text: "数值分析",
 			collapsed: false,
 			items: [
-				"electronic-1",
-				"electronic-2",
-				"electronic-3",
+				"Materials-1",
+				"Materials-2",
 			],
 		},
 	],
 	type: "doc",
-	title: "电路"
+	title: "应用数学"
 });

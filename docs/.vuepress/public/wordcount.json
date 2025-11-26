@@ -2,14 +2,9 @@
   "timeline": 184,
   "README": 253,
   "random": 71,
-  "notes": 76,
+  "notes": 86,
   "links": 367,
   "about": 205,
-  "statistics": {
-    "statistics-2": 6392,
-    "statistics-1": 6286,
-    "index": 16
-  },
   "RoboMaster": {
     "RoboMaster-2": 1902,
     "RoboMaster-1": 2327,
@@ -34,9 +29,6 @@
     "optics-2": 6,
     "optics-1": 6
   },
-  "numerical": {
-    "index": 9
-  },
   "integral": {
     "index": 90,
     "integral-9": 8071,
@@ -47,7 +39,7 @@
     "integral-4": 5601,
     "integral-3": 3499,
     "integral-2": 4196,
-    "integral-12": 4884,
+    "integral-12": 4886,
     "integral-10": 7233,
     "integral-1": 3706
   },
@@ -116,6 +108,14 @@
     "materials-2": 6,
     "materials-1": 6
   },
+  "applied-math": {
+    "vector-1": 6,
+    "statistics-2": 6392,
+    "statistics-1": 6286,
+    "index": 12,
+    "numerical-2": 6,
+    "numerical-1": 6
+  },
   "algebra": {
     "index": 110,
     "matrix-1": 6,
@@ -125,7 +125,7 @@
     "algebra-1": 5125,
     "algebra-0": 9451
   },
-  "total": 221216,
-  "lastUpdated": "2025-11-26T07:25:06.183Z",
-  "fileCount": 94
+  "total": 221233,
+  "lastUpdated": "2025-11-26T14:36:16.753Z",
+  "fileCount": 96
 }

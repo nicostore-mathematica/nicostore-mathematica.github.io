@@ -4,7 +4,7 @@ export default defineCollection({
 	dir: "physics",
 	sidebar: [
 		{
-			text: "普通物理",
+			text: "基础物理",
 			collapsed: false,
 			items: [
 				"physics-0",
@@ -12,9 +12,15 @@ export default defineCollection({
 				"physics-2",
 				"physics-3",
 				"physics-4",
+				"physics-5",
+				"physics-6",
+				"physics-7",
+				"physics-8",
+				"physics-9",
+				"physics-10",
 			],
 		},
 	],
 	type: "doc",
-	title: "普通物理"
+	title: "基础物理"
 });

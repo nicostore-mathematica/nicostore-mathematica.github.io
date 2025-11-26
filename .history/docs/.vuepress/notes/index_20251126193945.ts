@@ -1,6 +1,7 @@
 import { defineCollections } from "vuepress-theme-plume";
 import circuit from "./circuit.ts";
 import integral from "./integral.ts";
+import statistics from "./statistics.ts";
 import physics from "./physics.ts";
 import appliedMath from "./applied-math.ts";
 import algebra from "./algebra.ts";

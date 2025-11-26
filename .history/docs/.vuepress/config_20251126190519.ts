@@ -12,7 +12,6 @@
 import { viteBundler } from '@vuepress/bundler-vite'
 import { defineUserConfig } from 'vuepress'
 import { plumeTheme } from 'vuepress-theme-plume'
-import { commentPlugin } from '@vuepress/plugin-comment'
 import { notes } from './notes/index'
 
 export default defineUserConfig({
@@ -32,7 +31,7 @@ export default defineUserConfig({
 
   theme: plumeTheme({
     /* 添加您的部署域名, 有助于 SEO, 生成 sitemap */
-    // hostname: 'https://your_site_url',
+     hostname: 'https://your_site_url',
 
     /* 文档仓库配置，用于 editLink */
     // docsRepo: '',
