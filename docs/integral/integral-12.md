@@ -591,7 +591,7 @@ $$
 \sum_{n=1}^{\infty} u_n(x) = S(x)\quad x \in D
 $$
 
-### · *Abel* 定理
+### · Abel 定理
 
 > /Theorem/
 >
@@ -779,7 +779,6 @@ $$
 >(4).
 >$$
 >|a_n| = \int_{n\pi}^{(n+1)\pi} \left| \frac{\sin x}{x} \right| \, dx \geq \int_{n\pi + \frac{\pi}{6}}^{(n+1)\pi - \frac{\pi}{6}} \left| \frac{\sin x}{x} \right| \, dx \geq \frac{1}{2} \int_{n\pi + \frac{\pi}{6}}^{(n+1)\pi - \frac{\pi}{6}} \frac{1}{x} \, dx \\
-
 >$$
 >
 >$$
@@ -788,3 +787,5 @@ $$
 >$$
 >
 >$\sum \frac{1}{(n+1)\pi} \cdot \frac{\pi}{3}$ 发散，易知 $\sum |a_n|$ 发散
+
+结束.
