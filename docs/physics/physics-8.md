@@ -1,5 +1,5 @@
 ---
-title: Chapter 8
+title: Chapter 8 静电场
 createTime: 2025/10/13 16:19:38
 permalink: /physics/physics-8/
 ---
