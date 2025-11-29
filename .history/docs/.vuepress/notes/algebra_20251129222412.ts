@@ -31,7 +31,6 @@ export default defineCollection({
 				},
 				{
 					text: "矩阵分析",
-					link: "/algebra/matrix/",
 					collapsed: false,
 					items: [
 						"matrix-1",

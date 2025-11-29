@@ -5,7 +5,6 @@ export default defineCollection({
 	sidebar: [
 		{
 			text: "电路",
-			collapsed: false,
 			items: [
 				{
 					text: "电路理论",
@@ -18,7 +17,7 @@ export default defineCollection({
 					],
 				},
 				{
-					text: "模拟电路",
+					text: "模拟电子线路",
 					collapsed: false,
 					items: [
 						"electronic-1",

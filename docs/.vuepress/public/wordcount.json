@@ -3,7 +3,7 @@
   "README": 253,
   "random": 71,
   "notes": 86,
-  "links": 367,
+  "links": 396,
   "about": 205,
   "RoboMaster": {
     "RoboMaster-2": 1902,
@@ -11,12 +11,12 @@
     "index": 791
   },
   "physics": {
-    "index": 116,
+    "index": 127,
     "physics-9": 2840,
     "physics-8": 2796,
     "physics-7": 5256,
     "physics-6": 8141,
-    "physics-5": 14,
+    "physics-5": 6573,
     "physics-4": 2593,
     "physics-3": 5261,
     "physics-2": 5293,
@@ -25,7 +25,7 @@
     "physics-0": 4112
   },
   "optics": {
-    "index": 10,
+    "index": 80,
     "optics-2": 6,
     "optics-1": 6
   },
@@ -61,8 +61,11 @@
   },
   "complex": {
     "index": 92,
-    "complex-2": 12,
-    "complex-1": 5799
+    "complex-5": 6,
+    "complex-4": 6,
+    "complex-3": 8,
+    "complex-2": 2782,
+    "complex-1": 6251
   },
   "circuit": {
     "index": 208,
@@ -125,7 +128,7 @@
     "algebra-1": 5125,
     "algebra-0": 9451
   },
-  "total": 234622,
-  "lastUpdated": "2025-11-27T12:23:00.676Z",
-  "fileCount": 96
+  "total": 244533,
+  "lastUpdated": "2025-11-29T14:10:33.016Z",
+  "fileCount": 99
 }

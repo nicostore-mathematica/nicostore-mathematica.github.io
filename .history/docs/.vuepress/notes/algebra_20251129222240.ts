@@ -6,12 +6,10 @@ export default defineCollection({
 		{
 			text: "代数",
 			collapsed: false,
-			link: "/algebra/",
 			items: [
 				{
 					text: "代数引论",
 					collapsed: false,
-					link: "/algebra/introduction/",
 					items: [
 						"introduction-1",
 						"introduction-2",
@@ -19,7 +17,7 @@ export default defineCollection({
 				},
 				{
 					text: "线性代数",
-					link: "/algebra/algebra/",
+					link: "/algebra/algebra",
 					collapsed: false,
 					items: [
 						"algebra-0",
@@ -31,7 +29,6 @@ export default defineCollection({
 				},
 				{
 					text: "矩阵分析",
-					link: "/algebra/matrix/",
 					collapsed: false,
 					items: [
 						"matrix-1",

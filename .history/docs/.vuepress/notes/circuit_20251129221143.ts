@@ -18,7 +18,7 @@ export default defineCollection({
 					],
 				},
 				{
-					text: "模拟电路",
+					text: "模拟电子线路",
 					collapsed: false,
 					items: [
 						"electronic-1",
