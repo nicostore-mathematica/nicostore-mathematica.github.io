@@ -11,7 +11,7 @@ export default defineCollection({
 				{
 					text: "理论力学",
 					collapsed: false,
-					link: "/applied-mechanics/theoretical/",
+					link: "/applied-mechanics/Theoretical/",
 					items: [
 						"Theoretical-1",
 						"Theoretical-2",
@@ -19,7 +19,7 @@ export default defineCollection({
 				},
 				{
 					text: "材料力学",
-					link: "/applied-mechanics/materials/",
+					link: "/applied-mechanics/Materials/",
 					collapsed: false,
 					items: [
 						"Materials-1",

@@ -6,12 +6,10 @@ export default defineCollection({
 		{
 			text: "电路",
 			collapsed: false,
-			link: "/circuit/",
 			items: [
 				{
 					text: "电路理论",
 					collapsed: true,
-					link: "/circuit/theroy/",
 					items: [
 						"circuit-1",
 						"circuit-2",
@@ -22,7 +20,6 @@ export default defineCollection({
 				{
 					text: "模拟电路",
 					collapsed: false,
-					link: "/circuit/electronic/",
 					items: [
 						"electronic-1",
 						"electronic-2",

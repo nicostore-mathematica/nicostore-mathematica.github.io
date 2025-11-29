@@ -1,18 +1,18 @@
 import { defineCollection } from "vuepress-theme-plume";
 
 export default defineCollection({
-	dir: "cybernetics",
+	dir: "electrodynamics",
 	sidebar: [
 		{
-			text: "控制理论",
+			text: "电动力学",
 			collapsed: false,
-			link: "/cybernetics/",
+			linkk: "/electrodynamics/",
 			items: [
-				"cybernetics-1",
-				"cybernetics-2",
+				"electrodynamics-1",
+				"electrodynamics-2",
 			],
 		},
 	],
 	type: "doc",
-	title: "控制理论"
+	title: "电动力学"
 });
