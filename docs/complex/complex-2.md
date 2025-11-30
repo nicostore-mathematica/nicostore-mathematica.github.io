@@ -352,3 +352,442 @@ $$
 > $$
 
 ## Part 3 柯西积分公式
+
+### · 单连通区域
+
+设  $f(z)$  在区域  $\sigma$  内解析，在闭区域  $\bar{\sigma} = \sigma + l$  上连续， $a$  为  $\sigma$  内任意一点，则
+
+$$
+f(a) = \frac{1}{2\pi i} \oint_l \frac{f(z)}{z-a} dz.
+$$
+该公式称为 Cauchy 积分公式（柯西积分公式）。该公式说明，解析函数内部一点的值与其边界上每一点的值存在联系：可用边界上每一点的值计算边界内部任意一点的函数值；边界上每一点函数值共同决定其内部任意一点的函数值。
+
+> /proof/
+>
+> 取包围  $a$  的足够小的圆形区域， $a$  为圆心， $\varepsilon$  为半径，使其被含于  $l$  围道之内，构成  $\frac{f(z)}{z-a}$  的复连通解析区域，如下图所示。
+>
+> ![](https://pic1.imgdb.cn/item/692bb215aae9ff4455b3c8e5.png)
+>
+> 运用复连通区域的柯西定理，有
+>
+> $$
+> \oint_l \frac{f(z)}{z-a} dz = \oint_{l_\varepsilon} \frac{f(z)}{z-a} dz = \oint_{l_\varepsilon} \frac{f(z) - f(a)}{z-a} dz + \oint_{l_\varepsilon} \frac{f(a)}{z-a} dz, 
+> $$
+> 其中，
+>
+> $$
+> \oint_{l_\varepsilon} \frac{f(a)}{z-a} dz = f(a) \oint_{l_\varepsilon} \frac{1}{z-a} dz = 2\pi i f(a),
+> $$
+> 因而只需证明
+>
+> $$
+> \oint_{l_\varepsilon} \frac{f(z) - f(a)}{z-a} dz = 0.
+> $$
+> 由  $f(z)$  的连续性，可知  $ \forall \xi > 0 $ ， $\exists \delta > 0$ ，当  $ |z-a| < \delta $  时，总有  $ |f(z) - f(a)| < \xi $ 。因而当  $ \varepsilon < \delta $  时， $l_\varepsilon$  上的点满足  $ |z-a| = \varepsilon < \delta $ ，则
+>
+> $$
+> \left| \oint_{l_\varepsilon} \frac{f(z) - f(a)}{z-a} dz \right| \leqslant \oint_{l_\varepsilon} \left| \frac{f(z) - f(a)}{z-a} \right| |dz| < \oint_{l_\varepsilon} \frac{\xi}{\varepsilon} ds = \frac{\xi}{\varepsilon} \oint_{l_\varepsilon} ds = \frac{\xi}{\varepsilon} \cdot 2\pi \varepsilon = 2\pi \xi.
+> $$
+> 由于总可以在  $l_\varepsilon$  内部找到更小的圆轨道  $ l_{\varepsilon'} $ ，又由复连通区域的柯西定理，有
+>
+> $$
+> \oint_{l_\varepsilon} \frac{f(z) - f(a)}{z-a} dz = \oint_{l_{\varepsilon'}} \frac{f(z) - f(a)}{z-a} dz,
+> $$
+> 可知
+> $$
+> \oint_{l_\varepsilon} \frac{f(z) - f(a)}{z-a} dz
+> $$
+> 的值与  $\varepsilon$  无关（前提是所考虑的圆轨道都在  $\sigma$  内部），只要  $f(z)$  和  $a$  固定下来，它就是常数。
+>
+> 只要选取的半径  $\varepsilon$  足够小，
+> $$
+> \left| \oint_{l_\varepsilon} \frac{f(z) - f(a)}{z-a} dz \right|
+> $$
+> 可以小于任意正数（注意  $ 2\pi \xi $  的任意性）。这说明
+> $$
+> \oint_{l_\varepsilon} \frac{f(z) - f(a)}{z-a} dz
+> $$
+> 只可能为 0，因而式
+> $$
+> \oint_{l_\varepsilon} \frac{f(z) - f(a)}{z-a} dz = 0.
+> $$
+> 必须成立。
+>
+> 所以
+>
+> $$
+> \oint_l \frac{f(z)}{z-a} dz = \oint_{l_\varepsilon} \frac{f(a)}{z-a} dz = 2\pi i f(a),
+> $$
+> 整理即得柯西积分公式。
+
+替换字母，我们可以得到
+$$
+f(z) = \frac{1}{2\pi i} \oint_l \frac{f(\zeta)}{\zeta - z} d\zeta.
+$$
+该公式成立的前提是， $ f(\zeta) $  在围道  $l$  内（ $\sigma$  区域内）解析， $ f(\zeta) $  在闭区域  $\bar{\sigma} = \sigma + l$  上连续。上述操作只是替换了字母，并没有本质上的改变和进一步的结论：这个公式也是柯西积分公式。
+
+当  $z$  不在  $l$  内部时
+$$
+f(z) = \frac{1}{2\pi i} \oint_l \frac{f(\zeta)}{\zeta - z} d\zeta
+$$
+的被积函数
+$$
+g(\zeta) = \frac{f(\zeta)}{\zeta - z}
+$$
+ 在  $l$  内没有奇点，处处解析，则有
+$$
+\oint_l \frac{f(\zeta)}{\zeta - z} d\zeta = 0,
+$$
+因而  $f(z) = 0$  ( $z \notin \sigma$ )。
+
+以上的讨论暂未涉及  $z \in l$  的情况，因为涉及到反常积分，比较复杂，先不予考虑。
+
+### · 复连通区域
+
+若  $f(z)$  在复连通区域  $\sigma$  上处处解析，在  $\sigma$  及其围道
+$$
+L = l + \sum_{k=1}^{n} l_k
+$$
+连续，则
+
+$$
+f(z) = \frac{1}{2\pi i} \oint_l \frac{f(\zeta)}{\zeta - z} d\zeta - \frac{1}{2\pi i} \sum_{k=1}^{n} \oint_{l_k} \frac{f(\zeta)}{\zeta - z} d\zeta,
+$$
+其中  $ z \in \sigma $ 。注意内边界  $l_k$  均沿顺时针积分，所以要加负号。
+
+以上公式说明，复连通区域内部任何一点的函数值由内边界和外边界上每一点的函数值共同决定。
+
+### · 推论
+
+如果被积函数不能转化为分子是区域 $\sigma$ 上的解析函数且分母是一次多项式的形式，那么此时该积分公式难以使用. 因而，柯西积分公式的一些推论开始派上用场
+
+**解析函数的导数公式**：
+
+> 若 $f(z)$ 在 $\sigma$ 上解析，在 $\bar{\sigma} = \sigma + l$ 上连续，则对 $\sigma$ 内任意一点 $z$，有
+>
+>
+> $$
+> f^{(n)}(z) = \frac{n!}{2\pi i} \oint_l \frac{f(\zeta)}{(\zeta - z)^{n+1}} d\zeta.
+> $$
+>
+> 其中，$n$ 为非负整数。当 $n = 0$ 时即为柯西积分公式。
+>
+> 容易看出，该公式是柯西积分公式形式地在积分号下对 $z$ 求 $n$ 次导数的结果。因而要证明导数公式，只需要证明在积分号下对 $z$ 求导是合法的。
+
+/example/  计算
+$$
+\oint_l \frac{e^z}{z^n} dz,\quad l: |z| = 1
+$$
+其中 $n$ 为非负整数。
+
+> /proof/
+>
+> 设 $f(z) = e^z$。当 $n = 0$ 时，
+> $$
+> \oint_l \frac{e^z}{z^0} dz = \oint_l e^z dz = 0
+> $$
+> 当 $n \geq 1$ 时，
+> $$
+> \oint_l \frac{e^z}{z^n} dz = \oint_l \frac{f(z)}{(z - 0)^n} dz = \frac{2\pi i}{(n-1)!} f^{(n-1)}(0) = \frac{2\pi i}{(n-1)!}
+> $$
+
+**Cauchy 不等式**：设 $l: |\zeta - z| = R$，$f(z)$ 在 $|\zeta - z| = R$ 内解析，在 $|\zeta - z| \leq R$ 上连续，并且对于 $\zeta \in l$，$ f(\zeta) $ 在 $l$ 上有上界：$|f(\zeta)| \leq M$。则有
+$$
+|f^{(n)}(z)| \leq \frac{n!M}{R^n}.
+$$
+
+>  /proof/
+>
+>  由导数公式，有
+>  $$
+>  |f^{(n)}(z)| = \left| \frac{n!}{2\pi i} \oint_l \frac{f(\zeta)}{(\zeta - z)^{n+1}} d\zeta \right| \leq \frac{n!}{2\pi} \oint_l \frac{|f(\zeta)|}{|(\zeta - z)^{n+1}|} |d\zeta| \leq \frac{n!M}{2\pi R^{n+1}} 2\pi R = \frac{n!M}{R^n}.
+>  $$
+>
+
+**Liouville 定理**：设 $f(z)$ 在复平面上解析且有界：$|f(z)| \leq M$，$M$ 为常数。则 $f(z)$ 必为常数
+
+> /proof/
+>
+> 考察复平面任意一点 $z$，作以它为圆心，半径为 $R$ 的圆轨道。
+>
+> 由于在整个复平面上解析，因此处处连续，所以在上圆所作闭圆区域 $\bar{\sigma}: |\zeta - z| \leq R$ 上连续。另外，由条件可知有上界 $M$。因而满足柯西不等式的使用条件。
+>
+> 在柯西不等式中，取 $n = 1$。则
+>
+>
+> $$
+> |f'(z)| \leq \frac{M}{R} \xrightarrow{R \to \infty} 0.
+> $$
+>
+> 故 $|f'(z)| = 0$，即 $f'(z) = 0$。
+>
+> 由 $z$ 的任意性，可知 $\forall z \in \mathbb{C}$，$f'(z) = 0$。所以 $f(z)$ 必为常数。
+
+**模数原理**：若 $f(z)$ 在区域 $\sigma$ 内解析，在 $\bar{\sigma} = \sigma + l$ 上连续，若 $f(z)$ 不是闭区域 $\bar{\sigma}$ 上的常函数，则 $|f(z)|$ 只能在边界 $l$ 上取最大值
+
+> /proof/
+>
+> 对 $|f(z)|^n (n \in \mathbb{Z})$ 使用柯西积分公式（取 $ z \in \sigma $）：
+> $$
+> |f(z)|^n = \frac{1}{2\pi i} \oint_l \frac{|f(\zeta)|^n}{\zeta - z} dz.
+> $$
+>
+> 设 $M = \max_{\zeta \in l} |f(\zeta)|$，$d = \min_{\zeta \in l} |\zeta - z|$。则
+>
+>
+> $$
+> \frac{1}{|f(z)|^n} \leq \frac{1}{2\pi} \oint_l \frac{M^n}{|\zeta - z|} |d\zeta| = \frac{M^n s}{2\pi d}.
+> $$
+>
+> 其中 $s$ 为围道 $l$ 的长度。故
+>
+>
+> $$
+> |f(z)| \leq M \left( \frac{s}{2\pi d} \right)^{\frac{1}{n}}.
+> $$
+>
+> 接下来利用极限
+>
+>
+> $$
+> \lim_{n \to \infty} \left( \frac{s}{2\pi d} \right)^{\frac{1}{n}} = 1,
+> $$
+>
+> 并注意到对任意正整数 $n$ 均成立。令其右边的 $n \to \infty$，得
+>
+>
+> $$
+> |f(z)| \leq M, \quad z \in \sigma.
+> $$
+>
+> 至此，只证明了可在边界上取最大值 $M$，且边界内部所有点的函数值不超过 $M$。但没证明不能在区域内部取最大值 $M$。进一步可以证明，只有当 $f(z)$ 在闭区域 $\bar{\sigma}$ 上为常函数时，上式等号才能成立。
+>
+> 换句话说，当 $f(z)$ 不是常函数时，$|f(z)|$ 只可能在边界上取得最大值。
+
+**中值定理**：若 $f(z)$ 在 $|z - a| < R$ 内解析，在 $|z - a| \leq R$ 上连续，则 $f(z)$ 在区域圆心 $a$ 处的函数值等于其圆周上函数值的平均值，即
+
+$$
+f(a) = \frac{1}{2\pi} \int_0^{2\pi} f(a + Re^{i\varphi}) d\varphi.
+$$
+
+> /proof/
+>
+>设 $l: |z - a| = R$。利用柯西积分公式，有
+> 
+> $$
+> f(a) = \frac{1}{2\pi i} \oint_l \frac{f(z)}{z - a} dz.
+>$$
+> 
+>设 $z - a = Re^{i\varphi}$，$\varphi \in [0, 2\pi)$。
+>
+> 则 $dz = Re^{i\varphi} i d\varphi$，$f(z) = f(a + Re^{i\varphi})$。将这两式代入上式，即得中值定理。
+
+**Morera 定理**：设 $f(z)$ 在 $\sigma$ 上连续，且对 $\sigma$ 内任一围道 $l$ 的积分为 0，即
+
+$$
+\oint_l f(z) dz = 0,
+$$
+
+则 $f(z)$ 在 $\sigma$ 内解析。
+
+该定理在后面复级数部分有重要应用。
+
+### · 例题
+
+/example/ 计算
+$$
+\oint_l \frac{e^z}{z(z^2 + 1)} dz
+$$
+其中 $l: |z - i| = \frac{1}{2}$。
+
+> /proof/
+>
+> 不妨设
+> $$
+> f(z) = \frac{e^z}{z(z^2 + 1)}
+> $$
+> 轨道如下图所示。
+>
+> ![](https://pic1.imgdb.cn/item/692bb607aae9ff4455b3e843.png)
+>
+> 由于 $z^2 + 1 = (z + i)(z - i)$，故 $f(z)$ 存在奇点 0, $i$, $-i$。由上图可知，只有奇点 $i$ 包含在轨道 $l$ 内。基于这点发现，可将 $f(z)$ 重新写为
+>
+>
+> $$
+> f(z) = \frac{e^z}{z(z + i)(z - i)} = \frac{e^z}{z(z + i)} \cdot \frac{1}{z - i} = g(z)
+> $$
+>
+> 其中
+> $$
+> g(z) = \frac{e^z}{z(z + i)}
+> $$
+> 在轨道 $l$ 所包含的区域 $\sigma$ 内处处解析。由柯西积分公式，有
+>
+> $$
+> g(a) = \frac{1}{2\pi i} \oint_l \frac{g(z)}{z - a} dz, \quad a \in \sigma.
+> $$
+>
+> 由于 $i \in \sigma$，可取 $a = i$，得
+>
+>
+> $$
+> \oint_l \frac{e^z}{z(z^2 + 1)} dz = \oint_l \frac{g(z)}{z - i} dz = 2\pi i g(i) = -i\pi e^i.
+> $$
+
+/example/
+
+(1) 求积分
+$$
+\oint_l \frac{e^z}{z} dz,\quad l: |z| = 1
+$$
+从而证明
+
+$$
+\int_0^\pi e^{\cos \theta} \cos(\sin \theta) d\theta = \pi.
+$$
+
+(2) $n$ 为非负整数，证明
+
+
+$$
+\int_0^{2\pi} e^{\rho \cos \varphi} \cos(\rho \sin \varphi - n\varphi) d\varphi = \frac{2\pi \rho^n}{n!},
+$$
+
+> /example/
+>
+> 由前面例子可知，
+> $$
+> \oint_l \frac{e^z}{z} dz = 2\pi i
+> $$
+> (1) 所要证明的式子是 (2) 的特殊情况（取 $n = 0, \rho = 1$），因此我们只需证 (2)。
+>
+> 由 (1) 题干的提示（求 $\oint_l \frac{e^z}{z} dz$）以及导数公式，我们考虑 
+> $$
+> \oint_{l_\rho} \frac{e^z}{(z - 0)^{n+1}} dz,\quad l_\rho: |z| = \rho
+> $$
+> 由于 $f(z) = e^z$ 在 $l_\rho$ 所包围的区域内处处解析，故
+>
+> $$
+> 1 = f^{(n)}(0) = \frac{n!}{2\pi i} \oint_{l_\rho} \frac{e^z}{(z - 0)^{n+1}} dz,
+> $$
+>
+> 整理得
+>
+>
+> $$
+> \oint_{l_\rho} \frac{e^z}{z^{n+1}} dz = \frac{2\pi i}{n!}.
+> $$
+>
+> 令 $z = \rho e^{i\varphi}$，$\varphi \in [0, 2\pi)$。故
+> $$
+> dz = \rho e^{i\varphi} i d\varphi,\quad z = \rho(\cos \varphi + i \sin \varphi),\quad z^{n+1} = \rho^{n+1} e^{i(n+1)\varphi}
+> $$
+> 代入上式，得
+>
+> $$
+> \frac{2\pi i}{n!} = \int_0^{2\pi} \frac{e^{\rho(\cos \varphi + i \sin \varphi)}}{\rho^{n+1} e^{i(n+1)\varphi}} \rho e^{i\varphi} i d\varphi,
+> $$
+>
+> 整理得
+>
+>
+> $$
+> \frac{2\pi \rho^n}{n!} = \int_0^{2\pi} \frac{e^{\rho(\cos \varphi + i \sin \varphi)}}{e^{in\varphi}} d\varphi = \int_0^{2\pi} e^{\rho \cos \varphi} e^{i(\rho \sin \varphi - n\varphi)} d\varphi,
+> $$
+>
+> 运用欧拉公式，
+>
+>
+> $$
+> \frac{2\pi \rho^n}{n!} = \int_0^{2\pi} e^{\rho \cos \varphi} [\cos(\rho \sin \varphi - n\varphi) + i \sin(\rho \sin \varphi - n\varphi)] d\varphi,
+> $$
+>
+> 由于 $e^{\rho \cos \varphi} \sin(\rho \sin \varphi - n\varphi)$ 是关于 $\varphi$ 的奇函数，且以 $2\pi$ 为周期，故
+>
+>
+> $$
+> \int_0^{2\pi} e^{\rho \cos \varphi} i \sin(\rho \sin \varphi - n\varphi) d\varphi = \int_{-\pi}^\pi e^{\rho \cos \varphi} i \sin(\rho \sin \varphi - n\varphi) d\varphi = 0,
+> $$
+>
+> 代入上式，得
+>
+>
+> $$
+> \frac{2\pi \rho^n}{n!} = \int_0^{2\pi} e^{\rho \cos \varphi} \cos(\rho \sin \varphi - n\varphi) d\varphi.
+> $$
+
+/example/证明
+
+若 $f(z) = u(x, y) + iv(x, y)$ 是上半平面的解析函数，且当 $z \to \infty$ 时，$f(z)$ 一致趋于 0，则在上半平面中有
+
+
+$$
+u(x, y) = \frac{y}{\pi} \int_{-\infty}^{+\infty} \frac{u(\xi, 0)}{(\xi - x)^2 + y^2} d\xi, \\
+v(x, y) = \frac{y}{\pi} \int_{-\infty}^{+\infty} \frac{v(\xi, 0)}{(\xi - x)^2 + y^2} d\xi.
+$$
+
+> /proof/
+>
+> 这实际上是一个二维平面静电场边值问题：给定静电场边界的电场强度和电势，求静电场内部每一点的电场强度和电势分布。本例题中，静电场分布在上半平面，以 $u, v$ 为电场强度和电势，边界是实轴和上半平面无穷远处。
+>
+> ![](https://pic1.imgdb.cn/item/692bb8b227638c120a3d0bd2.png)
+>
+> 如上图所示，取足够大的半圆周轨道，半径 $R \to \infty$。设半圆轨道（包括实轴）为 $l$，其包围的区域为 $\sigma$。半圆周轨道（不含实轴）为 $l_c$。
+>
+> 取 $Z(x, y) \in$ 上半平面，$z = x + iy$。则 $\bar{Z}(x, -y) \in$ 下半平面，$\bar{z} = x - iy$。运用柯西积分公式，对 $ z \in \sigma $，有
+>
+>
+> $$
+> f(z) = u(x, y) + iv(x, y) = \frac{1}{2\pi i} \oint_l \frac{f(\zeta)}{\zeta - z} d\zeta,
+> $$
+>
+> 由于 $\bar{z} \notin \sigma$，在 $l$ 之外，故有 $\frac{f(\zeta)}{\zeta - \bar{z}}$ 在 $\sigma$ 内部处处解析，因此
+>
+>
+> $$
+> 0 = \frac{1}{2\pi i} \oint_l \frac{f(\zeta)}{\zeta - \bar{z}} d\zeta.
+> $$
+>
+> 以上两式相减，并把积分分为实轴（$-\infty \to +\infty$）和半圆周两部分，得到
+>
+>
+> $$
+> u(x, y) + iv(x, y) = \frac{1}{2\pi i} \int_{-R}^{+R} \left( \frac{1}{\zeta - z} - \frac{1}{\zeta - \bar{z}} \right) f(\zeta) d\zeta + \frac{1}{2\pi i} \int_{l_c} \left( \frac{1}{\zeta - z} - \frac{1}{\zeta - \bar{z}} \right) f(\zeta) d\zeta,
+> $$
+>
+> 当 $R \to \infty$ 时，由于第二项积分在半径为 $R$ 的 $l_c$ 轨道上进行，故由题干，可知被积函数 $f(\zeta) \to 0$，所以第二项积分区域趋于 0。因此，令上式 $R \to \infty$，可得
+>
+>
+> $$
+> u(x, y) + iv(x, y) = \frac{1}{2\pi i} \int_{-\infty}^{+\infty} \left( \frac{1}{\zeta - z} - \frac{1}{\zeta - \bar{z}} \right) f(\zeta) d\zeta,
+> $$
+>
+> 取共轭，得
+>
+>
+> $$
+> u(x, y) - iv(x, y) = -\frac{1}{2\pi i} \int_{-\infty}^{+\infty} \left( \frac{1}{\zeta - \bar{z}} - \frac{1}{\zeta - z} \right) \overline{f(\zeta)} d\zeta,
+> $$
+>
+> 注意 $\zeta$ 在实轴上，故 $\zeta = \xi + i \cdot 0 = \xi$，$\zeta - \bar{z} = \zeta - \bar{z}$。所以
+>
+>
+> $$
+> \frac{1}{\zeta - z} - \frac{1}{\zeta - \bar{z}} = \frac{z - \bar{z}}{(\zeta - z)(\zeta - \bar{z})} = \frac{2yi}{(x - \xi)^2 + y^2},
+> $$
+>
+> 将结果代并将 $f(\zeta) = f(\xi) = u(\xi, 0) + iv(\xi, 0)$ 一并代入，得到
+>
+>
+> $$
+> u(x, y) + iv(x, y) = \frac{y}{\pi} \int_{-\infty}^{+\infty} \frac{u(\xi, 0) + iv(\xi, 0)}{(x - \xi)^2 + y^2} f(\xi) d\xi,
+> $$
+>
+>
+> $$
+> u(x, y) - iv(x, y) = \frac{y}{\pi} \int_{-\infty}^{+\infty} \frac{u(\xi, 0) - iv(\xi, 0)}{(x - \xi)^2 + y^2} f(\xi) d\xi.
+> $$
+>
+> 将以上两式相加减即得所需证明的结果
+
+结束.
