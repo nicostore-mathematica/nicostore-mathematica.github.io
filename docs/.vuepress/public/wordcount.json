@@ -64,11 +64,12 @@
     "complex-5": 6,
     "complex-4": 6,
     "complex-3": 8,
-    "complex-2": 2782,
+    "complex-2": 5875,
     "complex-1": 6251
   },
   "circuit": {
     "index": 208,
+    "electronic": 9,
     "electronic-8": 13,
     "electronic-7": 11,
     "electronic-6": 1970,
@@ -77,6 +78,7 @@
     "electronic-3": 451,
     "electronic-2": 6988,
     "electronic-1": 5625,
+    "theory": 9,
     "circuit-4": 10,
     "circuit-3": 2461,
     "circuit-2": 4103,
@@ -105,30 +107,40 @@
     "mark-1": 900
   },
   "applied-mechanics": {
+    "theoretical": 9,
     "theoretical-2": 6,
     "theoretical-1": 6,
     "index": 12,
+    "materials": 9,
     "materials-2": 6,
     "materials-1": 6
   },
   "applied-math": {
+    "vector": 9,
     "vector-1": 6,
+    "statistics": 9,
     "statistics-2": 6392,
     "statistics-1": 6286,
     "index": 12,
+    "numerical": 9,
     "numerical-2": 6,
     "numerical-1": 6
   },
   "algebra": {
     "index": 110,
+    "matrix": 9,
     "matrix-1": 6,
+    "introduction": 87,
+    "introduction-2": 6,
+    "introduction-1": 1036,
+    "linear": 9,
     "algebra-4": 6584,
     "algebra-3": 7143,
     "algebra-2": 5544,
     "algebra-1": 5125,
     "algebra-0": 9451
   },
-  "total": 244533,
-  "lastUpdated": "2025-11-29T14:10:33.016Z",
-  "fileCount": 99
+  "total": 248836,
+  "lastUpdated": "2025-11-30T03:30:59.281Z",
+  "fileCount": 111
 }
