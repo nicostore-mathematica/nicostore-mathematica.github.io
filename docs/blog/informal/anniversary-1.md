@@ -161,3 +161,236 @@ permalink: /article/anniversary-1/
 > ——震言震语
 
 那天去衡山路的时候颇为感慨，曾经歌曲中的位置如今映入眼帘，也是真的感觉“自己的青春结束了”，那里是一个埋藏过去的好地方，只可惜时间有限，没能去上徐家汇公园。
+
+八月，夜雨。
+
+雨季的芭蕉成了伞。
+
+<CardMasonry>
+    <ImageCard
+        image="https://pic1.imgdb.cn/item/692d8e54c2ca2fe15cf0319a.jpg"
+        title="夜雨"
+        description=""
+        author="猫条"
+        date="2025/12/01"
+    />
+
+</CardMasonry>
+
+~~现在我也是老东西了~~
+
+遇见的一些云：
+
+<CardMasonry>
+    <ImageCard
+        image="https://pic1.imgdb.cn/item/692d8f09c2ca2fe15cf039c1.jpg"
+        title=""
+        description=""
+        author="猫条"
+        date="2025/12/01"
+    />
+    <ImageCard
+        image="https://pic1.imgdb.cn/item/692d8f09c2ca2fe15cf039bc.jpg"
+        title=""
+        description=""
+        author="猫条"
+        date="2025/12/01"
+    />
+    <ImageCard
+        image="https://pic1.imgdb.cn/item/692d8f09c2ca2fe15cf039c0.jpg"
+        title=""
+        description=""
+        author="猫条"
+        date="2025/12/01"
+    />
+    <ImageCard
+        image="https://pic1.imgdb.cn/item/692d8f09c2ca2fe15cf039c2.jpg"
+        title=""
+        description=""
+        author="猫条"
+        date="2025/12/01"
+    />
+    <ImageCard
+        image="https://pic1.imgdb.cn/item/692d8f09c2ca2fe15cf039bd.jpg"
+        title=""
+        description=""
+        author="猫条"
+        date="2025/12/01"
+    />
+    <ImageCard
+    image="https://pic1.imgdb.cn/item/692d8f09c2ca2fe15cf039be.jpg"
+    title=""
+    description=""
+    author="猫条"
+    date="2025/12/01"
+/>
+<ImageCard
+    image="https://pic1.imgdb.cn/item/692d8f4811af9ce9c3e8df53.jpg"
+    title=""
+    description=""
+    author="猫条"
+    date="2025/12/01"
+/>
+<ImageCard
+    image="https://pic1.imgdb.cn/item/692d8f4811af9ce9c3e8df56.jpg"
+    title=""
+    description=""
+    author="猫条"
+    date="2025/12/01"
+/>
+<ImageCard
+    image="https://pic1.imgdb.cn/item/692d8f4811af9ce9c3e8df57.jpg"
+    title=""
+    description=""
+    author="猫条"
+    date="2025/12/01"
+/>
+<ImageCard
+    image="https://pic1.imgdb.cn/item/692d8f4811af9ce9c3e8df58.jpg"
+    title=""
+    description=""
+    author="猫条"
+    date="2025/12/01"
+/>
+<ImageCard
+    image="https://pic1.imgdb.cn/item/692d8f4811af9ce9c3e8df54.jpg"
+    title=""
+    description=""
+    author="猫条"
+    date="2025/12/01"
+/>
+<ImageCard
+    image="https://pic1.imgdb.cn/item/692d8f4811af9ce9c3e8df55.jpg"
+    title=""
+    description=""
+    author="猫条"
+    date="2025/12/01"
+/>
+
+</CardMasonry>
+
+九月七日夜，月色入户，欣然起行。念无与为乐者，于是拉着草履虫拍血月.jpg
+
+感谢草履虫愿意陪我熬这么晚。
+
+<CardMasonry>
+    <ImageCard
+        image="https://pic1.imgdb.cn/item/692d903f11af9ce9c3e8df85.jpg"
+        title=""
+        description=""
+        author="猫条"
+        date="2025/12/01"
+    />
+    <ImageCard
+        image="https://pic1.imgdb.cn/item/692d904a11af9ce9c3e8df87.jpg"
+        title=""
+        description=""
+        author="猫条"
+        date="2025/12/01"
+    />
+
+</CardMasonry>
+
+书院娘企划：
+
+<CardMasonry>
+    <ImageCard
+        image="https://pic1.imgdb.cn/item/692d9182c2ca2fe15cf0775b.jpg"
+        title="快来支持伯川"
+        description=""
+        author="猫条"
+        date="2025/12/01"
+    />
+
+</CardMasonry>
+
+生日，还有并不精彩的十一月：三场考试压得我喘不过气，不理想的GPA，电控的不顺利，还有各种繁杂的事情（心累.jpg）
+
+你说得对，但是《模电》是由半导体物理法则孕育而生的一门全新电路学科。学科发生在一个被称作“模拟电路”的抽象世界里，在这里，被工程师选中的人将被授予“运算放大器”，导引信号与能量。你将扮演一位名为“电路学徒”的求知者，在连续的时域中邂逅形态各异、特性独特的元器件们，和它们一起构建系统，分析频响特性——同时，逐步发掘“虚短虚断”的真相。
+
+如果西西弗斯推着巨石撞向山顶的风车，这是西班牙文学。
+
+<CardMasonry>
+    <ImageCard
+        image="https://pic1.imgdb.cn/item/692d91c011af9ce9c3e8e740.jpg"
+        title=""
+        description=""
+        author="猫条"
+        date="2025/12/01"
+    />
+    <ImageCard
+        image="https://pic1.imgdb.cn/item/692d91c011af9ce9c3e8e744.jpg"
+        title=""
+        description=""
+        author="猫条"
+        date="2025/12/01"
+    />
+    <ImageCard
+        image="https://pic1.imgdb.cn/item/692d91bf11af9ce9c3e8e738.jpg"
+        title=""
+        description=""
+        author="猫条"
+        date="2025/12/01"
+    />
+    <ImageCard
+        image="https://pic1.imgdb.cn/item/692d91c911af9ce9c3e8e793.jpg"
+        title=""
+        description=""
+        author="猫条"
+        date="2025/12/01"
+    />
+
+</CardMasonry>
+
+> "其实其实也没什么伟大理想
+>
+> 过的普普通通但也不差
+>
+> 撸猫喝奶茶
+>
+> 追星看动画
+>
+> 赚的足够浪费
+>
+> 这样算不算理想
+>
+> 看似平凡看似易如反掌
+>
+> 对平凡的我也不简单
+>
+> 希望有一天
+>
+> 一定有一天会实现"
+>
+> ——ChiliChill《社畜烧酒》
+
+最后也是在这个地方上点价值。
+
+我理想中的大学实际上是个“求知”的平台，但现实只能留下一丝苦笑。在凌工路二号，最像大学的是两个地方：书院和创院，书院给予我人文关怀，而我在创院才能感受到自己真正学了点东西。
+
+> 先生、人生相谈です。
+
+我对大学的期望是能够在课堂上**学到一些真正的实用的东西**——纵使脱离课本我也能较快的上手相关的工作譬如电路设计和选材建模。还有着“不切实际”的幻想希望能够有整块的时间借助学校的资源了解些什么。就现有的课程而言，倒不如完全删去那些技术性的东西在专业基础课上面上点强度，譬如电动力学和量子力学，或者给电子电路上点强度，删掉琐碎无用的实验（你知道吗，用实验室的元件甚至能测出来电阻变大电流变大）
+
+看着学弟学妹卷死总会一阵感慨，其实大学并不只桌上的卷子——
+
+“为什么不去码头整点薯条？”
+
+<CardMasonry>
+    <ImageCard
+        image="https://pic1.imgdb.cn/item/692d91c011af9ce9c3e8e744.jpg"
+        title="九食堂的袁记水饺"
+        description=""
+        author="猫条"
+        date="2025/12/01"
+    />
+
+</CardMasonry>
+
+九食堂的袁记水饺好吃。
+
+去遥远的陌生的城市看看那里的人怎样生活，趁着闲暇去读一点哲学、小说、历史和散文；疑惑是听一听老田故事汇拓宽一下自己的知识边界；无聊时尝试让自己过得不那么空虚......
+
+把希望寄托于人生的下一个阶段是愚蠢的。
+
+尝试享受生活本身吧。
