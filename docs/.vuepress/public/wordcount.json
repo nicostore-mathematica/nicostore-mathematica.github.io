@@ -1,6 +1,6 @@
 {
   "timeline": 184,
-  "README": 253,
+  "README": 246,
   "random": 71,
   "notes": 86,
   "links": 396,
@@ -46,7 +46,7 @@
   "electrodynamics": {
     "index": 12,
     "electrodynamics-2": 6,
-    "electrodynamics-1": 6
+    "electrodynamics-1": 10
   },
   "cybernetics": {
     "index": 501,
@@ -98,7 +98,7 @@
     "r1s3vxud": 603,
     "pyvvujxp": 17,
     "resources": 485,
-    "anniversary-1": 749,
+    "anniversary-1": 1541,
     "article-4": 3551,
     "article-3": 4312,
     "article-2": 3947,
@@ -119,10 +119,10 @@
   "applied-math": {
     "vector": 9,
     "vector-1": 6,
-    "statistics": 9,
-    "statistics-2": 6392,
-    "statistics-1": 6286,
     "index": 12,
+    "probstathsy": 9,
+    "probstathsy-2": 6392,
+    "probstathsy-1": 6286,
     "numerical": 9,
     "numerical-2": 6,
     "numerical-1": 6
@@ -141,7 +141,7 @@
     "algebra-1": 5125,
     "algebra-0": 9451
   },
-  "total": 249585,
-  "lastUpdated": "2025-12-01T00:00:56.371Z",
+  "total": 250374,
+  "lastUpdated": "2025-12-01T13:56:06.130Z",
   "fileCount": 112
 }
