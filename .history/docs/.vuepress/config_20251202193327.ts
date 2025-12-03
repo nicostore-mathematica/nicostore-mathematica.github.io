@@ -23,7 +23,7 @@ export default defineUserConfig({
 
   head: [
     // 配置站点图标
-    ['link', { rel: 'icon', type: 'image/png', href: '/images/soda.jpg' }],
+    ['link', { rel: 'icon', type: 'image/png', href: '/images/soda.' }],
   ],
 
   bundler: viteBundler(),

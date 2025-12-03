@@ -12,8 +12,8 @@ export default defineCollection({
 					collapsed: false,
 					link: "/algebra/introduction/",
 					items: [
-						"/algebra/introduction/introduction-1",
-						"/algebra/introduction/introduction-2",
+						"introduction-1",
+						"introduction-2",
 					],
 				},
 				{
@@ -21,12 +21,12 @@ export default defineCollection({
 					link: "/algebra/linear/",
 					collapsed: false,
 					items: [
-						"/algebra/advanced-algebra/algebra-0",
-						"/algebra/advanced-algebra/algebra-1",
-						"/algebra/advanced-algebra/algebra-2",
-						"/algebra/advanced-algebra/algebra-3",
-						"/algebra/advanced-algebra/algebra-4",
-						"/algebra/advanced-algebra/algebra-5",
+						"/advanced-algebra/algebra-0.md",
+						"/advanced-algebra/algebra-1",
+						"/advanced-algebra/algebra-2",
+						"/advanced-algebra/algebra-3",
+						"/advanced-algebra/algebra-4",
+						"/advanced-algebra/algebra-5",
 					],
 				},
 				{
@@ -34,7 +34,7 @@ export default defineCollection({
 					link: "/algebra/matrix/",
 					collapsed: false,
 					items: [
-						"/algebra/matrix/matrix-1",
+						"matrix-1",
 					],
 				},
 			]

@@ -4,7 +4,7 @@ export default defineCollection({
 	dir: "algebra",
 	sidebar: [
 		{
-			text: "代数基础",
+			text: "代数",
 			link: "/algebra/",
 			items: [
 				{
@@ -12,21 +12,21 @@ export default defineCollection({
 					collapsed: false,
 					link: "/algebra/introduction/",
 					items: [
-						"/algebra/introduction/introduction-1",
-						"/algebra/introduction/introduction-2",
+						"introduction-1",
+						"introduction-2",
 					],
 				},
 				{
-					text: "高等代数",
+					text: "线性代数",
 					link: "/algebra/linear/",
 					collapsed: false,
 					items: [
-						"/algebra/advanced-algebra/algebra-0",
-						"/algebra/advanced-algebra/algebra-1",
-						"/algebra/advanced-algebra/algebra-2",
-						"/algebra/advanced-algebra/algebra-3",
-						"/algebra/advanced-algebra/algebra-4",
-						"/algebra/advanced-algebra/algebra-5",
+						"algebra-0",
+						"algebra-1",
+						"algebra-2",
+						"algebra-3",
+						"algebra-4",
+						"algebra-5",
 					],
 				},
 				{
@@ -34,12 +34,12 @@ export default defineCollection({
 					link: "/algebra/matrix/",
 					collapsed: false,
 					items: [
-						"/algebra/matrix/matrix-1",
+						"matrix-1",
 					],
 				},
 			]
 		}
 	],
 	type: "doc",
-	title: "代数基础"
+	title: "代数"
 });

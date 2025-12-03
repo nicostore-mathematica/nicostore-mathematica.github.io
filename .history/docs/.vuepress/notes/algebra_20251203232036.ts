@@ -12,21 +12,16 @@ export default defineCollection({
 					collapsed: false,
 					link: "/algebra/introduction/",
 					items: [
-						"/algebra/introduction/introduction-1",
-						"/algebra/introduction/introduction-2",
+						"introduction-1",
+						"introduction-2",
 					],
 				},
 				{
 					text: "高等代数",
-					link: "/algebra/linear/",
+					link: "",
 					collapsed: false,
 					items: [
-						"/algebra/advanced-algebra/algebra-0",
-						"/algebra/advanced-algebra/algebra-1",
-						"/algebra/advanced-algebra/algebra-2",
-						"/algebra/advanced-algebra/algebra-3",
-						"/algebra/advanced-algebra/algebra-4",
-						"/algebra/advanced-algebra/algebra-5",
+
 					],
 				},
 				{
@@ -34,7 +29,7 @@ export default defineCollection({
 					link: "/algebra/matrix/",
 					collapsed: false,
 					items: [
-						"/algebra/matrix/matrix-1",
+						"matrix-1",
 					],
 				},
 			]

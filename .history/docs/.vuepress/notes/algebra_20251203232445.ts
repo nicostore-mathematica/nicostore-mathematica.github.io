@@ -18,7 +18,7 @@ export default defineCollection({
 				},
 				{
 					text: "高等代数",
-					link: "/algebra/linear/",
+					link: "/algebra/advanced-algebra/linear/",
 					collapsed: false,
 					items: [
 						"/algebra/advanced-algebra/algebra-0",

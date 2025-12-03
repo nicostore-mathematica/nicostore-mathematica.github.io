@@ -1,0 +1,1207 @@
+---
+title: 线性代数知识点
+createTime: 2025/09/17 23:22:15
+permalink: /algebra/algebra-0/
+---
+
+线性代数的核心内容是什么？
+
+我们学习线性代数主要是为了解释三个问题：线性方程组解的存在性及表达；线性变换中的不变量（特征值）；二次型曲面的分类
+
+而其中对应着三种变换：等价变换；相似变换；合同变换。
+
+也应用着矩阵的三种数值特征：行列式，秩(rank)，特征值。
+
+## Part 0 线性
+
+线性代数的学习要求你必须知道线性是什么，尽管这放在一份线性代数期末复习笔记并不合适。
+$$
+f(a+b)=f(a)+f(b)\quad \quad f(kx)=kf(x)
+$$
+以上就是以一种很直观的形式写出来了线性为何物。
+
+## Part 1 矩阵
+
+请注意，我们来到了第一个问题：线性方程组的解，所以矩阵可以自然认定为方程组的系数。
+
+虽然矩阵的很多东西实际上脱离了线性方程组的范畴，本文主要是为了简便。
+
+### · 基本运算
+
+矩阵加减：请注意，矩阵的加减仅限定于形式相同的矩阵。
+
+**矩阵乘法**：这也是矩阵运算的核心，需要强调一下
+
+> 只有 $A$ 的列数 = $B$ 的行数, $AB$ 才有意义
+>
+> $AB$ 的行数 = $A$ 的行数, $AB$ 列数 = $B$ 的列数
+> $$
+> A_{m \times k} B_{k \times n} \longrightarrow (AB)_{m \times n}
+> $$
+> $AB$ 的第 $(i,j)$ 元素 = $A$ 的第 $i$ 行与 $B$ 的第 $j$ 列 对应元素乘积之和
+>
+> 矩阵乘法一般不满足交换律 $\rightarrow$ 一般来说, 即使 $AB$, $BA$ 都有意义, 但 $AB \neq BA$ 
+
+矩阵乘法一般来说, 不满足交换律
+
+> /property/
+>
+> (1) 结合律: $(AB)C = A(BC)$ 
+>
+> (2) 分配律: $(A+B)C = AC + BC$ ，$A \cdot (B+C) = AB + AC$ 
+>
+> (3) 与数乘的相容性 $c \cdot (AB) = (c \cdot A)B = A(c \cdot B)$ 
+>
+> (4) 单位元: 设 $A_{m \times n}$, 则 $I_m A = A = A I_n$ 
+
+对于**矩阵乘方**，有时候我们使用分块矩阵计算，有时候则用二项式展开
+
+> 特别地: $A \cdot I_n = I_n \cdot A = A$ 
+>
+> $A (c I_n) = (c I_n) A = c A$
+> $$
+> (c I_n + A)^m = C^m I_n + C_m^1 c^{m-1} A + \cdots + C_m^{m-1} c A^{m-1} + A^m
+> $$
+> 此时二项式展开不需要任何条件.
+
+**矩阵转置**：矩阵转置实际上非常简单，我们只需要注意几条性质：
+
+> /property/
+>
+> (1) $A^{TT} = A$ 
+>
+> (2) $(A + B)^T = A^T + B^T$ 
+>
+> (3) $(c \cdot A)^T = c \cdot A^T$，$c$ 是一个数 
+>
+> (4) $(A \cdot B)^T = B^T \cdot A^T$ 
+>
+> (5) $\det(A)=\det(A^T)$ 
+
+### · 方阵的逆阵
+
+注意，只有方阵才有逆矩阵，下面我们给出一些性质和证明
+
+> /property/
+>
+> (i) 若 $A$ 可逆，则逆阵必唯一。
+>
+> （ $A$ 有无逆阵不确定，但若存在必唯一）
+>
+> (iii) 设 $A$, $B$ 可逆，则 $AB$ 也可逆，$(AB)^{-1} = B^{-1}A^{-1}$ 
+>
+> (iii) 设 $A$ 可逆，$c \neq 0$ 常数，则 $cA$ 仍可逆$(c \cdot A)^{-1} = c^{-1} A^{-1}$
+>
+>  (iiii) 设 $A$ 可逆，则 $A'$ 也可逆且 $(A')^{-1} = (A^{-1})'$ 
+>
+> (v) 设 $A$ 可逆，则 $(A^{-1})^{-1} = A$ 
+>
+> (vi) 对可逆阵而言，乘法消去律成立
+>
+> 设 $A$ 为可逆:
+> $$
+> \begin{cases}
+> AB = AC \implies B = C \\
+> BA = CA \implies B = C
+> \end{cases}
+> $$
+>
+> (vii) 整性对可逆阵成立，即$A$ 可逆，
+>
+> $B \neq 0 \implies AB \neq 0$
+>
+> $C \neq 0 \implies CA \neq 0$
+>
+
+介绍完可逆矩阵性质，我们自然提出一个问题，怎么判断和求解矩阵逆阵？
+
+于是就引入伴随矩阵：
+
+> /Define/
+>
+> 设 $A = (a_{ij})_{n \times n}$，$A_{ij}$ 是 $a_{ij}$ 在 $|A|$ 中的代数余子式，则下列矩阵称为 $A$ 的伴随矩阵，记为 $A^*$
+>
+> $$
+> A^* = \begin{bmatrix}
+> A_{11} & A_{21} & \cdots & A_{n1} \\
+> A_{12} & A_{22} & \cdots & A_{n2} \\
+> \vdots & \vdots & \ddots & \vdots \\
+> A_{1n} & A_{2n} & \cdots & A_{nn}
+> \end{bmatrix}
+> $$
+>
+> > 注意：$A$ 不一定有逆阵，但伴随阵一定存在。
+> >
+> > 通过代数余子式定义，( $n-1$ )阶行列式都可以计算，不依赖是否可逆
+
+引理：设 $A$ 为 $n$ 阶方阵，则 $AA^* = A^*A = |A|I_n$。
+
+定理：设 $A$ 为 $n$ 阶方阵，若 $|A| \neq 0$，则 $A$ 可逆，且 $A^{-1} = \frac{1}{|A|}A^*$。
+
+定理: 设 $A, B$ 为 $n$ 阶方阵，则 $|AB| = |A||B|$。
+
+定理：设 $A$ 为 $n$ 阶方阵，则 $A$ 可逆 $\Leftrightarrow |A| \neq 0$。
+
+推论：
+
+1) 设 $A_1, \ldots, A_m$ 为 $n$ 阶方阵，若 $\exists i$ 使 $i$ 是奇数，则 $A_1 \cdots A_m$ 是奇异矩阵。
+
+2) 设 $A$ 可逆，则 $|A^{-1}| = |A|^{-1}$。
+
+3) 设 $A, B$ 为 $n$ 阶方阵，若 $AB = I_n$ 并且 $BA = I_n$，则 $B = A^{-1}$。
+
+#### · 伴随矩阵性质
+
+> (1). $AA^*=A^*A=|A|E$ 
+>
+> (2). $(A^*)^{-1}=(A^{-1})^*=\frac{1}{|A|}A$
+>
+> (3). $(AB)^*=B^*A^*$ 
+>
+> (4). $(A^*)^{T}=(A^{T})^*$
+>
+> (5). $|A^*|=|A|^{n-1}$
+>
+> (6). $(kA)^*=k^{n-1}A^*$
+>
+> (7). $(A^*)^*=|A|^{n-2}A$ 
+
+### · 矩阵初等变换
+
+行列式性质：
+
+> 设 $A, B$ 为 $n$ 阶方阵，$c$ 为常数。
+>
+> 1. $|A + B| \neq |A| + |B|$
+> 2. $|cA| = c^n|A|$
+> 3. $|AB| = |A||B|$
+> 4. $|AA^T| = |A|^2$
+>
+> 5. 若 $A$ 可逆，则 $|A^{-1}| = \frac{1}{|A|}$
+> 6. 设 $n \geq 2$，则 $|A^{*}| = |A|^{n-1}$
+
+矩阵的初等变换
+
+第一类：对换矩阵的两行（列）
+
+第二类：矩阵某一行（列）乘上非零常数
+
+第三类：矩阵某一行乘常数加到另一行上
+
+我们假设原矩阵为 $A$ ，变换后矩阵为 $B$ ，则我们称 $A$ 和 $B$ 等价。
+
+等价矩阵的性质我们一会再说。
+
+而初等变换法求逆矩阵也是一个求解逆阵的好方法：
+
+设 $A$ 为 $n$ 阶非奇异矩阵，则存在初等矩阵 $P_1$ 使得 $P_1 \cdots P_r A = I_n \Rightarrow A^{-1} = P_r \cdots P_1$。
+
+可以推出求逆矩阵方法：
+$$
+[A : I_n] \rightarrow [I_n : A^{-1}]
+$$
+
+> /proof/
+>
+> $$
+> (A : I_n) \rightarrow (PA : P_1 I_n) \rightarrow (P_r \cdots P_1 A : P_r \cdots P_1 I_n) \rightarrow (I_n : A^{-1})
+> $$
+
+列变换求逆矩阵：
+$$
+\begin{bmatrix} A \\ I_n \end{bmatrix}
+$$
+
+这种方法的好处是计算量小。
+
+### · 分块矩阵
+
+分块矩阵主要分为几个问题：行列式，逆阵，伴随矩阵
+
+分块矩阵的行列式：
+
+> 定理1
+>
+> 设 $A$ 是 $m$ 阶方阵，$B$ 是 $m \times n$ 阶矩阵，$C$ 是 $n$ 阶矩阵，则
+>
+> $$
+> \begin{vmatrix}
+> A & B \\
+> O & C
+> \end{vmatrix} = |A||C|.
+> $$
+>
+> 类似地行列式的形式为
+>
+> $$
+> \begin{vmatrix}
+> A & O \\
+> B & C
+> \end{vmatrix}
+> $$
+>
+> 时，由行列式的转置值不变，因此仍有
+>
+> $$
+> \begin{vmatrix}
+> A' & O \\
+> B' & C'
+> \end{vmatrix} = |A'||C'| = |A||C|.
+> $$
+>
+> 定理2：
+>
+> 设 $A$、$B$、$C$ 均为 $n$ 阶方阵，则
+>
+> $$
+> \begin{vmatrix}
+> A & B \\
+> C & O
+> \end{vmatrix} = (-1)^{n^2}|C||B|.
+> $$
+>
+> 其实 $n^2$ 是因为 $n\cdot n$ ，可以推广到两矩阵不同阶的情况。 
+>
+> 定理3
+>
+> $P = \begin{bmatrix} A & B \\ C & D \end{bmatrix}$ 是分块 $n$ 阶矩阵，其中 $A$ 为 $r$ 阶方阵，$B$ 为 $r \times s$ 阶矩阵，$C$ 为 $s \times r$ 阶矩阵，$D$ 为 $s$ 阶方阵。
+>
+> 1. 若 $A$ 可逆，则 $|P| = |A||D - CA^{-1}B|$；
+> 2. 若 $D$ 可逆，则 $|P| = |D||A - CD^{-1}B|$。
+>
+> 定理4：
+>
+> 设 $A$、$B$ 都是 $n$ 阶方阵，则有
+>
+> $$
+> \begin{vmatrix}
+> A & B \\
+> B & A
+> \end{vmatrix} = |A + B||A - B|.
+> $$
+
+分块矩阵的逆矩阵：
+
+>  (主不变，副对调，左乘同行右乘同列，再添负号)
+>
+> $$
+> \begin{pmatrix}
+> A & O \\
+> O & B
+> \end{pmatrix}^{-1} = 
+> \begin{pmatrix}
+> A^{-1} & O \\
+> O & B^{-1}
+> \end{pmatrix}
+> $$
+>
+> $$
+> \begin{pmatrix}
+> A & O \\
+> C & B
+> \end{pmatrix}^{-1} = 
+> \begin{pmatrix}
+> A^{-1} & O \\
+> -B^{-1}CA^{-1} & B^{-1}
+> \end{pmatrix}
+> $$
+>
+> $$
+> \begin{pmatrix}
+> A & C \\
+> O & B
+> \end{pmatrix}^{-1} = 
+> \begin{pmatrix}
+> A^{-1} - A^{-1}CB^{-1} & -A^{-1}CB^{-1} \\
+> O & B^{-1}
+> \end{pmatrix}
+> $$
+>
+> $$
+> \begin{pmatrix}
+> O & A \\
+> B & O
+> \end{pmatrix}^{-1} = 
+> \begin{pmatrix}
+> O & B^{-1} \\
+> A^{-1} & -A^{-1}CB^{-1}
+> \end{pmatrix}
+> $$
+>
+> $$
+> \begin{pmatrix}
+> C & A \\
+> B & O
+> \end{pmatrix}^{-1} = 
+> \begin{pmatrix}
+> O & B^{-1} \\
+> A^{-1} - A^{-1}CB^{-1} & -A^{-1}CB^{-1}
+> \end{pmatrix}
+> $$
+>
+> $$
+> \begin{pmatrix}
+> O & A \\
+> B & C
+> \end{pmatrix}^{-1} = 
+> \begin{pmatrix}
+> -B^{-1}CA^{-1} & B^{-1} \\
+> A^{-1} & O
+> \end{pmatrix}
+> $$
+
+分块矩阵的伴随主要还是利用以上两个部分以及公式求解。
+
+### · Rank
+
+这部分主要讲矩阵的秩，秩可以表示方程组的有效方程数，也可表示非自由变量的数量。
+
+> 设 $A$ 为 $m \times n$ 矩阵，则：
+>
+> (1). $0 \leq r(A) \leq \min\{m, n\}$
+>
+> (2). $r(A^T) = r(A)$
+>
+> (3). 若 $A \neq 0$，则 $r(A) \geq$
+>
+> (4). $r(A \pm B) \leq r(A) + r(B)$
+>
+> (5). 若 $P$ 可逆，则 $r(PA) = r(A)$；若 $Q$ 可逆，则 $r(AQ) = r(A)$
+>
+> (6). $r(AB) \leq \min\{r(A), r(B)\}$
+>
+> (7). $r(AB) \geq r(A) + r(B) - n$
+>
+> (8). 若 $AB = 0$，则 $r(A) + r(B) \leq n$
+>
+> (9). $A$ 行满秩 $\Leftrightarrow r(A) = m \Leftrightarrow A$ 的等价标准形为 $(E_m, 0)$
+>
+> (10). $A$ 列满秩 $\Leftrightarrow r(A) = n \Leftrightarrow A$ 的等价标准形为 $\begin{pmatrix} E_n \\ 0 \end{pmatrix}$ 
+>
+> (11) 若 $A$ 是 $n$ 阶方阵，则 $r(A) = n \Leftrightarrow |A| \neq 0$，$r(A) < n \Leftrightarrow |A| = 0$；
+>
+> (12) 同型矩阵 $A, B$ 等价的充要条件是 $r(A) = r(B)$；
+>
+> (13) 设 $A^*$ 是 $n$ 阶方阵 $A$ 的伴随矩阵，则
+>
+> $$
+> r(A^*) =
+> \begin{cases}
+> n, & \text{if } r(A) = n, \\
+> 1, & \text{if } r(A) = n-1, \\
+> 0, & \text{if } r(A) < n-1.
+> \end{cases}
+> $$
+
+## Part 2 行列式
+
+- 上三角或者下三角行列式的值等于主对角线上元素的乘积
+
+- 行列式某行或某列全为零，则行列式值等于零
+
+- 行列式的某一行或某一列乘C，得到的值是原来行列式的C倍
+
+- 对换行列式里任意两行或两列后，新行列式的值为原行列式的相反数
+
+- 如果行列式有两行或两列成比例，那么该行列式值为0
+
+- 如果行列式里某一行或某一列的元素都可以拆成两个元素的和的话，那么这个行列式一定可以拆成两个行列式
+
+- 行列式的某一行乘以一个数加到另外一行上或者某一列乘以一个数加到另外一列上，行列式的值不改变
+
+- 行列式的转置和原行列式有相同的值
+
+- $|A| = a_{1i}A_{1i} + a_{2i}A_{2i} + a_{3i}A_{3i}$
+
+  $|A| = a_{i1}A_{i1} + a_{i2}A_{i2} + a_{i3}A_{i3}$
+
+## Part 3 向量
+
+首先我们要知道什么是向量组线性相关和线性无关
+
+### · 线性关系
+
+定义1 线性相关： $K_n$ 中向量组 $\alpha_1, \alpha_2, ..., \alpha_s (s \geq 1)$ 称为是线性相关的，如果 $K$ 中有不全为0的 $k_1, k_2, ..., k_s$ 使得 $k_1 \alpha_1 + k_2 \alpha_2 + ... + k_s \alpha_s = 0$。 
+
+定义2 线性无关： $K_n$ 中如果有向量组 $\alpha_1, \alpha_2, ..., \alpha_s (s \geq 1)$ 是线性无关的，那么从式子 $k_1 \alpha_1 + k_2 \alpha_2 + ... + k_s \alpha_s = 0$ 中可以得到 $k_1 = k_2 = ... = k_s = 0$。
+
+#### · 结论
+
+不妨设
+$$
+\alpha_1 = (a_{11}, a_{12}, \ldots, a_{1n})^T, \quad \alpha_2 = (a_{21}, a_{22}, \ldots, a_{2n})^T, \quad \ldots, \quad \alpha_m = (a_{m1}, a_{m2}, \ldots, a_{mn})^T,
+$$
+
+$$
+\beta = (b_1, b_2, \ldots, b_n)^T,
+$$
+
+这里 $m \leq n$。
+
+> (1).  $\beta$ 可由 $\alpha_1, \alpha_2, \ldots, \alpha_m$ 线性表示的充要条件是线性方程组 $x_1 \alpha_1 + x_2 \alpha_2 + \cdots + x_m \alpha_m = \beta$ 有解，即 $Ax=b$ 有解：
+>
+> (2). 向量组的秩：
+>
+> > ① 令 $A = (\alpha_1, \alpha_2, \ldots, \alpha_m)$，$B = (\alpha_1, \alpha_2, \ldots, \alpha_m, \beta)$，则 $\beta$ 可由 $\alpha_1, \alpha_2, \ldots, \alpha_m$ 线性表示的充要条件是以 $\alpha_1, \alpha_2, \ldots, \alpha_m$ 为列向量的矩阵和以 $\alpha_1, \alpha_2, \ldots, \alpha_m, \beta$ 为列向量的矩阵有相同的秩，即 $r(A) = r(B)$。
+> >
+> > ② $\beta$ 可由 $\alpha_1, \alpha_2, \ldots, \alpha_m$ 唯一线性表示的充要条件是 $r(A) = r(B) = m$。
+> >
+> > ③ $\beta$ 不能由 $\alpha_1, \alpha_2, \ldots, \alpha_m$ 线性表示的充要条件是 $r(A) < r(B)$。
+>
+> (3). 向量组 $\alpha_1, \alpha_2, \ldots, \alpha_m$ 线性相关的充要条件是齐次线性方程组 $Ax=0$ 有非零解，且当 $m = n$ 时，其线性相关的充要条件是$|A|  = 0.$ 
+>
+> (4) 向量组 $\alpha_1, \alpha_2, \ldots, \alpha_m$ 线性无关的充要条件是齐次线性方程组 $Ax=0$ 只有零解。只有零解，且当 $m = n$ 时，其线性无关的充要条件是 $|A| \neq 0.$ 
+>
+> (5) 向量组 $\alpha_1, \alpha_2, \ldots, \alpha_m$ 线性相关的充要条件是以 $\alpha_1, \alpha_2, \ldots, \alpha_m$ 为列向量的矩阵的秩小于向量个数 $m$。
+>
+> (6) 向量组 $\alpha_1, \alpha_2, \ldots, \alpha_m$ 线性无关的充要条件是以 $\alpha_1, \alpha_2, \ldots, \alpha_m$ 为列向量的矩阵的秩等于向量个数 $m$。
+>
+> (7) 向量组 $\alpha_1, \alpha_2, \ldots, \alpha_m (m \geq 2)$ 线性相关的充要条件是向量组中至少有一个向量是其余向量的线性组合；向量组 $\alpha_1, \alpha_2, \ldots, \alpha_m (m \geq 2)$ 线性无关的充要条件是向量组中任一个向量都不能由其余向量线性表示。
+>
+> (8) 如果向量组 $\alpha_1, \alpha_2, \ldots, \alpha_m$ 线性无关，而向量组 $\alpha_1, \alpha_2, \ldots, \alpha_m, \beta$ 线性相关，则 $\beta$ 可以由 $\alpha_1, \alpha_2, \ldots, \alpha_m$ 线性表示，且表达式唯一。
+>
+> (9) 如果向量组 $\alpha_1, \alpha_2, \ldots, \alpha_m$ 可以由向量组 $\beta_1, \beta_2, \ldots, \beta_l$ 线性表示，并且 $m > l$，则向量组 $\alpha_1, \alpha_2, \ldots, \alpha_m$ 线性相关；或者说，如果向量组 $\alpha_1, \alpha_2, \ldots, \alpha_m$ 线性无关，并且可以由 $\beta_1, \beta_2, \ldots, \beta_l$ 线性表示，则 $m \leq l$。
+>
+> (10) 在向量组 $\alpha_1, \alpha_2, \ldots, \alpha_m$ 中，如果有一个部分组线性相关，则整个向量组线性相关；如果整个向量组 $\alpha_1, \alpha_2, \ldots, \alpha_m$ 线性无关，则其任一部分组也一定线性无关。
+>
+> (11) 设 $r$ 维向量组 $\alpha_i = (a_{i1}, a_{i2}, \ldots, a_{ir}) (i=1,2,\ldots,m)$ 线性无关，则在每个向量上再添加 $n-r$ 个分量所得到的 $n$ 维向量组 $\alpha'_i = (a_{i1}, a_{i2}, \ldots, a_{ir}, a_{i,r+1}, \ldots, a_{in}) (i=1,2,\ldots,m)$ 也线性无关。
+>
+> (12) $n+1$ 个 $n$ 维向量必线性相关。
+>
+> (13) 一个零向量线性相关；一个非零向量线性无关；两个非零向量线性相关的充要条件是对应分量成比例；含有零向量的向量组必线性相关。
+>
+> (14) 设 $\varepsilon_1 = (1,0,\ldots,0)$，$\varepsilon_2 = (0,1,\ldots,0)$，$\ldots$，$\varepsilon_n = (0,0,\ldots,1)$，称 $\varepsilon_1, \varepsilon_2, \ldots, \varepsilon_n$ 为 $n$ 维单位向量组，且
+>
+> ① $\varepsilon_1, \varepsilon_2, \ldots, \varepsilon_n$ 线性无关；
+>
+> ② 任意 $n$ 维向量 $\alpha = (a_1, a_2, \ldots, a_n)$ 都可由 $\varepsilon_1, \varepsilon_2, \ldots, \varepsilon_n$ 线性表示，即
+>
+> $$
+> \alpha = a_1 \varepsilon_1 + a_2 \varepsilon_2 + \cdots + a_n \varepsilon_n.
+> $$
+>
+> (15) 初等行变换不改变矩阵的列向量组之间的线性关系；初等列变换不改变矩阵的行向量组之间的线性关系。
+
+### · 极大无关组
+
+设向量组 $\alpha_{i_1}, \alpha_{i_2}, \ldots, \alpha_{i_v}$ 为向量组 $\alpha_1, \alpha_2, \ldots, \alpha_m$ 的一个部分组，且满足：
+
+(1) $\alpha_{i_1}, \alpha_{i_2}, \ldots, \alpha_{i_v}$ 线性无关；
+
+(2) 向量组 $\alpha_1, \alpha_2, \ldots, \alpha_m$ 中任一向量均可由 $\alpha_{i_1}, \alpha_{i_2}, \ldots, \alpha_{i_v}$ 线性表示，则称向量组 $\alpha_{i_1}, \alpha_{i_2}, \ldots, \alpha_{i_v}$  为 $\alpha_1, \alpha_2, \ldots, \alpha_m$ 的一个极大无关组。
+
+#### · 向量组的秩
+
+> (1) 若 $r(\alpha_1, \alpha_2, \ldots, \alpha_m) = r$，则
+>
+> ​	① $\alpha_1, \alpha_2, \ldots, \alpha_m$ 的任何含有多于 $r$ 个向量的部分组一定线性相关；
+>
+> ​	② $\alpha_1, \alpha_2, \ldots, \alpha_m$ 的任何含 $r$ 个向量的线性无关部分组一定是极大无关组。
+>
+> (2) $r(\alpha_1, \alpha_2, \ldots, \alpha_m) \leq m$，且 $r(\alpha_1, \alpha_2, \ldots, \alpha_m) = m \Leftrightarrow \alpha_1, \alpha_2, \ldots, \alpha_m$ 线性无关。
+>
+> (3) 向量 $\beta$ 可用 $\alpha_1, \alpha_2, \ldots, \alpha_m$ 线性表示 $\Leftrightarrow r(\alpha_1, \alpha_2, \ldots, \alpha_m, \beta) = r(\alpha_1, \alpha_2, \ldots, \alpha_m)$。
+>
+> (4) 向量 $\beta$ 可用 $\alpha_1, \alpha_2, \ldots, \alpha_m$ 唯一线性表示 $\Leftrightarrow r(\alpha_1, \alpha_2, \ldots, \alpha_m, \beta) = r(\alpha_1, \alpha_2, \ldots, \alpha_m) = m$。
+>
+> (5) 向量组 $\beta_1, \beta_2, \ldots, \beta_t$ 可以用 $\alpha_1, \alpha_2, \ldots, \alpha_s$ 线性表示 $\Leftrightarrow r(\alpha_1, \alpha_2, \ldots, \alpha_s, \beta_1, \beta_2, \ldots, \beta_t) = r(\alpha_1, \alpha_2, \ldots, \alpha_s)$。
+>
+> (6) 向量组 $\alpha_1, \alpha_2, \ldots, \alpha_s$ 与 $\beta_1, \beta_2, \ldots, \beta_t$ 等价 $\Leftrightarrow r(\alpha_1, \alpha_2, \ldots, \alpha_s) = r(\beta_1, \beta_2, \ldots, \beta_t)$。
+>
+> (7) 若 $\beta_1, \beta_2, \ldots, \beta_t$ 可用 $\alpha_1, \alpha_2, \ldots, \alpha_s$ 线性表示，则
+>
+> $$
+> r(\beta_1, \beta_2, \ldots, \beta_t) \leq r(\alpha_1, \alpha_2, \ldots, \alpha_s).
+> $$
+> (8) 设 $A$ 是一个 $m \times n$ 矩阵，记 $\alpha_1, \alpha_2, \ldots, \alpha_n$ 是 $A$ 的列向量组 ($m$ 维)，$\beta_1, \beta_2, \ldots, \beta_m$ 是 $A$ 的行向量组 ($n$ 维)，则 $r(A) = r(\alpha_1, \alpha_2, \ldots, \alpha_n) = r(\beta_1, \beta_2, \ldots, \beta_m)$。
+
+#### · 向量组等价
+
+两个向量组能够相互线性表示，则称这两个向量组等价，结论如下：
+
+> (1) 任意向量组和它的极大无关组等价
+>
+> (2) 向量组的任意两个极大无关组等价；
+>
+> (3) 两个等价的线性无关的向量组所含向量的个数相同；向量组的一个极大无关组与其本身等价；
+>
+> (4) 两个向量组等价的充要条件是它们的极大无关组等价；
+>
+> (5) 等价的两个向量组有相同的秩。
+
+### · 向量空间
+
+#### · 内积
+
+给定 $\mathbb{R}^n$ 中的向量
+
+$$
+\alpha = (a_1, a_2, \ldots, a_n)^T, \quad \beta = (b_1, b_2, \ldots, b_n)^T,
+$$
+
+则称 $\sum_{i=1}^{n} a_i b_i$ 为向量 $\alpha$ 与 $\beta$ 的内积，记为 $(\alpha, \beta)$，即 $(\alpha, \beta) = \alpha^T \beta = \sum_{i=1}^{n} a_i b_i$。
+
+内积具有下列性质：
+
+> (1) $(\alpha, \beta) = (\beta, \alpha)$；
+>
+> (2) $(k\alpha, \beta) = k(\alpha, \beta)$；
+>
+> (3) $(\alpha + \beta, \gamma) = (\alpha, \gamma) + (\beta, \gamma)$；
+>
+> (4) $(\alpha, \alpha) \geq 0$，当且仅当 $\alpha = 0$ 时，等号成立。
+
+#### · 范数
+
+设 $\alpha$ 为 $\mathbb{R}^n$ 中的任意向量，将非负实数 $\sqrt{(\alpha, \alpha)}$ 定义为 $\alpha$ 的长度，记为 $\|\alpha\|$，即若 $\alpha = (a_1, a_2, \ldots, a_n)^T$，则有
+
+$$
+\|\alpha\| = \sqrt{\sum_{i=1}^{n} a_i^2}.
+$$
+向量的长度也称为向量的范数或模。
+
+向量范数具有下列性质：
+
+> (1) $\|\alpha\| \geq 0$，当且仅当 $\alpha = 0$ 时，等号成立；
+>
+> (2) 对于任意向量 $\alpha$ 和任意实数 $k$，都有 $\|k\alpha\| = |k| \|\alpha\|$；
+>
+> (3) 对于任意 $n$ 维向量 $\alpha$ 和 $\beta$，有 $|\langle \alpha, \beta \rangle| = |\alpha^T \beta| \leq \|\alpha\| \cdot \|\beta\|$。
+
+#### · 正交向量
+
+如果向量 $\alpha$ 和 $\beta$ 的内积等于零，即 $\langle \alpha, \beta \rangle = 0$，则称 $\alpha$ 和 $\beta$ 相互正交。
+
+如果非零向量组 $\alpha_1, \alpha_2, \ldots, \alpha_s$ 中的向量两两正交，即 $\langle \alpha_i, \alpha_j \rangle = 0$（$i \neq j, i, j = 1, 2, \ldots, s$），则称该向量组为正交向量组。
+
+下面给出性质：
+
+> (1) 零向量与任何向量正交；
+>
+> (2) 与自己正交的向量只有零向量；
+>
+> (3) 正交向量组是线性无关的；
+>
+> (4) 对任意向量 $\alpha$ 和 $\beta$，有三角不等式
+>
+> $$
+> \|\alpha + \beta\| \leq \|\alpha\| + \|\beta\|
+> $$
+>
+> 当且仅当 $\alpha$ 与 $\beta$ 相互正交时，有 $\|\alpha + \beta\|^2 = \|\alpha\|^2 + \|\beta\|^2$。
+
+#### · 向量空间
+
+设 $V$ 是实数域 $\mathbf{R}$ 上的 $n$ 维向量组成的集合，如果 $V$ 关于向量的加法和数乘是封闭的，即
+
+若 $\alpha \in V, \beta \in V$，则 $\alpha + \beta \in V$；若 $\alpha \in V, k \in \mathbf{R}$，则 $k\alpha \in V$，则称 $V$ 是实数域 $\mathbf{R}$ 上的向量空间。
+
+#### · 坐标变换
+
+在向量空间 $\mathbb{R}^n$ 中，$n$ 个线性无关的向量 $\xi_1, \xi_2, \ldots, \xi_n$ 称为 $\mathbb{R}^n$ 的一组基。若 $\alpha \in \mathbb{R}^n$ 为任一向量，且
+
+$$
+\alpha = a_1 \xi_1 + a_2 \xi_2 + \cdots + a_n \xi_n,
+$$
+
+则称 $a_1, a_2, \ldots, a_n$ 为 $\alpha$ 关于基 $\xi_1, \xi_2, \ldots, \xi_n$ 的坐标，记作 $(a_1, a_2, \ldots, a_n)^T$。
+
+设 $\xi_1, \xi_2, \ldots, \xi_n$ 和 $\eta_1, \eta_2, \ldots, \eta_n$ 是 $\mathbb{R}^n$ 的两组基，且有
+
+$$
+(\eta_1, \eta_2, \ldots, \eta_n) = (\xi_1, \xi_2, \ldots, \xi_n) A,
+$$
+
+其中 $A$ 为由基 $\xi_1, \xi_2, \ldots, \xi_n$ 到基 $\eta_1, \eta_2, \ldots, \eta_n$ 的过渡矩阵，两个基之间的过渡矩阵是可逆矩阵。
+
+设 $\alpha \in \mathbb{R}^n$ 在基 $\xi_1, \xi_2, \ldots, \xi_n$ 和基 $\eta_1, \eta_2, \ldots, \eta_n$ 下的坐标分别为 $(x_1, x_2, \ldots, x_n)^T$ 与 $(y_1, y_2, \ldots, y_n)^T$，则有
+
+$$
+\begin{pmatrix}
+x_1 \\
+x_2 \\
+\vdots \\
+x_n
+\end{pmatrix}
+= A
+\begin{pmatrix}
+y_1 \\
+y_2 \\
+\vdots \\
+y_n
+\end{pmatrix}
+\quad \text{or} \quad
+\begin{pmatrix}
+y_1 \\
+y_2 \\
+\vdots \\
+y_n
+\end{pmatrix}
+= A^{-1}
+\begin{pmatrix}
+x_1 \\
+x_2 \\
+\vdots \\
+x_n
+\end{pmatrix}.
+$$
+
+#### · 施密特正交化
+
+向量空间 $\mathbb{R}^n$ 中 $n$ 个向量 $\eta_1, \eta_2, \cdots, \eta_n$ 满足：
+
+(1) 两两正交，即 $\eta_i^T \eta_j = 0, i \neq j, i,j=1,2,\cdots,n$；
+
+(2) 都是单位向量，即 $\|\eta_i\| = 1, i=1,2,\cdots,n$，
+
+则称 $\eta_1, \eta_2, \cdots, \eta_n$ 为 $\mathbb{R}^n$ 的一组标准正交基。
+
+> (1) 施密特正交化方法
+>
+> 给定一线性无关向量组 $\alpha_1, \alpha_2, \cdots, \alpha_s$，由其生成等价的 $s$ 个向量的正交向量组 $\beta_1, \beta_2, \cdots, \beta_s$ 的公式如下：
+> $$
+> \beta_1 = \alpha_1,\\
+> \beta_2 = \alpha_2 - \frac{(\alpha_2, \beta_1)}{(\beta_1, \beta_1)} \beta_1,\\
+> \beta_3 = \alpha_3 - \frac{(\alpha_3, \beta_1)}{(\beta_1, \beta_1)} \beta_1 - \frac{(\alpha_3, \beta_2)}{(\beta_2, \beta_2)} \beta_2,\\
+> \vdots\\
+> \beta_s = \alpha_s - \frac{(\alpha_s, \beta_1)}{(\beta_1, \beta_1)} \beta_1 - \frac{(\alpha_s, \beta_2)}{(\beta_2, \beta_2)} \beta_2 - \cdots - \frac{(\alpha_s, \beta_{s-1})}{(\beta_{s-1}, \beta_{s-1})} \beta_{s-1}.
+> $$
+> (2) 给定 $\mathbb{R}^n$ 的任意一组基，把它变为标准正交基的步骤如下：
+>
+> ① 利用施密特正交化方法，由这组基生成有 $n$ 个向量的正交向量组；
+>
+> ② 把正交向量组中每个向量标准化，即单位化。
+>
+> 这样就得到 $\mathbb{R}^n$ 的一组标准正交基。这一过程称为标准正交化。
+
+#### · 过渡矩阵
+
+设 $\mathbb{R}^n$ 的两组标准正交基 $\xi_1, \xi_2, \cdots, \xi_n$ 到 $\eta_1, \eta_2, \cdots, \eta_n$ 的过渡矩阵为 $Q$，则存在下列关系
+
+$(\xi_1, \xi_2, \cdots, \xi_n) = (\eta_1, \eta_2, \cdots, \eta_n) Q,$
+
+且 $Q$ 满足 $Q^T Q = E$，即 $Q$ 为正交矩阵。
+
+## Part 4 方程组
+
+### · 齐次线性方程组
+
+含有 $n$ 个未知数，$m$ 个一次方程的线性方程组一般有如下几种表示形式：
+
+(1) 一般形式：
+$$
+\begin{cases}
+a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n = b_1, \\
+a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n = b_2, \\
+\vdots \\
+a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n = b_m.
+\end{cases}
+$$
+
+如果 $b_1, b_2, \ldots, b_m$ 不全为零，则称为非齐次线性方程组。矩阵
+$$
+A = \begin{pmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & & \vdots \\
+a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{pmatrix}
+$$
+和
+$$
+\bar{A} = \begin{pmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} & b_1 \\
+a_{21} & a_{22} & \cdots & a_{2n} & b_2 \\
+\vdots & \vdots & & \vdots & \vdots \\
+a_{m1} & a_{m2} & \cdots & a_{mn} & b_m
+\end{pmatrix}
+$$
+分别称为非齐次线性方程组①的系数矩阵和增广矩阵。
+
+如果线性方程组中的 $b_1 = b_2 = \cdots = b_m = 0$，即
+$$
+\begin{cases}
+a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n = 0, \\
+a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n = 0, \\
+\vdots \\
+a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n = 0,
+\end{cases}
+$$
+则称为齐次线性方程组，并称②为①的导出组。
+
+(2) 矩阵形式：非齐次线性方程组的矩阵形式：
+$$
+Ax = b,
+$$
+其中
+$$
+x = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}, \quad b = \begin{pmatrix} b_1 \\ b_2 \\ \vdots \\ b_m \end{pmatrix}.
+$$
+类似地，齐次线性方程组的矩阵形式：
+
+$$
+Ax = 0.
+$$
+
+(3) 向量形式：若系数矩阵按列分块为 $A = (\alpha_1, \alpha_2, \cdots, \alpha_n)$，则非齐次线性方程组可写为
+
+$$
+x_1 \alpha_1 + x_2 \alpha_2 + \cdots + x_n \alpha_n = b.
+$$
+
+类似地，齐次线性方程组可写为
+
+$$
+x_1 \alpha_1 + x_2 \alpha_2 + \cdots + x_n \alpha_n = 0.
+$$
+
+
+#### · 解的性质和判定
+
+(1) 如果 $\xi_1, \xi_2, \ldots, \xi_s$ 是齐次线性方程组 $Ax = 0$ 的解，$k$ 为任意数，那么 $k\xi_1, k\xi_2, \ldots, k\xi_s$ 都是该齐次线性方程组的解。因此 $Ax = 0$ 的解向量的线性组合仍是它的解向量。
+
+(2) 设齐次线性方程组 $Ax = 0$ 含有 $n$ 个未知数和 $m$ 个方程，即系数矩阵 $A$ 为 $m \times n$ 矩阵，则 $Ax = 0$ 有非零解的充要条件是：
+
+> ① $r(A) < n$;
+>
+> ② $A$ 的列向量组线性相关；
+>
+> ③ $AB = 0$ 且 $B \neq 0$;
+>
+> ④ 当 $m = n$ 时，$|A| = 0$.
+
+亦即 $Ax = 0$ 只有零解的充要条件是
+
+> ① $r(A) = n$;
+>
+> ② $A$ 的列向量组线性无关；
+>
+> ③ 当 $m = n$ 时，$|A| \neq 0$.
+
+#### · 基础解系
+
+(1) 设 $\xi_1, \xi_2, \ldots, \xi_s$ 是齐次线性方程组 $Ax = 0$ 的解向量，如果
+
+> ① $\xi_1, \xi_2, \ldots, \xi_s$ 线性无关；
+>
+> ② 方程组 $Ax = 0$ 的任意一个解向量都可由 $\xi_1, \xi_2, \ldots, \xi_s$ 线性表示，
+
+则称 $\xi_1, \xi_2, \ldots, \xi_s$ 是齐次线性方程组 $Ax = 0$ 的一个基础解系。
+
+(2) 设 $Ax = 0$ 含有 $n$ 个未知数，则基础解系所含解向量的个数为 $n - r(A)$，即自由未知量的个数。
+
+(3) 若 $\xi_1, \xi_2, \ldots, \xi_s$ 为齐次线性方程组 $Ax = 0$ 的一个基础解系，则 $Ax = 0$ 的任意一个解向量都可由它们线性表示：
+
+$$
+k_1 \xi_1 + k_2 \xi_2 + \cdots + k_s \xi_s,
+$$
+
+称为齐次线性方程组 $Ax = 0$ 的通解（一般解或全部解），其中 $k_1, k_2, \ldots, k_s$ 为任意常数。
+
+#### · 解空间
+
+齐次线性方程组 $Ax = 0$ 的解向量的全体构成的向量空间，称为齐次线性方程组 $Ax = 0$ 的解空间。设 $Ax = 0$ 含有 $n$ 个未知数，则解空间的维数为 $n - r(A)$。
+
+**注意：** 如无特别说明，我们总假设齐次线性方程组 $Ax = 0$ 含有 $n$ 个未知数和 $m$ 个方程，即系数矩阵 $A$ 为 $m \times n$ 矩阵。
+
+### · 非齐次线性方程组
+
+设 $Ax = b$ 是含有 $n$ 个未知数、$m$ 个方程的非齐次线性方程组。
+
+#### · 解的性质和判定
+
+(1) 设 $\eta_1, \eta_2$ 是 $Ax = b$ 的两个解，则 $\eta_1 - \eta_2$ 是其导出组 $Ax = 0$ 的解；
+
+(2) 设 $\eta$ 是 $Ax = b$ 的解，$\xi$ 是其导出组 $Ax = 0$ 的解，则 $\eta + \xi$ 是 $Ax = b$ 的解；
+
+(3) 设 $A = (\alpha_1, \alpha_2, \ldots, \alpha_n)$，$\bar{A} = (\alpha_1, \alpha_2, \ldots, \alpha_n, b)$ 分别是 $Ax = b$ 的系数矩阵和增广矩阵，则 $Ax = b$ 有解的充要条件是：
+
+> ① $r(A) = r(\bar{A})$，即系数矩阵的秩与增广矩阵的秩相同；
+>
+> ② $b$ 可由 $\alpha_1, \alpha_2, \ldots, \alpha_n$ 线性表示；
+>
+> ③ 向量组 $\alpha_1, \alpha_2, \ldots, \alpha_n$ 与 $\alpha_1, \alpha_2, \ldots, \alpha_n, b$ 等价；
+>
+> ④ $r(\alpha_1, \alpha_2, \ldots, \alpha_n) = r(\alpha_1, \alpha_2, \ldots, \alpha_n, b)$.
+
+(4) $Ax = b$ 无解的充要条件是
+
+> ① $r(A) \neq r(\bar{A})$，即 $r(A) + 1 = r(\bar{A})$;	② $b$ 不能由 $\alpha_1, \alpha_2, \ldots, \alpha_n$ 唯一线性表示；	③ 当 $m = n$ 时，$|A| \neq 0$.
+
+(5) $Ax = b$ 有唯一解的充要条件是
+
+> ① $r(A) = r(\bar{A}) = n$;	② $b$ 可由 $\alpha_1, \alpha_2, \ldots, \alpha_n$ 唯一线性表示；	③ 当 $m = n$ 时，$|A| \neq 0$.
+
+(6) $Ax = b$ 有无穷多解的充要条件是
+
+> ① $r(A) = r(\bar{A}) < n$;	② $b$ 可由 $\alpha_1, \alpha_2, \ldots, \alpha_n$ 线性表示，但表示法不唯一；	③ 当 $m = n$ 时，$|A| = 0$.
+
+#### · 通解
+
+对非齐次线性方程组 $Ax = b$，若 $r(A) = r(\bar{A}) = r$，且 $\eta$ 是 $Ax = b$ 的一个解，$\xi_1, \xi_2, \ldots, \xi_{n-r}$ 是其导出组 $Ax = 0$ 的一个基础解系，则 $Ax = b$ 的通解（全部解）为
+
+$$
+\eta + k_1\xi_1 + k_2\xi_2 + \cdots + k_{n-r}\xi_{n-r},
+$$
+
+其中 $k_1, k_2, \ldots, k_{n-r}$ 为任意常数。
+
+### · 线性方程组性质
+
+ #### · 线性方程组的同解性 
+
+线性方程组有下列三种变换，称为线性方程组的初等变换： 
+
+> (1) 换法变换：交换某两个方程的位置；
+>
+>  (2) 倍法变换：某个方程的两端同乘以一个非零常数；
+>
+>  (3) 消法变换：把一个方程的若干倍加到另一个方程上去。 
+
+在线性方程组的三种初等变换之下，线性方程组的同解性不变。
+
+#### · 常见的同解方程组形式 
+
+(1) 设 $A$ 为 $m \times n$ 矩阵，$P$ 为 $m$ 阶可逆矩阵，则 $Ax = 0$ 与 $PAx = 0$ 为同解方程组； 
+
+(2) 设 $A$ 为 $n$ 阶实矩阵，$A^T$ 为矩阵 $A$ 的转置，则 $Ax = 0$ 与 $A^TAx = 0$ 为同解方程组；
+
+ (3) 设 $A$ 为 $n$ 阶实对称矩阵，则 $Ax = 0$ 与 $A^2x = 0$ 为同解方程组。
+
+#### · 方程组的公共解
+
+(1) 由通解表达式相等求公共解：此类题目一般所给条件为方程组 (I) 的基础解系及方程组 (II) 的一般表示式。这时一般只需把方程组 (I) 的通解代入方程组 (II) 即可。
+
+(2) 由两个方程组合并为一个新的方程组求公共解：此类题目一般所给条件为方程组 (I)、(II) 的一般表示式。这时只需把两个方程组合并为方程组 (III)，则方程组 (III) 的通解即为方程组 (I)、(II) 的公共解。
+
+## Part 5 相似
+
+### · 特征值
+
+设$A$为$n$阶矩阵，$\lambda$是一个数，若存在一个$n$维非零列向量$x$，使$Ax = \lambda x$成立，则称$\lambda$为$A$的一个特征值，相应的非零列向量$x$称为$A$的属于$\lambda$的特征向量。
+
+$\lambda E - A$称为$A$的特征矩阵，$|\lambda E - A|$称为$A$的特征多项式，$|\lambda E - A| = 0$称为$A$的特征方程。
+
+#### · 特征值的性质及运算
+
+若$\lambda$是$n$阶矩阵$A$的特征值，则：
+
+> (1)$k\lambda$是$kA$的特征值。
+>
+> (2)$\lambda^m$是$A^m$的特征值。
+>
+> (3)$f(A) = \sum_{i=0}^{m} a_i A^i$的特征值为$f(\lambda) = \sum_{i=0}^{m} a_i \lambda^i$。
+>
+> (4) 若$A$可逆，则$\lambda \neq 0$，且$\frac{1}{\lambda}$是$A^{-1}$的特征值。
+>
+> (5) 若$\lambda \neq 0$，则$A^*$有特征值$\frac{|A|}{\lambda}$。
+>
+> (6)$A$与$A^T$有相同的特征值。
+>
+> (7)$AB$与$BA$有相同的特征值。
+>
+> (8) 0 是$A$的特征值的充要条件是$|A| = 0$，亦即$A$可逆的充要条件是$A$的所有特征值全不为零。
+>
+> (9) 零矩阵有$n$重特征值 0。
+>
+> (10) 单位矩阵有$n$重特征值 1。
+>
+> (11) 数量矩阵$kE$有$n$重特征值$k$。
+>
+> (12) 幂零矩阵 ($A^m = 0$) 有$n$重特征值 0。
+>
+> (13) 幂等矩阵 ($A^2 = A$) 的特征值只可能是 0 或 1。
+>
+> (14) 对合矩阵 ($A^2 = E$) 的特征值只可能是 1 或 -1。
+>
+> (15)$k$-幂矩阵 ($A^k = E$) 的特征值只可能是 1 的$k$次方根。
+>
+> (16) 设$A = (a_{ij})_{n×n}$的$n$个特征值为$\lambda_1, \lambda_2, \ldots, \lambda_n$，则：
+>
+> ①$\lambda_1 + \lambda_2 + \cdots + \lambda_n = a_{11} + a_{22} + \cdots + a_{nn}$，即特征值之和等于矩阵的迹；
+>
+> ②$\lambda_1 \lambda_2 \cdots \lambda_n = |A|$，即特征值之积等于矩阵的行列式。
+
+#### · 特征向量性质
+
+> (1) 若 $x$ 是 $A$ 的属于特征值 $\lambda$ 的特征向量，则 $x$ 一定是非零向量。
+>
+> (2) 若 $x_1, x_2, \ldots, x_m$ 都是 $A$ 的属于同一特征值 $\lambda$ 的特征向量，且 $k_1 x_1 + k_2 x_2 + \cdots + k_m x_m \neq 0$，则 $k_1 x_1 + k_2 x_2 + \cdots + k_m x_m$ 也是 $A$ 的属于特征值 $\lambda$ 的特征向量。
+>
+> (3) 设 $\lambda_1, \lambda_2$ 是 $A$ 的两个不同特征值，$x_1, x_2$ 是 $A$ 的分别属于 $\lambda_1, \lambda_2$ 的特征向量，则 $x_1 + x_2$ 不是 $A$ 的特征向量。
+>
+> (4) 若 $\lambda$ 是 $A$ 的 $r$ 重特征值，则属于 $\lambda$ 的线性无关的特征向量最多有 $r$ 个。
+>
+> (5) $A$ 的属于不同特征值对应的特征向量线性无关。
+>
+> (6) 设 $\lambda$ 是 $A$ 的特征值，$x$ 是属于 $\lambda$ 的特征向量，则：
+>
+> ​	① $x$ 是 $kA$ 的属于特征值 $k\lambda$ 的特征向量，也是 $A^m$ 的属于特征值 $\lambda^m$ 的特征向量；还是 $f(A) = \sum_{i=0}^{m} a_i A^i$ 的属于特征值 $f(\lambda) = \sum_{i=0}^{m} a_i \lambda^i$ 的特征向量；
+>
+> ​	② 若 $\lambda \neq 0$，则 $x$ 也是 $A^{-1}$ 的属于特征值 $\frac{1}{\lambda}$ 的特征向量，也是 $A^*$ 的属于特征值 $\frac{|A|}{\lambda}$ 的特征向量；
+>
+> ​	③ 若 $B = P^{-1}AP$，$P$ 为可逆矩阵，则 $\lambda$ 是 $B$ 的特征值，且 $P^{-1}x$ 是 $B$ 的属于特征值 $\lambda$ 的特征向量。
+
+#### · 特征值和特征向量求法
+
+(1) 对于数字型矩阵$A$，其特征值和特征向量的求法如下：
+
+> ① 计算特征多项式$|\lambda E - A|$；
+>
+> ② 求解特征方程$|\lambda E - A| = 0$，其所有根$\lambda_1, \lambda_2, \ldots, \lambda_n$即为$A$的全部特征值；
+>
+> ③ 固定一个特征值$\lambda$，解齐次线性方程组$(\lambda E - A)x = 0$，得基础解系为$\eta_1, \eta_2, \ldots, \eta_s$，$s = n - r(\lambda E - A)$，则$A$的属于$\lambda$的所有特征向量为$k_1 \eta_1 + k_2 \eta_2 + \cdots + k_s \eta_s$，其中$k_1, k_2, \ldots, k_s$不全为零。
+
+(2) 对于抽象型矩阵$A$，其特征值和特征向量的求法通常有两种思路：
+
+> ① 利用特征值和特征向量的定义，若数$\lambda$和非零向量$x$满足$Ax = \lambda x$，则$\lambda$为$A$的特征值，$x$为$A$的属于$\lambda$的特征向量；
+>
+> ② 利用特征值和特征向量的性质，例如已知$A$的特征值，便可求得$kA, A^m, \sum_{i=0}^{m} a_i A^i$等矩阵的特征值。
+
+### · 矩阵相似
+
+设$A, B$是$n$阶矩阵，若存在可逆矩阵$P$，使$P^{-1}AP = B$，则称$B$是$A$的相似矩阵，或称$A$与$B$相似，记为$A \sim B$。
+
+#### · 矩阵相似的性质
+
+(1) 若$A \sim B$,$B \sim C$，则$A \sim C$。
+
+(2) 若$A \sim B$，则$kA \sim kB$，$A^m \sim B^m$，进而$f(A) = \sum_{i=0}^{m} a_i A^i \sim f(B) = \sum_{i=0}^{m} a_i B^i$。
+$$
+f(A) = \sum_{i=0}^{m} a_i A^i \sim f(B) = \sum_{i=0}^{m} a_i B^i.
+$$
+(3) 若$A \sim B$，则$A^T \sim B^T$，$A^{-1} \sim B^{-1}$，$A^* \sim B^*$，$A + kE \sim B + kE$（$k$为常数）。
+
+(4) 若$A \sim B$，则$|A| = |B|$，$r(A) = r(B)$。
+
+(5) 设$A = (a_{ij})$，$B = (b_{ij})$，若$A \sim B$，则$\sum_{i=1}^{n} a_{ii} = \sum_{i=1}^{n} b_{ii}$，即$A, B$有相同的迹。
+
+(6) 若$A \sim B$，则$|\lambda E - A| = |\lambda E - B|$，即$A, B$有相同的特征值。
+
+(7) 零矩阵、单位矩阵、数量矩阵只与自己相似。
+
+> (2)~(6) 只是矩阵相似的必要条件。
+
+#### · 对角化
+
+设 $A$ 是 $n$ 阶矩阵，若存在可逆矩阵 $P$，使 $P^{-1}AP$ 为对角矩阵，则称 $A$ 可相似对角化。
+
+> (1) 矩阵 $A$ 可相似对角化的充要条件是 $A$ 有 $n$ 个线性无关的特征向量；
+>
+> (2) 矩阵 $A$ 可相似对角化的充要条件是对 $A$ 的任意特征值 $\lambda$，属于 $\lambda$ 的线性无关的特征向量的个数等于 $\lambda$ 的重数，亦即 $n - r(\lambda E - A)$ 等于 $\lambda$ 的重数；
+>
+> (3) 矩阵 $A$ 可相似对角化的充分条件是 $A$ 有 $n$ 个互不相同的特征值。
+
+#### · 相似对角化步骤
+
+(1) 解特征方程$|\lambda E - A| = 0$，求出所有特征值；
+
+(2) 对于不同的特征值$\lambda$，解方程组$(\lambda E - A)x = 0$，求出基础解系，如果每一个$\lambda$的重数等于基础解系中向量的个数，则$A$可对角化，否则，$A$不可对角化；
+
+(3) 若$A$可对角化，设所有线性无关的特征向量为$\xi_1, \xi_2, \ldots, \xi_n$，则所求的可逆矩阵$P = (\xi_1, \xi_2, \ldots, \xi_n)$，并且有$P^{-1}AP = \Lambda$，其中
+
+$$
+\Lambda =
+\begin{pmatrix}
+\lambda_1 & & \\
+& \lambda_2 & \\
+& & \ddots \\
+& & & \lambda_n
+\end{pmatrix}
+$$
+
+**注意：**$\Lambda$的主对角线元素为$A$的全部特征值，其排列顺序与$P$中列向量的排列顺序对应。
+
+### · 实对称阵相似
+
+设$A$是实对称矩阵，则
+
+(1)$A$的特征值为实数，$A$的特征向量为实向量。
+
+(2)$A$的不同特征值所对应的特征向量正交。
+
+(3)$A$的$k$重特征值所对应的线性无关的特征向量恰有$k$个。
+
+(4)$A$相似于对角矩阵，且存在正交矩阵$Q$，使
+
+$$
+Q^{-1}AQ = Q^T AQ =
+\begin{pmatrix}
+\lambda_1 & & \\
+& \lambda_2 & \\
+& & \ddots \\
+& & & \lambda_n
+\end{pmatrix}
+$$
+
+其中$\lambda_1, \lambda_2, \ldots, \lambda_n$为$A$的特征值。
+
+(5) 实对称矩阵$A$与$B$相似的充要条件是$A$与$B$有相同的特征值。
+
+#### · 步骤
+
+(1) 求出矩阵$A$的全部特征值$\lambda_1, \lambda_2, \ldots, \lambda_s$，其中$\lambda_1, \lambda_2, \ldots, \lambda_s$的重数分别为$k_1, k_2, \ldots, k_s$；
+
+(2) 对每个$k_i$重特征值$\lambda_i$，求方程组$(\lambda_i E - A)x = 0$的基础解系，得$k_i$个线性无关的特征向量。再把它们正交化、单位化，得$k_i$个两两正交的单位特征向量。因$k_1 + \cdots + k_i = n$，故总共可得$n$个两两正交的单位特征向量。
+
+(3) 把这$n$个两两正交的单位特征向量构成正交矩阵$Q$，便有$Q^{-1}AQ = Q^T AQ = \Lambda$。注意$\Lambda$中对角元的排列次序应与$Q$中列向量的排列次序相对应。
+
+## Part 6 合同
+
+### · 二次型
+
+(1) 含有 $n$ 个变量 $x_1, x_2, \cdots, x_n$ 的二次齐次函数
+
+
+$$
+ f(x_1, x_2, \cdots, x_n) = a_{11}x_1^2 + a_{22}x_2^2 + \cdots + a_{nn}x_n^2 + 2a_{12}x_1x_2 + 2a_{13}x_1x_3 + \cdots + 2a_{n-1,n}x_{n-1}x_n 
+$$
+
+称为 $n$ 元二次型。
+
+(2) 二次型有矩阵表示
+
+
+$$
+ f(x_1, x_2, \cdots, x_n) = x^T A x 
+$$
+
+
+其中 $x = (x_1, x_2, \cdots, x_n)^T$，$A = (a_{ij})$，且 $A^T = A$ 是对称矩阵，称 $A$ 为二次型的矩阵。$r(A)$ 称为二次型的秩，记为 $r(f)$。
+
+(3) 如果二次型中只含有变量的平方项，所有混合项 $x_i x_j (i \neq j)$ 的系数全是零，即
+
+
+$$
+ x^T A x = d_1 x_1^2 + d_2 x_2^2 + \cdots + d_n x_n^2 
+$$
+
+
+这样的二次型称为标准形。
+
+在标准形中，如平方项的系数 $d_i$ 为 1, -1 或 0，
+
+
+$$
+ x^T A x = x_1^2 + x_2^2 + \cdots + x_p^2 - x_{p+1}^2 - \cdots - x_{p+q}^2 
+$$
+
+
+则称其为二次型的规范形。
+
+(4) 在二次型 $x^T A x$ 的规范形中，正的平方项的个数 $p$ 称为二次型的正惯性指数，负的平方项的个数 $q$ 称为二次型的负惯性指数；正负惯性指数之差 $p - q$ 称为二次型的符号差。
+
+(5) 如果
+
+$$
+\begin{cases}
+x_1 = c_{11} y_1 + c_{12} y_2 + \cdots + c_{1n} y_n, \\
+x_2 = c_{21} y_1 + c_{22} y_2 + \cdots + c_{2n} y_n, \\
+\vdots \\
+x_n = c_{n1} y_1 + c_{n2} y_2 + \cdots + c_{nn} y_n
+\end{cases}
+$$
+
+满足
+
+$$
+|C| = \begin{vmatrix}
+c_{11} & c_{12} & \cdots & c_{1n} \\
+c_{21} & c_{22} & \cdots & c_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+c_{n1} & c_{n2} & \cdots & c_{nn}
+\end{vmatrix} \neq 0,
+$$
+称①为由 $x = (x_1, x_2, \ldots, x_n)^T$ 到 $y = (y_1, y_2, \ldots, y_n)^T$ 的非退化线性替换，且①可用矩阵描述，即
+
+$$
+\begin{pmatrix}
+x_1 \\
+x_2 \\
+\vdots \\
+x_n
+\end{pmatrix}
+=
+\begin{pmatrix}
+c_{11} & c_{12} & \cdots & c_{1n} \\
+c_{21} & c_{22} & \cdots & c_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+c_{n1} & c_{n2} & \cdots & c_{nn}
+\end{pmatrix}
+\begin{pmatrix}
+y_1 \\
+y_2 \\
+\vdots \\
+y_n
+\end{pmatrix},
+$$
+
+或 $x = Cy$，其中 $C$ 是可逆矩阵。
+
+**注意：** 如果没有特别说明，本章所涉及的二次型均为实二次型，即二次型中变量的系数均为实数，所涉及的矩阵和向量都是实的。
+
+### · 常用结论
+
+(1) 二次型与对称矩阵一一对应。
+
+(2) 变量$x = (x_1, x_2, \ldots, x_n)^T$的$n$元二次型$x^T A x$经过非退化线性替换$x = Cy$后，成为变量$y = (y_1, y_2, \ldots, y_n)^T$的$n$元二次型$y^T B y$，其中$B = C^T A C$。
+
+(3) 任意的$n$元二次型$x^T A x$都可以通过非退化线性替换化成标准形$d_1 y_1^2 + d_2 y_2^2 + \cdots + d_n y_n^2$，其中$d_i (i = 1, 2, \ldots, n)$是实数。
+
+(4) 惯性定理 任意$n$元二次型$x^T A x$都可以通过非退化线性替换化为规范形$z_1^2 + z_2^2 + \cdots + z_p^2 - z_{p+1}^2 - \cdots - z_{p+q}^2$，其中$p$为正惯性指数，$q$为负惯性指数，$p + q$为二次型的秩，且$p, q$由二次型唯一确定，即规范形是唯一的。
+
+(5) 任意$n$元二次型$x^T A x$，由于$A$是实对称矩阵，故必存在正交变换$x = Q y$（$Q$为正交矩阵），使得二次型化为标准形$\lambda_1 y_1^2 + \lambda_2 y_2^2 + \cdots + \lambda_n y_n^2$，且$\lambda_1, \lambda_2, \ldots, \lambda_n$是$A$的$n$个特征值。
+
+(6) 非退化线性替换保持二次型的正负惯性指数、秩、正定性等。
+
+### · 正定
+
+(1). 基本概念
+
+如果实二次型$f(x_1, x_2, \ldots, x_n)$对任意一组不全为零的实数$x_1, x_2, \ldots, x_n$，都有$f(x_1, x_2, \ldots, x_n) > 0$，则称该二次型为正定二次型，正定二次型的矩阵称为正定矩阵。正定二次型与正定矩阵一一对应。
+
+(2). 实对称矩阵正定性的判定
+
+设$A$为$n$阶实对称矩阵，则下列命题等价：
+
+> (1)$A$是正定矩阵。
+>
+> (2)$x^T A x$的正惯性指数$p = n$。
+>
+> (3)$A$的顺序主子式大于 0。
+>
+> (4)$A$的所有主子式大于 0。
+>
+> (5)$A$合同于单位矩阵$E$。
+>
+> (6)$A$的特征值全大于 0。
+>
+> (7) 存在可逆矩阵$P$，使$A = P^T P$。
+>
+> (8) 存在非退化的上（下）三角形矩阵$Q$，使$A = Q^T Q$。
+
+#### · 性质
+
+(1) 若$A$为正定矩阵，则$|A| > 0$，$A$为可逆对称矩阵。
+
+(2) 若$A$为正定矩阵，则$A$的主对角线元素$a_{ii} > 0$（$i = 1, 2, \ldots, n$）。
+
+(3) 若$A$为正定矩阵，则$A^{-1}, kA$（$k > 0$为实数）均为正定矩阵。
+
+(4) 若$A$为正定矩阵，则$A^m$（其中$m$为正整数）均为正定矩阵。
+
+(5) 若$A, B$均为$n$阶正定矩阵，则$A + B$也是正定矩阵。
+
+### · 合同
+
+设$A, B$为两个方阵，若存在可逆矩阵$C$，使$B = C^T A C$成立，则称$A$与$B$合同。
+
+> (1) 若$A$为正定矩阵，则$|A| > 0$，$A$为可逆对称矩阵。
+>
+> (2) 矩阵$A$与$B$合同的充要条件是对$A$的行和列施以相同的初等变换变成$B$。
+>
+> (3) 设$A$与$B$是实对称矩阵，
+>
+> > $A$与$B$合同的充要条件是二次型$x^T A x$与$x^T B x$有相同的正负惯性指数。
+>
+> (4)$A$与$B$合同的充分条件是$A$与$B$相似。

@@ -26,7 +26,7 @@ export const navbar = defineNavbarConfig([
 		text: "笔记",
 		items: [
 			{ text: "微积分", link: "/integral/README.md" },
-			{ text: "代数基础", link: "/algebra/" },
+			{ text: "代数", link: "/algebra/README.md" },
 			{ text: "应用数学", link: "/applied-math/README.md" },
 			{ text: "基础物理", link: "/physics/README.md" },
       		{ text: "电路系统", link: "/circuit/README.md" },
@@ -44,7 +44,8 @@ export const navbar = defineNavbarConfig([
 			{ text: "关于我", link: "/about/" },
 			{ text: "时间线", link: "/timeline/" },
 			/*{ text: "动态", link: "/talks/" },
-			{ text: "Bangumi", link: "/bangumi/" },*/
+			{ text: "B
+			 ", link: "/bangumi/" },*/
 		],
 	},
 	{ text: "友链", link: "/links/" },
