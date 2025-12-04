@@ -43,7 +43,7 @@ export const navbar = defineNavbarConfig([
 		items: [
 			{ text: "关于我", link: "/about/" },
 			{ text: "时间线", link: "/timeline/" },
-			{ text: "⌈ 开往 ⌋", link: "https://www.travellings.cn/go.html" }
+			{ text: "收藏", link: "https://www.travellings.cn/go.html" }
 			/*{ text: "动态", link: "/talks/" },
 			{ text: "Bangumi", link: "/bangumi/" },*/
 		],
