@@ -136,7 +136,7 @@ $$
 > $$
 > \oint_l f(z) dz = 0.
 > $$
-> 原函数和不定积分：在  $f(z)$  的单连通解析区域  $\sigma$  内，积分函数（变上限积分） $ \int_{z_0(l)}^z f(z) dz$  与路径无关，但随着  $z$  的变化而变化（即  $\int_{z_0(l)}^z f(z) d$  是关于  $z$  的单值函数），记为
+> 原函数和不定积分：在  $f(z)$  的单连通解析区域  $\sigma$  内，积分函数（变上限积分） $\int_{z_0(l)}^z f(z) dz$  与路径无关，但随着  $z$  的变化而变化（即  $\int_{z_0(l)}^z f(z) d$  是关于  $z$  的单值函数），记为
 >
 > $$
 > F(z) = \int_{z_0(l)}^z f(z) dz.
@@ -205,7 +205,7 @@ $$
 > $$
 > \int_{B}^{C} f(z) dz + \int_{C}^{B} f(z) dz = 0,
 > $$
-> 又由于在新边界下是单连通区域，有（若无特别说明，均默认沿着曲线段  $\overline{XY}$  的积分方向沿逆时针， $ \oint_X$  的积分方向沿逆时针）
+> 又由于在新边界下是单连通区域，有（若无特别说明，均默认沿着曲线段  $\overline{XY}$  的积分方向沿逆时针，$\oint_X$ 的积分方向沿逆时针）
 >
 > $$
 > \int_{A(0)}^{B} f(z) dz + \int_{B}^{C} f(z) dz - \oint_{l_1} f(z) dz + \int_{C}^{B} f(z) dz + \int_{B(0)}^{A} f(z) dz = 0.
@@ -383,12 +383,12 @@ $$
 > $$
 > \oint_{l_\varepsilon} \frac{f(z) - f(a)}{z-a} dz = 0.
 > $$
-> 由  $f(z)$  的连续性，可知  $ \forall \xi > 0 $ ， $\exists \delta > 0$ ，当  $ |z-a| < \delta $  时，总有  $ |f(z) - f(a)| < \xi $ 。因而当  $ \varepsilon < \delta $  时， $l_\varepsilon$  上的点满足  $ |z-a| = \varepsilon < \delta $ ，则
+> 由  $f(z)$  的连续性，可知  $\forall \xi > 0$ ， $\exists \delta > 0$ ，当  $|z-a| < \delta$  时，总有  $|f(z) - f(a)| < \xi$ 。因而当  $\varepsilon < \delta$  时， $l_\varepsilon$  上的点满足  $|z-a| = \varepsilon < \delta$ ，则
 >
 > $$
 > \left| \oint_{l_\varepsilon} \frac{f(z) - f(a)}{z-a} dz \right| \leqslant \oint_{l_\varepsilon} \left| \frac{f(z) - f(a)}{z-a} \right| |dz| < \oint_{l_\varepsilon} \frac{\xi}{\varepsilon} ds = \frac{\xi}{\varepsilon} \oint_{l_\varepsilon} ds = \frac{\xi}{\varepsilon} \cdot 2\pi \varepsilon = 2\pi \xi.
 > $$
-> 由于总可以在  $l_\varepsilon$  内部找到更小的圆轨道  $ l_{\varepsilon'} $ ，又由复连通区域的柯西定理，有
+> 由于总可以在  $l_\varepsilon$  内部找到更小的圆轨道  $l_{\varepsilon'}$ ，又由复连通区域的柯西定理，有
 >
 > $$
 > \oint_{l_\varepsilon} \frac{f(z) - f(a)}{z-a} dz = \oint_{l_{\varepsilon'}} \frac{f(z) - f(a)}{z-a} dz,
@@ -403,7 +403,7 @@ $$
 > $$
 > \left| \oint_{l_\varepsilon} \frac{f(z) - f(a)}{z-a} dz \right|
 > $$
-> 可以小于任意正数（注意  $ 2\pi \xi $  的任意性）。这说明
+> 可以小于任意正数（注意  $2\pi \xi$  的任意性）。这说明
 > $$
 > \oint_{l_\varepsilon} \frac{f(z) - f(a)}{z-a} dz
 > $$
@@ -424,7 +424,7 @@ $$
 $$
 f(z) = \frac{1}{2\pi i} \oint_l \frac{f(\zeta)}{\zeta - z} d\zeta.
 $$
-该公式成立的前提是， $ f(\zeta) $  在围道  $l$  内（ $\sigma$  区域内）解析， $ f(\zeta) $  在闭区域  $\bar{\sigma} = \sigma + l$  上连续。上述操作只是替换了字母，并没有本质上的改变和进一步的结论：这个公式也是柯西积分公式。
+该公式成立的前提是， $f(\zeta)$  在围道  $l$  内（ $\sigma$  区域内）解析， $f(\zeta)$  在闭区域  $\bar{\sigma} = \sigma + l$  上连续。上述操作只是替换了字母，并没有本质上的改变和进一步的结论：这个公式也是柯西积分公式。
 
 当  $z$  不在  $l$  内部时
 $$
@@ -453,7 +453,7 @@ $$
 $$
 f(z) = \frac{1}{2\pi i} \oint_l \frac{f(\zeta)}{\zeta - z} d\zeta - \frac{1}{2\pi i} \sum_{k=1}^{n} \oint_{l_k} \frac{f(\zeta)}{\zeta - z} d\zeta,
 $$
-其中  $ z \in \sigma $ 。注意内边界  $l_k$  均沿顺时针积分，所以要加负号。
+其中  $z \in \sigma$ 。注意内边界  $l_k$  均沿顺时针积分，所以要加负号。
 
 以上公式说明，复连通区域内部任何一点的函数值由内边界和外边界上每一点的函数值共同决定。
 
@@ -491,7 +491,7 @@ $$
 > \oint_l \frac{e^z}{z^n} dz = \oint_l \frac{f(z)}{(z - 0)^n} dz = \frac{2\pi i}{(n-1)!} f^{(n-1)}(0) = \frac{2\pi i}{(n-1)!}
 > $$
 
-**Cauchy 不等式**：设 $l: |\zeta - z| = R$，$f(z)$ 在 $|\zeta - z| = R$ 内解析，在 $|\zeta - z| \leq R$ 上连续，并且对于 $\zeta \in l$，$ f(\zeta) $ 在 $l$ 上有上界：$|f(\zeta)| \leq M$。则有
+**Cauchy 不等式**：设 $l: |\zeta - z| = R$，$f(z)$ 在 $|\zeta - z| = R$ 内解析，在 $|\zeta - z| \leq R$ 上连续，并且对于 $\zeta \in l$，$f(\zeta)$ 在 $l$ 上有上界：$|f(\zeta)| \leq M$。则有
 $$
 |f^{(n)}(z)| \leq \frac{n!M}{R^n}.
 $$
@@ -527,7 +527,7 @@ $$
 
 > /proof/
 >
-> 对 $|f(z)|^n (n \in \mathbb{Z})$ 使用柯西积分公式（取 $ z \in \sigma $）：
+> 对 $|f(z)|^n (n \in \mathbb{Z})$ 使用柯西积分公式（取 $z \in \sigma$）：
 > $$
 > |f(z)|^n = \frac{1}{2\pi i} \oint_l \frac{|f(\zeta)|^n}{\zeta - z} dz.
 > $$
@@ -734,7 +734,7 @@ $$
 >
 > 如上图所示，取足够大的半圆周轨道，半径 $R \to \infty$。设半圆轨道（包括实轴）为 $l$，其包围的区域为 $\sigma$。半圆周轨道（不含实轴）为 $l_c$。
 >
-> 取 $Z(x, y) \in$ 上半平面，$z = x + iy$。则 $\bar{Z}(x, -y) \in$ 下半平面，$\bar{z} = x - iy$。运用柯西积分公式，对 $ z \in \sigma $，有
+> 取 $Z(x, y) \in$ 上半平面，$z = x + iy$。则 $\bar{Z}(x, -y) \in$ 下半平面，$\bar{z} = x - iy$。运用柯西积分公式，对 $z \in \sigma$，有
 >
 >
 > $$

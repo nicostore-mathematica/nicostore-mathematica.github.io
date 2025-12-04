@@ -41,8 +41,8 @@ $V$ 为 $K$ 上的线性空间，向量族为 $V$ 中向量的集合；向量组
 > 由归纳假设，$S \setminus \{\alpha\}$ 存在极大无关组 $\{\alpha_1, \alpha_2, \cdots, \alpha_r\}$。
 >
 > 由假设 $\alpha$ 能线性表示 $S \setminus \{\alpha\}$ 能线性表示 $\{\alpha_1, \alpha_2, \cdots, \alpha_r\}$，  
->    （线性表示）
->
+> 
+>（线性表示）
 > $$
 >    \Rightarrow \{\alpha_1, \alpha_2, \cdots, \alpha_r\}
 > $$
@@ -51,57 +51,56 @@ $V$ 为 $K$ 上的线性空间，向量族为 $V$ 中向量的集合；向量组
 
 **引理3**：设 $A, B$ 为向量组，且 $A$ 中任一向量都是 $B$ 中向量的线性组合。若 $A$ 中向量线性无关，则 $\#A \leq \#B$。
 
-> 证明：
+> 证明：设  
 >
-> 设  
 > $$
 > A = \{\alpha_1, \alpha_2, \cdots, \alpha_r\}, \quad \#A = r \\
 > B = \{\beta_1, \beta_2, \cdots, \beta_s\}, \quad \#B = s
 > $$
->
-> 用反证法，设 $r > s$，我们来推出矛盾！
->
-> 由假设：  
+> 
+>用反证法，设 $r > s$，我们来推出矛盾！
+> 
+>由假设：  
 > $$
 > \alpha_i = \lambda_{i1}\beta_1 + \lambda_{i2}\beta_2 + \cdots + \lambda_{is}\beta_s, \quad \lambda_{ij} \in K
 > $$
->
-> 由 $A$ 线性无关，则 $\alpha_1 \neq 0$，从而 $\lambda_1, \cdots, \lambda_s$ 不全为 0。
->
-> 不妨设 $\lambda_1 \neq 0$，则  
+> 
+>由 $A$ 线性无关，则 $\alpha_1 \neq 0$，从而 $\lambda_1, \cdots, \lambda_s$ 不全为 0。
+> 
+>不妨设 $\lambda_1 \neq 0$，则  
 > $$
 > \beta_1 = \frac{1}{\lambda_1}\alpha_1 - \frac{\lambda_2}{\lambda_1}\beta_2 - \cdots - \frac{\lambda_s}{\lambda_1}\beta_s
 > $$
->
-> $$
+> 
+>$$
 > \{\alpha_1, \cdots, \alpha_r\} \overset{\text{linear}}\rightarrow \{\beta_1, \beta_2, \cdots, \beta_s\} \overset{\text{linear}}\rightarrow \{\alpha_1, \beta_2, \cdots, \beta_s\}
 > $$
->
-> 证明了：$\forall i \leq r$，$\alpha_i$ 是 $\{\alpha_1, \cdots, \beta_s\}$ 的线性组合。
->
-> **假设**：$\forall k < i \leq r$，$\alpha_i$ 是 $\{\alpha_1, \cdots, \alpha_k, \alpha_{k+1}, \cdots, \beta_s\}$ 的线性组合。
->
-> 令  
+> 
+>证明了：$\forall i \leq r$，$\alpha_i$ 是 $\{\alpha_1, \cdots, \beta_s\}$ 的线性组合。
+> 
+>**假设**：$\forall k < i \leq r$，$\alpha_i$ 是 $\{\alpha_1, \cdots, \alpha_k, \alpha_{k+1}, \cdots, \beta_s\}$ 的线性组合。
+> 
+>令  
 > $$
 > \alpha_{k+1} = \mu_1\alpha_1 + \cdots + \mu_k\alpha_k + \mu_{k+1}\beta_{k+1} + \cdots + \mu_s\beta_s
 > $$
->
-> 若 $\mu_{k+1} = \cdots = \mu_s = 0$，则 $\alpha_{k+1}$ 是 $\alpha_1, \cdots, \alpha_k$ 的线性组合，这与 $A$ 线性无关矛盾！
->
-> 故不妨设 $\mu_{k+1} \neq 0$，从而  
+> 
+>若 $\mu_{k+1} = \cdots = \mu_s = 0$，则 $\alpha_{k+1}$ 是 $\alpha_1, \cdots, \alpha_k$ 的线性组合，这与 $A$ 线性无关矛盾！
+> 
+>故不妨设 $\mu_{k+1} \neq 0$，从而  
 > $$
 > \beta_{k+1} = -\frac{\mu_1}{\mu_{k+1}}\alpha_1 - \cdots - \frac{\mu_k}{\mu_{k+1}}\alpha_k + \frac{1}{\mu_{k+1}}\alpha_{k+1} - \frac{\mu_{k+2}}{\mu_{k+1}}\beta_{k+2} - \cdots - \frac{\mu_s}{\mu_{k+1}}\beta_s
 > $$
->
-> $$
+> 
+>$$
 > \{\alpha_{k+2}, \cdots, \alpha_r\} \overset{\text{linear}}\rightarrow \{\alpha_1, \cdots, \alpha_k, \alpha_{k+1}, \cdots, \beta_s\} \overset{\text{linear}}\rightarrow \{\alpha_1, \cdots, \alpha_k, \alpha_{k+1}, \beta_{k+2}, \cdots, \beta_s\}
 > $$
->
-> 证明了：$\forall k+1 < i \leq r$，$\alpha_i$ 都是 $\{\alpha_1, \cdots, \alpha_k, \alpha_{k+1}, \beta_{k+2}, \cdots, \beta_s\}$ 的线性组合。
->
-> 最后，$\forall s < i \leq r$，$\alpha_i$ 是 $\{\alpha_1, \cdots, \alpha_s\}$ 的线性组合。
->
-> $\Rightarrow \alpha_r$ 是 $\alpha_1, \cdots, \alpha_s$ 的线性组合，这与 $A$ 线性无关矛盾！
+> 
+>证明了：$\forall k+1 < i \leq r$，$\alpha_i$ 都是 $\{\alpha_1, \cdots, \alpha_k, \alpha_{k+1}, \beta_{k+2}, \cdots, \beta_s\}$ 的线性组合。
+> 
+>最后，$\forall s < i \leq r$，$\alpha_i$ 是 $\{\alpha_1, \cdots, \alpha_s\}$ 的线性组合。
+> 
+>$\Rightarrow \alpha_r$ 是 $\alpha_1, \cdots, \alpha_s$ 的线性组合，这与 $A$ 线性无关矛盾！
 
 **推广4**：若多的向量组可用少的向量组线性表示，则多的向量必线性相关。
 
