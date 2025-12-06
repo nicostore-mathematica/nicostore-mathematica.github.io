@@ -4,7 +4,7 @@ export default defineCollection({
 	dir: "integral",
 	sidebar: [
 		{
-			text: "数学分析",
+			text: "微积分",
 			collapsed: false,
 			link: "/integral/",	
 			items: [
@@ -24,5 +24,5 @@ export default defineCollection({
 		},
 	],
 	type: "doc",
-	title: "数学分析"
+	title: "微积分"
 });

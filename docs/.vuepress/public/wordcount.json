@@ -3,7 +3,7 @@
   "README": 246,
   "random": 71,
   "notes": 86,
-  "links": 392,
+  "links": 418,
   "about": 205,
   "RoboMaster": {
     "RoboMaster-2": 1902,
@@ -30,7 +30,7 @@
     "optics-1": 6
   },
   "integral": {
-    "index": 90,
+    "index": 91,
     "integral-9": 8071,
     "integral-8": 6741,
     "integral-7": 3976,
@@ -41,7 +41,8 @@
     "integral-2": 4196,
     "integral-12": 4886,
     "integral-10": 7233,
-    "integral-1": 3706
+    "integral-1": 3706,
+    "integral-0": 7
   },
   "electrodynamics": {
     "index": 12,
@@ -69,6 +70,11 @@
   },
   "circuit": {
     "index": 208,
+    "theory": 9,
+    "circuit-4": 10,
+    "circuit-3": 2461,
+    "circuit-2": 4103,
+    "circuit-1": 6092,
     "electronic": 9,
     "electronic-8": 13,
     "electronic-7": 11,
@@ -77,12 +83,7 @@
     "electronic-4": 19,
     "electronic-3": 451,
     "electronic-2": 6988,
-    "electronic-1": 5625,
-    "theory": 9,
-    "circuit-4": 10,
-    "circuit-3": 2461,
-    "circuit-2": 4103,
-    "circuit-1": 6092
+    "electronic-1": 5625
   },
   "weekly": {
     "weekly-8": 377,
@@ -142,7 +143,7 @@
     "algebra-1": 5125,
     "algebra-0": 9451
   },
-  "total": 250337,
-  "lastUpdated": "2025-12-04T02:01:47.846Z",
-  "fileCount": 113
+  "total": 250371,
+  "lastUpdated": "2025-12-06T10:24:30.260Z",
+  "fileCount": 114
 }

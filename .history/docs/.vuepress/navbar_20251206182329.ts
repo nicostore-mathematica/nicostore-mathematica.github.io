@@ -29,7 +29,7 @@ export const navbar = defineNavbarConfig([
 			{ text: "代数基础", link: "/algebra/" },
 			{ text: "应用数学", link: "/applied-math/README.md" },
 			{ text: "基础物理", link: "/physics/README.md" },
-      		{ text: "电路理论", link: "/circuit/" },
+      		{ text: "电路理论", link: "/circuit/README.md" },
 			{ text: "光学", link: "/optics/README.md" },
 			{ text: "数学物理方法", link: "/complex/README.md" },
 			{ text: "工程力学", link: "/applied-mechanics/README.md" },

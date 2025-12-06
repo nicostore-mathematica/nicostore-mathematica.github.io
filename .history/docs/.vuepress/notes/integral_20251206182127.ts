@@ -24,5 +24,5 @@ export default defineCollection({
 		},
 	],
 	type: "doc",
-	title: "数学分析"
+	title: "微积分"
 });
