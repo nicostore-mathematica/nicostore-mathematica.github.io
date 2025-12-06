@@ -1,0 +1,3 @@
+Sitemap: https://soda-official.top/sitemap.xml
+User-agent:*
+Disallow:
