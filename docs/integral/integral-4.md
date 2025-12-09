@@ -1,917 +1,570 @@
 ---
-title: Chapter 4 微分
-createTime: 2025/01/11 00:01:01
+title: Chapter 4 函数极限
 permalink: /integral/integral-4/
+createTime: 2025/09/16 20:57:28
 ---
 
-## Fragment 1 导数
+## Part 1 定义
 
-### · 定义
+同数列的极限那样，我们用 $\varepsilon-\delta$ 语言来讨论当变量趋于某一点（或无穷远）时函数取值的变化趋势。
 
-> /Define/
->
-> 设 $f(x)$ 在 $(x_0 - \delta_0, x_0 + \delta_0)$​ 内有定义，$x_0 + \Delta x \in(x_0 - \delta_0, x_0 + \delta_0)$ ,若
-> $$
-> \lim_{\Delta x \to 0} \frac{\Delta y}{\Delta x} = \lim_{\Delta x \to 0} \frac{f(x_0 + \Delta x) - f(x_0)}{\Delta x}=\lim_{\Delta x \to 0} \frac{f(x) - f(x_0)}{x - x_0}
-> $$
->
-> $$
-> x_0 + \Delta x = x
-> $$
->
-> 存在
->
-> 该极限值称为 $y = f(x)$ 在 $x = x_0$ 处的导数，记作 $f(x_0)$ 或 $y'|_{x = x_0}$ , 或
->
-> $$
-> \lim_{\Delta x \to 0} \frac{d}{dx} |_{x = x_0} \text{ or } \frac{d}{dx} f(x)|_{x = x_0} \text{ or } \frac{d}{dx} f(x)|_{x = x_0}
-> $$
->
-> 其中 $\frac{d}{dx}$ 称之为导数算子
->
-> 如果有
->
-> $$
-> \lim_{\Delta x \to 0} \frac{f(x_0 + \Delta x) - f(x_0)}{\Delta x} = f(x_0)
-> $$
->
-> 称 $y = f(x)$ 在 $x = x_0$ 处可导 ， $f(x_0)$ 称为 $y = f(x)$ 在 $x = x_0$ 处变化率
->
-> 否则称 $y = f(x)$ 在 $x = x_0$ 不可导
+设 $x_0 \in \mathbb{R}$，$\delta > 0$。我们将开区间 $(x_0 - \delta, x_0 + \delta)$ 称为 $x_0$ 的一个**开邻域**；两个开区间之并 $(x_0 - \delta, x_0) \cup (x_0, x_0 + \delta)$ 称为 $x_0$ 的一个**去心开邻域**或**空心开邻域**。
 
-导数表示形式：
-$$
-f'(x_0) = y'|_{x=x_0} = \frac{dy}{dx}|_{x=x_0} = \frac{d f(x)}{dx}|_{x=x_0} = \frac{d}{dx}f(x)|_{x=x_0}
-$$
-切线方程：
-$$
-y - y_0 = f'(x_0)(x - x_0)
-$$
-法线方程：
-$$
-y - y_0 = -\frac{1}{f'(x_0)}(x - x_0)
-$$
-然后我们可以给出左右导数的概念：
+**定义1**：
 
-> /Define/
+> 设函数 $f(x)$ 在点 $x_0$ 的一个空心开邻域 $(x_0 - \delta_0, x_0) \cup (x_0, x_0 + \delta_0)$ 中有定义。如果存在 $A \in \mathbb{R}$，使得对任意给定的 $\varepsilon > 0$，都存在 $0 < \delta < \delta_0$，当 $0 < |x - x_0| < \delta$ 时，有
+> $$
+> |f(x) - A| < \varepsilon,
+> $$
+> 则称函数 $f(x)$ 在 $x_0$ 处（当 $x$ 趋于 $x_0$ 时）有极限 $A$，记为
+> $$
+> \lim_{x \to x_0} f(x) = A \quad \text{或} \quad f(x) \to A \quad (x \to x_0).
+> $$
 >
-> 右导数：
+> 需要注意的是，$f$ 在 $x_0$ 处的极限与 $f$ 在 $x_0$ 处的值没有直接关系，$f$ 甚至可以在 $x_0$ 处没有定义。
 >
-> $f(x)$在$(x_0, x_0 + \delta_0)\ (\delta_0 > 0)$有定义，$x_0 + \Delta x \in (x_0, x_0 + \delta_0)$
-> $$
-> \lim_{\Delta x \to 0^+} \frac{\Delta y}{\Delta x} = \lim_{\Delta x \to 0^+} \frac{f(x_0 + \Delta x) - f(x_0)}{\Delta x} = \lim_{x \to x_0^+} \frac{f(x) - f(x_0)}{x - x_0}\ (\text{exist}) = f'_+(x_0)
-> $$
-> 左导数：
+> 完全类似地，我们也可以定义 $x_0$ 处的单侧极限：
 >
-> $f(x)$在$(x_0 - \delta_0, x_0)\ (\delta_0 > 0)$有定义，$x_0 + \Delta x \in (x_0 - \delta_0, x_0)$
-> $$
-> \lim_{\Delta x \to 0^-} \frac{\Delta y}{\Delta x} = \lim_{\Delta x \to 0^-} \frac{f(x_0 + \Delta x) - f(x_0)}{\Delta x} = \lim_{x \to x_0^-} \frac{f(x) - f(x_0)}{x - x_0}\ (\text{exist}) = f'_-(x_0)
-> $$
+> - 如果存在 $A \in \mathbb{R}$，使得对任意给定的 $\varepsilon > 0$，都存在 $0 < \delta < \delta_0$，当 $-\delta < x - x_0 < 0$ 时，有
+>   $$
+>   |f(x) - A| < \varepsilon,
+>   $$
+>   则称函数 $f(x)$ 在 $x_0$ 处（当 $x$ 趋于 $x_0^-$ 时）有**左极限** $A$，记为
+>   $$
+>   \lim_{x \to x_0^-} f(x) = A \quad \text{或} \quad f(x) \to A \quad (x \to x_0^-).
+>   $$
+>   $f(x)$ 在 $x_0$ 处的左极限也记为 $f(x_0^-)$ 或 $f(x_0 - 0)$。
+>
+> - 如果存在 $A \in \mathbb{R}$，使得对任意给定的 $\varepsilon > 0$，都存在 $0 < \delta < \delta_0$，当 $0 < x - x_0 < \delta$ 时，有
+>   $$
+>   |f(x) - A| < \varepsilon,
+>   $$
+>   则称函数 $f(x)$ 在 $x_0$ 处（当 $x$ 趋于 $x_0^+$ 时）有**右极限** $A$，记为
+>   $$
+>   \lim_{x \to x_0^+} f(x) = A \quad \text{或} \quad f(x) \to A \quad (x \to x_0^+).
+>   $$
+>   $f(x)$ 在 $x_0$ 处的右极限也记为 $f(x_0^+)$ 或 $f(x_0 + 0)$。
+>
+> 显然，如果 $f$ 在 $x_0$ 处极限存在，则其左右极限也存在且等于此极限。
 
-定理：$f(x)$在$x = x_0$处可导$\iff$$f(x)$ 在 $x_0$ 处 $f'_+(x_0), f'_-(x_0)$ 存在且相等（证明过程略去）
+**命题1**：$f$ 在 $x_0$ 处有极限的充分必要条件是 $f$ 在 $x_0$ 的左极限和右极限都存在且相等
 
-定理（可导必要条件）：若$f(x)$在$x_0$处可导，则$f(x)$在$x_0$处连续；反之不成立
+> 只要证明充分性即可。设 $f$ 在 $x_0$ 处的左极限和右极限均为 $A$。由定义，任给 $\varepsilon > 0$，存在 $\delta_1 > 0$, $\delta_2 > 0$，使得
+> $$
+> |f(x) - A| < \varepsilon,\quad x \in (x_0 - \delta_1, x_0),
+> $$
+> $$
+> |f(x) - A| < \varepsilon,\quad x \in (x_0, x_0 + \delta_2).
+> $$
+>
+> 记 $\delta = \min\{\delta_1, \delta_2\}$，则
+> $$
+> |f(x) - A| < \varepsilon,\quad 0 < |x - x_0| < \delta.
+> $$
+>
+> 因此 $f$ 在 $x_0$ 处的极限为 $A$。
+
+/example/ 研究函数 $\dfrac{x^2 - 1}{2x^2 - 3x + 1}$ 在 $x_0 = 1$ 处的极限。
+
+> 当 $x \ne 1$ 时，
+> $$
+> \frac{x^2 - 1}{2x^2 - 3x + 1} = \frac{(x+1)(x-1)}{(x-1)(2x-1)} = \frac{x+1}{2x-1},
+> $$
+> 因此，任给 $\varepsilon > 0$，取 $\delta = \min\left\{\frac{1}{4}, \frac{\varepsilon}{6}\right\}$，当 $0 < |x - 1| < \delta$ 时，
+> $$
+> \left|\frac{x^2 - 1}{2x^2 - 3x + 1} - 2\right| = \left|\frac{x+1}{2x-1} - 2\right| = \left|\frac{3(x-1)}{2x-1}\right| < 6|x - 1| < \varepsilon.
+> $$
+>
+> 这说明该函数在 $x_0 = 1$ 处的极限为 $2$。
+
+/example/ 研究函数 $f(x) = [x]$ 的极限。
+
+> 当 $k \le x < k+1$（$k$ 为整数）时，$f(x) = k$。这说明：
+>
+> - 当 $x_0$ 不是整数时，$f$ 在 $x = x_0$ 处的极限等于 $f(x_0) = [x_0]$；
+> - 当 $x_0$ 为整数时，$f$ 在 $x = x_0$ 处的左极限为 $x_0 - 1$，右极限为 $x_0$。
+
+数列极限的许多结果都可以推广到函数极限的情形, 如下面的夹逼原理和极限的惟一性
+
+**命题2**（夹逼原理）：设在 $x_0$ 的一个空心开邻域内有
+$$
+f_1(x) \le f(x) \le f_2(x).
+$$
+如果 $f_1, f_2$ 在 $x_0$ 处的极限存在且等于 $A$，则 $f$ 在 $x_0$ 处的极限也等于 $A$。
+
+> /proof/ 证明过程参考数列极限.
+
+**命题3**（极限的唯一性）：设 $A, B$ 均为 $f$ 在 $x_0$ 处的极限，则 $A = B$。
 
 > /proof/
 >
-> $y = f(x)$ 在 $x_0$ 可导 $\Rightarrow$  $\lim_{\Delta x \to 0} \frac{\Delta y}{\Delta x} = f'(x_0)$
->
-> 于是$\lim_{\Delta x \to 0} \Delta y = \lim_{\Delta x \to 0} \frac{\Delta y}{\Delta x} \cdot \Delta x = f'(x_0) \cdot 0 = 0$
->
-> 即$y = f(x)$在$x_0$处连续；反之不成立
-
-### · 初等基本函数导数
-
-(1). $y = C$（$C$为常数），求$y^{\prime}$：
-
-> /solution/
+> 利用不等式
 > $$
-> \forall x\in \mathbb{R}\quad \lim_{\Delta x \to 0}\frac{f(x+\Delta x)-f(x)}{\Delta x}=\lim_{\Delta x \to 0}\frac{C - C}{\Delta x}=\lim_{\Delta x \to 0}0 = 0=f^{\prime}(x)
+> 0 \le |A - B| \le |f(x) - A| + |f(x) - B|
 > $$
-> $\therefore x\in \mathbb{R}$，$(C)^{\prime}=0$。
+> 和夹逼原理即可
 
-(2). $y = a^{x}(a\gt0,a\neq1$为常数)，求$y^{\prime}$：
-
-> /solution/
-> $$
-> \forall x\in \mathbb{R}\quad \lim_{\Delta x \to 0}\frac{a^{x+\Delta x}-a^{x}}{\Delta x}=\lim_{\Delta x \to 0}\frac{a^{x}a^{\Delta x}-a^{x}}{\Delta x}=a^{x}\lim_{\Delta x \to 0}\frac{a^{\Delta x}-1}{\Delta x}=a^{x}\ln a=f(x)
-> $$
-> $\therefore x\in \mathbb{R}$，$(a^{x})^{\prime}=a^{x}\ln a$，特别地，$(e^{x})^{\prime}=e^{x}$。
-
-(3). $y=\log_{a}x(a\gt0,a\neq1$为常数)，求$y^{\prime}$：
-
-> /solution/
->
-> $\forall x\in(0,+\infty)$，$\lim_{\Delta x \to 0}\frac{\log_{a}(x + \Delta x)-\log_{a}x}{\Delta x}$（换底公式：$\log_{a}b = \frac{\log_{c}b}{\log_{c}a}$），
-> $$
-> =\lim_{\Delta x \to 0}\frac{\log_{e}(1+\frac{\Delta x}{x})}{\Delta x}=\lim_{\Delta x \to 0}\frac{\ln(1+\frac{\Delta x}{x})}{\Delta x}=\lim_{\Delta x \to 0}\frac{1}{x}\frac{\ln(1+\frac{\Delta x}{x})}{\frac{\Delta x}{x}}=\frac{1}{x\ln a}=(\log_{a}x)^{\prime}
-> $$
-> $(\ln x)^{\prime}=\frac{1}{x}$。
-
-(4). $y = x^{a}(a\neq0$为常数)，求$y^{\prime}$：
-
-> /solution/
->
-> 设定义域为$D$，且$x\neq0$，$\forall x\in D$，
-> $$
-> \lim_{\Delta x \to 0}\frac{(x+\Delta x)^{a}-x^{a}}{\Delta x}=\lim_{\Delta x \to 0}\frac{x^{a}(1+\frac{\Delta x}{x})^{a}-1}{\Delta x}=x^{a}\lim_{\Delta x \to 0}\frac{a\frac{\Delta x}{x}}{\Delta x}=x^{a}\frac{a}{x}=ax^{a - 1}=(x^{a})^{\prime}
-> $$
-> 当$x = 0\in D$，要使 $0^{0}$ 有意义:
-> $$
-> \Rightarrow a\gt 0 \quad \lim_{x\to 0}\frac{f(x)-f(0)}{x - 0}=\lim_{x\to 0}\frac{x^{a}}{x}=\lim_{x\to 0}x^{a - 1}
-> $$
->
-> $$
-> \lim_{x \to 0} x^{a}=
-> \begin{cases}
-> 0 = f(0) & a>1 \\
-> 1 = f(0) & a = 1 \\
-> \infty & 0 < a < 1
-> \end{cases}
-> $$
->
-> $a<1$: $\lim_{x \to 0} \frac{1}{x^{a}}=\infty$
->
-> $x^{0} \equiv 1$ 
-
-(5). $y = \sin x$，求 $y^{\prime}$ 
-
->/solution/
->$$
->\lim_{\Delta x \to 0} \frac{\sin(x+\Delta x)-\sin x}{\Delta x}
->=\lim_{\Delta x \to 0} \frac{2\cos(x + \frac{\Delta x}{2})\sin\frac{\Delta x}{2}}{\Delta x}
->=\cos x = (\sin x)^{\prime}
->$$
->
->同理，$(\cos x)^{\prime}=-\sin x$，$x\in \mathbb{R}$
-
-### · 导数的四则运算
-
-设$u(x)$，$v(x)$均可导，则
-
- - $(u(x)\pm v(x))^{\prime}=u^{\prime}(x)\pm v^{\prime}(x)$ 或 $(u\pm v)^{\prime}=u^{\prime}\pm v^{\prime}$
-
- - $(uv)^{\prime}=u^{\prime}v + uv^{\prime}$ 
-
- - $(Cu)^{\prime}=Cu^{\prime}$ 
-
- - $(\frac{u}{v})^{\prime}=\frac{u^{\prime}v - uv^{\prime}}{v^{2}}$ $(v\neq 0)$
-
- - $(\frac{1}{v})^{\prime}=-\frac{v^{\prime}}{v^{2}}$
-
-$$
-(\tan x)^{\prime}=(\frac{\sin x}{\cos x})^{\prime}
-=\frac{\cos x\cdot\cos x-\sin x\cdot(-\sin x)}{(\cos x)^{2}}
-=\frac{1}{\cos^{2}x}=\sec^{2}x
-\quad (x\neq k\pi+\frac{\pi}{2}\quad k\in \mathbb{Z})
-$$
-
-同理，$(\cot x)^{\prime}=-\csc^{2}x$，$x\neq k\pi$，$k\in \mathbb{Z}$
-
-$$
-(\sec x)^{\prime}=(\frac{1}{\cos x})^{\prime}=-\frac{-\sin x}{\cos^{2}x}=\sec x\tan x\quad (x\neq k\pi+\frac{\pi}{2}\quad k\in \mathbb{Z})
-$$
-同理，$(\csc x)^{\prime}=-\csc x\cot x$，$x\neq k\pi$，$k\in \mathbb{Z}$
-
-### · 反函数求导法则
-
-分析：若$y = f(x)$的反函数$x = \varphi(y)$，要求$\varphi^{\prime}(y)$存在，$\varphi^{\prime}(y)=\frac{dx}{dy}$，$f^{\prime}(y)=\frac{dy}{dx}=\frac{1}{\frac{dx}{dy}}=\frac{1}{\varphi^{\prime}(y)}$，要求$\varphi^{\prime}(y)\neq 0$，且$\varphi$严格单调。
-
-定理（反函数求导法则）:
-
-若$y = f(x)$的反函数$x = \varphi(y)$严格单调，$\varphi^{\prime}(y)$存在且 $\varphi^{\prime}(y)\neq 0$，则$f^{\prime}(x)$存在且$f^{\prime}(x)=\frac{1}{\varphi^{\prime}(y)}$或$\frac{dy}{dx}=\frac{1}{\frac{dx}{dy}}$。
+**命题4**（绝对值的极限）：设 $f$ 在 $x_0$ 处的极限为 $A$，则 $|f|$ 在 $x_0$ 处的极限为 $|A|$。
 
 > /proof/
 >
-> 由$\varphi^{\prime}(y)$存在，由导数定义$\lim_{\Delta y \to 0} \frac{\Delta x}{\Delta y}=\varphi^{\prime}(y)$，于是$\lim_{\Delta x \to 0} \frac{\Delta y}{\Delta x}=\lim_{\Delta y \to 0} \frac{1}{\frac{\Delta x}{\Delta y}}$
->
-> （由$x = \varphi(y)$严格单调，则它的反函数$y = f(x)$严格单调）
+> 利用不等式
 > $$
-> \Delta x\to0 \quad \Delta x\neq0
-> \Rightarrow x - x_0\neq0\Rightarrow x\neq x_0\\
-> \Rightarrow f(x)\neq f(x_0)\\
-> \Rightarrow f(x)-f(x_0)\neq0
-> \Rightarrow [f(x_0+\Delta x)-f(x_0)]\neq0\\
-> \Rightarrow \Delta y\neq0
+> 0 \le ||f(x)| - |A|| \le |f(x) - A|
 > $$
-> 由$x = \varphi(y)$可导且连续，$x = \varphi(y)$严格单调且连续，则其反函数$y = f(x)$严格单调且连续，有$\lim\limits_{\Delta x\to 0}\Delta y = 0$。
+> 和夹逼原理即可
+
+/example/ 证明
+$$
+\lim_{x \to x_0} \sin x = \sin x_0, \quad \lim_{x \to x_0} \cos x = \cos x_0, \quad \forall\, x_0 \in \mathbb{R}.
+$$
+
+> **(1)** 任给 $\varepsilon > 0$，取 $\delta = \varepsilon$，当 $0 < |x - x_0| < \delta$ 时，有
+> $$
+> |\sin x - \sin x_0| = 2\left|\cos\frac{x + x_0}{2}\right|\left|\sin\frac{x - x_0}{2}\right| \leqslant 2\left|\frac{x - x_0}{2}\right| = |x - x_0| < \delta = \varepsilon.
+> $$
 >
-> $\lim\limits_{\Delta x\to 0}\frac{\Delta y}{\Delta x}=\lim\limits_{\Delta y\to 0}\frac{1}{\frac{\Delta x}{\Delta y}}=\frac{1}{\varphi^{\prime}(y)}=f^{\prime}(x)$，或$\frac{dy}{dx}=\frac{1}{\frac{dx}{dy}}$。
+> **(2)** 关于 $\cos x$ 的极限可象 (1) 一样证明，也可这样做：
+> $$
+> \lim_{x \to x_0} \cos x = \lim_{x \to x_0} \sin\left(\frac{\pi}{2} - x\right) = \sin\left(\frac{\pi}{2} - x_0\right) = \cos x_0.
+> $$
 
-#### · 反三角函数导数
+我们再来看看个关于函数极限的例子
 
-1. $y = \arcsin x,x\in[-1,1]$
-
-   - 其反函数$x = \sin y,y\in[-\frac{\pi}{2},\frac{\pi}{2}]$。
-
-   - 因为$(\sin y)^{\prime}=\cos y\neq 0,y\in(-\frac{\pi}{2},\frac{\pi}{2})$，且$x = \sin y$在$(-\frac{\pi}{2},\frac{\pi}{2})$上严格单调。
-
-   - 当$x\in(-1,1)$时，$y = \arcsin x$，且$(\arcsin x)^{\prime}=\frac{1}{(\sin y)^{\prime}}=\frac{1}{\cos y}=\frac{1}{\sqrt{1 - \sin^{2}y}}=\frac{1}{\sqrt{1 - x^{2}}},x\in(-1,1)$。
-
-2. 同理，$(\arccos x)^{\prime}=-\frac{1}{\sqrt{1 - x^{2}}},x\in(-1,1)$。
-
-3. $y = \arctan x,x\in(-\infty,+\infty)$，求$y^{\prime}$
-
-   - 它的反函数$x = \tan y,y\in(-\frac{\pi}{2},\frac{\pi}{2})$。
-
-   - 由于$(\tan y)^{\prime}=\sec^{2}y\neq 0$，$x = \tan y$严格单调。
-
-   - 所以$(\arctan x)^{\prime}=\frac{1}{(\tan y)^{\prime}}=\frac{1}{\sec^{2}y}=\frac{1}{1 + \tan^{2}y}=\frac{1}{1 + x^{2}},x\in\mathbb{R}$。
-
-4. 同理，$(\text{arccot }x)^{\prime}=-\frac{1}{1 + x^{2}},x\in\mathbb{R}$。
-
-> 有规律：“正的导数都$+$”，“余的导数都$-$”。
-
-### · 链式法则
-
-分析：设$y = f(u)$，$u = \varphi(x)$，若构成复合函数$y = f(\varphi(x))$。
-
-思考：添加什么条件能使$y = f(\varphi(x))$对$x$的导数存在，即$\frac{dy}{dx}$存在。已知$\frac{dy}{du}$，$\frac{du}{dx}$存在。
-
-猜想：$\frac{dy}{dx}=\frac{dy}{du}\cdot\frac{du}{dx}$。
-
-/Theorem/ 链式法则
-
-> 若$u = \varphi(x)$对$x$可导，$y = f(u)$对$u$可导，则复合函数$y = f(\varphi(x))$对$x$也可导，且$\frac{dy}{dx}=\frac{dy}{du}\cdot\frac{du}{dx}$，此称为链式法则。
-
-#### · 证明
-
-复合函数求导推导
-
-- $(f(\varphi(x)))^{\prime}=f^{\prime}(u)\cdot\varphi^{\prime}(x)$（其中$u = \varphi(x)$），即$(f(\varphi(x)))^{\prime}=f^{\prime}(\varphi(x))\cdot\varphi^{\prime}(x)$。
-
-- 对于$f(\varphi(x))$的求导过程：$f(u)\to f(\varphi(x))\to (f(\varphi(x)))^{\prime}$；对于$f^{\prime}(\varphi(x))$的求导过程：$f(u)\to f^{\prime}(u)\to f^{\prime}(\varphi(x))$。
-
-/proof/
-
->  因为$f^{\prime}(u)$存在，即$\lim\limits_{\Delta u\to 0}\frac{\Delta y}{\Delta u}=f^{\prime}(u)$，设$\lim\limits_{\Delta x\to 0}\alpha = 0$，$\frac{\Delta y}{\Delta u}=f^{\prime}(u)+\alpha$（当$\Delta u\to 0$时），则$\Delta y = f^{\prime}(u)\cdot\Delta u+\alpha\Delta u$。
->
->  所以
->  $$
->  \lim\limits_{\Delta x\to 0}\frac{\Delta y}{\Delta x}=\lim\limits_{\Delta x\to 0}\frac{f^{\prime}(u)\cdot\Delta u+\alpha\Delta u}{\Delta x}=\lim\limits_{\Delta x\to 0}\left[f^{\prime}(u)\frac{\Delta u}{\Delta x}+\alpha\frac{\Delta u}{\Delta x}\right]
->  $$
->  补充定义，当$\Delta u = 0$，令$\alpha = 0$，则
->  $$
->  \lim\limits_{\Delta x\to 0}\frac{\Delta y}{\Delta x}=f^{\prime}(u)\cdot\varphi^{\prime}(x)+\lim\limits_{\Delta x\to 0}\alpha\cdot\lim\limits_{\Delta x\to 0}\frac{\Delta u}{\Delta x}=f^{\prime}(\varphi(x))\cdot\varphi^{\prime}(x)=(f(\varphi(x)))^{\prime}
->  $$
-
-若 $y = f(u)$ 可导，$u=\varphi(v)$可导，$v = \psi(x)$可导，则$y=[f(\varphi(\psi(x)))]$对$x$导数存在且$\frac{dy}{dx}=\frac{dy}{du}\cdot\frac{du}{dv}\cdot\frac{dv}{dx}$。
+/example/ 设 $x_0 \geqslant 0$。研究函数 $f(x) = \sqrt{x}$ 在 $x_0$ 处的极限。
 
 > /proof/
 >
-> 因为$u = \varphi(\psi(x))$对$x$可导且$\frac{du}{dx}=\frac{du}{dv}\cdot\frac{dv}{dx}$，$y = f(u)$对$u$可导，所以$\frac{dy}{dx}=\frac{dy}{du}\cdot\frac{du}{dv}\cdot\frac{dv}{dx}$。
-
-***
-
-#### · 练习
-
-/example/    求$y = e^{\cos^{2}\frac{1}{x}}$的导数
-
-> /solution/
->
-> 解法一：
->
-> 令$y = e^{u}$，$u = v^{2}$，$v=\cos w$，$w=\frac{1}{x}$。
->
+> 当 $x_0 = 0$ 时，任给 $\varepsilon > 0$，取 $\delta = \varepsilon^2$，当 $0 < x < \delta$ 时，
 > $$
-> \frac{dy}{dx}=\frac{dy}{du}\cdot\frac{du}{dv}\cdot\frac{dv}{dw}\cdot\frac{dw}{dx}
-> =e^{u}\cdot 2v\cdot(-\sin w)\cdot\left(-\frac{1}{x^{2}}\right)\\
-> =e^{\cos^{2}\frac{1}{x}}\cdot 2\cos\frac{1}{x}\cdot\left(-\sin\frac{1}{x}\right)\left(-\frac{1}{x^{2}}\right)
-> =\frac{1}{x^{2}}e^{\cos^{2}\frac{1}{x}}\cdot\sin\frac{2}{x}
+> |\sqrt{x} - 0| = \sqrt{x} < \sqrt{\delta} = \varepsilon,
 > $$
-> 解法二：
->
+> 因此
 > $$
-> \begin{align*}
-> y^{\prime}
-> &=(e^{\cos^{2}\frac{1}{x}})^{\prime}=e^{\cos^{2}\frac{1}{x}}\cdot(\cos^{2}\frac{1}{x})^{\prime}
-> =e^{\cos^{2}\frac{1}{x}}\cdot 2\cos\frac{1}{x}\cdot(\cos\frac{1}{x})^{\prime}\\
-> &=e^{\cos^{2}\frac{1}{x}}\cdot 2\cos\frac{1}{x}\cdot(-\sin\frac{1}{x})\cdot(\frac{1}{x})^{\prime}\\
-> &=e^{\cos^{2}\frac{1}{x}}\cdot 2\cos\frac{1}{x}\cdot(-\sin\frac{1}{x})\left(-\frac{1}{x^{2}}\right)
-> \end{align*}
-> $$
-
-/example/   求$y = \sqrt{1+\sqrt{1 + x^{2}+x^{3}}}$的导数
-
-> /solution/
-> $$
-> \begin{align*}
-> y^{\prime}&=\frac{1}{2}(1+\sqrt{1 + x^{2}+x^{3}})^{-\frac{1}{2}}\cdot\frac{1}{2}(1+\sqrt{x^{2}+x^{3}})^{-\frac{1}{2}}\cdot\frac{1}{2}(x^{2}+x^{3})^{-\frac{1}{2}}\cdot(2x + 3x^{2})
-> \end{align*}
-> $$
-
-/example/   求$y=\ln\left(\frac{e^{2x}}{e^{2x}-1}+\sqrt{1+\cos^{2}\frac{1}{x}+\sin^{2}\frac{1}{x}}\right)$的导数
-
-> /solution/
-> $$
-> \begin{align*}
-> y&=\frac{1}{2}[2x-\ln(e^{2x}-1)]+\sqrt{2}\\
-> y^{\prime}&=1-\frac{1}{2}\cdot\frac{e^{2x}\cdot 2}{e^{2x}-1}+0\\
-> &=\frac{e^{2x}-1 - e^{2x}}{e^{2x}-1}=\frac{1}{1 - e^{2x}}
-> \end{align*}
-> $$
-
-/example/    求$y = \ln|x|$的导数
-
-> /solution/
->
-> 当 $x>0$ 时，$(\ln|x|)^{\prime}=(\ln x)^{\prime}=\frac{1}{x}$；
->
-> 当 $x<0$ 时，$(\ln|x|)^{\prime}=(\ln(-x))^{\prime}=\frac{1}{-x}\cdot(-1)=\frac{1}{x}$。
->
-> 所以$(\ln|x|)^{\prime}=\frac{1}{x}$。
-
-/example/   求$y = \ln|3x + 1|$的导数
-
-> /solution/
->
-> $y^{\prime}=\frac{1}{3x + 1}\cdot 3$，
->
-> $y^{\prime}=\frac{1}{|3x + 1|}\cdot(3x + 1)^{\prime}$（不可取）
-
-/example/    求$y=\ln(x+\sqrt{x^{2}+a^{2}})$（$a>0$）的导数
-
-> /solution/
-> $$
-> \begin{align*}
-> y^{\prime}&=\frac{1}{x+\sqrt{x^{2}+a^{2}}}\cdot(1+\frac{2x}{2\sqrt{x^{2}+a^{2}}})\\
-> &=\frac{1}{\sqrt{x^{2}+a^{2}}}
-> \end{align*}
-> $$
-> 并且在第三章我们会学到
-> $$
-> \int\frac{1}{\sqrt{x^{2}+a^{2}}}dx=\ln(x+\sqrt{x^{2}+a^{2}})+C
-> $$
-
-/example/   求$y=\ln|x+\sqrt{x^{2}-a^{2}}|$（$a>0$）的导数
-
-> /solution/
-> $$
-> \begin{align*}
-> y^{\prime}&=\frac{1}{x+\sqrt{x^{2}-a^{2}}}\cdot(1+\frac{2x}{2\sqrt{x^{2}-a^{2}}})\\
-> &=\frac{1}{\sqrt{x^{2}-a^{2}}}
-> \end{align*}
-> $$
-> 且第三章会学到
-> $$
-> \int\frac{1}{\sqrt{x^{2}-a^{2}}}dx=\ln|x+\sqrt{x^{2}-a^{2}}|+C
-> $$
-
-/example/   求$y = x^{\sin x}$的导数
-
-> /solution/
->
-> **错误解法**：$y^{\prime}=\sin x\cdot x^{\sin x - 1}\cdot\cos x$（用$(x^{a})^{\prime}=ax^{a - 1}$，$a$为常数，错误）
->
-> **正确解法**：
-> $$
-> y = e^{\sin x\ln x}\quad \quad
-> y^{\prime}=e^{\sin x\ln x}(\cos x\ln x+\frac{\sin x}{x})
-> $$
-
-/example/   求$y = e^{|x^{3}|}$的导数
-
-> /solution/
-> $$
-> y=\begin{cases}e^{-x^{3}}&x\leq0\\e^{x^{3}}&x>0\end{cases}
-> $$
-> 分界点用定义
->
-> $$
-> y^{\prime}=\begin{cases}e^{-x^{3}}(-3x^{2})&x<0\\0&x = 0\\e^{x^{3}}(3x^{2})&x>0\end{cases}
+> \lim_{x \to 0^+} \sqrt{x} = 0.
 > $$
 >
+> 当 $x_0 > 0$ 时，任给 $\varepsilon > 0$，取 $\delta = \varepsilon\sqrt{x_0}$，当 $0 < |x - x_0| < \delta$ 时，
 > $$
-> \lim_{x \to 0}\frac{f(x)-f(0)}{x - 0}=\lim_{x \to 0}\frac{e^{-x^{2}}-1}{x}=\lim_{x \to 0}\frac{-x^{2}}{x}=0 = f^{\prime}(0)\\
-> \lim_{x \to 0}\frac{f(x)-f(0)}{x - 0}=\lim_{x \to 0}\frac{e^{x^{2}}-1}{x}=\lim_{x \to 0}\frac{x^{2}}{x}=0 = f^{\prime}(0)
+> |\sqrt{x} - \sqrt{x_0}| = \frac{|x - x_0|}{\sqrt{x} + \sqrt{x_0}} \leqslant \frac{|x - x_0|}{\sqrt{x_0}} < \frac{\delta}{\sqrt{x_0}} = \varepsilon,
 > $$
->
-> $\therefore f^{\prime}(0)=0$
-
-### · 高阶导数
-
-#### · 定义
-
-> /Define/
->
-> 若$f(x)$在区间$I$上的导函数$f^{\prime}(x)$在$I$上又可导，即$[f^{\prime}(x)]^{\prime}$存在，记为$f^{\prime\prime}(x)$。
->
-> $(y^{\prime})^{\prime}=y^{\prime\prime}=\frac{d^{2}y}{dx^{2}}$
->
-> $y^{\prime\prime}=(y^{\prime})^{\prime}=\frac{dy^{\prime}}{dx}=\frac{d}{dx}y^{\prime}=\frac{d}{dx}(\frac{dy}{dx})\triangleq\frac{d^{2}y}{dx^{2}}$
->
-> $d x^{2}=dx\cdot dx=(dx)^{2}\neq d(x^{2}) = 2xdx$
->
-> 称为$f(x)$在区间$I$上的二阶导函数，或简称为二阶导数。
->
-> 如果$f(x)$在区间$I$上的$n$阶导函数存在，记作：
->
+> 因此
 > $$
-> y\underbrace{^{\prime\prime\cdots\prime}}_{n}=y^{(n)}=f^{(n)}(x)=\frac{d^{n}y}{dx^{n}}=\frac{d}{dx}\cdot\frac{d^{n - 1}y}{dx^{n - 1}}=\frac{d}{dx}\cdot y^{(n - 1)}
-> $$
-> 当$n>1$时，$y^{(n)}$称为高阶导数，$y^{(0)}=y$。
-
-#### · 基本初等函数高阶导数
-
-(1).  $y = a^{x}$，求$y^{(n)}$
-
-> /solution/
->
-> $y^{\prime}=a^{x}\ln a$
->
-> $y^{\prime\prime}=(a^{x}\ln a)^{\prime}=\ln a(a^{x})^{\prime}=\ln a\cdot a^{x}\ln a=a^{x}(\ln a)^{2}$
->
-> $\cdots$
->
-> $y^{(n)}=a^{x}(\ln a)^{n}$
->
-> $(e^{x})^{(n)}=e^{x}$
-
-(2).  $y = x^{a}$（$a\neq0$常），求$y^{(n)}$
-
-> /solution/
->
-> $y^{\prime}=ax^{a - 1}$，$y^{\prime\prime}=a(a - 1)x^{a - 2}$
->
-> $\cdots$
->
-> $y^{(n)}=a(a - 1)(a - 2)\cdots(a - n + 1)x^{a - n}$
->
-> $(x^{n})^{(n)}=n(n - 1)(n - 2)\cdots1\cdot x^{n - n}=n!$
->
-> 约定$x^{0}=1$，$n,m\in N$，$m>n$，$(x^{n})^{(m)}=0$
-
-(3). $y = \ln x$，求$y^{(n)}$
-
-> /solution/
->
-> 解法一：
->
-> $y^{\prime}=\frac{1}{x}$，$y^{\prime\prime}=-\frac{1}{x^{2}}=(-1)^{1}\frac{1}{x^{2}}$
->
-> $y^{(3)}=(-1)(-2)x^{-3}$
->
-> $y^{(n)}=(-1)(-2)\cdots(-(n - 1))x^{-n}=(-1)^{n - 1}(n - 1)!x^{-n}$
->
-> 解法二：
->
-> $$
-> \begin{align*}
-> (\ln x)^{(n)}&=[(\ln x)^{\prime}]^{(n - 1)}\\
-> &=(x^{-1})^{(n - 1)}\\
-> &=(-1)(-1 - 1)\cdots(-(1+(n - 1)))x^{-1-(n - 1)}\\
-> &=(-1)^{n - 1}\cdot(n - 1)!x^{-n}
-> \end{align*}
-> $$
->
-> 同理$(1 + x)^{a(n)}=a(a - 1)\cdots(a - n + 1)\cdot(1 + x)^{a - n}$，$[\ln(1 + x)]^{(n)}=(-1)^{n - 1}(n - 1)!(1 + x)^{-n}$ 
-
-(4). $y = \sin x$，求$y^{(n)}$
-
-> /solution/
-> $$
-> y^{\prime}=\cos x \quad \quad
-> y^{\prime\prime}=-\sin x\quad \quad
-> y^{\prime\prime\prime}=-\cos x\quad \quad
-> y^{(4)}=\sin x
-> $$
-> $y^{\prime}=\cos x=\sin(x+\frac{\pi}{2})$ ， $y^{\prime\prime}=\sin(x+\frac{\pi}{2}+\frac{\pi}{2})\cdot1$
->
-> 假设$n = k$时，$y^{(k)}=\sin(x + k\frac{\pi}{2})$
->
-> 当$k=n + 1$时，
-> $$
-> y^{(k + 1)}=[\sin(x + k\frac{\pi}{2})]^{\prime}=\sin(x + k\frac{\pi}{2}+\frac{\pi}{2})
-> $$
-> 知$n = k + 1$成立，由数学归纳法知 $y^{(n)}=\sin(x + n\frac{\pi}{2})$
->
-> 同理$(\cos x)^{(n)}=\cos(x + n\frac{\pi}{2})$
->
-> $k\neq0$，常数，
-> $$
-> (\sin kx)^{(n)}=k^{n}\sin(kx + n\cdot\frac{\pi}{2})
+> \lim_{x \to x_0} \sqrt{x} = \sqrt{x_0}.
 > $$
 
-#### · *Leibniz* 法则
+### · 无穷远处极限
 
->/Theorem/
->$$
->(uv)^{\prime}=u^{\prime}v + uv^{\prime}\\
->(f_1f_2f_3\cdots f_n)^{\prime}=\sum_{i=1}^{k}f_1f_2f_3\cdots f_i' \cdots f_n
->$$
+**定义2**
 
-对于乘积函数的高阶导数有如下推论：
-
-> /Theorem/
->
-> 若$u^{(n)}$，$v^{(n)}$均存在，则
->
-> $(u\pm v)^{(n)}=u^{(n)}\pm v^{(n)}$
->
-> $(Cu)^{(n)}=Cu^{(n)}$
->
-> $$
-> (uv)^{(n)}=C_{n}^{0}u^{(n)}v^{(0)}+C_{n}^{1}u^{(n - 1)}v^{(1)}+\cdots + C_{n}^{n}u^{(0)}v^{(n)}
-> $$
-
-> 补充：
->
-> 二项式展开：$(u + v)^{n}=\cdots + C_{n}^{k}u^{n - k}v^{k}+\cdots$，$C_{n}^{k}+C_{n}^{k + 1}=C_{n + 1}^{k+1}$，$C_{n}^{k}=\frac{n(n - 1)\cdots(n - k + 1)}{k!}$
-
-若$u$，$v$中有一项经过几次求导为$0$，把此项看成$1$，另一项$n$阶导数有公式，把此项看成$u$，这时用$(uv)^{(n)}$公式。
-
-/example/    $y = x^{2}e^{x}$，求$y^{(n)}$
-
-> /solution/
-> $$
-> \begin{align*}
-> y^{(n)}&=(e^{x}x^{2})^{(n)}\\
-> &=C_{n}^{0}e^{x}x^{2}+C_{n}^{1}e^{x}(2x)+C_{n}^{2}e^{x}\cdot2\\
-> &=e^{x}(x^{2}+2nx + n(n - 1))
-> \end{align*}
-> $$
->
-> $(n\geqslant2)$，当$n = 1$时上式也成立
-
-#### · 例题
-
-(1). 求$y = \cos^{2}x$的$n$阶导数$y^{(n)}$
-
-> /solution/
-> $$
-> \begin{align*}
-> y&=\frac{1}{2}(1 + \cos 2x)\\
-> y^{(n)}&=\left[\frac{1}{2}(1 + \cos 2x)\right]^{(n)}\\
-> &=\frac{1}{2}(\cos 2x)^{(n)}\\
-> &=\frac{1}{2}\cdot2^{n}\cos(2x + n\cdot\frac{\pi}{2})\\
-> &=2^{n - 1}\cos(2x + n\cdot\frac{\pi}{2})
-> \end{align*}
-> $$
-> 所以$y^{(n)} = 2^{n - 1}\cos(2x + n\cdot\frac{\pi}{2})$
-
-(2). 求$y=\frac{1}{x^{2}+3x + 2}$的$n$阶导数
-
-> /solution/
->
-> $$
-> \begin{align*}
-> y&=\frac{1}{(x + 1)(x + 2)}=(x + 1)^{-1}(x + 2)^{-1}\\
-> &=[(x + 1)^{-1}-(x + 2)^{-1}]^{(n)}\\
-> &=(-1)(-1 - 1)\cdots(-1-(n - 1))[(x + 1)^{-1 - n}-(x + 2)^{-1 - n}]\\
-> &=(-1)^{n}n![(x + 1)^{-n - 1}-(x + 2)^{-n - 1}]
-> \end{align*}
-> $$
-
-3. 求$y = e^{x}\cos x$的$n$阶导数
-
-> /solution/
-> $$
-> \begin{align*}
-> y^{\prime}&=e^{x}\cos x+e^{x}(-\sin x)\\
-> &=e^{x}(\cos x-\sin x)\\
-> &=e^{x}\sqrt{2}(\frac{\sqrt{2}}{2}\cos x-\frac{\sqrt{2}}{2}\sin x)\\
-> &=e^{x}\sqrt{2}(\cos\frac{\pi}{4}\cos x-\sin\frac{\pi}{4}\sin x)\\
-> &=\sqrt{2}e^{x}\cos(x+\frac{\pi}{4})
-> \end{align*}
-> $$
-> 假设$n = k$时，$y^{(k)}=\sqrt{2}^{k}e^{x}\cos(x + k\cdot\frac{\pi}{4})$
->
-> 当$n = k + 1$时，
->
-> $$
-> \begin{align*}
-> y^{(k + 1)}&=(y^{(k)})^{\prime}\\
-> &=\sqrt{2}^{k}[e^{x}\cos(x + k\cdot\frac{\pi}{4})+e^{x}(-\sin(x + k\cdot\frac{\pi}{4}))]\\
-> &=\sqrt{2}^{k + 1}e^{x}[\cos\frac{\pi}{4}\cos(x + k\cdot\frac{\pi}{4})-\sin\frac{\pi}{4}\sin(x + k\cdot\frac{\pi}{4})]\\
-> &=\sqrt{2}^{k + 1}e^{x}\cos(x+(k + 1)\cdot\frac{\pi}{4})
-> \end{align*}
-> $$
-> 当$n = k + 1$时也成立，所以$y^{(n)}=\sqrt{2}^{n}e^{x}\cos(x + n\cdot\frac{\pi}{4})$
-
-### · 方程确定函数的导数
-
->定义：设$F(x,y)=0$，$D$、$Z$均为非空实数集，$\forall x_{0}\in D$，$F(x_{0},y)=0$，如果方程有唯一属于$Z$的解$y$，即$F(x_{0},y_{0})=0$，$y_{0}\in Z$，按照函数的定义，得到了$D$上的一个函数，记作$y = y(x)$，称为方程$F(x,y)=0$确定的函数。
-
-如何求$y = y(x)$的导数？
-
-如果从$F(x,y)=0$中解出$y$用$x$的表达式，称$y = y(x)$为显函数。
-
-/example/    $y^{3}-x^{3}=1$，确定$y = y(x)$，$y=\sqrt[3]{1 + x^{3}}$，$x\in\mathbb{R}$，满足$(\sqrt[3]{1 + x^{3}})^{3}-x^{3}\equiv1$。
-
-如果$F(x,y)=0$确定$y = y(x)$，但是$y$不能用$x$的显式表达式表示，称为方程确定的隐函数。
-
-如$y-xe^{y}=1$确定$y = y(x)$，称为隐函数，有$y(x)-xe^{y(x)}\equiv1$，$x\in D$。
-
-#### · 隐函数求导
-
-/example/    已知$y(x)-xe^{y(x)} = 1$，求$\frac{dy}{dx}$。
-
-> /solution/
->
-> 方程两边同时对$x$求导：
->
-> $y^{\prime}(x)-e^{y(x)}-xe^{y(x)}\cdot y^{\prime}(x)=0$
->
-> $(1 - xe^{y(x)})y^{\prime}(x)=e^{y(x)}$
->
-> $\therefore y^{\prime}(x)=\frac{e^{y(x)}}{1 - xe^{y(x)}}$
-
-以后用以下方法：
-
-/example/    已知$y - xe^{y}=1$，求$\frac{dy}{dx}$。
-
-> /solution/
->
-> 方法一：由$y = y(x)$，方程两边对$x$求导：
->
-> $y^{\prime}-e^{y}-xe^{y}y^{\prime}=0$  (1)
->
-> $y^{\prime}=\frac{e^{y}}{1 - xe^{y}}$
->
-> 求$\left.\frac{dy}{dx}\right|_{x = 0}$：当$x - 0\cdot e^{y}=1$，$\Rightarrow y = 1$ ， $\left.\frac{dy}{dx}\right|_{x = 0}=e$
->
-> 在曲线过$(0,1)$处：切线方程：$y - 1 = ex$    ；法线方程：$y - 1=-\frac{1}{e}x$
->
-> 求$\frac{d^{2}y}{dx^{2}}$：
->
-> $$
-> y^{\prime\prime}=\frac{e^{y}\cdot y^{\prime}(1 - xe^{y})-e^{y}(0 - e^{y}-xe^{y}y^{\prime})}{(1 - xe^{y})^{2}}
-> $$
-> 化简，把$y^{\prime}=\frac{e^{y}}{1 - xe^{y}}$代入，再化简。
->
-> ***
->
-> 方法二：
->
-> 方程(1)两边对$x$求导：
->
-> $y^{\prime\prime}-e^{y}\cdot y^{\prime}-e^{y}\cdot y^{\prime}-xe^{y}\cdot y^{\prime}\cdot y^{\prime}-xe^{y}\cdot y^{\prime\prime}=0$
->
-> 代入$y^{\prime}$，化简，解出$y^{\prime\prime}$。
->
-> 求$\left.\frac{d^{2}y}{dx^{2}}\right|_{x = 0}$：把$x = 0$，$y = 1$，$y^{\prime}(0)=e$代入：$y^{\prime\prime}-e^{2}-e^{2}=0$
->
-> $\therefore y^{\prime\prime}=2e^{2}$
-
-***
-
-/example/    $y = f(x + y)$，求$\frac{dy}{dx}$，其中$f$二阶可导。
-
-> /solution/
->
-> 由$y = y(x)$ ,方程两边对$x$求导：
->
-> $$
-> y^{\prime}=f^{\prime}(x + y)(1 + y^{\prime})\Rightarrow
-> y^{\prime}=f^{\prime}\cdot(1 + y^{\prime})\Rightarrow
-> y^{\prime}=(1 + y^{\prime})f^{\prime} \Rightarrow
-> (1 - f^{\prime})y^{\prime}=f^{\prime} \Rightarrow
-> y^{\prime}=\frac{f^{\prime}}{1 - f^{\prime}}
-> $$
->
-> $$
-> y^{\prime\prime}=\frac{f^{\prime\prime}\cdot(1 + y^{\prime})(1 - f^{\prime})+f^{\prime}\cdot f^{\prime\prime}\cdot(1 + y^{\prime})}{(1 - f^{\prime})^{2}}
-> $$
->
-> 化简，把$y^{\prime}=\frac{f^{\prime}}{1 - f^{\prime}}$再化简。
-
-#### · 对数微分法
-
-(1). 求$y = x^{\sin x}$的导数$y^{\prime}$
-
->/solution/ 
->
->$\ln y=\sin x\ln x$
->
->方程两边对$x$求导：
->$$
->\frac{1}{y}y^{\prime}=\cos x\ln x+\frac{\sin x}{x}\\
->y^{\prime}=y(\cos x\ln x+\frac{\sin x}{x})
->$$
-
-(2). 求$y = \frac{(\ln x)^{x}}{x^{\ln x}}$的导数 $y^{\prime}$ 
-
->/solution/
->
->$$
->\ln y=\ln(\ln x)^{x}-\ln x^{\ln x}\iff
->\ln y=x\ln\ln x-(\ln x)^{2}
->$$
->
->$$
->\frac{1}{y}y^{\prime}=\ln\ln x+x\cdot\frac{1}{\ln x}\cdot\frac{1}{x}-2\frac{\ln x}{x}
->$$
-
-(3). 求$y = \frac{\sqrt[3]{3x + 1}\cdot x^{2}}{\sqrt{2x + 1}\cdot\sqrt[3]{1 - 5x}}$的导数 $y^{\prime}$ 
-
->/solution/
->
->$$
->\ln y=\frac{1}{3}\ln|3x + 1|+2\ln|x|-\frac{1}{2}\ln|2x + 1|-\frac{1}{3}\ln|1 - 5x|
->$$
->方程两边对$x$求导：
->
->$$
->\frac{1}{y}y^{\prime}=\frac{1}{3}\cdot\frac{3}{3x + 1}+2\cdot\frac{1}{x}-\frac{1}{2}\cdot\frac{2}{2x + 1}-\frac{1}{3}\cdot\frac{-5}{1 - 5x}
->$$
->
->$$
->\therefore y^{\prime}=y[\frac{1}{3x + 1}+\frac{2}{x}-\frac{1}{2x + 1}+\frac{5}{3(1 - 5x)}]
->$$
-
-(4). 求$y = (\frac{b}{a})^{x}(\frac{x}{a})^{a}(\frac{a}{x})^{b}$（$a,b>0$，$x>0$）的导数$y^{\prime}$
-
->/solution/
->
->$$
->\ln y=x\ln\frac{b}{a}+a(\ln x-\ln a)+b(\ln a-\ln x)
->$$
->
->$$
->\frac{1}{y}y^{\prime}=\ln\frac{b}{a}+a\cdot\frac{1}{x}-b\cdot\frac{1}{x}\iff
->y^{\prime}=y(\ln\frac{b}{a}+\frac{a - b}{x})
->$$
->
->
-
-(5). 求$a^{2}x^{2}+b^{2}y^{2}=1$（$a,b>0$常）中$y^{\prime}$
-
->/solution/
->
->由$y = y(x)$ ，方程两边对$x$求导：
->
->$a^{2}\cdot2x + b^{2}\cdot2y\cdot y^{\prime}=0$ ， $y^{\prime}=-\frac{a^{2}}{b^{2}}\cdot\frac{x}{y}$
-
-## Fragment 2 微分
-
-若$y = f(x)$在$x$处可导，按定义，$\lim\limits_{\Delta x\to 0}\frac{\Delta y}{\Delta x}=f^{\prime}(x)$
-
+设 $f$ 在 $x_0$ 的一个空心开邻域中有定义。如果任给 $A > 0$，均存在 $\delta > 0$，当 $0 < |x - x_0| < \delta$ 时，有 $f(x) > A$，则称 $f$ 在 $x_0$ 处的极限为 $+\infty$，记为
 $$
-\Leftrightarrow\frac{\Delta y}{\Delta x}=f^{\prime}(x)+\alpha,\ \lim\limits_{\Delta x\to 0}\alpha = 0
-\Leftrightarrow\Delta y=f^{\prime}(x)\Delta x+\alpha\Delta x
-$$
-$\lim\limits_{\Delta x\to 0}\frac{\alpha\Delta x}{\Delta x}=0$，记$o(\Delta x)=\alpha\Delta x$（$\Delta x\to 0$）
-
-$$
-\Leftrightarrow\Delta y=f^{\prime}(x)\Delta x+o(\Delta x)\ (\Delta x\to 0)\quad \quad
-\Delta y=f(x+\Delta x)-f(x)
-$$
-当$|\Delta x|$很小时，则$|o(\Delta x)|$很小
-
-$\therefore\Delta y\approx f^{\prime}(x)\Delta x$ 
-
-于是我们可以试着给出微分的定义
-
-### · 定义
-
->/Define/
->
->设$y = f(x)$，若$\Delta y=f(x+\Delta x)-f(x)$可表示为$\Delta y = A\Delta x+o(\Delta x)$（$\Delta x\to 0$），其中$A$是与$\Delta x$无关的量，则称$y = f(x)$在$x$处可微，称线性主部$A\Delta x$为$y = f(x)$在$x$处的微分，记作$dy$，即$dy = A\Delta x$。
-
-定理：$f(x)$在$x$处可微的充分必要条件是$f(x)$在$x$处可导，且$A = f^{\prime}(x)$。
-
->/proof/
->
->充分性：前面分析已证。
->
->必要性：由$f(x)$在$x$处可微，由定义知，$f(x)=A\Delta x+o(\Delta x)$（$\Delta x\to 0$），
->
->于是$\lim\limits_{\Delta x\to 0}\frac{\Delta y}{\Delta x}=\lim\limits_{\Delta x\to 0}[A+\frac{o(\Delta x)}{\Delta x}]=A = f^{\prime}(x)$。
-
-若$f(x)$在$x$处可导，则$A = f^{\prime}(x)$。如果$y = f(x)$在$x$处可微（$x$为自变量），$dy = f^{\prime}(x)\Delta x$或$d f(x)=f^{\prime}(x)\Delta x$。
-
-由$y = x$在$x$处可导$\Leftrightarrow x$在$x$处可微，$dx=(x)^{\prime}\Delta x=\Delta x$，自变量的增量等于自变量的微分，
-
-于是$dy = f^{\prime}(x)\cdot\Delta x=f^{\prime}(x)\cdot dx$，因此，$\frac{dy}{dx}=f^{\prime}(x)$，故导数又称为微商。
-
-### · 四则运算
-
-若$u(x)$，$v(x)$均可微，则
-
- - $d(u\pm v)=du\pm dv$
-
- - $d(Cu)=Cdu$
-
- - $d(uv)=vdu + udv$
-
- - $d(\frac{u}{v})=\frac{vdu - udv}{v^{2}}$（$v\neq 0$）
-
- - $d(\frac{1}{v})=-\frac{dv}{v^{2}}$
-
->/proof/
->
->由$u$，$v$可微，知$u$，$v$可导$\Rightarrow\frac{u}{v}$可导（$v\neq 0$）$\Rightarrow\frac{u}{v}$可微。
->$$
->d(\frac{u}{v})=(\frac{u}{v})^{\prime}dx=\frac{u^{\prime}dx\cdot v - u\cdot v^{\prime}dx}{v^{2}}=\frac{vdu - udv}{v^{2}}
->$$
-
-### · 微分的一阶形式不变性
-
-若$y = f(x)$可微，且$x$为自变量，$dy = f^{\prime}(x)\Delta x$，即$d f(x)=f^{\prime}(x)dx$。
-
-若$y = f(u)$可微，$x=\varphi(t)$可微，$\Rightarrow y = f(\varphi(t))$可微，$t$为自变量。
-
-于是$y = [f(\varphi(t))]^{\prime}dt$，$d f(\varphi(t))=f^{\prime}(\varphi(t))\varphi^{\prime}(t)dt=f^{\prime}(\varphi(t))d\varphi(t)$。
-
-由$x = \varphi(t)$，$\therefore d f(u)=f^{\prime}(u)du$。
-
-当$u$为中间变量时，这个形式仍成立，即，$y = f(u)$可微，不论$u$为自变量还是中间变量，都有$d f(u)=f^{\prime}(u)du$，称为微分的一阶形式不变性。
-
-即，若$y = f(u)$可微，如果$dy = g(u)du = d f(u)=f^{\prime}(u)du$，则$f^{\prime}(u)=g(u)$，$\frac{dy}{du}=g(u)=f^{\prime}(u)$。
-
-#### · 例题
-
-(1). 求$y = e^{\sqrt{1 + x^{2}}}$的微分$dy$
-
-> /solution/
-> $$
-> \begin{align*}
-> dy&=d(e^{\sqrt{1 + x^{2}}})\\
-> &=e^{\sqrt{1 + x^{2}}}d(\sqrt{1 + x^{2}})\\
-> &=e^{\sqrt{1 + x^{2}}}\frac{1}{2\sqrt{1 + x^{2}}}d(1 + x^{2})\\
-> &=e^{\sqrt{1 + x^{2}}}\frac{1}{2\sqrt{1 + x^{2}}}[d(1)+d(x^{2})]\\
-> &=e^{\sqrt{1 + x^{2}}}\frac{1}{2\sqrt{1 + x^{2}}}d(x^{2})\\
-> &=e^{\sqrt{1 + x^{2}}}\frac{1}{2\sqrt{1 + x^{2}}}\cdot 2xdx
-> \end{align*}
-> $$
->
-> 且$y^{\prime}=e^{\sqrt{1 + x^{2}}}\frac{x}{\sqrt{1 + x^{2}}}$。
-
-(2). 已知$dy = e^{\sqrt{1 + x^{2}}}\frac{x}{\sqrt{1 + x^{2}}}dx(=y^{\prime}dx)$求$y$
-
-> /solution/
->
-> $\Leftrightarrow$已知$y^{\prime}=e^{\sqrt{1 + x^{2}}}\frac{x}{\sqrt{1 + x^{2}}}$，求$y$。
->
-> $$
-> \begin{align*}
-> dy&=e^{\sqrt{1 + x^{2}}}\frac{x}{\sqrt{1 + x^{2}}}dx\\
-> &=e^{\sqrt{1 + x^{2}}}\frac{1}{2\sqrt{1 + x^{2}}}d(x^{2})\\
-> &=e^{\sqrt{1 + x^{2}}}\frac{1}{2\sqrt{1 + x^{2}}}d(1 + x^{2})\\
-> &=e^{\sqrt{1 + x^{2}}}d(\sqrt{1 + x^{2}})\\
-> &=d(e^{\sqrt{1 + x^{2}}}+C)
-> \end{align*}
-> $$
->
-> $\therefore y = e^{\sqrt{1 + x^{2}}}+C$
-
-### · 近似值
-
-若$y = f(x)$在$x$处可微，即
-
-$$
-\begin{align*}
-\Delta y&=A\Delta x+o(\Delta x) (\Delta x\to 0)\\
-&=f^{\prime}(x)\Delta x+o(\Delta x)\\
-&=f^{\prime}(x)dx+o(\Delta x)\\
-&=dy + o(\Delta x)
-\end{align*}
+\lim_{x \to x_0} f(x) = +\infty \quad \text{or} \quad f(x) \to +\infty \quad (x \to x_0).
 $$
 
-当$|\Delta x|$很小时，有$\Delta y\approx dy$，若$f^{\prime}(x)\neq 0$时，
-
+如果任给 $A < 0$，均存在 $\delta > 0$，当 $0 < |x - x_0| < \delta$ 时，有 $f(x) < A$，则称 $f$ 在 $x_0$ 处的极限为 $-\infty$，记为
 $$
-\begin{align*}
-\lim_{\Delta x\to 0}\frac{\Delta y}{dy}&=\lim_{\Delta x\to 0}\frac{f^{\prime}(x)\Delta x+o(\Delta x)}{f^{\prime}(x)\cdot\Delta x}\\
-&=\lim_{\Delta x\to 0}[1+\frac{1}{f^{\prime}(x)}\cdot\frac{o(\Delta x)}{\Delta x}]=1
-\end{align*}
+\lim_{x \to x_0} f(x) = -\infty \quad \text{or} \quad f(x) \to -\infty \quad (x \to x_0).
 $$
 
-$\therefore \Delta x\to 0$，$\Delta y\sim dy$，称$dy$是$\Delta y$的最佳近似。
+对于这种极限，夹逼原理和唯一性仍然成立。我们也可以完全类似地给出 $f$ 在 $x_0$ 处的左极限或右极限为无穷大的定义，这里不再赘述。有时，当我们说 $f$ 在 $x_0$ 处的极限为无穷大是指 $|f|$ 在 $x_0$ 处的极限为 $+\infty$。
 
-即$\Delta y = f(x+\Delta x)-f(x)\approx f^{\prime}(x)\Delta x\Rightarrow f(x+\Delta x)\approx f(x_{0})+f^{\prime}(x_{0})\Delta x$。
+**定义3**
 
-当$|x|$很小时，$f(x)\approx f(0 + x)=f(0)+f^{\prime}(0)x$。
-
-/example/    求$f(x)=(1 + x)^{\alpha}$的近似值（$x = 0$处）
-
-> /solution/
+> 设 $f$ 在 $+\infty$ 的一个开邻域 $(a, +\infty)$ 中有定义。如果存在 $A \in \mathbb{R}$，使得对于任给的 $\varepsilon > 0$，存在 $M > a$，当 $x > M$ 时，有
+> $$
+> |f(x) - A| < \varepsilon,
+> $$
+> 则称 $f$ 在 $+\infty$ 处有极限 $A$，记为
+> $$
+> \lim_{x \to +\infty} f(x) = A \quad \text{or} \quad f(x) \to A \quad (x \to +\infty).
+> $$
 >
-> $f^{\prime}(x)=\alpha(1 + x)^{\alpha - 1}$，$f(0)=1$，$f^{\prime}(0)=\alpha$
+> 类似地，设 $f$ 在 $-\infty$ 的一个开邻域 $(-\infty, a)$ 中有定义。如果存在 $A \in \mathbb{R}$，使得对于任给的 $\varepsilon > 0$，存在 $m < a$，当 $x < m$ 时，有
+> $$
+> |f(x) - A| < \varepsilon,
+> $$
+> 则称 $f$ 在 $-\infty$ 处有极限 $A$，记为
+> $$
+> \lim_{x \to -\infty} f(x) = A \quad \text{or} \quad f(x) \to A \quad (x \to -\infty).
+> $$
 >
-> $(1 + x)^{\alpha}\approx 1+\alpha x$
+> 如果 $f$ 在 $-\infty$ 以及 $+\infty$ 处的极限均为 $A$，则称 $f$ 在 $\infty$（无穷远）处有极限 $A$，记为
+> $$
+> \lim_{x \to \infty} f(x) = A \quad \text{or} \quad f(x) \to A \quad (x \to \infty).
+> $$
 >
-> $\lim_{x\to 0}\frac{(1 + x)^{\alpha}-1}{x}=\alpha$
->
-> 当$|x|$很小时，$\frac{(1 + x)^{\alpha}-1}{x}\approx\alpha$
->
-> $(1 + x)^{\alpha}-1\approx\alpha x$ ， $(1 + x)^{\alpha}\approx 1+\alpha x$
-> 当$x\to 0$时，$(1 + x)^{\alpha}-1\sim\alpha x$
->
-> 即$|x|$很小时，$(1 + x)^{\alpha}\approx 1+\alpha x$
+> 我们可以类似地给出 $f$ 在无穷远处极限为无穷大的定义，这里也不再赘述。
 
-### · 参数方程确定导数
+### · 重要极限
 
-若$\begin{cases}x=\varphi(t)\\y=\psi(t)\end{cases}$确定$y = y(x)$，求$\frac{dy}{dx}$
+(1). 研究函数 $\dfrac{\sin x}{x}$ 在 $x_0 = 0$ 处的极限
 
-分析：
+> /proof/
+>
+> 先考虑 $0 < x < \dfrac{\pi}{2}$ 的情形。  
+>
+> 作半径为 1 的圆（单位圆），$O$ 为圆心，$A, D$ 为圆周上的点，角 $\angle AOD$ 大小为 $x$，$DC, BA$ 均与 $OA$ 垂直，$B$ 在 $OD$ 的延长线上。比较三角形 $\triangle OAD$、扇形 $OAD$ 以及三角形 $\triangle OAB$ 的面积大小，得：
+> $$
+> \frac{1}{2} \sin x < \frac{1}{2} x < \frac{1}{2} \tan x,
+> $$
+> 即
+> $$
+> \cos x < \frac{\sin x}{x} < 1, \quad \forall\, x \in \left(0, \frac{\pi}{2}\right).
+> $$
+>
+> 由于 $\cos x$ 和 $\dfrac{\sin x}{x}$ 为偶函数，故上式对 $x \in \left(-\frac{\pi}{2}, 0\right)$ 也成立。因此当 $0 < |x| < \dfrac{\pi}{2}$ 时，有
+> $$
+> \left|\frac{\sin x}{x} - 1\right| < 1 - \cos x = 2\sin^2\frac{x}{2} \leqslant 2\left(\frac{x}{2}\right)^2 = \frac{x^2}{2}.
+> $$
+>
+> 由夹逼原理得
+> $$
+> \lim_{x \to 0} \frac{\sin x}{x} = 1.
+> $$
+>
+> > **注意**：当 $|x| \geqslant \dfrac{\pi}{2}$ 时，
+> > $$
+> > |\sin x| \leqslant 1 < \frac{\pi}{2} \leqslant |x|,
+> > $$
+> > 因此我们得到下面的不等式：
+> > $$
+> > |\sin x| \leqslant |x|, \quad \forall\, x \in \mathbb{R},
+> > $$
+> > 等号仅在 $x = 0$ 处成立。
+
+(2). 研究函数 $\left(1 + \dfrac{1}{x}\right)^x$ 在无穷远处的极限。
+
+> /proof/
+>
+> 当 $x \geqslant 1$ 时，
+> $$
+> \left(1 + \frac{1}{[x]+1}\right)^{[x]+1} \leqslant \left(1 + \frac{1}{x}\right)^x \leqslant \left(1 + \frac{1}{[x]}\right)^{[x]+1},
+> $$
+> 其中 $[x]$ 是不超过 $x$ 的最大整数。因此
+> $$
+> \left(1 + \frac{1}{[x]+1}\right)^{[x]+1} \left(1 + \frac{1}{[x]+1}\right)^{-1} \leqslant \left(1 + \frac{1}{x}\right)^x \leqslant \left(1 + \frac{1}{[x]}\right)^{[x]} \left(1 + \frac{1}{[x]}\right).
+> $$
+>
+> 利用数列极限
+> $$
+> \lim_{n \to \infty} \left(1 + \frac{1}{n}\right)^n = e,
+> $$
+> 以及夹逼原理得
+> $$
+> \lim_{x \to +\infty} \left(1 + \frac{1}{x}\right)^x = e.
+> $$
+>
+> 类似可证
+> $$
+> \lim_{x \to -\infty} \left(1 + \frac{1}{x}\right)^x = e.
+> $$
+
+## Part 2 性质
+
+我们来讨论函数极限存在与否的判别方法和计算方法，主要以有限极限为例。
+
+### · Heine 定理
+
+**定理5** (Heine 定理)：设函数 $f$ 在 $x_0$ 的一个空心开邻域内有定义，则 $f$ 在 $x_0$ 处的极限为 $A$ 当且仅当对任何收敛点列 $x_n \to x_0$（$n \to \infty$）且 $x_n \ne x_0$（$\forall\, n$），均有
 $$
-\frac{dy}{dx}=\frac{dy/dt}{dx/dt}=\frac{\psi^{\prime}(t)}{\varphi^{\prime}(t)}
+\lim_{n \to \infty} f(x_n) = A.
 $$
-总结：若$\varphi^{\prime}(t)$，$\psi^{\prime}(t)$存在，且$\varphi^{\prime}(t)\neq 0$，则$\frac{dy}{dx}=\frac{\psi^{\prime}(t)}{\varphi^{\prime}(t)}$
 
-或者
+> 先证必要性。由定义，任给 $\varepsilon > 0$，存在 $\delta > 0$，使得当 $0 < |x - x_0| < \delta$ 时，有
+> $$
+> |f(x) - A| < \varepsilon.
+> $$
+>
+> 现在设 $x_n \to x_0,\ x_n \ne x_0$。仍由极限定义，对于上述 $\delta$，存在 $N$，使得当 $n > N$ 时，
+> $$
+> 0 < |x_n - x_0| < \delta.
+> $$
+> 因此当 $n > N$ 时，有
+> $$
+> |f(x_n) - A| < \varepsilon,
+> $$
+> 这说明
+> $$
+> \lim_{n \to \infty} f(x_n) = A.
+> $$
+>
+> 我们用反证法来证明充分性。如果 $f$ 在 $x_0$ 处极限不为 $A$（极限可能不存在），则存在 $\varepsilon_0 > 0$，使得对任何 $\delta > 0$，都存在 $x_\delta$，使得
+> $$
+> 0 < |x_\delta - x_0| < \delta,\quad |f(x_\delta) - A| \geqslant \varepsilon_0.
+> $$
+>
+> 特别地，对 $\forall\, n \geqslant 1$，均存在 $x_n$，使得
+> $$
+> 0 < |x_n - x_0| < \frac{1}{n},\quad |f(x_n) - A| \geqslant \varepsilon_0.
+> $$
+>
+> 这说明 $x_n \to x_0$，$x_n \ne x_0$，但 $f(x_n)$ 不收敛到 $A$。
+>
+> > (1) Heine 定理可以改述成下面应用起来较为方便的形式：
+> > $$
+> > \lim_{x \to x_0} f(x) = A \iff \forall\, x_n \to x_0\ (x_n \ne x_0),\ \lim_{n \to \infty} f(x_n)\ \text{存在}.
+> > $$
+> >
+> > 这时充分性的证明是这样的：只要说明如果 $f(x_n)$ 均收敛，则它们的极限必定都相同。
+> >
+> > （反证法）如果存在 $x'_n \to x_0,\ x'_n \ne x_0,\ f(x'_n) \to A$ 以及 $x''_n \to x_0$，$x''_n \ne x_0$，$f(x''_n) \to B$。
+> >
+> > 当 $B \ne A$ 时，考虑新的点列 $x_n$，使得 $x_{2k} = x'_{2k}$，$x_{2k-1} = x''_{2k-1}$（$k\geqslant 1$），则 $x_n \to x_0$，$x_n \ne x_0$ 但 $f(x_n)$ 不收敛，这就得到矛盾。
+> >
+> > (2) 对于单侧极限、无穷远处的极限以及极限为无穷大的情形，有完全类似的 Heine 定理。
+
+/example/ 研究函数 $f(x) = \sin \dfrac{1}{x}$ 在 $x_0 = 0$ 处的极限。
+
+> 我们选取点列 $x_n = \dfrac{1}{n\pi}$ 以及 $y_n = \dfrac{1}{2n\pi + \frac{\pi}{2}}$，则 $x_n, y_n \to 0$，$x_n, y_n \ne 0$，且
+> $$
+> f(x_n) = \sin(n\pi) = 0,\quad f(y_n) = \sin\left(2n\pi + \frac{\pi}{2}\right) = 1.
+> $$
+>
+> 根据刚才的注记就知道 $f$ 在 $x_0 = 0$ 的极限不存在。
+
+### · Cauchy 准则
+
+**定理6** (Cauchy 准则)：设 $f$ 在 $x_0$ 的一个空心开邻域中有定义，则 $f$ 在 $x_0$ 处存在有限极限当且仅当任给 $\varepsilon > 0$，存在 $\delta > 0$，使得当 $0 < |x' - x_0| < \delta$，$0 < |x'' - x_0| < \delta$ 时，有
 $$
-\frac{dy}{dx}=\frac{d\psi(t)}{d\varphi(t)}=\frac{\psi^{\prime}(t)dt}{\varphi^{\prime}(t)dt}=\frac{\psi^{\prime}(t)}{\varphi^{\prime}(t)}
+|f(x') - f(x'')| < \varepsilon.
 $$
-一元函数微分学的第一部分就此结束。
+
+> **必要性**：设 $f$ 在 $x_0$ 处的极限为 $A$，则任给 $\varepsilon > 0$，存在 $\delta > 0$，使得当 $0 < |x - x_0| < \delta$ 时，$|f(x) - A| < \dfrac{\varepsilon}{2}$。因此，当 $0 < |x' - x_0| < \delta$，$0 < |x'' - x_0| < \delta$ 时，有
+> $$
+> |f(x') - f(x'')| \leqslant |f(x') - A| + |f(x'') - A| < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon.
+> $$
+>
+> **充分性**：我们用 Heine 定理来证。设 $x_n \to x_0$，$x_n \ne x_0$，则已知条件告诉我们 $\{f(x_n)\}$ 是一个 Cauchy 列，根据数列极限的 Cauchy 准则，$\{f(x_n)\}$ 收敛。于是由 Heine 定理知 $f$ 在 $x_0$ 处的极限存在（且有限）。
+>
+> > (1) 对于无穷远处极限为有限的情形，Cauchy 准则仍然成立。
+> >
+> > (2) 从证明过程可以看出，$f$ 在 $x_0$ 处不存在有限极限当且仅当存在 $\varepsilon_0 > 0$，使得对任意 $\delta > 0$，总有 $x', x''$，使得
+> > $$
+> > 0 < |x' - x_0| < \delta,\ 0 < |x'' - x_0| < \delta,\quad |f(x') - f(x'')| \geqslant \varepsilon_0.
+> > $$
+
+/example/研究 Dirichlet 函数的极限。
+$$
+D(x) =
+\begin{cases}
+1, & x \in \mathbb{Q}, \\
+0, & x \in \mathbb{R} \setminus \mathbb{Q},
+\end{cases}
+$$
+> 在任何一点 $x_0$ 附近都有点取值为 0 或 1，取 $\varepsilon = 1$，由刚才的注记 (2) 即知 $D$ 在 $x_0$ 处极限不存在。
+
+### · 单调有界原理
+
+**定理7** (单调有界原理)：设函数在 $(x_0 - \delta, x_0)$ 中有定义，如果 $f$ 单调递增且有上界，或单调递减且有下界，则 $f$ 在 $x_0$ 的左极限存在（且有限）。
+
+>利用数列的单调性原理以及 Heine 定理即可。
+>
+>
+>>如果$f$单调递增又无上界，则 $f$ 在 $x_0$ 处的左极限为 $+\infty$；如果 $f$ 单调递减又无下界，则 $f$ 在 $x_0$ 处的左极限为 $-\infty$；对于函数的右极限有完全类似的结论。
+
+### · 基本性质
+
+下面我们叙述函数极限的一些基本性质，它们和数列极限相应的性质十分类似，因此我们省略其证明
+
+**定理8**
+
+> (1) （局部有界性）如果$f$在$x_0$处有有限极限，则$f$在$x_0$的一个空心开邻域内有界。
+>
+> (2) （保序性）设$f, g$在$x_0$处的极限分别为$A, B$。如果$f(x) \geqslant g(x)$在$x_0$的一个空心开邻域内成立，则$A \geqslant B$；反之，如果$A > B$，则在$x_0$内一个空心开邻域内$f(x) > g(x)$；特别地，如果$A > 0$，则在$x_0$的一个空心开邻域内$f(x) > 0$。
+>
+> (3) （四则运算）设$f, g$在$x_0$处有有限极限，则
+>
+> - $\displaystyle \lim_{x \to x_0} [\alpha f(x) + \beta g(x)] = \alpha \lim_{x \to x_0} f(x) + \beta \lim_{x \to x_0} g(x)$，其中$\alpha, \beta$为常数；
+>
+> - $\displaystyle \lim_{x \to x_0} f(x)g(x) = \lim_{x \to x_0} f(x) \cdot \lim_{x \to x_0} g(x)$；
+>
+> - $\displaystyle \lim_{x \to x_0} \frac{f(x)}{g(x)} = \frac{\lim_{x \to x_0} f(x)}{\lim_{x \to x_0} g(x)}$，其中$\lim_{x \to x_0} g(x) \ne 0$。
+>
+> > **注**：对于无穷远处的极限有完全类似的结论成立。
+
+下面关于复合函数的极限也很有用
+
+**定理9** (复合函数的极限)：设$f(y)$在$y_0$处的极限为$A$，$g(x)$在$x_0$处的极限为$y_0$，且存在$x_0$的一个空心开邻域，在此开邻域内$g(x) \ne y_0$，则复合函数$f(g(x))$在$x_0$处的极限为$A$。
+
+> 任给 $\varepsilon > 0$，由 $\displaystyle \lim_{y \to y_0} f(y) = A$ 知，存在 $\delta > 0$，当 $0 < |y - y_0| < \delta$ 时，有
+> $$
+> |f(y) - A| < \varepsilon.
+> $$
+>
+> 又因为 $g(x) \to y_0$（$x \to x_0$），对于这个 $\delta$，存在 $\eta > 0$，使得当 $0 < |x - x_0| < \eta$时，有
+> $$
+> 0 < |g(x) - y_0| < \delta,
+> $$
+> 此时有
+> $$
+> |f(g(x)) - A| < \varepsilon,
+> $$
+> 这说明 $f(g(x))$ 在 $x_0$ 处的极限为 $A$。
+>
+> > (1) 定理中的条件 $g(x) \ne y_0$ 一般不能去掉，下面的函数就是例子：令
+> > $$
+> > f(y) =
+> > \begin{cases}
+> > 1, & y \ne 0, \\
+> > 0, & y = 0,
+> > \end{cases}
+> > $$
+> > 以及 $g(x) \equiv 0$，则 $\displaystyle \lim_{y \to 0} f(y) = 1$，但 $f(g(x)) = 0$。不过，当 $f(y_0) = A$ 时这个条件是可以去掉的
+> >
+> > (2) 对于无穷远处的极限以及极限为无穷大的情形也有完全类似的结果。
+
+### · 例题
+
+我们再来计算一些函数极限的例子，有些例子在后面可能会用到
+
+/example/ 研究函数 $(1 + x)^{\frac{1}{x}}$ 在 $x_0 = 0$ 处的极限。
+
+> 作变量替换 $y = \dfrac{1}{x}$，则
+> $$
+> (1 + x)^{\frac{1}{x}} = \left(1 + \frac{1}{y}\right)^y.
+> $$
+>
+> 当 $x \to 0$ 时 $y \to \infty$，由复合函数的极限有
+> $$
+> \lim_{x \to 0} (1 + x)^{\frac{1}{x}} = \lim_{y \to \infty} \left(1 + \frac{1}{y}\right)^y = e.
+> $$
+
+/example/ 设 $P(x), Q(x)$ 是次数相同的多项式，求极限 $\displaystyle \lim_{x \to \infty} \frac{P(x)}{Q(x)}$。
+
+> 设 $P(x), Q(x)$ 次数为 $n$。记
+> $$
+> P(x) = a_0 x^n + a_1 x^{n-1} + \cdots + a_n,\quad Q(x) = b_0 x^n + b_1 x^{n-1} + \cdots + b_n,
+> $$
+> 其中$a_0, b_0 \ne 0$。由
+> $$
+> \frac{P(x)}{Q(x)} = \frac{a_0 + a_1 x^{-1} + \cdots + a_n x^{-n}}{b_0 + b_1 x^{-1} + \cdots + b_n x^{-n}},
+> $$
+> 以及极限的四则运算性质可得
+> $$
+> \lim_{x \to \infty} \frac{P(x)}{Q(x)} = \frac{a_0}{b_0}.
+> $$
+
+## Part 3 量级关系
+
+在对两个变量进行比较时，我们有时不需要知道它们的确切大小，而只需了解它们之间的量级关系。我们现在可以用极限来刻画这些量级关系。
+
+**定义1**（无穷小量与无穷大量）：如果函数 $f$ 在 $x_0$ 处的极限为 $0$，则称 $f$ 在 $x \to x_0$ 时为无穷小量，记为 $f(x) = o(1)$ $(x \to x_0)$；如果 $x \to x_0$ 时 $|f| \to +\infty$，则称 $f$ 在 $x \to x_0$ 时为无穷大量。
+
+> （1）无穷小（大）量不是一个数，而是在某点邻域内有特定性质的函数。在无穷远处也可以类似定义无穷小量与无穷大量；
+>
+> （2）对于数列也可以定义无穷小量与无穷大量：设 $\{a_n\}$ 和 $\{b_n\}$ 为两个数列，如果 $a_n / b_n \to 0$ $(n \to \infty)$，则称 $\{a_n\}$ 关于 $\{b_n\}$ 是无穷小量，记为 $a_n = o(b_n)$；无穷大量可类似定义。
+
+/example/ 说明 $\sqrt{x+1} - 1 = o(1)$ $(x \to 0)$。
+
+> 因为
+> $$
+> \sqrt{x+1} - 1 = \frac{x}{\sqrt{x+1} + 1} \to 0 \quad (x \to 0),
+> $$
+> 故由定义知 $\sqrt{x+1} - 1$ 在 $x \to 0$ 时为无穷小量
+
+我们可以利用无穷小量和无穷大量来比较函数。例如，设 $f, g$ 在 $x \to x_0$ 时均为无穷小（大）量，则
+
+> (1). 如果 $f/g$ 在 $x \to x_0$ 时是无穷小量，则称当 $x \to x_0$ 时 $f$ 是 $g$ 的高（低）阶无穷小（大）量，记为
+> $$
+> f(x) = o(g(x)) \quad (x \to x_0);
+> $$
+>
+> (2). 如果 $f/g$ 在 $x_0$ 的一个空心邻域中有界，则记
+> $$
+> f(x) = O(g(x)) \quad (x \to x_0);
+> $$
+>
+> (3). 如果 $f/g$ 在 $x_0$ 处的极限为 $A \ne 0$，则称当 $x \to x_0$ 时 $f$ 和 $g$ 是同阶无穷小（大）量，记为
+> $$
+> f(x) = O^*(g(x)) \quad (x \to x_0);
+> $$
+>
+> 特别地，如果 $A = 1$，则称当 $x \to x_0$ 时 $f$ 和 $g$ 是等价无穷小（大）量，记为
+> $$
+> f \sim g \quad (x \to x_0).
+> $$
+>
+> (4). 设 $k > 0$。如果
+> $$
+> |f(x)| = O^*(|x - x_0|^k) \quad (x \to x_0),
+> $$
+> 则称当 $x \to x_0$ 时 $f$ 是 $k$ 阶无穷小量；如果
+> $$
+> |f(x)| = O^*(|x - x_0|^{-k}) \quad (x \to x_0),
+> $$
+> 则称当 $x \to x_0$ 时 $f$ 是 $k$ 阶无穷大量。$k$ 为正整数时也可将定义中的绝对值去掉。
+>
+> > 这些量级的比较也可在无穷远处进行。
+
+/example/ 证明 $1 - \cos x \sim \frac{1}{2}x^2$ $(x \to 0)$
+
+> 根据前面的结果，有
+> $$
+> \lim_{x \to 0} \frac{1 - \cos x}{x^2} = \lim_{x \to 0} \frac{2\sin^2 \frac{1}{2}x}{x^2} = 2\left(\frac{1}{2}\right)^2 = \frac{1}{2}.
+> $$
+
+下面的定理在计算极限的时候十分有用。
+
+**定理**（等价代换）。设 $x \to x_0$ 时，$f \sim f_1$，$g \sim g_1$。如果 $f_1/g_1$ 在 $x_0$ 处有极限，则 $f/g$ 在 $x_0$ 处有极限，且极限相等；反之亦然。
+
+> 只要注意到
+> $$
+> f/g = (f/f_1)(f_1/g_1)(g_1/g),
+> $$
+> 以及当 $x \to x_0$ 时 $f/f_1 \to 1$，$g/g_1 \to 1$ 即可
+>
+> 等价代换在无穷远处也可进行
+
+/example/ 求极限 $\lim_{x \to 0} \frac{\sin \alpha x}{\sin \beta x}$
+
+> 因为当 $x \to 0$ 时 $\sin \alpha x \sim \alpha x$，$\sin \beta x \sim \beta x$，故
+> $$
+> \lim_{x \to 0} \frac{\sin \alpha x}{\sin \beta x} = \lim_{x \to 0} \frac{\alpha x}{\beta x} = \frac{\alpha}{\beta}.
+> $$
+
+/example/ 求极限 $\lim_{x \to 0} \frac{\tan x - \sin x}{x^3}$。
+
+> 当 $x \to 0$ 时，
+> $$
+> \tan x - \sin x = \frac{\sin x}{\cos x}(1 - \cos x) \sim x\left(\frac{1}{2}x^2\right) = \frac{1}{2}x^3,
+> $$
+> 故
+> $$
+> \lim_{x \to 0} \frac{\tan x - \sin x}{x^3} = \frac{1}{2}.
+> $$
+> 需要注意的是，等价代换不能用于加法和减法运算。例如在上面的例子中，当 $x \to 0$ 时，有
+> $$
+> \tan x \sim \sin x \sim x,
+> $$
+> 但 $\tan x - \sin x$ 不能替换为零
+
+/example/ 求极限 $\lim_{x \to 0} \frac{\ln \cos x}{\tan^2 x}$
+
+> 先来说明
+> $$
+> \ln(1 + x) \sim x \quad (x \to 0).
+> $$
+>
+> 事实上有
+> $$
+> \frac{\ln(1 + x)}{x} = \ln[(1 + x)^{1/x}] \to \ln e = 1 \quad (x \to 0).
+> $$
+>
+> 于是，当 $x \to 0$ 时，有
+> $$
+> \ln \cos x = \ln[1 - (1 - \cos x)] \sim -(1 - \cos x) \sim -\frac{1}{2}x^2.
+> $$
+>
+> 另一方面
+> $$
+> \tan^2 x = \frac{\sin^2 x}{\cos^2 x} \sim x^2 \quad (x \to 0),
+> $$
+>
+> 利用等价代换得
+> $$
+> \lim_{x \to 0} \frac{\ln \cos x}{\tan^2 x} = -\frac{1}{2}.
+> $$
+
+结束.
+

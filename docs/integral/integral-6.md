@@ -1,1175 +1,755 @@
 ---
-title: Chapter 6 积分
-createTime: 2025/02/06 10:48:41
+title: Chapter 6 微分学
 permalink: /integral/integral-6/
+createTime: 2025/09/16 20:57:28
 ---
 
-## Fragment 1 不定积分
+## Part 1 微分
 
-在实际中，经常要解决：已知 $F^\prime(x)=f(x)$，$\Leftrightarrow f(x)dx = F^\prime(x)dx = dF(x)$，求$F(x)$。
+在经典物理学中, 如果我们考察质点沿直线的运动, 则有速度和加速度的概念. 速度是反映位移随时间变化的量, 即速度是位移函数的变化率, 而加速度是反映速度随时间变化的量. 我们现在利用极限给出这些变化量的数学定义.
 
-> /Define/
->
-> 设$f(x)$在区间$I$上有定义，若存在一个$F(x)$，对每一个$x\in I$，都有$F^\prime(x)=f(x)$，称$F(x)$是$f(x)$的一个原函数。
->
-> 若$F(x)$是$f(x)$在区间$I$上的一个原函数，则$F(x)+C$也是$f(x)$在区间$I$上的原函数（$C$为常数，$C\in\mathbb{R}$）。
+### · 导数
 
-$\forall G(x)$是$f(x)$在区间$I$上的任意一个原函数，即$\forall x\in I$，$G^\prime(x)=f(x)$，
+**定义1** (导数). 
 
-由$[G(x)-F(x)]^\prime = G^\prime(x)-F^\prime(x)=f(x)-f(x)=0$，
-
-知$G(x)-F(x)=C$（常数），即$G(x)=F(x)+C$。
-
-> 定理：若$F(x)$是$f(x)$在区间$I$上的一个原函数，则$F(x)+C$（$C\in\mathbb{R}$，$C$为常数）是$f(x)$在区间$I$上的全体原函数，
->
-> 称为$f(x)$在区间$I$上的不定积分，记作$\int f(x)dx$，即$\int f(x)dx = F(x)+C$（$x\in I$，$C$为常数，$C\in\mathbb{R}$）。
->
-> $f(x)$称为被积函数，$f(x)dx$称为被积表达式，$x$称为积分变量，$\int$称为不定积分号。
-
-**性质：**
-
-1. $$
-   (\int f(x)dx)^\prime=\frac{d}{dx}\int f(x)dx = f(x)
-   $$
-
-2. $$
-   d\int f(x)dx = f (x)dx
-   $$
-
-3. $$
-   \int f^\prime(x)dx=\int\frac{d}{dx}f(x)dx = f(x)+C
-   $$
-
-4. $$
-   \int df(x)=\int f^\prime(x)dx = f(x)+C,\quad\int g^\prime(u)du=\int dg(u)=G(u)+C
-   $$
-
-   
-
-> 不定积分的几何意义：
->
-> 设$F(x)$是$f(x)$的原函数，则$\int f(x)dx = F(x)+C$，如$(\int f(x)dx)^\prime=(F(x)+C)^\prime = f(x)$。
-
-基本的不定积分公式：
-
-> /Formula/
->
-> 1. $$
->    \int 0dx = C
->    $$
->
->
-> 2. $$
->    \int 1dx=\int dx = x + C
->    $$
->
->
-> 3. $$
->    \int x^a dx=\frac{1}{a + 1}x^{a + 1}+C(a\neq -1),\quad(\frac{1}{a + 1}x^{a + 1})^\prime=x^a
->    $$
->
->
-> 4. $$
->    \int x^{-1}dx=\int\frac{1}{x}dx=\ln|x|+C
->    $$
->
-> 
->
-> 5. $$
->    \int a^x dx = \frac{a^x}{\ln a}+C
->    $$
->
->
-> 6. $$
->    \int e^x dx = e^x + C
->    $$
->
->
-> 7. $$
->    \int \cos x dx = \sin x + C
->    $$
->
->
-> 8. $$
->    \int \sin x dx = -\cos x + C
->    $$
->
->
-> 9. $$
->    \int \sec^2 x dx = \tan x + C
->    $$
->
->
-> 10. $$
->     \int \csc^2 x dx = -\cot x + C
->     $$
->
->
-> 11. $$
->     \int \sec x \tan x dx = \sec x + C
->     $$
->
->
-> 12. $$
->     \int \csc x \cot x dx = -\csc x + C
->     $$
->
->
-> 13. $$
->     \int \frac{1}{1 + x^2} dx = \arctan x + C = -\text{arccot}x + C_1
->     $$
->
->
-> 14. $$
->     \int \frac{1}{\sqrt{1 - x^2}} dx = \arcsin x + C = -\arccos x + C
->     $$
->
-> 
->
-> > 双曲余弦：$\text{ch}x = \frac{e^x + e^{-x}}{2}$	双曲正弦：$\text{sh}x = \frac{e^x - e^{-x}}{2}$
-> >
-> > $\text{ch}^2x - \text{sh}^2x = 1$，$\text{sh}x^\prime = \text{ch}x$，$\text{ch}x^\prime = \text{sh}x$
->
-> 15. $$
->     \int \text{sh}x dx = \text{ch}x + C
->     $$
->
->
-> 16. $$
->     \int \text{ch}x dx = \text{sh}x + C
->     $$
->
-> 
-
-### · 线性运算法则
-
-> /Theorem/
->
-> 若$\int f(x)dx$，$\int g(x)dx$均存在，$\forall$常数$\alpha,\beta$（$\alpha,\beta$不同时为$0$），则$\int [\alpha f(x) + \beta g(x)]dx$存在，且
+> 设函数 $f$ 在 $x_0$ 附近有定义, 如果极限
 > $$
-> \int [\alpha f(x) + \beta g(x)]dx = \alpha \int f(x)dx + \beta \int g(x)dx
+> \lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0}
+> $$
+> 存在且有限, 则称 $f$ 在 $x_0$ 处可导, 此极限称为 $f$ 在 $x_0$ 处的导数, 记为 $f'(x_0)$.
+>
+> 如果记 $y = f(x)$, $\Delta x = x - x_0$, $\Delta y = f(x) - f(x_0)$, 则导数也可表示为
+> $$
+> f'(x_0) = \lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0} = \lim_{\Delta x \to 0} \frac{\Delta y}{\Delta x}.
+> $$
+> 既然导数是用极限定义的, 我们当然也可以用 $\varepsilon-\delta$ 语言来描述它: 如果存在 $A \in \mathbb{R}$, 使得任给 $\varepsilon > 0$, 均存在 $\delta > 0$, 当 $0 < |x - x_0| < \delta$ 时
+> $$
+> \left|\frac{f(x) - f(x_0)}{x - x_0} - A\right| < \varepsilon,
+> $$
+> 则 $f$ 在 $x_0$ 处可导, 导数为 $A$.
+>
+> 如果 $f$ 在 $x_0$ 的左边邻域 $(x_0 - \delta, x_0]$ 中有定义, 且当 $x \to x_0^-$ 时, $\frac{f(x) - f(x_0)}{x - x_0}$ 的极限存在且有限, 则称 $f$ 在 $x_0$ 处左可导, 此极限称为 $f$ 在 $x_0$ 处的左导数, 记为 $f'_-(x_0)$, 即
+> $$
+> f'_-(x_0) = \lim_{x \to x_0^-} \frac{f(x) - f(x_0)}{x - x_0}.
+> $$
+>
+> 类似地, 如果 $f$ 在 $x_0$ 的右边邻域 $[x_0, x_0 + \delta)$ 中有定义, 且当 $x \to x_0^+$ 时, $\frac{f(x) - f(x_0)}{x - x_0}$ 的极限存在且有限, 则称 $f$ 在 $x_0$ 处右可导, 此极限称为 $f$ 在 $x_0$ 处的右导数, 记为 $f'_+(x_0)$, 即
+> $$
+> f'_+(x_0) = \lim_{x \to x_0^+} \frac{f(x) - f(x_0)}{x - x_0}.
 > $$
 
-给出证明过程：
-
-> /proof/
-> $$
-> [\alpha \int f(x)dx + \beta \int g(x)dx]^\prime = \alpha [\int f(x)dx]^\prime + \beta [\int g(x)dx]^\prime = \alpha f(x) + \beta g(x)
-> $$
-> $\alpha \int f(x)dx + \beta \int g(x)dx$ 是 $\alpha f(x) + \beta g(x)$的原函数，且含有加$C$，故成立。
+**命题1**. 设 $f$ 在 $x_0$ 附近有定义, 则 $f$ 在 $x_0$ 处可导当且仅当 $f$ 在 $x_0$ 处的左导数和右导数存在且相等, 此时它们等于 $f$ 在 $x_0$ 处的导数.
 
 /example/
-$$
-\int \sqrt{x\sqrt{x\sqrt{x}}}dx = \int x^{\frac{1}{2}}x^{\frac{1}{4}}x^{\frac{1}{8}}dx = \int x^{\frac{7}{8}}dx = \frac{8}{15}x^{\frac{15}{8}} + C
-$$
-/example/  $\int \tan^2 xdx$
 
-> /solution/
-> $$
-> =\int (\sec^2 x - 1)dx = \int \sec^2 xdx - \int 1dx = (\tan x + C_1) - (x + C_2) = \tan x - x + C
-> $$
-
-/example/  $\int \frac{1}{\sin^2 x \cos^2 x}dx$
-
-> /solution/
-> $$
-> =\int \frac{\sin^2 x + \cos^2 x}{\sin^2 x \cos^2 x}dx = \int (\sec^2 x + \csc^2 x)dx = \tan x - \cot x + C
-> $$
-
-/example/  $\int \frac{x^2}{x^2 + 1}dx$
-
-> /solution/
-> $$
-> =\int \frac{x^2 - 1 + 1}{x^2 + 1}dx = \int (1 - \frac{1}{x^2 + 1})dx = x - \arctan x + C
-> $$
-
-### · 换元法
-
-#### · 凑微分 (第一换元法)
-
-首先抛出一个问题：
-$$
-\int \tan xdx = \int \frac{\sin x}{\cos x}dx =?
-$$
-
-若$F^\prime(u) = f(u)$，则$[F(\varphi(x))]^\prime = F^\prime(\varphi(x))\cdot\varphi^\prime(x) = f(\varphi(x))\cdot\varphi^\prime(x)$。
-
-求$\int g(x)dx$，如果$g(x)dx = d(?) $，则$\int g(x)dx =? + C$。
-
-> /Claim/
+> 研究常值函数 $f(x) = c$ 的导数.
 >
-> 如果$g(x)dx = f(\varphi(x))\cdot\varphi^\prime(x)dx$，令$u = \varphi(x)$，
-> $$
-> f(\varphi(x))d\varphi(x)\stackrel{u = \varphi(x)}{\longrightarrow}f(u)du = dF(u)
-> $$
-> 则$\int g(x)dx = F(\varphi(x)) + C$，或
-> $$
-> \int g(x)dx = \int f(\varphi(x))\cdot\varphi^\prime(x)dx = \int f(\varphi(x))d\varphi(x)\stackrel{u = \varphi(x)}{\longrightarrow}\int f(u)du\stackrel{F^\prime(u)=f(u)}{=}F(u) + C = F(\varphi(x)) + C
-> $$
-
-/example/  $\int e^{2x}dx$ （$\varphi(x) = 2x$，$f(u) = e^u$，$f(\varphi(x)) = e^{2x}$）
-
-> /solution/
-> $$
-> =\int e^{2x}\cdot(2x)^\prime\frac{1}{2}dx = \frac{1}{2}\int e^{2x}\cdot(2x)dx = \frac{1}{2}\int e^{2x}d(2x)\stackrel{u = 2x}{=}\frac{1}{2}\int e^udu = \frac{1}{2}e^u + C = \frac{1}{2}e^{2x} + C
-> $$
-
-我们可以在积分组中加入两个新的公式：
-
-> /Formula/
->
-> 17. $$
->     \int \tan xdx = \int \frac{\sin x}{\cos x}dx = -\int \frac{1}{\cos x}d\cos x = -\ln|\cos x| + C
->     $$
->
-> 18. $$
->     \int \cot xdx = \int \frac{\cos x}{\sin x}dx = \int \frac{1}{\sin x}d\sin x = \ln|\sin x| + C
->     $$
->
-> 
-
-记住一些微分关系式：
-$$
-dx = 1\cdot dx = \frac{1}{a}d(ax + b)\quad(a\neq 0),\quad dx = \frac{1}{a}d(ax + b)\\
-xdx = \frac{1}{2}d(x^2\pm a^2),\quad xdx = -\frac{1}{2}d(a^2 - x^2)\\
-\cos xdx = d\sin x,\quad\sin xdx = -d\cos x\\
-\frac{1}{x}dx = d\ln|x|\stackrel{x>0}{=}d\ln x\\
-e^xdx = de^x\\
-$$
-  如果$F^\prime(u) = f(u)$，
-$$
-  \int f(ax + b)dx = \frac{1}{a}\int f(ax + b)d(ax + b) = \frac{1}{a}F(ax + b) + C\\
-  \int f(a^2 - x^2)xdx = -\frac{1}{2}\int f(a^2 - x^2)d(a^2 - x^2) = -\frac{1}{2}F(a^2 - x^2) + C
-$$
-
-> /example/
->
-> $\int \frac{1}{a^2 + x^2}dx$（$a\neq 0$）
-> $$
-> \begin{align*}
-> &=\frac{1}{a^2}\int \frac{1}{1 + (\frac{x}{a})^2}dx\\
-> &=\frac{1}{a}\int \frac{1}{1 + (\frac{x}{a})^2}d(\frac{x}{a})\\
-> &=\frac{1}{a}\arctan\frac{x}{a}+C
-> \end{align*}
-> $$
-> $\int \frac{1}{\sqrt{a^2 - x^2}}dx$（$a > 0$）
-> $$
-> \begin{align*}
-> &=\int \frac{1}{\sqrt{1 - (\frac{x}{a})^2}}d(\frac{x}{a})\\
-> &=\arcsin\frac{x}{a}+C
-> \end{align*}
-> $$
-> $\int \frac{1}{a^2 - x^2}dx$（$a\neq 0$）
-> $$
-> \begin{align*}
-> &=\int \frac{1}{(a - x)(a + x)}dx\\
-> &=\frac{1}{2a}\int (\frac{1}{a - x}+\frac{1}{a + x})dx\\
-> &=\frac{1}{2a}[\int \frac{1}{a - x}d(a - x)+\int \frac{1}{a + x}d(a + x)]\\
-> &=\frac{1}{2a}[-\ln|a - x|+\ln|a + x|]+C\\
-> &=\frac{1}{2a}\ln|\frac{a + x}{a - x}|+C
-> \end{align*}
-> $$
-> $\int \sec xdx=\int \frac{1}{\cos x}dx$ 
-> $$
-> \begin{align*}
-> &=\int \frac{\cos x}{\cos^2 x}dx\\
-> &=\int \frac{1}{1 - \sin^2 x}d\sin x\\
-> &=\frac{1}{2}\ln|\frac{1 + \sin x}{1 - \sin x}|+C\\
-> &=\frac{1}{2}\ln|\frac{(1 + \sin x)^2}{\cos^2 x}|+C\\
-> &=\ln|\sec x+\tan x|+C
-> \end{align*}
-> $$
->
-> > 解法二：
+> > 任给 $x_0$, 有
 > > $$
-> > =\int \frac{\sec x(\sec x + \tan x)}{\sec x + \tan x}dx=\int \frac{1}{\sec x + \tan x}d(\sec x + \tan x)=\ln|\sec x+\tan x|+C
+> > \lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0} = \lim_{x \to x_0} \frac{c - c}{x - x_0} = 0,
 > > $$
-> > （$(\tan x)^\prime=\sec^2 x$，$(\sec x)^\prime=\sec x\tan x$）
+> > 因此按照定义, 常值函数在 $x_0$ 处可导, 导数为零. 这和我们的直观是相吻合的, 因为导数反映函数的变化率, 而常值函数的变化率当然为零.
+>
+> 研究函数 $f(x) = |x|$ 在 $x_0 = 0$ 处的可导性.
+>
+> > 当 $x < 0$ 时, 有
+> > $$
+> > \lim_{x \to 0^-} \frac{f(x) - f(0)}{x - 0} = \lim_{x \to 0^-} \frac{|x|}{x} = \lim_{x \to 0^-} \frac{-x}{x} = -1.
+> > $$
+> > 这说明 $f'_-(0) = -1$. 类似地, 当 $x > 0$ 时, 有
+> > $$
+> > \lim_{x \to 0^+} \frac{f(x) - f(0)}{x - 0} = \lim_{x \to 0^+} \frac{|x|}{x} = \lim_{x \to 0^+} \frac{x}{x} = 1.
+> > $$
+> > 因此 $f'_+(0) = 1$. 这说明 $f$ 在 $x_0 = 0$ 处不可导.
 
-这些是积分表中的公式
-
-> /Formula/
+> [!tip]
 >
-> 19. $$
->     \int \frac{1}{a^2 + x^2}dx=\frac{1}{a}\arctan\frac{x}{a}+C
->     $$
->
-> 20. $$
->     \int \frac{1}{\sqrt{a^2 - x^2}}dx=\arcsin\frac{x}{a}+C
->     $$
->
-> 21. $$
->     \int \frac{1}{a^2 - x^2}dx=\frac{1}{2a}\ln|\frac{a + x}{a - x}|+C
->     $$
->
-> 22. $$
->     \int \sec xdx=\int \frac{1}{\cos x}dx=\ln|\sec x+\tan x|+C
->     $$
->
-> 23. $$
->     \int \csc xdx=\ln|\csc x - \cot x|+C
->     $$
->
-> 24. $$
->     \int e^{ax}dx(a\neq 0)=\frac{1}{a}e^{ax}+C
->     $$
->
-> 25. $$
->     \int \cos axdx=\frac{1}{a}\sin ax + C
->     $$
->
-> 26. $$
->     \int \sin axdx=-\frac{1}{a}\cos ax + C
->     $$
->
-> 
-
-#### · 变量代换 (第二换元法)
-
-> /Claim/
->
-> 主要用来去根式（$\varphi(t)$可导） 
+> 我们现在从几何的角度来解释导数的含义. 考虑函数 $f$ 在 $x_0$ 附近的图像, 经过图像上两点 $(x_0, f(x_0))$ 和 $(x, f(x))$ 的直线的方程为
 > $$
-> f(x)dx\stackrel{x = \varphi(t)}{\longrightarrow}f(\varphi(t))d\varphi(t)
-> =f(\varphi(t))\cdot\varphi^\prime(t)dt\quad
-> \stackrel{F^\prime(t)=f(\varphi(t))\cdot\varphi^\prime(t)}{=} dF(t)=dF(\varphi^{-1}(x))
+> y(t) = \frac{f(x) - f(x_0)}{x - x_0}(t - x_0) + f(x_0),\quad \forall\ t \in \mathbb{R}.
 > $$
-> 如果$x = \varphi(t)$严格单调，$t = \varphi^{-1}(x)$，
+> 当 $x \to x_0$ 时, 考察此直线的变化. 当 $f$ 在 $x_0$ 处可导时, 直线的极限位置是一条经过 $(x_0, f(x_0))$ 且斜率为 $f'(x_0)$ 的直线, 称为 $f$ 在 $x_0$ 处的切线, 其方程为
 > $$
-> \therefore \int f(x)dx = F(\varphi^{-1}(x))+C\\
-> \int f(u)dx \xlongequal{x = \varphi(t)} \int f(\varphi(t))\varphi'(t)dt
+> y(t) = f'(x_0)(t - x_0) + f(x_0).
 > $$
-> 设$H'(t)=f(\varphi(t))\varphi'(t)$，则
-> $$
-> \int f(\varphi(t))\varphi'(t)dt = H(t)+C = H(\varphi^{-1}(t)) + C
-> $$
-
-如果被积函数中有下列根式，不能用前面方法，此时，用变量代换：
-
-> /Claim/
 >
-> 
->
+> 方程
 > $$
-> \sqrt{a^{2}-x^{2}},\quad x = a\sin t,\quad t\in[-\frac{\pi}{2},\frac{\pi}{2}]\\
-> \sqrt{a^{2}+x^{2}},\quad x = a\tan t,\quad t\in[-\frac{\pi}{2},\frac{\pi}{2}]\\
-> \sqrt{x^{2}-a^{2}},\quad x = a\sec t,\quad t\in[0,\frac{\pi}{2})\cup(\frac{\pi}{2},\pi]
+> (x - x_0) + f'(x_0)(y - f(x_0)) = 0
 > $$
-> $\sqrt[n]{\frac{ax + b}{cx + d}}$，令$\sqrt[n]{\frac{ax + b}{cx + d}}=t$，解出$x=\varphi(t)$（有理式）
->
-> $\sqrt[n]{ax + b}$，令其为 $t$
+> 所代表的直线则称为 $f$ 在 $x_0$ 处的法线.
 
-/example/  $\int\sqrt{a^{2}-x^{2}}dx\ (a > 0)$
+### · 微分
 
-> /solution/
+根据切线的定义过程, 我们可以把切线看成函数 $f$ 的图像在 $x_0$ 处的一个线性逼近. 即, 函数 $f$ 在 $x_0$ 附近可以近似地看成线性函数, 这种线性逼近或线性化的方法是我们研究函数的一种基本手法.
+
+**定义2** (微分). 
+
+> 设 $f$ 是在 $x_0$ 附近有定义的函数, 如果存在常数 $A$, 使得
 > $$
-> \begin{align*}
-> \text{L.H.S.}&=\int\sqrt{a^{2}-a^{2}\sin^{2}t}\cdot a\cos tdt \\
-> &=a^{2}\int|\cos t|\cos tdt \\
-> &=a^{2}\int\cos^{2}tdt \\
-> &=\frac{a^{2}}{2}\int(1 + \cos 2t)dt \\
-> &=\frac{a^{2}}{2}t+\frac{a^{2}}{4}\sin 2t + C \\
-> &=\frac{a^{2}}{2}\arcsin\frac{x}{a}+\frac{a^{2}}{2}\sin t\cos t + C \\
-> &=\frac{a^{2}}{2}\arcsin\frac{x}{a}+\frac{a^{2}}{2}\cdot\frac{x}{a}\cdot\frac{\sqrt{a^{2}-x^{2}}}{a}+C \\
-> &=\frac{a^{2}}{2}\arcsin\frac{x}{a}+\frac{1}{2}x\sqrt{a^{2}-x^{2}}+C\\ 
-> \end{align*}
+> f(x) = f(x_0) + A(x - x_0) + o(x - x_0)\quad (x \to x_0),
 > $$
-> Q.E.D.
+> 则称 $f$ 在 $x_0$ 处可微, $x_0$ 处的线性映射 $x \mapsto Ax$ 称为 $f$ 在 $x_0$ 处的微分, 记为 $df(x_0)$.
 
-/example/  $\int\frac{1}{\sqrt{x^{2}+a^{2}}}dx\ (a > 0)$
+导数和微分之间的关系体现在下面的命题中.
 
-> /solution/
->
-> 令 $x = a\tan t$
-> $$
-> \begin{align*}
-> &=\int\frac{a\sec^{2}t}{\sqrt{a^{2}\tan^{2}t + a^{2}}}dt\\
-> &=\int\sec tdt\\
-> &=\ln|\sec t+\tan t|+C\\
-> &=\ln|\frac{\sqrt{a^{2}+x^{2}}}{a}+\frac{x}{a}|+C\\
-> &=\ln|\sqrt{a^{2}+x^{2}}+x|-\ln a + C_{1}\\
-> &=\ln|x + \sqrt{a^{2}+x^{2}}|+C_{1}\\
-> \end{align*}
-> $$
+**命题2.** 设 $f$ 在 $x_0$ 附近有定义, 则  
 
-这也是积分表的公式之一
+(1) $f$ 在 $x_0$ 处可导当且仅当 $f$ 在 $x_0$ 处可微, 且微分的斜率就是导数 $f'(x_0)$.  
 
-> /Formula/
->
-> 27. $$
->     \int\frac{1}{\sqrt{x^{2}+a^{2}}}dx=\ln|x+\sqrt{x^{2}+a^{2}}|+C\\
->     $$
->
-> 
->
-> 28. $$
->     \int\frac{1}{\sqrt{x^{2}-a^{2}}}dx=\ln|x+\sqrt{x^{2}-a^{2}}|+C\\
->     $$
->
-> 
->
-> 
-
-一般来说，被积函数是初等函数，则原函数也为初等函数，只有一个表达式。有正有负，不妨设为正。
-
-/example/  $\int\frac{1}{\sqrt[3]{x}+\sqrt[2]{x}}dx$
-
-> /solution/
->
-> $\sqrt[6]{x}=t，x = t^{6}$
-> $$
-> \begin{align*}
-> \text{L.H.S.}&=\int\frac{6t^{5}}{t^{2}+t^{3}}dt\\
-> &=6\int\frac{t^{3}}{t + 1}dt\\
-> &=6\int\frac{t^{3}+1 - 1}{t + 1}dt\\
-> &=6\int(t^{2}-t + 1-\frac{1}{t + 1})dt\\
-> &=6(\frac{1}{3}t^{3}-\frac{1}{2}t^{2}+t-\ln(t + 1))+C\\
-> \end{align*}
-> $$
-> 最终换回 $t=\sqrt[6]{x}$
-
-### · 分部积分
-
-> 如果你会分部积分，就能开始进行研究了.
->
-> ——于品
-
-有人在不同场合分别问著名的分析学家 Peter Lax 和几何学家 Nirenberg，问分析学中最重要的是什么，他们在不同场合没有沟通过的情况下均回答是分部积分.
-
-> /Theorem/
->
-> 若  $u(x), v(x)$  可导，则
->
-> $$
-> \int u \, dv = uv - \int v \, du + C
-> $$
-
-下面我们给出证明：
+(2) 如果 $f$ 在 $x_0$ 处可导, 则 $f$ 在 $x_0$ 处连续.
 
 > /proof/
 >
-> 证明1：由  $(uv)' = u'v + uv'$ 
+> (1) 设 $f$ 在 $x_0$ 处可导, 则
+> $$
+> \lim_{x \to x_0} \frac{f(x) - f(x_0) - f'(x_0)(x - x_0)}{x - x_0} = \lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0} - f'(x_0) = 0,
+> $$
+> 因此
+> $$
+> f(x) - f(x_0) - f'(x_0)(x - x_0) = o(x - x_0)\quad (x \to x_0),
+> $$
+> 即
+> $$
+> f(x) = f(x_0) + f'(x_0)(x - x_0) + o(x - x_0)\quad (x \to x_0).
+> $$
+> 这说明 $f$ 在 $x_0$ 处可微.
 >
+> 反之, 设 $f$ 在 $x_0$ 处可微, $f(x) = f(x_0) + A(x - x_0) + o(x - x_0)$, 则
 > $$
-> \Rightarrow uv' = (uv)' - uv\\
-> \Rightarrow \int uv' \, dx = \int [(uv)' - uv] \, dx\\
-> \Rightarrow \int uv' \, dx = (uv)x - \int uv \, dx\\
-> \Rightarrow \int u \, dv = uv - \int v \, du
+> \lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0} = \lim_{x \to x_0} \frac{A(x - x_0) + o(x - x_0)}{x - x_0} = A,
 > $$
+> 从而 $f$ 在 $x_0$ 处可导, 且导数 $f'(x_0) = A$.
 >
-> 证明2：
->
+> (2) 如果 $f$ 在 $x_0$ 处可导, 则 $f$ 在 $x_0$ 处可微, 从而
 > $$
-> d(uv) = v \, du + u \, dv\\
-> \Rightarrow v \, du = d(uv) - u \, dv\\
-> \Rightarrow \int v \, du = \int (d(uv) - u \, dv)\\
-> \Rightarrow \int v \, du = uv - \int u \, dv
+> \lim_{x \to x_0} f(x) = \lim_{x \to x_0} [f(x_0) + A(x - x_0) + o(x - x_0)] = f(x_0),
 > $$
+> 因此 $f$ 在 $x_0$ 处连续.
 
-公式也可以以如下形式展开：
-
+微分的几何意义在于它可以看成 $f$ 的一个线性近似. 由于微分的斜率等于导数, 我们将 $x_0$ 处的微分 $df(x_0)$ 写为
 $$
-\int f(x) \, dx = \int u(x)v'(x) \, dx = \int u \, dv = uv - \int v \, du = u(x)v(x) - \int v(x) \, du(x)
+df(x_0) = f'(x_0)dx(x_0),
 $$
-这里我们给出一个最经典的例题：
+其中 $dx(x_0)$ 是函数 $x$ 在 $x_0$ 的微分 (即恒同线性映射). 我们又将导数 $f'(x_0)$ 记为 $\frac{df}{dx}(x_0)$ 或 $\left.\frac{df}{dx}\right|_{x_0}$, 称为 $f$ 在 $x_0$ 处的微商. 
 
-/example/  $\int xe^x \, dx$ 
+微商是一个历史遗留记号, 它并不是两个微分的商, 而仅仅表示函数 $f$ 关于变量 $x$ 在 $x_0$ 处的导数. 我们将在那些需要区分关于不同变量求导的时候使用微商的记号, 其余的时候一般用 $f'$ 表示导数.
 
-> /solution/
+### · 运算法则
+
+下面我们研究导数的运算法则.
+
+**命题3** (导数的运算法则). 设 $f,g$ 在 $x$ 处可导, 则 $fg$ 在 $x$ 处可导; 如果 $\alpha,\beta$ 为常数, 则 $\alpha f + \beta g$ 在 $x$ 处可导. 且有  
+
+(1) $(\alpha f + \beta g)' = \alpha f' + \beta g'$ （线性性）;  
+
+(2) $(fg)' = f'g + fg'$ （导性）.
+
+> /proof/
 >
-> 令  $u = x, v' = e^x$ 
->
+> (1) 如果 $f,g$ 在 $x$ 处可导, 则
 > $$
-> \Rightarrow v = e^x
-> \Rightarrow \int xe^x \, dx = \int x \, de^x = xe^x - \int e^x \, dx = xe^x - e^x + C
+> f(x') = f(x) + f'(x)(x - x') + o(x - x'),
+> $$
+> $$
+> g(x') = g(x) + g'(x)(x - x') + o(x - x').
+> $$
+> 从而
+> $$
+> \alpha f(x') + \beta g(x') = (\alpha f(x) + \beta g(x)) + (\alpha f'(x) + \beta g'(x))(x - x') + \alpha o(x - x') + \beta o(x - x')
+> $$
+> $$
+> = (\alpha f(x) + \beta g(x)) + (\alpha f'(x) + \beta g'(x))(x - x') + o(x - x').
+> $$
+>
+> 这说明 $\alpha f + \beta g$ 在 $x$ 处可导, 且导数等于 $\alpha f' + \beta g'$.
+>
+> (2) 如果 $f,g$ 在 $x$ 处可导, 则 $f,g$ 在 $x$ 处连续, 且
+> $$
+> f(x')g(x') = [f(x') - f(x)]g(x') + f(x)[g(x') - g(x)] + f(x)g(x),
+> $$
+> 于是
+> $$
+> \lim_{x' \to x} \frac{f(x')g(x') - f(x)g(x)}{x - x'} = \lim_{x' \to x} \frac{f(x') - f(x)}{x' - x}g(x') + \lim_{x' \to x'} \frac{g(x') - g(x)}{x' - x}f(x)
+> = f'(x)g(x) + g'(x)f(x).
+> $$
+> 这说明 $fg$ 在 $x$ 处可导, 且 $(fg)' = f'g + fg'$.
+
+导数运算的线性性可以推广为对任意有限多个函数的线性组合成立. 从导性还得到
+
+**推论4**. 设 $f,g$ 在 $x$ 处可导, $g(x) \ne 0$. 则 $\frac{f}{g}$ 在 $x$ 处可导, 且
+$$
+\left(\frac{f}{g}\right)' = \frac{f'g - fg'}{g^2}.
+$$
+
+> /proof/
+>
+> 先说明 $g^{-1} = \frac{1}{g}$ 在 $x$ 处可导:
+> $$
+> \lim_{x' \to x} \frac{g^{-1}(x') - g^{-1}(x)}{x' - x} = \lim_{x' \to x} \frac{-1}{g(x)g(x')} \cdot \frac{g(x') - g(x)}{x' - x} = -\frac{g'(x)}{g^2(x)}.
+> $$
+> 因此 $\frac{f}{g} = f \cdot \frac{1}{g}$ 可导, 利用导数的导性, 有
+> $$
+> \left(\frac{f}{g}\right)' = f' \cdot \left(\frac{1}{g}\right) + f \cdot \left(\frac{1}{g}\right)' = \frac{f'g - fg'}{g^2},
+> $$
+> 推论得证.
+
+**命题5** (链式法则). 设 $g$ 在 $x$ 处可导, $f$ 在 $g(x)$ 处可导, 则复合函数 $f \circ g = f(g)$ 在 $x$ 处可导, 且
+$$
+[f(g)]' = f'(g)g'.
+$$
+
+> /proof/
+>
+> 因为 $g$ 在 $x$ 处可导, 故当 $x'$ 在 $x$ 附近时
+> $$
+> g(x') = g(x) + g'(x)(x' - x) + o(x' - x),
+> $$
+> 这说明 $x' \to x$ 时, 存在常数 $C$, 使得 $|g(x') - g(x)| \le C|x' - x|$. 因此
+> $$
+> \begin{aligned}
+> f(g(x')) &= f(g(x)) + f'(g(x))(g(x') - g(x)) + o(g(x') - g(x))\\
+> &= f(g(x)) + f'(g(x))g'(x)(x' - x) + f'(g(x))o(x' - x') + o(x' - x)\\
+> &= f(g(x)) + f'(g(x))g'(x)(x' - x) + o(x' - x).
+> \end{aligned}
+> $$
+> 这说明 $f(g)$ 在 $x$ 处可导, 导数为 $f'(g(x))g'(x)$. 
+
+链式法则对于任意有限个函数的复合也适用, 比如
+$$
+[f(g(h))]' = f'(g(h))g'(h)h'.
+$$
+**命题6** (反函数求导法则). 设 $f$ 在 $x_0$ 附近连续且有逆函数 $g$. 如果 $f$ 在 $x_0$ 处可导, 且导数 $f'(x_0) \ne 0$, 则 $g$ 在 $y_0 = f(x_0)$ 处可导, 且
+$$
+g'(y_0) = \frac{1}{f'(x_0)}.
+$$
+
+> /proof/
+>
+> 因为 $f$ 在 $x_0$ 处可导, 故
+> $$
+> f(x) = f(x_0) + f'(x_0)(x - x_0) + o(x - x_0)\quad (x \to x_0), \tag{4.1}
+> $$
+> 当 $x \to x_0$ 时上式可改写为
+> $$
+> f(x) - f(x_0) = [f'(x_0) + o(1)](x - x_0).
+> $$
+> 当 $f'(x_0) \ne 0$ 时, 上式表明, 当 $x \to x_0$ 时, 存在常数 $C > 0$ 使得
+> $$
+> |f(x) - f(x_0)| \ge C|x - x_0|,\quad \text{or}\quad |y - y_0| \ge C|g(y) - g(y_0)|.
+> $$
+> 特别地, 当 $y \to y_0$ 时, $x = g(y) \to g(y_0) = x_0$. 在 (4.1) 中代入 $x = g(y)$, $x_0 = g(y_0)$ 得
+> $$
+> \begin{aligned}
+> y &= y_0 + f'(x_0)(g(y) - g(y_0)) + o(g(y) - g(y_0))\quad (y \to y_0)\\
+> &= y_0 + f'(x_0)(g(y) - g(y_0)) + o(y - y_0)\quad (y \to y_0),
+> \end{aligned}
+> $$
+> 或改写为
+> $$
+> g(y) = g(y_0) + \frac{1}{f'(x_0)}(y - y_0) + o(y - y_0)\quad (y \to y_0).
+> $$
+> 这说明 $g$ 在 $y_0 = f(x_0)$ 处可导, 且导数为 $\frac{1}{f'(x_0)}$.
+
+有了上面这些求导运算法则, 我们就可以计算常见函数的导数了. 先看最基本的例子.
+
+**命题7**. $x' = 1$, $(e^x)' = e^x$.
+
+> /proof/
+>
+> 由定义,
+> $$
+> x' = \lim_{\Delta x \to 0} \frac{(x + \Delta x) - x}{\Delta x} = 1.
+> $$
+> 对于函数 $e^x$, 我们先计算它在 $x_0 = 0$ 处的导数:
+> $$
+> (e^x)'(0) = \lim_{x \to 0} \frac{e^x - 1}{x - 0} = \lim_{y \to 0} \frac{y}{\ln(1 + y)} = \lim_{y \to 0} \frac{1}{\ln(1 + y)^{1/y}} = 1.
+> $$
+> 对于一般的 $x$, 有
+> $$
+> (e^x)' = \lim_{x' \to x} \frac{e^{x'} - e^x}{x' - x} = \lim_{x' \to x} e^x \frac{e^{x' - x} - 1}{x' - x}
+> = e^x \lim_{y \to 0} \frac{e^y - 1}{y} = e^x.
+> $$
+> 这样就得到了命题的证明.
+
+**命题8**. 设 $a > 0$ ($a \ne 1$) 和 $\alpha \ne 0$ 为常数. 在函数的定义域内, 我们有  
+
+(1) $(a^x)' = a^x \ln a$, $(\log_a x)' = \frac{1}{x \ln a}$;  
+
+(2) $(\ln |x|)' = \frac{1}{x}$, $(x^\alpha)' = \alpha x^{\alpha - 1}$.
+
+> /proof/
+>
+> (1) 利用复合求导计算如下:
+> $$
+> (a^x)' = (e^{x \ln a})' = e^{x \ln a}(x \ln a)' = a^x \ln a.
+> $$
+> 利用反函数的导数公式, 有
+> $$
+> (\log_a x)' = \frac{1}{(a^y)'|_{y = \log_a x}} = \frac{1}{a^{\log_a x} \ln a} = \frac{1}{x \ln a}.
+> $$
+>
+> (2) 当 $x > 0$ 时, 由 (1) 知 $(\ln |x|)' = (\ln x)' = \frac{1}{x}$; 当 $x < 0$ 时,
+> $$
+> (\ln |x|)' = [\ln(-x)]' = \frac{1}{-x}(-x)' = \frac{1}{x}.
+> $$
+> 如果 $\alpha \ne 0$, $x > 0$, 则
+> $$
+> (x^\alpha)' = (e^{\alpha \ln x})' = e^{\alpha \ln x}(\alpha \ln x)'
+> = x^\alpha \alpha \frac{1}{x} = \alpha x^{\alpha - 1};
+> $$
+> 如果 $\alpha > 1$, 则 $x = 0$ 处的导数计算如下
+> $$
+> (x^\alpha)'(0) = \lim_{x \to 0} \frac{x^\alpha}{x} = \lim_{x \to 0} x^{\alpha - 1} = 0;
+> $$
+> 我们现在考虑 $x < 0$ 的情形. 此时, 要求 $\alpha = \frac{p}{q}$ 为有理数, $p,q$ 为互素的整数, 且 $q$ 为奇数. 我们有
+> $$
+> (x^\alpha)' = ((-1)^{\frac{p}{q}} e^{\alpha \ln |x|})' = (-1)^{\frac{p}{q}} e^{\alpha \ln |x|} (\alpha \ln |x|)'
+> = x^\alpha \alpha \frac{1}{x} = \alpha x^{\alpha - 1}.
+> $$
+> 这样就得到了定义域内所有可导点处的导数.
+
+**命题9**. 在函数的定义域内, 有  
+
+(1) $(\sin x)' = \cos x$, $(\csc x)' = -\csc x \cot x$, $(\arcsin x)' = \frac{1}{\sqrt{1 - x^2}}$;  
+
+(2) $(\cos x)' = -\sin x$, $(\sec x)' = \sec x \tan x$, $(\arccos x)' = -\frac{1}{\sqrt{1 - x^2}}$;  
+
+(3) $(\tan x)' = \sec^2 x$, $(\arctan x)' = \frac{1}{1 + x^2}$;  
+
+(4) $(\cot x)' = -\csc^2 x$, $(\operatorname{arccot} x)' = -\frac{1}{1 + x^2}$;
+
+> /proof/
+>
+> (1) 根据导数的定义, 有
+> $$
+> (\sin x)' = \lim_{x' \to x} \frac{\sin x' - \sin x}{x' - x}
+> = \lim_{x' \to x} 2 \frac{\sin \frac{x' - x}{2}}{x' - x} \cos \frac{x' + x}{2} = \cos x.
+> $$
+> 由推论4或复合函数求导公式, 有
+> $$
+> (\csc x)' = \left(\frac{1}{\sin x}\right)' = -\frac{1}{\sin^2 x}(\sin x)'
+> = -\frac{1}{\sin^2 x} \cos x = -\csc x \cot x.
+> $$
+> 由反函数求导公式, 有
+> $$
+> (\arcsin x)' = \frac{1}{\cos \arcsin x} = \frac{1}{\sqrt{1 - \sin^2 \arcsin x}} = \frac{1}{\sqrt{1 - x^2}}.
+> $$
+>
+> (2) 我们可以象 $\sin x$ 那样利用三角函数和差公式去求 $\cos x$ 的导数, 也可以直接利用复合函数求导:
+> $$
+> (\cos x)' = \left(\sin\left(\frac{\pi}{2} - x\right)\right)' = \cos\left(\frac{\pi}{2} - x\right)\left(\frac{\pi}{2} - x\right)' = -\sin x,
+> $$
+> 因此
+> $$
+> (\csc x)' = -\frac{1}{\cos^2 x}(-\sin x) = \sec x \tan x,
+> $$
+> 又因为 $\arcsin x + \arccos x = \frac{\pi}{2}$, 故
+> $$
+> (\arccos x)' = \left(\frac{\pi}{2} - \arcsin x\right)' = -\frac{1}{\sqrt{1 - x^2}}.
+> $$
+>
+> (3) 由推论4及上面的计算, 有
+> $$
+> (\tan x)' = \frac{\cos x \cos x - \sin x(-\sin x)}{\cos^2 x} = \frac{1}{\cos^2 x} = \sec^2 x.
+> $$
+> 由反函数求导公式, 有
+> $$
+> (\arctan x)' = \frac{1}{\sec^2 \arctan x} = \frac{1}{1 + \tan^2 \arctan x} = \frac{1}{1 + x^2}.
+> $$
+>
+> (4) 由推论4及上面的计算, 有
+> $$
+> (\cot x)' = \frac{(-\sin x)\sin x - \cos x \cos x}{\sin^2 x} = -\csc^2 x,
+> $$
+> 由反函数求导公式, 有
+> $$
+> (\operatorname{arccot} x)' = \frac{1}{-\csc^2 \operatorname{arccot} x} = -\frac{1}{1 + \cot^2 \operatorname{arccot} x} = -\frac{1}{1 + x^2}.
+> $$
+> 这就得到了三角函数的导数公式.
+
+我们如下定义一类所谓的双曲函数, 首先是双曲正弦 $\sinh x$ 和双曲余弦 $\cosh x$:
+$$
+\sinh x = \frac{e^x - e^{-x}}{2},\quad \cosh x = \frac{e^x + e^{-x}}{2};
+$$
+然后是双曲正切 $\tanh x$ 和双曲余切 $\coth x$:
+$$
+\tanh x = \frac{\sinh x}{\cosh x},\quad \coth x = \frac{\cosh x}{\sinh x};
+$$
+简单的计算表明, 双曲函数之间满足如下关系
+$$
+\sinh(x + y) = \sinh x \cdot \cosh y + \cosh x \cdot \sinh y,
+$$
+$$
+\sinh(x - y) = \sinh x \cdot \cosh y - \cosh x \cdot \sinh y,
+$$
+$$
+\cosh(x + y) = \cosh x \cdot \cosh y + \sinh x \cdot \sinh y,
+$$
+$$
+\cosh(x - y) = \cosh x \cdot \cosh y - \sinh x \cdot \sinh y,
+$$
+以及
+$$
+\cosh^2 x - \sinh^2 x = 1,\quad 1 - (\tanh x)^2 = \frac{1}{\cosh^2 x},\quad (\coth x)^2 - 1 = \frac{1}{\sinh^2 x}.
+$$
+双曲函数的导数计算如下:
+
+**命题10**. $(\sinh x)' = \cosh x$, $(\cosh x)' = \sinh x$, $(\tanh x)' = 1 - (\tanh x)^2$, $(\coth x)' = 1 - (\coth x)^2$.
+
+> /proof/  利用 $e^x$ 的导数直接计算即可
+
+## Part 2 高阶导数
+
+### · 定义
+
+要考察质点的运动, 除了考虑速度, 还要考虑加速度. 速度是位移函数的导数, 加速度则是速度的导数.
+
+**定义1** (高阶导数). 
+
+> 设 $f$ 在 $x_0$ 附近可导, 如果导函数 $f'$ 在 $x_0$ 处仍可导, 则称 $f$ 在 $x_0$ 处 2 阶可导. 记
+> $$
+> f''(x_0) = (f')'(x_0),
+> $$
+> 称为 $f$ 在 $x_0$ 处的 2 阶导数. 一般地, 如果 $f$ 在 $x_0$ 附近 $n$ ($n \ge 1$) 阶可导, 且 $n$ 阶导函数 $f^{(n)}$ 在 $x_0$ 处可导, 则称 $f$ 在 $x_0$ 处 $n+1$ 阶可导, 记
+> $$
+> f^{(n+1)}(x_0) = (f^{(n)})'(x_0),
+> $$
+> 称为 $f$ 的 $n+1$ 阶导数.
+>
+> 按照我们的记号, $f^{(1)} = f'$, $f^{(2)} = f''$, $f^{(3)} = f'''$ 等等. 我们约定 $f^{(0)} = f$. 有时也用下面的记号表示高阶导数:
+> $$
+> f'' = \frac{d^2 f}{dx^2},\quad f^{(3)} = f''' = \frac{d^3 f}{dx^3},\cdots
 > $$
 
-下面我们再给出一些特别的模型：
+**定义2**. 
 
-> /Claim/
+> 如果 $f$ 在区间 $I$ 的每一点处均 $n$ 阶可导, 则称 $f$ 在 $I$ 中 $n$ 阶可导; 如果 $f$ 可导, 且导函数 $f'$ 连续, 则称 $f$ (1 阶) 连续可导, 记为 $f \in C^1(I)$; 
 >
-> 设  $P(x)$  是  $x$  的  $k$  次多项式， $\alpha \neq 0$  常数
->
-> 1. $$
->    \int {P(x)}{e^{\alpha x}} \, dx = \int{P(x)} d \left( \frac{1}{\alpha} e^{\alpha x} \right)
->    $$
->
->    需要  $k$  次不定积分
->
-> 2. $$
->    \int P(x) \cos \alpha x \, dx = \int P(x){d} \left( \frac{1}{\alpha} \sin \alpha x \right)\\
->    \int P(x) \sin \alpha x \, dx = \int P(x)  d \left( -\frac{1}{\alpha} \cos \alpha x \right)
->    $$
->
->     设  $P(x)$  为  $x$  的函数
->
-> 3. $$
->    \int P(x) f\left( \arcsin x \right) \, dx
->    $$
->
-> ​	能凑则凑，若不能凑，令  $f(\arcsin x) = u, P(x)$  为  $v$ ，求出  $v$ 
->
-> 5. $$
->        \int P(x)f(\ln x) \, dx
->    $$
->
->    能凑则凑，若不能凑，令  $f(\ln x) = u, P(x) = v$ ，求出  $v$ 
-
-/example/  $\int (1+x^2) \cos 2x \, dx$
-
-> /solution/
-> $$
-> \begin{align*}
-> \text{H.L.S.} &= \int (1+x^2) \, d\left(\frac{1}{2} \sin 2x\right)\\
-> &= \frac{1}{2} (1+x^2) \sin 2x - \frac{1}{2} \int \sin 2x \, d(1+x^2)\\
-> &= \frac{1}{2} (1+x^2) \sin 2x + \frac{1}{2} x \cos 2x - \frac{1}{4} \sin 2x + C
-> \end{align*}
-> $$
-> Q.E.D.
-
-/example/ $\int \frac{\arctan x}{x} \, dx$ 
-
-> /solution/
-> $$
-> \begin{align*}
-> \text{H.L.S.} &= \arctan x \cdot \ln x - \int \frac{\ln x}{1+x^2} \, dx\\
-> &= x \arctan x - \frac{1}{2} \ln (1+x^2)
-> \end{align*}
-> $$
+> 一般地, 如果 $f$ 在 $I$ 中 $n$ 阶可导, 且 $n$ 阶导函数 $f^{(n)}$ 连续, 则称 $f$ $n$ 阶连续可导, 记为 $f \in C^n(I)$. 如果 $f$ 在 $I$ 中存在任意阶导数, 则称 $f$ 是光滑的, 记为 $f \in C^\infty(I)$.
 
 /example/
-$$
-\int \frac{\ln^2 x}{x} \, dx
-= \int \ln^2 x \, d(\ln x)
-= \frac{1}{3} \ln^3 x + C
-$$
-/example/  $\int x \ln x \, dx$ 
 
-> /solution/
+> 可微函数的导函数不一定连续.
+>
+> > 考虑下面的函数
+> > $$
+> > f(x) =
+> > \begin{cases}
+> > x^{\frac{3}{2}} \sin \frac{1}{x}, & x \in (0,1], \\
+> > 0, & x = 0.
+> > \end{cases}
+> > $$
+> > 我们先计算 $f$ 在 $x = 0$ 处的导数:
+> > $$
+> > f'(0) = \lim_{x \to 0^+} \frac{x^{\frac{3}{2}} \sin \frac{1}{x}}{x} = \lim_{x \to 0^+} \sqrt{x} \sin \frac{1}{x} = 0,
+> > $$
+> > 这里我们用到了估计
+> > $$
+> > \left|\sqrt{x} \sin \frac{1}{x}\right| \le \sqrt{x} \to 0\quad (x \to 0^+).
+> > $$
+> > 当 $x > 0$ 时, 由复合求导, 有
+> > $$
+> > f'(x) = \frac{3}{2}x^{\frac{1}{2}} \sin \frac{1}{x} - x^{\frac{3}{2}} \frac{1}{x^2} \cos \frac{1}{x}
+> > = \frac{3}{2}x^{\frac{1}{2}} \sin \frac{1}{x} - x^{-\frac{1}{2}} \cos \frac{1}{x}.
+> > $$
+> > 考察 $f'$ 在 $x_n = \frac{1}{2n\pi}$ ($n = 1,2,\cdots$) 处的取值知 $f'(x_n) \to -\infty$, 因此 $f'$ 不连续.
+>
+> 设 $k = 1,2,\cdots$, 则函数
 > $$
-> \begin{align*}
-> \text{H.L.S.}&= \int \ln x \, d\left(\frac{x^2}{2}\right)\\
-> &= \frac{2}{3} x^{\frac{3}{2}} \ln x - \frac{2}{3} \int x^{\frac{3}{2}} \frac{1}{x} \, dx\\
-> &= \frac{2}{3} x^{\frac{3}{2}} \ln x - \frac{4}{9} x^{\frac{3}{2}} + C
-> \end{align*}
+> f(x) =
+> \begin{cases}
+> x^{2k+1} \sin \frac{1}{x}, & x \ne 0 \\
+> 0, & x = 0
+> \end{cases}
 > $$
-
-/example/  $\int \frac{\arctan x}{x^2(1+x^2)} \, dx$
-
-> /solution/
-> $$
-> \begin{align*}
-> \text{H.L.S.}
-> &= \int \left(\frac{1}{x^2} - \frac{1}{1+x^2}\right) \arctan x \, dx\\
-> &= -\frac{1}{2} (\arctan x)^2 + \int \frac{\arctan x}{1+x^2} \, d\left(-\frac{1}{x}\right)\\
-> &= -\frac{1}{2} (\arctan x)^2 - \frac{1}{x} \arctan x + \int \frac{1}{x} \cdot \frac{1}{1+x^2} \, dx
-> \end{align*}
-> $$
->
-> $$
-> \int \frac{1}{x} \cdot \frac{1}{1+x^2} \, dx
-> = \int \left(\frac{1}{x} - \frac{x}{1+x^2}\right) \, dx
-> = \ln |x| - \frac{1}{2} \ln (1+x^2) + C
-> $$
->
-> 原式 =  $-\frac{1}{2} (\arctan x)^2 - \frac{1}{x} \arctan x + \ln |x| - \frac{1}{2} \ln (1+x^2) + C$ 
->
-> Q.E.D.
-
-### · 有理函数积分
-
-$$
-\int \frac{P(x)}{Q(x)}\,dx
-$$
-
-这一类积分的积分方法是将被积函数写成最简单的有理式的代数和
-
-而笔者也要很恶趣味的在此给出**代数学基本定理**：
-
-> /Theorem/
->
-> 任何复系数一元 $n$ 次多项式（ $n$ 至少为 1）方程在复数域上至少有一根。
->
-> 由此推出，$n$ 次复系数多项式方程在复数域内有且只有 $n$ 个根，重根按重数计算。
->
-> 有时这个定理也表述为：
->
-> 任何一个非零的一元 $n$ 次复系数多项式，都正好有 $n$ 个复数根。
->
-> 代数基本定理的证明，一般会用到复变函数或者近世代数，因此往往作为一个熟知结论直接应用。
->
-> 根据代数基本定理，一个复系数多项式 $f(x) = a_n x^n + a_{n-1} x^{n-1} + \ldots + a_0$ 一定可以唯一地分解为：
->
->
-> $$
-> f(x) = a_n (x - x_1)^{k_1} (x - x_2)^{k_2} \ldots (x - x_t)^{k_t} 
-> $$
->
->
-> 其中各个根均为复数，$k_1 + k_2 + \ldots + k_t = n$。
-
-而我们主要需要解决的是两类最简分式的处理：
-$$
-\int \frac{A}{(x-a)^n} dx\quad \quad \int \frac{Bx + C}{(x^2 + px + q)^n} dx
-$$
-**第一类最简分式**（左侧）：
-
-> 当 $n = 1$ 时，
->
-> $$
-> \begin{aligned}
-> \int \frac{A}{x-a} dx &= A \int \frac{1}{x-a} d(x-a) \\
-> &= A \ln |x-a| + C
-> \end{aligned}
-> $$
->
-> 当 $n > 1$ 时，
->
-> $$
-> \begin{aligned}
-> \int \frac{A}{(x-a)^n} dx &= A \int (x-a)^{-n} d(x-a) \\
-> &= A \left( \frac{1}{-n+1} (x-a)^{-n+1} \right) + C
-> \end{aligned}
-> $$
-
-**第二类最简分式**（右侧）：
-
-引例：求 $I_n = \int \frac{1}{(x^2 + a^2)^n} dx$ （$n \in \mathbb{N}$，$a \neq 0$）
-
-> 
->
-> $$
-> I_n = \frac{1}{a^2} \int \frac{a^2 + x^2 - x^2}{(x^2 + a^2)^n} dx
-> $$
-> 当 $n > 1$ 时，
->
-> $$
-> = \frac{1}{a^2} I_{n-1} - \frac{1}{a^2} \int x \cdot \frac{x}{(x^2 + a^2)^n} dx
-> $$
->
-> 不妨假设
-> $$
-> V' = \frac{x}{(x^2 + a^2)^n}
-> $$
->
-> $$
-> V = \int \frac{x}{(x^2 + a^2)^n} dx = \frac{1}{2} \int (x^2 + a^2)^{-n} d(x^2 + a^2)= \frac{1}{2(-n+1)} (x^2 + a^2)^{-n+1}
-> $$
->
-> $$
-> \begin{align*}
-> I_n &= \frac{1}{a^2} I_{n-1} + \frac{1}{2 a^2 (n-1)} \int x \cdot d(x^2 + a^2)^{-n+1}\\
-> &= \frac{1}{a^2} I_{n-1} + \frac{1}{2 a^2 (n-1)} \left[ x (x^2 + a^2)^{-n+1} - \int (x^2 + a^2)^{-n+1} dx \right]\\
-> &= \frac{1}{a^2} I_{n-1} + \frac{1}{2 a^2 (n-1)} \left[ x (x^2 + a^2)^{-n+1} - I_{n-1} \right]
-> \end{align*}
-> $$
->
-> 得到如下递推式：
-> $$
-> I_n = \frac{1}{a^2} \cdot \frac{2n-3}{2n-2} I_{n-1} + \frac{1}{2 a^2 (n-1)} \cdot x (x^2 + a^2)^{-n+1}
-> $$
-> 其中
-> $$
-> I_1 = \int \frac{1}{x^2 + a^2} dx
-> = \frac{1}{a} \arctan \frac{x}{a} + C
-> $$
-
-引例结束，开始正是求解：
-
-> $$
-> \int \frac{Bx + C}{(x^2 + px + q)^n} dx = \int \frac{\frac{B}{2}(2x + p) + C - \frac{B}{2}p}{(x^2 + px + q)^n} dx
-> $$
->
-> $$
-> = \frac{B}{2} \int \frac{d(x^2 + px + q)}{(x^2 + px + q)^n} + (C - \frac{B}{2}p) \int \frac{dx}{(x^2 + px + q)^n}
-> $$
->
-> $$
-> = \frac{B}{2} \frac{(x^2 + px + q)^{-n+1}}{-n+1} + (C - \frac{B}{2}p) \int \frac{dx}{(x^2 + px + q)^n}
-> $$
->
-> 剩下的部分做分母配方，得到
->
-> $$
-> \int \frac{dx}{(x^2 + px + q)^n} = \int \frac{d(x + \frac{p}{2})}{((x + \frac{p}{2})^2 + a^2)^n} = \int \frac{du}{(u^2 + a^2)^n}=I_n
-> $$
->
-> 根据引例，易知递推关系为：
-> $$
-> I_{n+1} \cdot 2na^2 = (2n-1)I_n + \frac{u}{(u^2 + a^2)^n}
-> $$
-
-### · 三角函数积分
-
-实际上我们在去掉根号的过程中会大量遇到三角函数，考虑这样形式的积分：
-
-$$
-\int R(\cos x, \sin x) dx
-$$
-
-其中 $R(a, b)$ 是一个二元函数。用所谓的万能代换，即 $\tan \frac{x}{2} = t$。
-
-具体来说，回忆三角函数的一些计算，知道
-
-$$
-\cos^2 \frac{x}{2} = \frac{1}{1 + t^2}, \quad \cos x = 2 \cos^2 \frac{x}{2} - 1 = \frac{1 - t^2}{1 + t^2}
-$$
-
-$$
-\sin x = 2 \sin \frac{x}{2} \cos \frac{x}{2} = \frac{2t}{1 + t^2}
-$$
-
-所以代换为
-
-$$
-\int R\left( \frac{1 - t^2}{1 + t^2}, \frac{2t}{1 + t^2} \right) \frac{2}{1 + t^2} dt
-$$
-
-变为 $t$ 的有理式的积分。
-
-## Fragment 2 定积分
-
-我决定从这里开始改变一下笔记的结构，这个模块不应该有那么多的习题性质的东西
-
-### · Riemann 积分
-
-Archimedes，想要求一个不规则图形的面积. 当时他计算的是抛物线 $y=x^2$ 下方、 $x=a$ 左侧的面积. 他想到的办法是竖直剖分这个图形，每一个细长条近似为一个矩形，那么这个图形的不规则性就得到了缓解.
-
-Archimedes 求一个曲线下的面积，要剖分区间 $I = [a, b]$，小区间 $I_i = [x_{i-1}, x_i]$，其长度记为 $|I_i| = x_i - x_{i-1} = \Delta x_i$。
-
-则 $\text{area}(D_i) \approx f(\xi_i) |I_i| = f(\xi_i) \Delta x_i$. 则总面积是所谓的 Riemann 和，
-
-$$
-\text{area}(D) \approx \sum_{i=1}^{n} f(\xi_i) \Delta x_i
-$$
-
-Archimedes 相信，当剖分越来越细时，上述 Riemann 和趋于真正的面积。
-
-> /Definition/
->
-> 设函数$f(x)$在区间$[a, b]$上有定义，用分点
->
->
-> $$
-> a = x_0 < x_1 < x_2 < \cdots < x_n = b 
-> $$
->
->
-> 将区间任意分成$n$个小区间，小区间的长度为
->
->
-> $$
-> \Delta x_i = x_i - x_{i-1}, \quad i = 1, 2, \cdots, n. 
-> $$
->
->
-> 记$\lambda = \max_{1 \leq i \leq n} \{ \Delta x_i \}$，在每个小区间上任取一点$\xi_i \in [x_{i-1}, x_i]$，作和式
->
->
-> $$
-> \sigma = \sum_{i=1}^{n} f(\xi_i) \Delta x_i. 
-> $$
->
->
-> 若当$\lambda \to 0$时，和式$\sigma$的极限存在（设为$I$），则称$f(x)$在$[a, b]$是可积的，极限值 $I$ 称为$f(x)$在 $[a, b]$ 的定积分 (Riemann积分) ，记作
->
->
-> $$
-> \int_{a}^{b} f(x) \, dx. 
-> $$
->
->
-> 概括起来，也就是
->
->
-> $$
-> I = \lim_{\lambda \to 0} \sum_{i=1}^{n} f(\xi_i) \Delta x_i = \int_{a}^{b} f(x) \, dx, 
-> $$
->
->
-> 这里的$a$ ，$b$分别称为定积分的下限和上限，$[a, b]$称为积分区间，$f(x)$称为被积函数
-
-值得指出的是，这里的$\sigma$是由$[a, b]$的分法（$a = x_0 < x_1 < \cdots < x_n = b$）和$\xi_i$的取法决定的，通常称它为$f(x)$的一个黎曼和。
-
-一般说来，它并不是$\lambda$的函数，也就是说，当$\lambda = \max_{1 \leq i \leq n} |\Delta x_i|$决定后，它并不唯一决定（对应于$[a, b]$的不同分法与$\xi_i$的不同取法，$\sigma$可以取不同的值）。
-
-因此当$\lambda \to 0$时$\sigma$的极限为$I$，严格地说，只能用下面的$\varepsilon - \delta$语言给出：
-
-> /Definition/
->
-> 设$f(x)$在$[a, b]$有定义，$I$是常数。若对任意给定的$\varepsilon > 0$，存在$\delta > 0$，使得对于$[a, b]$的任意分法与$\xi_i$（$x_{i-1} \leq \xi_i \leq x_i$）的任意取法，只要$\lambda = \max_{1 \leq i \leq n} |\Delta x_i| < \delta$，就有
->
->
-> $$
-> | \sigma - I | = \left| \sum_{i=1}^{n} f(\xi_i) \Delta x_i - I \right| < \varepsilon,
-> $$
->
->
-> 则称$\sum_{i=1}^{n} f(\xi_i) \Delta x_i$的极限为$I$，即
->
->
-> $$
-> I = \lim_{\lambda \to 0} \sum_{i=1}^{n} f(\xi_i) \Delta x_i.
-> $$
-
-### · Darboux 中值定理
-
-我们这里有必要提一下 Darboux 中值定理，一般来说，不定积分可以视作求原函数运算（导数逆运算）
-
-那么如何确定一个函数 $f$ 有原函数或者可以积分？
-
-> /Theorem/   (Darboux 中值定理)
->
-> 如果函数 $f$ 在开区间 $I$ 上有定义并且可微，$[a, b] \subset I$，则 $f'(x)$ 在 $[a, b]$ 上取遍 $f'(a)$ 与 $f'(b)$ 之间的一切值。
-
-由这个定理，我们就已经知道导子$D$ 不是满射，因为我们肯定可以在区间 $I$ 上构造一个取不到自己介值的函数，它一定不是某个函数的导函数.
-
-如果要问什么样的函数有原函数，这是很难回答的，但是我们能讲出一个 partial answer，就是连续的函数一定有原函数，因为一个变上限的积分 $\int_a^xf(x)dx$ ，其导数就会是这个函数.
-
-那我们可以试着回答第二个问题：如何判断 $f$ 可积？
-
-/Claim/
-
-> 可积必要条件：若函数 $f(x)$ 在 $[a, b]$ 上可积，则 $f(x)$ 在 $[a, b]$ 上必有界。
-
-/proof/
-
-> 反证，假设 $f(x)$ 无界。任取 $[a, b]$ 的一个分割 $\Delta$，对于任意给定的 $N > 0$：
->
-> $f(x)$ 至少在一个子区间 $[x_{j-1}, x_j]$ 上无界。先在其他子区间 $[x_{i-1}, x_i] (i \neq j)$ 任意选定 $\xi_i$，然后在区间 $[x_{j-1}, x_j]$ 上适当选择 $\xi_j$，使得：
->
->
-> $$
-> |f(\xi_j) \Delta x_j| > N + \left| \sum_{i \neq j} f(\xi_i) \Delta x_i \right|
-> $$
->
-> 从而，对任意的分割 $\Delta$ 和任意的 $N > 0$，只有适当地选取 $\xi_i$，就有：
->
->
-> $$
-> \left| \sum_{i=1}^{n} f(\xi_i) \Delta x_i \right| \geq |f(\xi_j) \Delta x_j| - \left| \sum_{i \neq j} f(\xi_i) \Delta x_i \right| > N 
-> $$
->
-> 由 $N$ 的任意性知，当 $\lambda \to 0$ 时积分和不可能有极限，故 $f(x)$ 在 $[a, b]$ 上不可积，矛盾。
-
-设 $f(x)$ 在 $[a, b]$ 上有界，对于 $[a, b]$ 的任意给定分割 $\Delta$：
-
-
-$$
- a = x_0 < x_1 < x_2 < \cdots < x_n = b 
-$$
-
-
-不妨令：
-
-
-$$
-M_i = \sup_{x \in [x_{i-1}, x_i]} f(x) \quad \quad
- m_i = \inf_{x \in [x_{i-1}, x_i]} f(x)
-$$
-
-
-以下两个和式：
-
-
-$$
-S_\Delta = \sum_{i=1}^{n} M_i \Delta x_i \quad \quad
- s_\Delta = \sum_{i=1}^{n} m_i \Delta x_i
-$$
-
-
-分别称为 $f(x)$ 关于分割 $\Delta$ 的达布大和与达布小和。
-
-> /Theorem/
->
-> 若$f$ 在 $[a,b]$ 有界， $f$ 在 $[a, b]$ 上可积的充要条件是：对于任意的 $\varepsilon > 0$，存在 $\delta > 0$，当 $\lambda < \delta$ 时，总有 $S_\Delta - s_\Delta < \varepsilon$。
-
-### · 积分性质
-
-1. $$
-   \int_{a}^{b} 1 \, dx = b - a
-   $$
-
-   
-
-2. $$
-   \int_{a}^{b} k f(x) \, dx = k \int_{a}^{b} f(x) \, dx \\
-   \int_{a}^{b} [f(x) \pm g(x)] \, dx = \int_{a}^{b} f(x) \, dx \pm \int_{a}^{b} g(x) \, dx
-   $$
-
-   > /proof/
-   > $$
-   > \text{LHS}= \lim_{\lambda \to 0} \sum_{i=1}^{n} [f(\xi_i) \pm g(\xi_i)] \Delta x_i= \lim_{\lambda \to 0} \sum_{i=1}^{n} f(\xi_i) \Delta x_i \pm \lim_{\lambda \to 0} \sum_{i=1}^{n} g(\xi_i) \Delta x_i = \text{RHS}
-   > $$
-
-3. 若在 $[a, b]$ 上可积，且 $f(x) \geq 0$，则 $\int_{a}^{b} f(x) \, dx \geq 0$ 
-
-   > /proof/
-   > $$
-   > \because \sum_{i=1}^{n} f(\xi_i) \Delta x_i \geq 0 \quad \therefore \int_{a}^{b} f(x) \, dx = \lim_{\lambda \to 0} \sum_{i=1}^{n} f(\xi_i) \Delta x_i \geq 0
-   > $$
-
-4. 若在 $[a, b]$ 上 $f(x) \leq g(x)$，则 $\int_{a}^{b} f(x) \, dx \leq \int_{a}^{b} g(x) \, dx$
-
-5. 设 $M = \max_{[a, b]} f(x)$, $m = \min_{[a, b]} f(x)$，则
-
-$$
-m(b - a) \leq \int_{a}^{b} f(x) \, dx \leq M(b - a)
-$$
-
-6. $f(x)$ 在 $[a, b]$ 上可积，则 $ |f(x)| $ 在 $[a, b]$ 上可积，且
-   $$
-   \left| \int_{a}^{b} f(x) \, dx \right| \leq \int_{a}^{b} |f(x)| \, dx \quad (a < b)
-   $$
-
-   > /proof/
-   > $$
-   > \because -|f(x)| \leq f(x) \leq |f(x)|\\
-   > \therefore -\int_{a}^{b} |f(x)| \, dx \leq \int_{a}^{b} f(x) \, dx \leq \int_{a}^{b} |f(x)| \, dx
-   > $$
-   > 能推出
-   > $$
-   > \left| \int_{a}^{b} f(x) \, dx \right| \leq \int_{a}^{b} |f(x)| \, dx
-   > $$
-
-7. 区间可加性
-
-   $$
-   \int_{a}^{b} f(x) \, dx = \int_{a}^{c} f(x) \, dx + \int_{c}^{b} f(x) \, dx
-   $$
-
-   > /proof/
-   >
-   > 当 $a < c < b$ 时，因 $f(x)$ 在 $[a, b]$ 上可积，
-   >
-   > 所以在分割区间时，可以永远取 $c$ 为分点，于是
-   >
-   > $$
-   > \sum_{[a, b]} f(\xi_i) \Delta x_i = \sum_{[a, c]} f(\xi_i) \Delta x_i + \sum_{[c, b]} f(\xi_i) \Delta x_i
-   > $$
-   >
-   > 令 $\lambda \to 0$
-   >
-   > $$
-   > \int_{a}^{b} f(x) \, dx = \int_{a}^{c} f(x) \, dx + \int_{c}^{b} f(x) \, dx
-   > $$
-   > 当 $a, b, c$ 的相对位置任意时，例如 $a < b < c$,
-   >
-   > 则有 $\int_{a}^{c} f(x) \, dx = \int_{a}^{b} f(x) \, dx + \int_{b}^{c} f(x) \, dx$
-   >
-   > $$
-   > \therefore \quad \int_{a}^{b} f(x) \, dx = \int_{a}^{c} f(x) \, dx - \int_{b}^{c} f(x) \, dx
-   > $$
-   >
-   > $$
-   > = \int_{a}^{c} f(x) \, dx + \int_{c}^{b} f(x) \, dx
-   > $$
-
-8. $f(x)$ 和 $g(x)$ 在 $[a, b]$ 上可积，则 $f(x)g(x)$ 在 $[a, b]$ 上也可积。
-
-9. 积分中值定理 若 $f(x) \in C[a, b]$，则至少存在一点 $\xi \in [a, b]$，使得
-   $$
-   \int_{a}^{b} f(x) \, dx = f(\xi)(b - a)
-   $$
-
-   > /proof/
-   >
-   > 设 $f(x)$ 在 $[a, b]$ 上的最小值与最大值分别为 $m, M$，则由性质5可得
-   >
-   > $$
-   > m \leq \frac{1}{b - a} \int_{a}^{b} f(x) \, dx \leq M
-   > $$
-   >
-   > 根据闭区间上连续函数介值定理，在 $[a, b]$ 上至少存在一点 $\xi \in [a, b]$，使
-   >
-   > $$
-   > f(\xi) = \frac{1}{b - a} \int_{a}^{b} f(x) \, dx
-   > $$
-   >
-   > 因此定理成立。
-
-   积分中值定理对 $a < b$ 或 $a > b$ 都成立。
-   可把 $\frac{\int_{a}^{b} f(x) \, dx}{b - a} = f(\xi)$ 理解为 $f(x)$ 在 $[a, b]$ 上的平均值。
-
-   $$
-   \frac{\int_{a}^{b} f(x) \, dx}{b - a} = \frac{1}{b - a} \lim_{n \to \infty} \sum_{i=1}^{n} f(\xi_i) \cdot \frac{b - a}{n} = \lim_{n \to \infty} \frac{1}{n} \sum_{i=1}^{n} f(\xi_i)
-   $$
-
-   故它是有限个数的平均值概念的推广.
-
-### · 微积分基本定理
-
-现在你可能会发现一点，你还是不会求定积分。我们只会求不定积分，那不定积分和定积分的关系是什么？
-
-重点在于微积分基本定理：变限积分求导定理和 Newton-Leibnitz 定理
+> 是 $C^k$ 函数, 但不是 $C^{k+1}$ 的.
+>
+> > 可以计算出 $f'(0) = 0$, 且
+> > $$
+> > f'(x) =
+> > \begin{cases}
+> > (2k+1)x^{2k} \sin \frac{1}{x} - x^{2k-1} \cos \frac{1}{x}, & x \ne 0, \\
+> > 0, & x = 0.
+> > \end{cases}
+> > $$
+> > 同理,
+> > $$
+> > f''(x) =
+> > \begin{cases}
+> > 2k(2k+1)x^{2k-1} \sin \frac{1}{x} - 4k x^{2k-2} \cos \frac{1}{x} - x^{2k-3} \sin \frac{1}{x}, & x \ne 0, \\
+> > 0, & x = 0.
+> > \end{cases}
+> > $$
+> > 继续求导可得 $f^{(k)}(0) = 0$, 且当 $x \ne 0$ 时,
+> > $$
+> > f^{(k)}(x) = x^2 \phi(x) \pm x \sin \frac{1}{x} \quad \text{或} \quad x^2 \phi(x) \pm x \cos \frac{1}{x},
+> > $$
+> > 其中 $\phi(x)$ 在 $x = 0$ 附近有界. 因此 $f^{(k)}$ 连续但在 $x = 0$ 处不可导.
+
+### · 计算
 
 /Theorem/
 
-> 若 $f(x)$ 在 $[a, b]$ 连续，则函数 $G(x) = \int_{a}^{x} f(t) \, dt$ 在 $[a, b]$ 可导，且
+> 设 $f,g$ 均为 $n$ 阶可导函数, 则  
 >
+> (1) $(\alpha f + \beta g)^{(n)} = \alpha f^{(n)} + \beta g^{(n)}$, $\forall\ \alpha,\beta \in \mathbb{R}$;  
 >
+> (2) (Leibniz) 
 > $$
-> G'(x) = f(x), \quad \forall x \in [a, b].
+> (fg)^{(n)} = \sum_{k=0}^{n} C_n^k f^{(n-k)}g^{(k)}
 > $$
+> 其中 $C_n^k = \frac{n!}{k!(n-k)!}$ 为组合数.
 
 /proof/
 
-> 显然
+> (1) 这可由求导运算的线性及归纳法直接得到.  
 >
->
+> (2) 对 $n$ 用数学归纳法. $n = 1$ 的情形就是求导运算的导性. 设公式对 $n = k$ 成立, 则 $n = k+1$ 时
 > $$
-> G(x + \Delta x) = \int_{a}^{x + \Delta x} f(t) \, dt, 
+> \begin{aligned}
+> (fg)^{(k+1)} &= [(fg)^{(k)}]' = \sum_{l=0}^{k} C_k^l [f^{(k-l+1)}g^{(l)} + f^{(k-l)}g^{(l+1)}]\\
+> &= \sum_{l=0}^{k} C_k^l f^{(k-l+1)}g^{(l)} + \sum_{l=0}^{k-1} C_k^l f^{(k-l)}g^{(l+1)} + C_k^k f g^{(k+1)}\\
+> &= f^{(k+1)}g + \sum_{l=1}^{k} [C_k^l + C_k^{l-1}]f^{(k-l+1)}g^{(l)} + f g^{(k+1)}\\
+> &= \sum_{l=0}^{k+1} C_{k+1}^l f^{(k+1-l)}g^{(l)},
+> \end{aligned}
 > $$
->
->
-> 因此
->
-> $$
-> \frac{G(x + \Delta x) - G(x)}{\Delta x} = \frac{1}{\Delta x} \left[ \int_{a}^{x + \Delta x} f(t) \, dt - \int_{a}^{x} f(t) \, dt \right]
-> $$
->
-> $$
-> = \frac{1}{\Delta x} \int_{x}^{x + \Delta x} f(t) \, dt,
-> $$
->
-> 由积分中值定理知道，在 $x$ 与 $x + \Delta x$ 之间必存在一点 $\xi$，使得
->
->
-> $$
-> \int_{x}^{x + \Delta x} f(t) \, dt = f(\xi) \Delta x, 
-> $$
->
->
-> 于是
->
->
-> $$
-> \frac{G(x + \Delta x) - G(x)}{\Delta x} = f(\xi), 
-> $$
->
->
-> 令 $\Delta x \to 0$，则 $x + \Delta x \to x$，从而 $\xi \to x$，由 $f(x)$ 连续性便有
->
->
-> $$
-> \lim_{\Delta x \to 0} \frac{G(x + \Delta x) - G(x)}{\Delta x} = \lim_{\Delta x \to 0} f(\xi) = f(x).
-> $$
+> 其中我们用到组合恒等式 $C_k^l + C_k^{l-1} = C_{k+1}^l$.
 
-此时我们证明了在 "Darboux 中值定理" 处叙述的结论： **连续函数的变上限积分是其原函数，连续函数皆有原函数**
+现在我们再看几个高阶导数计算和应用的例子.
 
-如果上下限均变化，如何求导？
+/example/
 
-> /Claim/
+> 设多项式 $p_n(x) = a_n x^n + a_{n-1} x^{n-1} + \cdots + a_1 x + a_0$ 次数为 $n$, 则  
 >
-> 设 $f$ 连续，$\alpha(x)$、$\beta(x)$ 可导，则
+> (1) $p_n^{(n)}(x) = n! a_n$, 从而 $p_n^{(k)} = 0$, $\forall\ k > n$;  
 >
+> (2) $a_k = \frac{1}{k!} p_n^{(k)}(0)$, $k = 0,1,\cdots,n$.
 >
-> $$
-> \frac{d}{dx} \int_{\alpha(x)}^{\beta(x)} f(t) \, dt = f(\beta(x)) \beta'(x) - f(\alpha(x)) \alpha'(x)
-> $$
+> > 直接逐项求导, 利用归纳法可得
+> > $$
+> > p_n^{(k)}(x) = n(n-1)\cdots(n-k+1)a_n x^{n-k} + (n-1)\cdots(n-k)a_{n-1}x^{n-1-k} + \cdots + k! a_k,
+> > $$
+> > 其中 $1 \le k \le n$. 特别地, 取 $k = n$ 就得到 (1), 而令 $x = 0$ 就得到 (2).
+>
+> 求函数 $f(x) = \sin x$, $\cos x$ 的各阶导数.
+>
+> > 我们已知
+> > $$
+> > (\sin x)' = \cos x = \sin(x + \frac{\pi}{2}),\quad (\sin x)'' = -\sin x = \sin(x + \pi).
+> > $$
+> > 一般地, 如果
+> > $$
+> > (\sin x)^{(k)} = \sin(x + \frac{k\pi}{2})
+> > $$
+> > 则
+> > $$
+> > (\sin x)^{(k+1)} = \cos\left(x + \frac{k\pi}{2}\right) = \sin\left(x + \frac{(k+1)\pi}{2}\right),
+> > $$
+> > 这说明
+> > $$
+> > (\sin x)^{(n)} = \sin(x + \frac{n\pi}{2})
+> > $$
+> > 同理可得
+> > $$
+> > (\cos x)^{(n)} = \cos(x + \frac{n\pi}{2})
+> > $$
 
-第二部分的Newton-Leibnitz法则有两种形式：
+## Part 3 微分中值定理
 
-> /Theorem/
->
-> 设 $f(x)$ 在 $[a, b]$ 上连续，$F(x)$ 是 $f(x)$ 在 $[a, b]$ 的任意一个原函数，即 $F'(x) = f(x)$，则
->
-> $$
-> \int_{a}^{b} f(x) \, dx = F(b) - F(a).
-> $$
-> 若 $f(x)$ 在 $[a, b]$ 可积，$F(x)$ 是 $f(x)$ 在 $[a, b]$ 的任意一个原函数，即 $F'(x) = f(x)$，则
->
-> $$
-> \int_{a}^{b} f(x) \, dx = F(b) - F(a).
-> $$
+要研究一个变化量, 可以考察其“最大”值和“最小”值.
 
-接下来分别给出两个定理的证明，其中定理第二种表述的条件更弱一些
+### · 极值
+
+**定义1** (极值点). 
+
+> 设 $f$ 是定义在区间 $I$ 中的函数, $x_0 \in I$. 如果存在 $\delta > 0$, 使得
+> $$
+> f(x) \ge f(x_0)\ (f(x) \le f(x_0)),\quad \forall\ x \in (x_0 - \delta, x_0 + \delta) \cap I,
+> $$
+> 则称 $x_0$ 为 $f$ 在 $I$ 中的一个极小(大)值点, $f(x_0)$ 称为极小(大)值.
+>
+> 如果 $x_0 \in I$, 且
+> $$
+> f(x) \ge f(x_0)\ (f(x) \le f(x_0)),\quad \forall\ x \in I,
+> $$
+> 则称 $x_0$ 为 $f$ 在 $I$ 中的一个最小(大)值点, $f(x_0)$ 称为最小(大)值.
+>
+> 显然, 最小(大)值点是极小(大)值点. 我们把极小值点和极大值点统称为极值点, 极小值和极大值统称为极值, 最大值和最小值统称最值. 当定义中的不等号在 $x_0$ 的空心邻域中严格成立时, 相应的极值点称为严格极值点, 相应的极值称为严格极值.
+
+**定理1** (Fermat). 设 $x_0$ 是函数 $f$ 在 $I$ 中的极值点, 且 $x_0$ 为 $I$ 的内点. 如果 $f$ 在 $x_0$ 处可导, 则 $f'(x_0) = 0$.
 
 > /proof/
 >
-> 已知 $G(x) = \int_{a}^{x} f(t) \, dt$ 是 $f(x)$ 的一个原函数。由于同一函数的两个原函数只能差一个常数，因此
+> 不妨设 $x_0$ 为 $f$ 的极小值点 (不然可考虑 $-f$). 由于 $x_0$ 为 $I$ 的内点, 故存在 $\delta > 0$, 使得 $(x_0 - \delta, x_0 + \delta) \subset I$. 当 $x_0$ 为 $f$ 的极小值点时, 我们假设 $\delta$ 充分小, 使得
+> $$
+> f(x) \ge f(x_0),\quad \forall\ x \in (x_0 - \delta, x_0 + \delta).
+> $$
+> 特别地, 当 $x \in (x_0 - \delta, x_0)$ 时,
+> $$
+> f'(x_0) = \lim_{x \to x_0^-} \frac{f(x) - f(x_0)}{x - x_0} \le 0,
+> $$
+> 而当 $x \in (x_0, x_0 + \delta)$ 时,
+> $$
+> f'(x_0) = \lim_{x \to x_0^+} \frac{f(x) - f(x_0)}{x - x_0} \ge 0,
+> $$
+> 这说明 $f'(x_0) = 0$.
 >
+> >  (1) 如果 $x_0$ 不是 $I$ 的内点, 则即使 $f$ 在 $x_0$ 处可导 (存在左导数或右导数), 导数也不必为零. 如定义在 $[0,1]$ 上的函数 $f(x) = x$ 就是例子. 如果 $x_0$ 为 $f$ 在 $I$ 中的极值点, 但不是 $I$ 的内点, 则根据定理的证明可以得到下面的结论:
+> >
+> >  设 $x_0$ 是 $I$ 的左端点, 如果 $x_0$ 为 $f$ 的极小(大)值点, 则 $f'_+(x_0) \ge 0 (\le 0)$; 设 $x_0$ 是 $I$ 的右端点, 如果 $x_0$ 为 $f$ 的极小(大)值点, 则 $f'_-(x_0) \le 0 (\ge 0)$;
+> >
+> >  (2) 函数可能在不可导点处取极值, 例如 $f(x) = |x|$, $x \in [-1,1]$ 在 $x_0 = 0$ 处取到最小值, 但 $f$ 在 $x_0 = 0$ 处不可导, 当然就谈不上导数为零了.
+> >
+> >  (3) 我们把满足条件 $f'(x_0) = 0$ 的点称为 $f$ 的驻点或临界点. 需要注意的是, 驻点不必为极值点, 例如 $f(x) = x^3$, $x_0 = 0$ 为 $f$ 的驻点, 但不是极值点.
+
+**定理2** (Darboux). (*) 设 $f$ 为 $[a,b]$ 上的可导函数, 则 $f'$ 可以取到 $f'_+(a)$ 与 $f'_-(b)$ 之间的任意值.
+
+> 设 $k$ 是介于 $f'_+(a)$ 和 $f'_-(b)$ 之间的数. 考虑函数 $g(x) = f(x) - kx$, 则
 > $$
-> G(x) = F(x) + c,
+> g'_+(a) \cdot g'_-(b) = (f'_+(a) - k)(f'_-(b) - k) \le 0,
 > $$
+> 如果上式为零, 则 $k$ 等于 $f$ 在 $a$ 或 $b$ 处的导数; 如果上式小于零, 不妨设 $g'_+(a) > 0$, $g'_-(b) < 0$, 则 $g$ 在 $a$ 或 $b$ 处均取不到最大值, 从而 $g$ 在 $[a,b]$ 的内部某一点 $\xi$ 处取到最大值. 由 Fermat 定理, $g'(\xi) = 0$, 即 $f'(\xi) = k$.
 >
-> 也可写成
+> > 这个定理说明, 如果 $f$ 是区间 $I$ 中的可导函数, 则其导函数 $f'$ 的值域仍为区间. 特别地, Dirichlet 函数没有任何原函数.
+
+**命题3**. 设 $f: \mathbb{R} \to \mathbb{R}$ 为连续函数, 且
+$$
+\lim_{x \to -\infty} f(x) = \lim_{x \to +\infty} f(x) = +\infty (-\infty),
+$$
+则 $f$ 在 $\mathbb{R}$ 上达到最小(大)值.
+
+> 我们不妨设 $\lim_{x \to -\infty} f(x) = \lim_{x \to +\infty} f(x) = +\infty$. 由极限的定义, 存在 $M > 0$ 使得当 $|x| \ge M$ 时 $f(x) > f(0) + 1$. 因为 $f$ 为连续函数, 故在闭区间 $[-M,M]$ 上取到最小值. 设 $f$ 在 $x_0$ 处取到此最小值, 则 $f(x_0) \le f(0)$ (因为 $0 \in [-M,M]$). 另一方面,
+> $$
+> f(x_0) \le f(0) < f(0) + 1 < f(x),\quad \forall\ x \in (-\infty, M) \cup (M, +\infty),
+> $$
+> 这说明 $x_0$ 也是 $f$ 在 $(-\infty, +\infty)$ 上的最小值点.
 >
+> 显然, 上述命题可以推广到其它非闭区间的情形, 以 $(a, +\infty)$ 为例, 我们有如下结论: 如果连续函数 $f$ 满足
 > $$
-> \int_{a}^{x} f(t) \, dt = F(x) + c,
+> \lim_{x \to a^+} f(x) = \lim_{x \to +\infty} f(x) = +\infty (-\infty)
 > $$
+> 则 $f$ 在 $(a, +\infty)$ 上达到最小(大)值.
+
+/example/
+
+设 $a_i$, $i = 1,2,\cdots,n$ 为 $\mathbb{R}$ 上的 $n$ 个点. 在 $\mathbb{R}$ 上求一点, 使得它到 $a_i$ ($1 \le i \le n$) 的距离的平方和最小.
+
+> 设 $x \in \mathbb{R}$, 考虑连续函数
+> $$
+> f(x) = \sum_{i=1}^{n} (x - a_i)^2,\quad x \in \mathbb{R}.
+> $$
+> 我们的问题就是求 $f$ 的最小值点. 容易看出, 当 $|x| \to +\infty$ 时, $f(x) \to +\infty$, 因此由上面的命题, $f$ 的最小值点的确存在. 又因为 $f$ 可微, 故最小值点必为驻点. 方程
+> $$
+> f'(x) = 2 \sum_{i=1}^{n} (x - a_i) = 0
+> $$
+> 的惟一解为
+> $$
+> x = \frac{1}{n} \sum_{i=1}^{n} a_i,
+> $$
+> 因此它就是我们要求的点.设 $x \in \mathbb{R}$, 考虑连续函数
+> $$
+> f(x) = \sum_{i=1}^{n} (x - a_i)^2,\quad x \in \mathbb{R}.
+> $$
+> 我们的问题就是求 $f$ 的最小值点. 容易看出, 当 $|x| \to +\infty$ 时, $f(x) \to +\infty$, 因此由上面的命题, $f$ 的最小值点的确存在. 又因为 $f$ 可微, 故最小值点必为驻点. 方程
+> $$
+> f'(x) = 2 \sum_{i=1}^{n} (x - a_i) = 0
+> $$
+> 的惟一解为
+> $$
+> x = \frac{1}{n} \sum_{i=1}^{n} a_i,
+> $$
+> 因此它就是我们要求的点.
+
+### · 中值定理
+
+**定理1** (Rolle). 设函数 $f$ 在 $[a,b]$ 上连续, 在 $(a,b)$ 中可微, 且 $f(a) = f(b)$. 则存在 $\xi \in (a,b)$, 使得 $f'(\xi) = 0$.
+
+> 连续函数 $f$ 在闭区间 $[a,b]$ 上可以取到最大值 $M$ 和最小值 $m$. 如果 $M = m$, 则 $f$ 恒为常数, 从而 $f' = 0$; 如果 $M > m$, 则由 $f(a) = f(b)$ 知 $m$ 与 $M$ 中至少有一个是被 $f$ 在内点 $\xi \in (a,b)$ 处所取得, 由 Fermat 定理, $f'(\xi) = 0$.
+
+**定理2** (Lagrange). 设函数 $f$ 在 $[a,b]$ 上连续, 在 $(a,b)$ 中可微, 则存在 $\xi \in (a,b)$, 使得
+$$
+f'(\xi) = \frac{f(b) - f(a)}{b - a},\quad \text{or}\quad f(b) - f(a) = f'(\xi)(b - a).
+$$
+
+> /proof/
 >
-> 其中 $c$ 是一个常数。在等式两边令 $x = a$，由于 $G(a) = \int_{a}^{a} f(t) \, dt = 0$，便知
+> 令
+> $$
+> F(x) = f(x) - \left[f(a) + \frac{f(b) - f(a)}{b - a}(x - a)\right],
+> $$
+> 则 $F(a) = F(b) = 0$, $F$ 满足 Rolle 定理的条件. 从而存在 $\xi \in (a,b)$, 使得 $F'(\xi) = 0$. 此 $\xi$ 即为满足定理要求的 $\xi$.
 >
+> > Lagrange 定理的物理含义: 质点的平均速度等于某一点的瞬时速度. 令
+> > $$
+> > l(x) = f(a) + \frac{f(b) - f(a)}{b - a}(x - a),
+> > $$
+> > 则 $l(x)$ 是满足条件 $l(a) = f(a)$, $l(b) = f(b)$ 的唯一线性函数, 其图像是连接 $(a,f(a))$ 和 $(b,f(b))$ 的直线. Lagrange 定理的证明思想就是将这条直线看成是 $X$ 轴, 从而将问题转化为已知情形.
+
+**定理3** (Cauchy). 设函数 $f,g$ 在 $[a,b]$ 上连续, 在 $(a,b)$ 中可微, 且 $g'(x) \ne 0$, $\forall\ x \in (a,b)$. 则存在 $\xi \in (a,b)$, 使得
+$$
+\frac{f(b) - f(a)}{g(b) - g(a)} = \frac{f'(\xi)}{g'(\xi)}.
+$$
+
+> 由 Rolle 定理和 $g' \ne 0$ 知 $g(b) \ne g(a)$. 令
 > $$
-> F(a) + c = 0,
+> F(x) = f(x) - \left[f(a) + \frac{f(b) - f(a)}{g(b) - g(a)}(g(x) - g(a))\right],
 > $$
->
-> 代回去便得
->
+> 则 $F(a) = F(b) = 0$, $F$ 满足 Rolle 定理的条件, 从而存在 $\xi \in (a,b)$, 使得 $F'(\xi) = 0$. $\xi$ 即为满足要求的点.
+
+下面给出两个例子：
+
+/example/ 设 $f(x)$ 在 $[a,b]$ 上连续, 在 $(a,b)$ 中二阶可导. 如果 $f(a) = f(b) = 0$, 则对任意 $c \in [a,b]$, 存在 $\xi \in (a,b)$, 使得
+$$
+f(c) = \frac{f''(\xi)}{2}(c - a)(c - b).
+$$
+
+> 不妨设 $c \in (a,b)$, 令
 > $$
-> \int_{a}^{x} f(t) \, dt = F(x) - F(a).
+> F(x) = f(x) - \frac{f(c)}{(c - a)(c - b)}(x - a)(x - b),\quad x \in [a,b].
 > $$
->
-> 取 $x = b$，便得
->
+> 则 $F(a) = F(c) = F(b) = 0$, 由 Rolle 定理, 存在 $\xi_1 \in (a,c)$, $\xi_2 \in (c,b)$, 使得
 > $$
-> \int_{a}^{b} f(t) \, dt = F(b) - F(a).
+> F'(\xi_1) = 0,\quad F'(\xi_2) = 0.
 > $$
+> 因为 $F'(x)$ 在 $[\xi_1,\xi_2]$ 上可微, 再一次由 Rolle 定理知, 存在 $\xi \in (\xi_1,\xi_2)$, 使得
+> $$
+> F''(\xi) = 0.
+> $$
+> 简单的计算表明
+> $$
+> F''(x) = f''(x) - \frac{2f(c)}{(c - a)(c - b)},
+> $$
+> 在上式中代入 $x = \xi$ 即得欲证结论.
 >
 > ***
 >
-> 给 $[a, b]$ 任意分法：
+> 这个例子可以推广到一般情形. 例如, 设 $f$ 是 $n$ 阶可导函数, 且 $f(x) = 0$ 有 $n$ 个不同的解 $\{x_i\}_{i=1}^{n}$, 则对任意 $c \in [a,b]$, 存在 $\xi \in (a,b)$, 使得
+> $$
+> f(c) = \frac{1}{n!}f^{(n)}(\xi)\prod_{i=1}^{n}(c - x_i).\tag{5.1}
+> $$
+> 证明的方法仍是构造适当的辅助函数并利用微分中值定理. 例如, 无妨设 $c \ne x_i$ ($1 \le i \le n$), 令
+> $$
+> F(x) = f(x) - \frac{f(c)}{\prod_{i=1}^{n}(c - x_i)}\prod_{i=1}^{n}(x - x_i),\quad x \in [a,b].
+> $$
+> 则 $F(x)$ 有 $n+1$ 个不同的零点 $c,x_i$ ($1 \le i \le n$), 对 $F$ 反复使用 Rolle 定理可知, 存在 $\xi \in (a,b)$, 使得 $F^{(n)}(\xi) = 0$. 再利用 $n$ 次多项式 $\prod_{i=1}^{n}(x - x_i)$ 的 $n$ 阶导数为 $n!$ 即可得到欲证等式.
 >
+> 如果 $f$ 是任给的 $n$ 阶可导函数, 设 $\{x_i\}_{i=1}^{n}$ 为 $[a,b]$ 中 $n$ 个不同的点, 令
 > $$
-> a = x_0 < x_1 < x_2 < \cdots < x_n = b,
+> p_{n-1}(x) = \sum_{i=1}^{n}\left[\prod_{j \ne i}\frac{(x - x_j)}{(x_i - x_j)}\right]f(x_i),
 > $$
+> 则 $p_{n-1}$ 为次数不超过 $n-1$ 的多项式, 它与函数 $f$ 在 $\{x_i\}_{i=1}^{n}$ 处取相同的值, 称为 $f$ 的 Lagrange 插值多项式. 由于 $f - p_{n-1}$ 有 $n$ 个不同的零点, 由 (5.1) 可得 (注意 $p_{n-1}$ 的 $n$ 阶导数为零)
+> $$
+> f(x) - p_{n-1}(x) = \frac{1}{n!}f^{(n)}(\xi)\prod_{i=1}^{n}(x - x_i),\quad \xi \in (a,b).\tag{5.2}
+> $$
+> 这个等式称为插值多项式的余项公式, 在第六章中, 我们将利用它来估计近似积分的误差.
+
+证明勒让德 (Legendre) 多项式 $\frac{d^n}{dx^n}(x^2 - 1)^n$ 在 $(-1,1)$ 中有 $n$ 个不同的实根, 其中 $n \ge 1$.
+
+> 首先, 多项式 $(x^2 - 1)^n$ 有实根 $-1$ 和 $1$, 根据 Rolle 定理, $\frac{d}{dx}(x^2 - 1)^n$ 在 $(-1,1)$ 内有实根, 记为 $\xi_{11}$. 当 $n > 1$ 时, $-1$ 和 $1$ 仍为 $\frac{d}{dx}(x^2 - 1)^n$ 的实根, 再次由 Rolle 定理即知 $\frac{d^2}{dx^2}(x^2 - 1)^n$ 在 $(-1,\xi_{11})$ 和 $(\xi_{11},1)$ 中分别有实根 $\xi_{21}$ 和 $\xi_{22}$. 
 >
-> 则由微分中值定理知在 $(x_{i-1}, x_i)$ 中，存在 $\xi_i$，使得
->
-> $$
-> \begin{aligned}
-> F(b) - F(a) &= F(x_n) - F(x_0) \\
-> &= \sum_{i=1}^{n} (F(x_i) - F(x_{i-1})) \\
-> &= \sum_{i=1}^{n} F'(\xi_i) \Delta x_i \\
-> &= \sum_{i=1}^{n} f(\xi_i) \Delta x_i,
-> \end{aligned}
-> $$
->
-> 令 $\lambda = \max_{1 \leq i \leq n} |\Delta x_i| \to 0$，由 $f(x)$ 在 $[a, b]$ 可积知道，右边的极限存在，且等于 $f(x)$ 在 $[a, b]$ 的定积分，故
->
-> $$
-> F(b) - F(a) = \lim_{\lambda \to 0} \sum_{i=1}^{n} f(\xi_i) \Delta x_i = \int_{a}^{b} f(x) \, dx.
-> $$
+> 如果 $n > 2$, 则 $-1$ 和 $1$ 仍为 $\frac{d^2}{dx^2}(x^2 - 1)^n$ 的实根, 即它有四个实根 $-1,\xi_{21},\xi_{22}$ 和 $1$. 继续使用 Rolle 定理, $\frac{d^3}{dx^3}(x^2 - 1)^n$ 在 $(-1,1)$ 中就有三个不同的实根. 如此重复证明就知道欲证结论对任意正整数 $n$ 都成立. 
 
-### · 定积分计算
+非常重要的一点就是微分中值定理中的 $\xi$ 可以取在区间内部.
 
-定积分的计算也能使用换元和分部积分
-
-> /Theorem/
->
-> **换元公式**： $f \in C[a, b]$，$x = \varphi(t)$ 且满足 ① $a = \varphi(\alpha)$，$b = \varphi(\beta)$ ② $[α, β]$ 或 $[\beta, \alpha] \rightarrow [a, b]$ 有连续导数，则  
-> $$
-> \int_{a}^{b} f(x) dx = \int_{\alpha}^{\beta} f(\varphi(t)) \varphi'(t) dt.
-> $$
-> **分部积分**： $u, v \in C^1[a, b]$ 则  
-> $$
-> \int_{a}^{b} u dv = uv \bigg|_{a}^{b} - \int_{a}^{b} v du.
-> $$
-
-实际上只需要简化后使用适当的方式找到不定积分的算法，然后运用微积分基本定理即可。
-
-这里必须提到知名的 **Wallis 公式**：
-
-> /Theorem/
-> $$
-> \int_{0}^{\frac{\pi}{2}} \cos^n x \, dx = \int_{0}^{\frac{\pi}{2}} \sin^n x \, dx
-> \left\{
-> \begin{matrix}
-> \frac{(n-1)!!}{(n)!} \cdot \frac{\pi}{2}, & \text{n=2k} \\
-> \frac{(n-1)!!}{(n)!}, & \text{n=2k+1}
-> \end{matrix}
-> \right.
-> $$
-
-定积分部分的主干内容到此告一段落。
+结束.

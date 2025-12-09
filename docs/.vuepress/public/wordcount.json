@@ -30,19 +30,20 @@
     "optics-1": 6
   },
   "integral": {
-    "index": 91,
-    "integral-9": 8071,
-    "integral-8": 6741,
-    "integral-7": 3976,
-    "integral-6": 6166,
-    "integral-5": 3950,
-    "integral-4": 5601,
-    "integral-3": 3499,
-    "integral-2": 4196,
-    "integral-12": 4886,
-    "integral-10": 7233,
-    "integral-1": 3706,
-    "integral-0": 7
+    "index": 117,
+    "integral-9": 9,
+    "integral-8": 6916,
+    "integral-7": 6664,
+    "integral-6": 6756,
+    "integral-5": 4709,
+    "integral-4": 4302,
+    "integral-3": 4218,
+    "integral-2": 5493,
+    "integral-12": 11,
+    "integral-11": 10,
+    "integral-10": 10,
+    "integral-1": 5013,
+    "integral-0": 8
   },
   "electrodynamics": {
     "index": 12,
@@ -100,6 +101,7 @@
     "pyvvujxp": 17,
     "resources": 485,
     "anniversary-1": 1541,
+    "article-5": 11,
     "article-4": 3551,
     "article-3": 4312,
     "article-2": 3947,
@@ -143,7 +145,7 @@
     "algebra-1": 5125,
     "algebra-0": 9451
   },
-  "total": 250371,
-  "lastUpdated": "2025-12-06T10:24:30.260Z",
-  "fileCount": 114
+  "total": 236495,
+  "lastUpdated": "2025-12-09T10:39:57.899Z",
+  "fileCount": 116
 }

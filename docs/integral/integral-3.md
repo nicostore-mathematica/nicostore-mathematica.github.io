@@ -1,553 +1,440 @@
 ---
-title: Chapter 3 函数连续性
-createTime: 2025/01/11 00:01:01
+title: Chapter 3 实数
 permalink: /integral/integral-3/
+createTime: 2025/09/16 20:57:28
 ---
 
-## Chapter 3 函数连续
+## Part 1 实数系构造
 
-### · 定义
+在本节中给出实数集 $\mathbb{R}$ 的一种构造方法。构造出来的对象除了是一个集合外还具有很多基本性质，所以通常又将它称为实数系。我们从有理数 $\mathbb{Q}$ 出发来构造实数。
 
-> /Define/
->
-> 定义1：若 $\lim_{x \to x_{0}}f(x)=f(x_{0})$，称 $y = f(x)$ 在 $x = x_{0}$ 处连续。
->
-> 定义2：设 $f(x)$ 在 $U(x_{0},\delta)$ 内有定义，$\forall\varepsilon > 0$，$\exists\delta > 0$，当 $|x - x_{0}|<\delta$ 时，都有 $|f(x)-f(x_{0})|<\varepsilon$，称 $y = f(x)$ 在 $x = x_{0}$ 处连续
->
-> $\lim_{x \to x_{0}}f(x)=A$ 定义：
->
-> 设 $f(x)$ 在 $\mathring{U}(x_{0},\delta_{0})$ 内有定义，$A$ 是一个确定的常数，$\forall\varepsilon > 0$，$\exists\delta > 0$，（$\delta\leq\delta_{0}$），
->
-> 当 $0 < |x - x_{0}| < \delta$ 时，都有 $|f(x)-A| < \varepsilon$。
->
-> 若 $x = x_{0}$，$|x - x_{0}| < \delta$ $\Rightarrow |f(x)-A| < \varepsilon\Rightarrow f(x_{0}) = A$ $\Rightarrow\lim_{x \to x_{0}}f(x)=A$，$f(x)$ 在 $x = x_{0}$ 处连续。
-> $$
-> \begin{align*}
-> &\Leftrightarrow\lim_{x \to x_{0}}f(x)=f(x_{0})\\
-> &\Leftrightarrow\lim_{x \to x_{0}}[f(x)-f(x_{0})]=0
-> \end{align*}
-> $$
->
-> 令 $x - x_{0}=\Delta x$ 称为自变量的增量，即 $x = x_{0}+\Delta x$。
->
-> $$
-> \begin{align*}
-> &\Leftrightarrow\lim_{\Delta x \to 0}[f(x_{0}+\Delta x)-f(x_{0})]=0
-> \end{align*}
-> $$
->
-> 令 $f(x_{0}+\Delta x)-f(x_{0})=\Delta y$ 称为因变量的增量。
->
-> $$
-> \begin{align*}
-> &\Leftrightarrow\lim_{\Delta x \to 0}\Delta y = 0
-> \end{align*}
-> $$
->
-> 定义3：若 $\lim_{\Delta x \to 0}\Delta y = 0$，称 $y = f(x)$ 在 $x = x_{0}$ 处连续。
->
-> 定义4：若 $\lim_{x \to x_{0}^{+}}f(x)=f(x_{0})$，称 $y = f(x)$ 在 $x = x_{0}$ 处右连续。
->
-> 定义5：若 $\lim_{x \to x_{0}^{-}}f(x)=f(x_{0})$，称 $y = f(x)$ 在 $x = x_{0}$ 处左连续。
+需要注意的是，自然数、整数以及有理数的建立也是需要严格的数学基础的，不过这对于学习微积分不是至关重要的，因此我们还是从有理数开始，毕竟有理数比较直观。
 
-定理：$f(x)$ 在 $x = x_{0}$ 处连续 $\Leftrightarrow$ $f(x)$ 在 $x = x_{0}$ 处既是左连续又是右连续。
+下面构造实数的方法是 Dedekind 在 1872 年发明的，这种方法以 **Dedekind 分割** 而著称。
 
-定义+：若 $y = f(x)$ 在 $x = x_{0}$ 处连续，满足下面三个条件：
+**定义1**：设 $\alpha$ 为 $\mathbb{Q}$ 的子集，如果满足以下三个条件：
 
-1. $f(x)$ 在 $x = x_{0}$ 处有定义；
+(1). $\alpha \neq \varnothing$，$\alpha \neq \mathbb{Q}$；
 
-2. $\lim_{x \to x_{0}}f(x)$ 存在；
+(2). 当 $p \in \alpha$，$q \in \alpha^c$ 时，$p < q$；
 
-3. $\lim_{x \to x_{0}}f(x)=f(x_{0})$。
+(3). 任给 $p \in \alpha$，存在 $q \in \alpha$，使得 $p < q$；
 
-违背了其中一条，称 $x = x_{0}$ 为间断点。
+则称 $\alpha$ 为 $\mathbb{Q}$ 的一个**分割**，分割的全体组成的集合记为 $\mathbb{R}$。
 
-### · 间断点分类
+> 定义中的条件 (1) 是说 $\alpha$ 为 $\mathbb{Q}$ 的非空真子集，而 (3) 是说 $\alpha$ 中无最大数。这一条不是本质的：如果 $\alpha$ 满足条件 (1) 和 (2)，且有最大数，将此最大数去掉后 $\alpha$ 就是满足所有三个条件的分割了。
 
-1. 若 $\lim_{x \to x_{0}}f(x)$ 存在，但是 $x = x_{0}$ 为间断点，称 $x = x_{0}$ 为可去间断点。
+**命题1**：设 $\alpha$ 为 $\mathbb{Q}$ 的一个分割，则：
 
-  > /example/    $f(x)=\begin{cases}\frac{\sin x}{x},&x\neq0\\0,&x = 0\end{cases}$
-  >
-  > > /solution/
-  > > $$
-  > > \lim_{x \to 0}f(x)=\lim_{x \to 0}\frac{\sin x}{x}=1\neq f(0)=0
-  > > $$
-  > > 知 $x = 0$ 为可去间断点。
-  >
-  > 若 $F(x)=\begin{cases}\frac{\sin x}{x},&x\neq0\\1,&x = 0\end{cases}$
-  >
-  > $$
-  > \lim_{x \to 0}F(x)=\lim_{x \to 0}\frac{\sin x}{x}=1 = F(0)
-  > $$
-  >
-  > 知 $F(x)$ 在 $x = 0$ 处连续。当 $x\neq0$ 时，$F(x)=f(x)$。
-
-2. $\lim_{x \to x_{0}^{+}}f(x)=f(x_{0}^{+})$，$\lim_{x \to x_{0}^{-}}f(x)=f(x_{0}^{-})$，但是 $f(x_{0}^{+})\neq f(x_{0}^{-})$。
-
-​	称 $x = x_{0}$ 为跳跃间断点，称 $|f(x_{0}^{+})-f(x_{0}^{-})|$ 为跳跃度.
-
-> > 1, 2 两类统称为第一类间断点。
-
-3. 左右极限至少有一个不存在，称 $x = x_{0}$ 为第二类间断点。
-
-​	若 $\lim_{x \to x_{0}}f(x)=\infty$，$x = x_{0}$ 是第二类间断点，又称为无穷型间断点。
-
-***
-
-/example/    证明 $f(x)=\sin x$ 在 $\mathbb{R}$ 上连续。
-
-错证：$\forall x_{0}\in\mathbb{R}$，由于 $\lim_{x \to x_{0}}\sin x=\sin x_{0}$，$\therefore\sin x$ 在 $x = x_{0}$ 处连续。
+1. 如果 $p < q$，$q \in \alpha$，则 $p \in \alpha$；
+2. 设 $w > 0$，则存在整数 $n$，使得 $nw \in \alpha$，$(n+1)w \in \alpha^c$。
 
 > /proof/
 >
-> 证：$\forall x_{0}\in\mathbb{R}$，$\forall\varepsilon > 0$，若要 $|\sin x-\sin x_{0}|<\varepsilon$ 成立。
+> **(1)**（反证法）  如果 $p \in \alpha^c$，则由分割定义的第二条即知 $q < p$，这和假设矛盾。
 >
-> 由 $|\sin x-\sin x_{0}|=\left|2\cos\frac{x + x_{0}}{2}\sin\frac{x - x_{0}}{2}\right|$（和差化积，积化和差）
+> **(2)**  取 $r \in \alpha$，则当 $m < r/w$，即 $mw < r$ 时，由 (1) 即知 $mw \in \alpha$。再取 $s \in \alpha^c$，当 $m > s/w$ 时 $mw \in \alpha^c$。这说明，下面的整数子集：
+> $$
+> \{ m \in \mathbb{Z} \mid mw \in \alpha \}
+> $$
+> 是非空且有上界的集合，因此有最大数 $n$，$n$ 就是满足要求的整数。
+
+设 $r \in \mathbb{Q}$ 为一个有理数，记
+$$
+r^* = \{ s \in \mathbb{Q} \mid s < r \},
+$$
+则容易验证 $r^*$ 是一个分割，称为由有理数 $r$ 决定的分割。
+
+考虑 $\mathbb{Q}$ 的子集
+$$
+\alpha = \{ r \in \mathbb{Q} \mid r^2 < 2 \} \cup \{ r \in \mathbb{Q} \mid r \leq 0 \},
+$$
+则 $\alpha$ 是一个分割。
+
+事实上，容易看出 $\alpha$ 为非空子集。分割定义的第二条也是容易验证的。我们来看分割定义的第三条，即 $\alpha$ 中没有最大数：
+
+- 如果 $r \leq 0$，则 $r < 1$，而 $1 \in \alpha$；
+
+- 如果 $r > 0$，$r^2 < 2$，则取
+  $$
+  s = r - \frac{r^2 - 2}{r + 2} = \frac{2r + 2}{r + 2},
+  $$
+  且
+  $$
+  s^2 - 2 = \frac{2(r^2 - 2)}{(r + 2)^2} < 0,
+  $$
+  即 $s \in \alpha$，且 $r < s$。
+
+如果递归地定义有理数列 $\{x_n\}$ 如下：
+$$
+x_0 = 1, \quad x_{n+1} = \frac{2x_n + 2}{x_n + 2}, \quad n \geq 0,
+$$
+则根据刚才的讨论，$\{x_n\}$ 为严格单调递增数列（即 $x_n < x_{n+1}$），且
+$$
+0 < 2 - x_{n+1}^2 = \frac{2(2 - x_n^2)}{(x_n + 2)^2} < \frac{1}{4}(2 - x_n^2),
+$$
+由此得到下面的估计：
+$$
+0 < 2 - x_n^2 < \frac{1}{4^n}, \quad n \geq 1.
+$$
+下面我们把有理数 $\mathbb{Q}$ 所满足的基本性质都推广到 $\mathbb{R}$ 上。首先看次序如何定义。
+
+**次序关系**：
+
+> 设 $\alpha, \beta \in \mathbb{R}$，如果 $\alpha$ 为 $\beta$ 的真子集，则称 $\alpha$ 小于 $\beta$，记为 $\alpha < \beta$。我们也用记号 $\alpha \leq \beta$ 表示 $\alpha$ 为 $\beta$ 的子集。此时 $\alpha = \beta$ 或 $\alpha < \beta$。
 >
-> $\leq2\left|\sin\frac{x - x_{0}}{2}\right|\leq2\left|\frac{x - x_{0}}{2}\right|=|x - x_{0}|$。
+> 次序关系的性质有：
 >
-> 只要 $|x - x_{0}|<\varepsilon$ 成立，取 $\delta=\varepsilon$，当 $|x - x_{0}|<\delta$ 时，
+> - 如果 $\alpha < \beta$，$\beta < \gamma$，则 $\alpha < \gamma$。这是因为真子集的真子集还是真子集。
 >
-> 都有 $|\sin x-\sin x_{0}|\leq|x - x_{0}|<\varepsilon$，$\therefore f(x)=\sin x$ 在 $x_{0}$ 处连续，故 $f(x)=\sin x$ 在 $\mathbb{R}$ 上连续。
+> - 任给 $\alpha, \beta \in \mathbb{R}$，下面的三种关系有且仅有一个成立：
+>   $$
+>   \alpha < \beta,\quad \alpha = \beta,\quad \beta < \alpha.
+>   $$
 >
-> 同理可证，$\cos x$ 在 $\mathbb{R}$ 上连续。
+> 事实上，设前两个关系不成立，则 $\alpha$ 不是 $\beta$ 的子集，因此存在 $r \in \alpha$，但 $r \notin \beta$。如果 $s \in \beta$，则 $s < r$，从而 $s \in \alpha$，这就说明 $\beta$ 为 $\alpha$ 的子集。由于 $\alpha \neq \beta$，故 $\beta$ 为 $\alpha$ 的真子集。
+>
+> 如果 $r, s \in \mathbb{Q}$，则当 $r = s$ 时 $r^* = s^*$，当 $r < s$ 时 $r^* < s^*$。因此我们定义的次序关系是自然的。有了次序就可以定义上界。
 
-### · 连续的性质
+**上界和上确界**：
 
-- **性质1（局部有界性）**：若 $f(x)$ 在 $x_{0}$ 处连续，$\exists\delta_{0}>0$，当 $x\in U(x_{0},\delta_{0})$ 时，都有 $|f(x)|\leq M$。
+> 设 $A \subset \mathbb{R}$ 为 $\mathbb{R}$ 的非空子集，$\beta \in \mathbb{R}$。如果任给 $\alpha \in A$，均有 $\alpha \leq \beta$，则称 $\beta$ 为 $A$ 的一个上界。设 $\gamma$ 为 $A$ 的一个上界，如果任给 $A$ 的另一个上界 $\gamma'$，均有 $\gamma \leq \gamma'$，则称 $\gamma$ 为 $A$ 的最小上界或上确界，记为 $\sup A$。易见，上确界如果存在则必定是惟一的。
 
-- **性质2**：若 $f(x)$，$g(x)$ 在 $x_{0}$ 处连续，且 $f(x_{0})<g(x_{0})$，$\exists\delta_{0}>0$，当 $x\in U(x_{0},\delta_{0})$，都有 $f(x)<g(x)$。
+**定理2**（确界原理）：$\mathbb{R}$ 的非空子集如果有上界，则必有上确界。
 
-> 推论（保号性）：若 $f(x)$ 在 $x_{0}$ 处连续，且 $f(x_{0})>0$，对任何 $0<\eta<f(x_{0})$（常数），$\exists\delta>0$，当 $x\in U(x_{0},\delta)$ 时，$f(x)>\eta>0$。
+> 设 $A$ 为 $\mathbb{R}$ 的非空子集，$\beta$ 为 $A$ 的一个上界，记
+> $$
+> \gamma = \bigcup_{\alpha \in A} \alpha \subset \mathbb{Q}.
+> $$
+>
+> 下面先说明 $\gamma$ 为一个分割。$\gamma$ 显然是非空子集，由于 $\beta$ 为 $A$ 的一个上界，故 $\gamma \subset \beta$，这说明 $\gamma \neq \mathbb{Q}$。这验证了分割定义的第一条。
+>
+> 设 $r \in \gamma$，$s \notin \gamma$。于是存在 $\alpha \in A$，使得 $r \in \alpha$，此时 $s \notin \alpha$，因此 $r < s$。这验证了分割定义的第二条。
+>
+> 第三条：设 $r \in \gamma$，于是存在 $\alpha \in A$，使得 $r \in \alpha$，此时存在 $s \in \alpha$，使得 $r < s$，由 $\gamma$ 的定义即知 $s \in \gamma$。
+>
+> 其次我们说明 $\gamma$ 为 $A$ 的最小上界。根据 $\gamma$ 的构造，显然 $\gamma$ 为 $A$ 的一个上界。如果 $\gamma'$ 为另一个上界，则 $\alpha \subset \gamma'$，$\forall\, \alpha \in A$。这说明 $\gamma \subset \gamma'$。
 
-- **性质3（连续的四则运算）**：若 $f(x)$，$g(x)$ 在 $x_{0}$ 均连续，则 $f(x)\pm g(x)$，$f(x)\cdot g(x)$，$C\cdot f(x)$（$C$ 常），$f(x)/g(x)$（$g(x_{0})\neq0$）在 $x_{0}$ 处都连续。
+**实数表示为某个非空子集的上确界**：
+
+> 如果 $r \in \mathbb{Q}$ 为有理数，令
+> $$
+> A = \{ s^* \in \mathbb{R} \mid s < r,\ s \in \mathbb{Q} \} = \{ s^* \mid s \in r^* \},
+> $$
+> 则 $r^* = \sup A$。事实上，由定义有
+> $$
+> \sup A = \bigcup_{s < r} s^* = \bigcup_{s < r} \{ t \in \mathbb{Q} \mid t < s \} = \{ t \in \mathbb{Q} \mid t < r \} = r^*.
+> $$
+>
+> 一般地，如果 $\alpha \in \mathbb{R}$ 为一个分割，则
+> $$
+> \alpha = \sup \{ r^* \mid r \in \alpha \}.
+> $$
+>
+
+下面我们把 $\mathbb{Q}$ 中的四则运算推广到 $\mathbb{R}$ 中。
+
+**加法运算**：
+
+> 设 $\alpha, \beta \in \mathbb{R}$，定义
+> $$
+> \alpha + \beta = \{ r + s \mid r \in \alpha,\ s \in \beta \},
+> $$
+> 显然，$\alpha + \beta$ 是 $\mathbb{Q}$ 的非空子集。取 $r' \in \alpha^c$, $s' \in \beta^c$，则任给 $r \in \alpha$, $s \in \beta$，均有 $r < r'$, $s < s'$，从而有 $r + s < r' + s'$，这说明 $r' + s' \notin \alpha + \beta$，即 $\alpha + \beta \neq \mathbb{Q}$。
+>
+> 设 $p = r + s \in \alpha + \beta$，其中 $r \in \alpha$, $s \in \beta$。如果 $q \in (\alpha + \beta)^c$，我们要说明 $p < q$。事实上，如果 $q \leq p$，则 $q - s \leq r$，从而 $q - s \in \alpha$，$q = (q - s) + s \in \alpha + \beta$，这就得到矛盾，因此只能有 $p < q$。
+>
+> $\alpha + \beta$ 中无最大数：设 $p = r + s \in \alpha + \beta$，取 $t \in \alpha$，使得 $r < t$，则 $q = t + s \in \alpha + \beta$，且 $p < q$。总之，$\alpha + \beta$ 是一个分割，称为 $\alpha$ 与 $\beta$ 的和。
+>
+> > 求和运算具有以下性质：
+> >
+> > - 如果 $r, s \in \mathbb{Q}$，则 $r^* + s^* = (r + s)^*$。这由定义不难得到。
+> >
+> > - **(交换律)** $\alpha + \beta = \beta + \alpha$。这可从 $\mathbb{Q}$ 中加法具有交换律以及 $\alpha + \beta$ 和 $\beta + \alpha$ 的定义推出。
+> >
+> > - **(结合律)** $(\alpha + \beta) + \gamma = \alpha + (\beta + \gamma)$。这可从 $\mathbb{Q}$ 中加法具有结合律推出。
+> >
+> > - **(零元)** $\alpha + 0^* = \alpha$。如果 $r \in \alpha$, $s \in 0^*$，则 $s < 0$, $r + s < r$，因此 $r + s \in \alpha$，这说明 $\alpha + 0^* \subset \alpha$。反之，设 $r \in \alpha$，取 $r' \in \alpha$，使得 $r < r'$，此时 $r - r' \in 0^*$，从而 $r = r' + (r - r') \in \alpha + 0^*$，这又说明 $\alpha \subset \alpha + 0^*$，因此 $\alpha + 0^* = \alpha$。$0^*$ 称为零元。
+> >
+> > - **(负元)** 设 $\alpha \in \mathbb{R}$，令
+> >   $$
+> >   \beta = \{ r \in \mathbb{Q} \mid \text{存在 } s > 0,\ \text{使得 } -r - s \in \alpha^c \}.
+> >   $$
+> >
+> >   我们先来说明 $\beta$ 为一个分割。取 $q \in \alpha^c$, $r = -q - 1$，则 $-r - 1 = q \in \alpha^c$，因此 $r \in \beta$，这说明 $\beta$ 是非空子集。如果 $p \in \alpha$, $r \in \beta$，则存在 $s > 0$，使得 $-r - s \in \alpha^c$，因此 $p < -r - s$, $r < -p - s < -p$，特别地，$-p \in \beta^c$，即 $\beta \neq \mathbb{Q}$。分割定义的其它两条可类似验证。
+> >
+> >   我们来说明 $\alpha + \beta = 0^*$。如果 $p \in \alpha$, $r \in \beta$，则同上所述，存在 $s > 0$，使得 $-r - s \in \alpha^c$，因此 $p < -r - s$, $p + r < -s < 0$，于是 $p + r \in 0^*$，$\alpha + \beta \subset 0^*$。反之，取 $t \in 0^*$，则 $-t/2 > 0$，取整数 $n$，使得 $-nt/2 \in \alpha$, $-(n+1)t/2 \in \alpha^c$。令 $r = (n+2)t/2$，则 $-r - (-t/2) \in \alpha^c$，因此 $r \in \beta$，且
+> >   $$
+> >   t - nt/2 + r \in \alpha + \beta,
+> >   $$
+> >   这说明 $0^* \subset \alpha + \beta$。
+> >
+> >   我们称 $\beta$ 为 $\alpha$ 的负元，记为 $\beta = -\alpha$。
+
+**乘法运算**：
+
+> 令 $\mathbb{R}^+ = \{ \alpha \in \mathbb{R} \mid 0^* < \alpha \}$，如果 $\alpha, \beta \in \mathbb{R}^+$，令
+> $$
+> \alpha\beta = \{ p \in \mathbb{Q} \mid \text{存在 } 0 < r \in \alpha,\ 0 < s \in \beta,\ \text{使得 } p < rs \},
+> $$
+> 可以验证这是一个分割，且 $\alpha\beta \in \mathbb{R}^+$。
+>
+> > 这样我们对所有的情形都定义了乘法运算。乘法运算具有以下性质：
+> >
+> > - 如果 $r, s \in \mathbb{Q}$，则 $(rs)^* = r^*s^*$。以 $r, s > 0$ 为例：根据定义可以看出，
+> >   $$
+> >   \begin{aligned}
+> >   r^*s^* &= \{ p \in \mathbb{Q} \mid \text{存在 } r', s' \in \mathbb{Q},\ 0 < r' < r,\ 0 < s' < s,\ \text{使得 } p < r's' \} \\
+> >   &= \{ p \in \mathbb{Q} \mid p < rs \} = (rs)^*.
+> >   \end{aligned}
+> >   $$
+> >
+> > - **(交换律)** $\alpha\beta = \beta\alpha$。这可从有理数乘法的交换律得到，下面的结合律也一样。
+> >
+> > - **(结合律)** $(\alpha\beta)\gamma = \alpha(\beta\gamma)$。
+> >
+> > - **(单位元)** $\alpha 1^* = \alpha$。以 $0^* < \alpha$ 为例：根据定义可以看出，
+> >   $$
+> >   \begin{aligned}
+> >   \alpha 1^* &= \{ p \in \mathbb{Q} \mid p < rs,\ \text{存在 } 0 < r \in \alpha,\ 0 < s < 1 \} \\
+> >   &= \{ p \in \mathbb{Q} \mid \text{存在 } 0 < r \in \alpha,\ \text{使得 } p < r \} = \alpha.
+> >   \end{aligned}
+> >   $$
+> >
+> > - **(逆元)** 如果 $\alpha \neq 0^*$，则存在 $\beta \in \mathbb{R}$，使得 $\alpha\beta = 1^*$。事实上，不妨设 $0^* < \alpha$，定义 $\beta$ 为
+> >   $$
+> >   \beta = \{ s \in \mathbb{Q} \mid \text{存在 } r \in \alpha^c,\ \text{使得 } s < r^{-1} \}.
+> >   $$
+> >
+> >   不难验证这是一个分割，且 $\alpha\beta = 1^*$。我们称 $\beta$ 为 $\alpha$ 的逆元，记为 $\beta = \alpha^{-1}$。如果 $r$ 为非零有理数，则 $(r^*)^{-1} = (r^{-1})^*$。
+> >
+> > - **(分配律)** $\alpha(\beta + \gamma) = \alpha\beta + \alpha\gamma$。
+
+用高等代数的语言来说，我们迄今为止所做的工作表明，配备了加法运算和乘法运算的集合 $\mathbb{R}$ 是一个**域**，称为**实数域**。当然，有理数集合 $\mathbb{Q}$ 也是一个域，并且通过映射
+$$
+f: \mathbb{Q} \to \mathbb{R},\quad r \mapsto r^*
+$$
+我们知道 $\mathbb{Q}$ 可以看成 $\mathbb{R}$ 的子域，或实数域 $\mathbb{R}$ 是有理数域 $\mathbb{Q}$ 的一个扩张。扩张以后的域除了具有有理数域的基本性质以外，还具备了重要的**确界原理**，它使得实数填满了有理数在数轴上所留下的空隙，因此实数集合 $\mathbb{R}$ 也称为**实数连续统**或**实数系**。
+
+为了强调实数系的连续性质，我们再看两个结论。
+
+**定理3** (Archimedes 原理)：设 $0 < x \in \mathbb{R}$，则任给 $y \in \mathbb{R}$，存在正整数 $n$，使得 $y < nx$.
+
+> 我们不再区分有理数 $r$ 与分割 $r^*$。考虑 $\mathbb{R}$ 的子集
+> $$
+> A = \{ nx \mid n \in \mathbb{N} \}.
+> $$
+>
+> 我们说明 $A$ 没有上界。（反证法）如果有上界，则由确界原理知 $A$ 有上确界，记为 $\alpha$。因为 $0 < x$，故 $\alpha - x < \alpha$，从而存在正整数 $m$，使得 $\alpha - x < mx$，此时 $\alpha < (m+1)x \in A$，这和 $\alpha$ 为 $A$ 的上界相矛盾。
+>
+> 既然 $A$ 没有上界，$y$ 就不是 $A$ 的上界，从而存在正整数 $n$，使得 $y < nx$。
+
+**推论4** (有理数的稠密性)：任给 $a < b \in \mathbb{R}$，存在 $c \in \mathbb{Q}$，使得 $a < c < b$。
+
+> 由 $a < b$ 知 $0 < b - a$，由 Archimedes 原理，存在正整数 $n$，使得 $1 < n(b - a)$。再由 Archimedes 原理，存在正整数 $m_1, m_2$，使得 $na < m_1$, $-na < m_2$。这说明，集合
+> $$
+> A = \{ m' \in \mathbb{Z} \mid na < m' \} \subset \mathbb{Z}
+> $$
+> 非空且有下界，因而存在最小整数 $m \in A$，$m$ 满足条件
+> $$
+> m - 1 \leq na < m.
+> $$
+>
+> 此时就有
+> $$
+> na < m \leq 1 + na < n(b - a) + na = nb,
+> $$
+> 即 $c = m/n \in \mathbb{Q}$ 满足条件 $a < c < b$。
+
+以上关于实数系的构造方法源于 Dedekind。实数系还有其它的构造方法，例如 Cantor 用小数表示以及利用 Cauchy 序列也完成了实数系的构造。
+
+如果用抽象的语言来描述，则这些构造出来的对象是所谓的具有确界原理的有序域，这样的域都是互相同构的。
+
+## Part 2 实数系基本性质
+
+数列极限的存在性依赖于实数系的基本性质。例如，我们用确界原理导出了有界单调数列的极限存在性，进而导出了 Cauchy 准则。为了进一步研究的需要，我们再介绍实数的几条基本性质，并说明这些基本性质之间其实是互相等价的。
+
+下面的结果通常称为“**闭区间套原理**”
+
+### · Cantor
+
+**定理1** (Cantor)：设 $\{[a_n, b_n]\}$ 为递降闭区间套序列，即
+$$
+[a_1, b_1] \supset [a_2, b_2] \supset \cdots \supset [a_n, b_n] \supset \cdots.
+$$
+如果 $\displaystyle \lim_{n \to \infty} (b_n - a_n) = 0$，则存在唯一的点 $c$，使得 $c \in [a_n, b_n]$，$\forall\, n \geq 1$。
 
 > /proof/
 >
-> $\lim_{x \to x_{0}}\frac{f(x)}{g(x)}=\frac{f(x_{0})}{g(x_{0})}$，知 $\frac{f(x)}{g(x)}$ 在 $x_{0}$ 处连续。
+> 由已知条件我们知道，数列 $\{a_n\}$ 单调递增且有上界 $b_1$，$\{b_n\}$ 单调递减且有下界 $a_1$。这说明 $\{a_n\}$ 和 $\{b_n\}$ 都收敛，设极限分别为 $a, b$。由极限的保序性，有
+> $$
+> a_n \leq a \leq b \leq b_n,\quad \forall\, n \geq 1,
+> $$
+> 即
+> $$
+> 0 \leq b - a \leq b_n - a_n \to 0\ (n \to \infty),
+> $$
+> 这说明 $a = b$。于是 $c = a = b \in [a_n, b_n]$，$\forall\, n \geq 1$。如果另有 $c' \in [a_n, b_n]$，$\forall\, n \geq 1$，则由夹逼原理即知 $c' = a = b = c$。
+>
+> > 把定理中的闭区间套换成开区间套时结论一般不再成立。如
+> > $$
+> > (0,1) \supset \left(0,\frac{1}{2}\right) \supset \cdots \supset \left(0,\frac{1}{n}\right) \supset \cdots
+> > $$
+> > 是开区间套，但这些开区间之交为空集。
 
-研究初等函数的连续性
+/example/  实数集 $\mathbb{R}$ 是不可数集。
 
-1. $y = C$（常数）在 $\mathbb{R}$ 上显然连续。
+> 我们来证明 $[0, 1]$ 是不可数的。（反证法）显然，$[0, 1]$ 是无限集。如果它不是不可数的，则一定是无限可数集，因此可以记为
+> $$
+> [0, 1] = \{x_1, x_2, \ldots, x_n, \ldots\}.
+> $$
+>
+> 将 $[0, 1]$ 三等分，必有一个等分区间不含 $x_1$，记该区间为 $[a_1, b_1]$。再对 $[a_1, b_1]$ 三等分，必有一个等分区间不含 $x_2$，记该区间为 $[a_2, b_2]$。如此继续等分 $[a_2, b_2]$ 等，我们就得到闭区间套
+> $$
+> [0, 1] \supset [a_1, b_1] \supset [a_2, b_2] \supset \cdots \supset [a_n, b_n] \supset \cdots,
+> $$
+> 使得 $b_n - a_n = \dfrac{b-a}{3^n} \to 0\ (n \to \infty)$，且 $x_n \notin [a_n, b_n]$。
+>
+> 根据闭区间套原理，存在 $\xi \in [a_n, b_n]$，$\forall\, n \geq 1$。显然 $\xi \in [0, 1]$，但 $\xi \neq x_n$，$\forall\, n \geq 1$。这就导出了矛盾。
 
-2. 由 $\cos x$，$\sin x$ 在 $\mathbb{R}$ 上连续，利用四则运算可得：$\tan x,\cot x,\sec x,\csc x$ 在定义域内连续。
+这个例子说明无理数集是不可数的，因此无理数远比有理数多，因为下面的例子表明有理数集是可数的。
 
-3. $y = a^{x}$ 可以证明在 $x = 0$ 处连续。
+/example/  有理数集 $\mathbb{Q}$ 是可数集。
+
+> 我们只要证明正有理数可数就可以了。正有理数均可表示为形如 $p/q$ 的分数，其中 $p, q$ 为正整数，且 $p, q$ 无大于 1 的公因子。按照 $p + q$ 的大小，依据通常的“字典法则”可将正有理数排成一列：
+> $$
+> 1 = 1/1,\ 1/2,\ 2/1,\ 1/3,\ 3/1,\ 1/4,\ 2/3,\ 3/2,\ 4/1,\ \ldots,
+> $$
+> 其中，当 $p + q < r + s$，或 $p + q = r + s$ 但 $p < r$ 时，将 $p/q$ 排在 $r/s$ 前面。这样，正有理数不重不漏地出现在这一列中，这说明正有理数集是可数的。
+
+### · Bolzano
+
+**定理2**(Bolzano)：$\mathbb{R}$ 中有界数列必有收敛子列。
 
 > /proof/
 >
-> $x_{0}\in\mathbb{R}$，$\lim_{x \to x_{0}}\Delta y=\lim_{x \to x_{0}}(a^{x}-a^{x_{0}})=a^{x_{0}}\lim_{x \to x_{0}}(a^{x - x_{0}}-1)=0$，
+> 设 $\{a_n\}$ 为有界数列，不妨设 $\{a_1, a_2, \ldots\} \subset [a, b]$。将 $[a, b]$ 二等分，必有一个小区间包含了数列 $\{a_n\}$ 中的无限项，记该小区间为 $[a_1, b_1]$，并取 $a_{n_1} \in [a_1, b_1]$。
 >
-> $\therefore y = a^{x}$ 在 $\mathbb{R}$ 上连续。
-
-> 定理（反函数连续性）：若 $y = f(x)$ 连续，且严格单调，则它的反函数 $x = \varphi(y)$ 连续，且严格单调。
-
-4. $y=\log_{a}x$ 在 $(0,+\infty)$ 内连续。
-5. 反三角函数在定义域内连续。
-
-> 定理（复合函数连续性定理）：
->
-> 若 $u = \varphi(x)$ 在 $x = x_{0}$ 处连续，$y = f(u)$ 在 $u_{0}=\varphi(x_{0})$ 也连续，则复合函数 $y = f(\varphi(x))$ 在 $x = x_{0}$ 处连续。
->
-> > /proof/
-> >
-> > 因 $y = f(u)$ 在 $u = u_{0}=\varphi(x_{0})$ 处连续，$\forall\varepsilon > 0$，$\exists\delta > 0$，当 $|u - u_{0}|<\delta$ 时，都有 $|f(u)-f(u_{0})|<\varepsilon$。
-> >
-> > 由 $\varphi(x)$ 在 $x_{0}$ 处连续，即 $\lim_{x \to x_{0}}\varphi(x)=\varphi(x_{0})$，对上述 $\delta > 0$，$\exists\delta_{1}>0$，当 $|x - x_{0}|<\delta_{1}$ 时，
-> >
-> > 都有 $|\varphi(x)-\varphi(x_{0})|<\delta$，$\Rightarrow|\varphi(x)-u_{0}|<\delta$，
-> >
-> > 都有 $|f(\varphi(x))-f(\varphi(x_{0}))|<\varepsilon$，知 $f(\varphi(x))$ 在 $x = x_{0}$ 处连续，
-> >
-> > 即 $\lim_{x \to x_{0}}f(\varphi(x))=f(\varphi(x_{0}))$，或者 $\lim_{x \to x_{0}}f(\varphi(x))=f(\lim_{x \to x_{0}}\varphi(x))$。
->
-> 推论：若 $\lim_{x \to x_{0}}\varphi(x)=u_{0}$（常），且 $y = f(u)$ 在 $u = u_{0}$ 处连续，则 $\lim_{x \to x_{0}}f(\varphi(x))=f(\lim_{x \to x_{0}}\varphi(x))$。
->
-> > /proof/
-> >
-> > 因 $y = f(u)$ 在 $u = u_{0}=\varphi(x_{0})$ 处连续，$\forall\varepsilon > 0$，$\exists\delta > 0$，当 $|u - u_{0}|<\delta$ 时，都有 $|f(u)-f(u_{0})|<\varepsilon$。
-> >
-> > 由 $\varphi(x)$ 在 $x_{0}$ 处连续，即 $\lim_{x \to x_{0}}\varphi(x)=\varphi(x_{0})$，对上述 $\delta > 0$，$\exists\delta_{1}>0$，当 $|x - x_{0}|<\delta_{1}$ 时，
-> >
-> > 都有 $|\varphi(x)-\varphi(x_{0})|<\delta$，$\Rightarrow|\varphi(x)-u_{0}|<\delta$，
-> >
-> > 都有 $|f(\varphi(x))-f(\varphi(x_{0}))|<\varepsilon$，知 $f(\varphi(x))$ 在 $x = x_{0}$ 处连续，
-> >
-> > 即 $\lim_{x \to x_{0}}f(\varphi(x))=f(\varphi(x_{0}))$，或者 $\lim_{x \to x_{0}}f(\varphi(x))=f(\lim_{x \to x_{0}}\varphi(x))$
-
-6. $y = x^{\alpha}=e^{\alpha\ln x}=e^{u}$，$u = \alpha\ln x$，
-
-   > 因 $y = e^{u}$，$u = \alpha\ln x$ 复合的，$u = \alpha\ln x$ 在 $x > 0$ 时连续，由复合函数连续性定理。
-   >
-   > 知 $y = e^{\alpha\ln x}=x^{\alpha}$ 连续。
-   >
-   > 总之 $y = x^{\alpha}$ 在定义域内每一点处都连续。
-
-定理：六种基本初等函数在定义域内每一点处都连续。
-
-定理：初等函数在定义域区间上的每一点处都连续。
-
-***
-
-/example/    $y = \sqrt{\cos x - 1}$ 
-
-> 由 $y = \sqrt{u}$ 与 $u = \cos x - 1$ 经过一次复合得到，知 $y = \sqrt{\cos x - 1}$ 是初等函数。
->
-> 由定义域 $\begin{cases}\cos x - 1\geq0\\\cos x\leq1\end{cases}\Rightarrow\cos x = 1$，$x = 2k\pi$，$k\in\mathbb{Z}$，定义域为 $\{x|x = 2k\pi,k\in\mathbb{Z}\}$。
->
-> $y = \sqrt{\cos x - 1}$ 在定义域内每一点都连续。
-
-/example/    求 $\lim_{x \to 0}\frac{1 + e^{x}+\sqrt{1 + x^{2}}}{\sin x+\cos x + 1}$。
-
-> 解：原式 $=\frac{1 + 1+1}{0 + 1+1}=\frac{3}{2}$。
-
-/example/    求 $\lim_{x \to 0}\frac{\tan x-\sin x}{\sin^{3}x}$。
-
-错解：原式 $=\lim_{x \to 0}\frac{x - x}{\sin^{3}x}=\lim_{x \to 0}\frac{0}{\sin^{3}x}=\lim_{x \to 0}0 = 0$（“因式”错误替换）。
-
-> /solution/
->
-> 解法一：
+> 再将 $[a_1, b_1]$ 二等分，仍有一个小区间含有 $\{a_n\}$ 中的无限项，记该小区间为 $[a_2, b_2]$，取 $a_{n_2} \in [a_2, b_2]$，且 $n_2 > n_1$。如此继续，我们得到区间套
 > $$
-> \text{LHS.}=\lim_{x \to 0}\frac{\tan x(1 - \cos x)}{\sin^{3}x}
-> =\lim_{x \to 0}\frac{x\cdot\frac{1}{2}x^{2}}{x^{3}}=\frac{1}{2}
+> [a_1, b_1] \supset [a_2, b_2] \supset \cdots \supset [a_k, b_k] \supset \cdots,\quad b_k - a_k = \frac{1}{2^k}(b - a) \to 0,
+> $$
+> 以及 $\{a_n\}$ 的子列 $\{a_{n_k}\}$，使得 $a_{n_k} \in [a_k, b_k]$，$k = 1,2,\ldots$。
+>
+> 由闭区间套原理，存在 $c \in [a_k, b_k]$，$k = 1,2,\ldots$。容易看出子列 $\{a_{n_k}\}$ 以 $c$ 为极限。
+
+Bolzano 定理涉及到闭区间的一个重要性质，即**紧致性**。为了描述它，我们先引入几个预备性的概念。
+
+设 $x_0 \in \mathbb{R}$。包含点 $x_0$ 的一个开区间称为 $x_0$ 的一个**开邻域**。如果 $\delta > 0$，则 $(x_0 - \delta, x_0 + \delta)$ 就是 $x_0$ 的一个开邻域。
+
+设 $A$ 为数集，如果对任意的点 $x_0 \in A$，均存在 $\delta > 0$，使得 $(x_0 - \delta, x_0 + \delta) \subset A$，则称 $A$ 为 $\mathbb{R}$ 中的**开集**。$\mathbb{R}$ 本身当然是开集。我们约定空集也是开集。
+
+如果一个数集的补集是开集，则称该数集为**闭集**。按照我们的约定，空集和 $\mathbb{R}$ 既是开集，也是闭集。
+
+设 $\Gamma$ 为一个集合，如果对于每一个元素 $\alpha \in \Gamma$，都对应一个集合 $A_\alpha$，则称 $\{A_\alpha\}$ 为以 $\Gamma$ 为指标集的**集合族**，或称 $\{A_\alpha\}$ 是一族集合。
+
+设 $A$ 为 $\mathbb{R}$ 的子集，$A_\alpha\ (\alpha \in \Gamma)$ 是数集族。如果任给 $a \in A$，均存在某个 $\alpha$，使得 $a \in A_\alpha$，则称 $\{A_\alpha\}$ 是 $A$ 的一个**覆盖**；当覆盖中的每一个 $A_\alpha$ 均为开集时，称 $\{A_\alpha\}$ 是 $A$ 的一个**开覆盖**。
+
+如果 $\{A_\alpha\}$ 是 $A$ 的一个覆盖，$\Gamma' \subset \Gamma$，且 $\{A_\alpha\}\ (\alpha' \in \Gamma')$ 仍为 $A$ 的覆盖，则称 $\{A_\alpha\}$ 是 $\{A_\alpha\}$ 的一个**子覆盖**。如果 $A$ 的任何开覆盖均存在有限子覆盖，则称 $A$ 是**紧致集合**。
+
+下面的结果表明闭区间是紧致集合。
+
+### · Heine-Borel
+
+**定理3** (Heine-Borel)：闭区间 $[a, b]$ 的任何开覆盖都有有限子覆盖。
+
+> 设 $\{A_\alpha\}$ 为 $[a, b]$ 的一个开覆盖。如果 $[a, b]$ 不能被有限个 $A_\alpha$ 所覆盖，则二等分 $[a, b]$ 后必有一个小区间也不能被有限个 $A_\alpha$ 所覆盖，记该区间为 $[a_1, b_1]$。再将 $[a_1, b_1]$ 二等分，又必有一个小区间不能被有限个 $A_\alpha$ 所覆盖，记该区间为 $[a_2, b_2]$。如此继续下去，得闭区间套
+> $$
+> [a_1, b_1] \supset [a_2, b_2] \supset \cdots \supset [a_n, b_n] \supset \cdots,
+> $$
+> 使得 $b_n - a_n = \frac{b-a}{2^n} \to 0\ (n \to \infty)$，且每个 $[a_n, b_n]$ 均不能被有限个 $A_\alpha$ 覆盖。
+>
+> 根据闭区间套原理，存在 $\xi \in [a_n, b_n]$，$\forall\, n \geq 1$。因为 $\{A_\alpha\}$ 为 $[a, b]$ 的开覆盖，故存在 $A_{\alpha_0}$，使得 $\xi \in A_{\alpha_0}$。因为 $A_{\alpha_0}$ 为开集，故存在 $\delta > 0$，使得
+> $$
+> (\xi - \delta, \xi + \delta) \subset A_{\alpha_0}.
 > $$
 >
-> 解法二：
->
+> 因为 $a_n, b_n \to \xi\ (n \to \infty)$，故存在 $N$，当 $n > N$ 时
 > $$
-> \text{LHS.}=\lim_{x \to 0}\frac{\sin x(\frac{1}{\cos x}-1)}{\sin^{3}x}
-> =\lim_{x \to 0}\frac{\sin x(1 - \cos x)}{x^{3}\cdot\cos x}
-> =\lim_{x \to 0}\frac{x\cdot\frac{1}{2}x^{2}}{x^{3}\cdot1}=\frac{1}{2}
+> a_n, b_n \in (\xi - \delta, \xi + \delta).
 > $$
 >
-> （$\lim_{x \to 0}\cos x = 1\neq0$，$\cos x\sim1$，$x\to0$）
->
-> “等价量替换” 多次求极限。
+> 这说明 $[a_n, b_n] \subset (\xi - \delta, \xi + \delta) \subset A_{\alpha_0}\ (n > N)$，这与 $[a_n, b_n]$ 不能被有限个 $A_\alpha$ 覆盖相矛盾。
 
-/example/    求 $\lim_{x \to 0}(1 + x)^{\frac{1}{x}}$。
-
-> /solution/
->
-> 正解：
->
-> $$
-> \text{LHS.}=\lim_{x \to 0}(1 + x)^{\frac{1}{x}}=e
-> $$
->
-> 
-
-如果 $f(x)$ 在开区间 $(a,b)$ 内每一点处都连续（称双侧连续），称 $f(x)$ 在开区间 $(a,b)$ 内连续。
-
-如果 $f(x)$ 在开区间 $(a,b)$ 内连续，在 $x = a$ 处右连续，在 $x = b$ 处左连续，称 $f(x)$ 在闭区间 $[a,b]$ 上连续。
-
-如果 $f(x)$ 在区间 $I$ 上连续，在 $I$ 上曲线称为连续曲线。
-
-### · 闭区间上连续函数的性质
-
-- **定理（最大值与最小值定理）**：若 $f(x)\in C[a,b]$，则 $f(x)$ 在 $[a,b]$ 上一定能取到最大值 $M$，最小值 $m$。即 $\exists x_1,x_2\in[a,b]$，$f(x_1)=M$，$f(x_2)=m$，$\forall x\in[a,b]$，都有 $m\leq f(x)\leq M$。
-
-  - **推论1**：若 $f(x)\in C[a,b]$，则 $f(x)$ 在 $[a,b]$ 上有最值。
-
-  - **推论2**：若 $f(x)\in C[a,b]$，值域 $R(f)\subseteq[m,M]$。
-
-- **定理（根存在定理或零点定理）**：若 $f(x)\in C[a,b]$，且 $f(a)\cdot f(b)<0$，则至少存在一点 $\xi\in(a,b)$，使 $f(\xi)=0$。
-
-- **定理（介值定理）**：若 $f(x)\in C[a,b]$，且 $f(a)\neq f(b)$，对介于 $f(a)$，$f(b)$ 之间的任何一个常数 $C$，则至少存在一点 $\xi\in(a,b)$，使 $f(\xi)=C$。
-
-  > /proof/
-  >
-  > 要证原结论成立，只要证 $f(\xi)-C = 0$ 成立，令 $\varphi(x)=f(x)-C$，只要 $\varphi(x)=C$ 有一个根（1）成立。
-  >
-  > 由 $f(x)\in C[a,b]$，且 $f(a)\neq f(b)$，不妨设 $f(a)<f(b)$，
-  >
-  > 则 $f(a)<C<f(b)$，$\varphi(a)=f(a)-C<0$，$\varphi(b)=f(b)-C>0$。
-  >
-  > 由根的存在定理，$\exists\xi\in(a,b)$，使 $\varphi(\xi)=0$，即（1）成立，故原结论成立。
-
-  - **用介值定理证明根的存在定理**：由 $f(x)\in C[a,b]$，且 $f(a)\cdot f(b)<0$，知 $f(a)$，$f(b)$ 异号，$0$ 介于 $f(a)$，$f(b)$ 之间，由介值定理，$\exists\xi\in(a,b)$，使 $f(\xi)=0$。根的存在定理 $\Leftrightarrow$ 介值定理。
-
-***
-
-/example/    证明方程 $x - \frac{2}{3}\sin x = 1$ 有且仅有一个实根（$0 < \xi < 2$ 常）。
+**推论4**：$\mathbb{R}$ 中的有界闭集都是紧致集合。
 
 > /proof/
 >
-> 由 $x - \frac{2}{3}\sin x = 1\Leftrightarrow x - \frac{2}{3}\sin x - 1 = 0$。
->
-> 设 $f(x)=x - \frac{2}{3}\sin x - 1$，$x\in\mathbb{R}$。
->
-> 由 $f(0)=-1$，$f(2)=2 - \frac{2}{3}\sin 2 - 1>0$。
->
-> 又 $x\in[0,2]$，由根的存在定理，$\exists\xi\in(0,2)\subset\mathbb{R}$，使 $f(\xi)=0$。
->
-> 假设 $\exists x_1,x_2\in\mathbb{R}$，$x_1 < x_2$，有 $x_1 - \frac{2}{3}\sin x_1 = 1$ （1），$x_2 - \frac{2}{3}\sin x_2 = 1$ （2）。
->
-> （1） - （2）得：
->
+> 设 $A$ 是有界闭集，不妨设 $A \subset [-M, M]$。如果 $\{A_\alpha\}$ 为 $A$ 的一个开覆盖，则
 > $$
-> \begin{align*}
-> x_1 - x_2 - \frac{2}{3}(\sin x_1 - \sin x_2)&=0\\
-> |x_1 - x_2|&=\left|\frac{2}{3}(\sin x_1 - \sin x_2)\right|\\
-> &=\frac{2}{3}\left|2\cos\frac{x_1 + x_2}{2}\sin\frac{x_1 - x_2}{2}\right|\\
-> &\leq 2\cdot\frac{2}{3}\left|\sin\frac{x_1 - x_2}{2}\right|\\
-> &< 2\cdot\frac{2}{3}\left|\frac{x_1 - x_2}{2}\right|\\
-> &=\frac{2}{3}|x_1 - x_2|
-> \end{align*}
+> \{A^c \cap (-M - 1, M + 1),\ A_\alpha\}
 > $$
+> 是闭区间 $[-M, M]$ 的一个开覆盖。由 Heine-Borel 定理，它存在有限子覆盖，这个有限子覆盖当然也是 $A$ 的覆盖，从这个子覆盖中去掉 $A^c \cap (-M - 1, M + 1)$ 后仍是 $A$ 的覆盖。
+
+### · 等价命题
+
+Heine-Borel 定理可以用来重新证明 Bolzano 定理。证明如下：
+
+> 设 $\{a_n\}$ 为有界数列，不妨设 $a_n$ 均包含于 $[a, b]$。我们先证明存在 $c \in [a, b]$，使得 $c$ 的任何开邻域中均含有 $\{a_n\}$ 中无限项。
 >
-> 又 $|x_1 - x_2|>0$，$\frac{2}{3}<1$，矛盾。
-
-### · 重要等价无穷小量
-
-1. $\lim_{x \to 0}\frac{\sin x}{x}=1$
-
-2. $\lim_{x \to 0}(1 + x)^{\frac{1}{x}}=e$
-
-3. $\lim_{x \to 0}\frac{\tan x}{x}=1$
-
-4. $\lim_{x \to 0}\frac{1 - \cos x}{x^{2}}=\frac{1}{2}$
-
-5. 
-
-$$
-\lim_{x \to 0}\frac{\ln(1 + x)}{x}=\lim_{x \to 0}\frac{1}{x}\ln(1 + x)
-=\lim_{x \to 0}\ln(1 + x)^{\frac{1}{x}}
-=\ln e = 1
-$$
-
-（复合函数连续性推论）
-
-> 或 $\lim_{x \to 0}\frac{\ln(1 + x)}{x}=\lim_{x \to 0}\ln(1 + x)^{\frac{1}{x}}$，令 $(1 + x)^{\frac{1}{x}} = u$，$\lim_{x \to 0}\ln u=\ln e = 1$。
-
-6. $\lim_{x \to 0}\frac{e^{x}-1}{x}$
-
-   > 令 $e^{x}-1 = u$，$x = \ln(1 + u)$，$\lim_{x \to 0}\frac{u}{\ln(1 + u)}=\lim_{u \to 0}\frac{u}{\ln(1 + u)} = 1$。
-   >
-   > 若 $x\to x_0$ 有 $f(x)\to0$，$\lim_{x \to x_0}\frac{e^{f(x)}-1}{f(x)} = 1$。
-   >
-   > $x\to0$，$e^{x}-1\sim x$；$x\to x_0$，有 $f(x)\to0$，$e^{f(x)}-1\sim f(x)$。
-
-7. $\lim_{x \to 0}\frac{a^{x}-1}{x}$（$a>0$，$a\neq1$ 常）
-
-$$
-=\lim_{x \to 0}\frac{e^{x\ln a}-1}{x}
-=\lim_{x \to 0}\frac{x\ln a}{x}=\ln a
-$$
-
-​	$a = 1$，结论也成立。
-
-8. $\lim_{x \to 0}\frac{(1 + x)^{\alpha}-1}{x}$（$\alpha\neq0$ 常）
-
-$$
-=\lim_{x \to 0}\frac{e^{\alpha\ln(1 + x)}-1}{x}
-=\lim_{x \to 0}\frac{\alpha\ln(1 + x)}{x}=\alpha
-$$
-
-​	$\alpha = 0$，结论也成立。
-
-9. $\lim_{x \to x_0}u(x)=a>0$，常，$\lim_{x \to x_0}v(x)=b>0$，常，则 $\lim_{x \to x_0}u(x)^{v(x)}$（幂指函数）$=a^{b}$。
-
-$$
-\begin{align*}
-\text{LHS.}&=\lim_{x \to x_0}e^{v(x)\ln u(x)}\\
-&=e^{\lim_{x \to x_0}v(x)\ln u(x)}\\
-&=e^{\lim_{x \to x_0}v(x)\cdot\lim_{x \to x_0}\ln u(x)}\\
-&=e^{b\ln a}=a^{b}
-\end{align*}
-$$
-
-10. $\lim_{x \to 0}\frac{\arcsin x}{x}$
-
-$$
-\xlongequal{\arcsin x = t}\lim_{t \to 0}\frac{t}{\sin t}
-=\lim_{t \to 0}\frac{t}{\sin t}=1
-$$
-
-11. $\lim_{x \to 0}\frac{\arctan x}{x}$
-
-$$
-\xlongequal{\arctan x = t}\lim_{t \to 0}\frac{t}{\tan t}
-=\lim_{t \to 0}\frac{t}{\tan t}=1
-$$
-
-#### · 重要极限的一般形式
-
-若 $x\to x_0$ 时，有 $f(x)\to0$，
-
-$\lim_{x \to x_0}\frac{\sin f(x)}{f(x)} = 1$，$\lim_{x \to x_0}\frac{\ln(1 + f(x))}{f(x)} = 1$，$\lim_{x \to x_0}\frac{e^{f(x)}-1}{f(x)} = 1$，
-
-$\lim_{x \to x_0}\frac{(1 + f(x))^{\alpha}-1}{f(x)}=\alpha$，$\lim_{x \to x_0}\frac{1 - \cos f(x)}{f(x)^{2}}=\frac{1}{2}$，$\lim_{x \to x_0}[1 + f(x)]^{\frac{1}{f(x)}}=e$。
-
-重要的等价无穷小量：当 $x\to0$ 时，有
-
-$\sin x\sim x$，$\ln(1 + x)\sim x$，$1 - \cos x\sim\frac{1}{2}x^{2}$，$\tan x\sim x$，$e^{x}-1\sim x$，$a^{x}-1\sim x\ln a$（$a\neq1$），
-
-$(1 + x)^{\alpha}-1\sim\alpha x$（$\alpha\neq0$），$\arcsin x\sim x$，$\arctan x\sim x$。
-
-重要的等价无穷小量：若 $x\to x_0$ 有 $f(x)\to0$，则
-
-$\sin f(x)\sim f(x)$，$\ln(1 + f(x))\sim f(x)$，$e^{f(x)}-1\sim f(x)$，$a^{f(x)}-1\sim f(x)\ln a$（$a\neq1$），
-
-$[1 + f(x)]^{\alpha}-1\sim\alpha f(x)$（$\alpha\neq0$），$1 - \cos f(x)\sim\frac{1}{2}f(x)^{2}$。
-
-***
-
-/example/  求 $\lim_{x \to 0}(\frac{a^{x}+b^{x}+c^{x}}{3})^{\frac{1}{x}}$（$a,b,c>0$ 常）。
-
-> /solution/
+> （反证法）假设不然，则对任意 $x \in [a, b]$，存在 $\delta_x > 0$，使得 $(x - \delta_x, x + \delta_x) = I_x$ 只含 $\{a_n\}$ 中有限项。显然，$\{I_x\}_{x \in [a,b]}$ 为闭区间 $[a, b]$ 的一个开覆盖，因此存在有限子覆盖，从而 $[a, b]$ 只含有 $\{a_n\}$ 中有限项，这和 $a_n$ 均含于 $[a, b]$ 相矛盾。
 >
-> 解法一：
+> 其次，我们可以如下选取 $\{a_n\}$ 的子列，使之收敛到 $c$。事实上，先取 $a_{n_1} \in (c - 1, c + 1)$。再取 $n_2 > n_1$，使得 $a_{n_2} \in (c - 1/2, c + 1/2)$。
 >
-> $$
-> \begin{align*}
-> \text{HLS.}&=\lim_{x \to 0}\left[1 + \left(\frac{a^{x}+b^{x}+c^{x}}{3}-1\right)\right]^{\frac{1}{\frac{a^{x}+b^{x}+c^{x}}{3}-1}\cdot\frac{1}{x}(\frac{a^{x}+b^{x}+c^{x}}{3}-1)}\\
-> &=e^{\lim_{x \to 0}\frac{1}{x}(\frac{a^{x}+b^{x}+c^{x}}{3}-1)}\\
-> &=e^{\lim_{x \to 0}\frac{1}{3}(\frac{a^{x}-1}{x}+\frac{b^{x}-1}{x}+\frac{c^{x}-1}{x})}\\
-> &=e^{\frac{1}{3}(\ln a+\ln b+\ln c)}\\
-> &=e^{\frac{1}{3}\ln abc}=(abc)^{\frac{1}{3}}=\sqrt[3]{abc}
-> \end{align*}
-> $$
->
-> 解法二：
->
-> $$
-> \begin{align*}
-> \text{HLS.}&=\lim_{x \to 0}e^{\frac{1}{x}\ln(\frac{a^{x}+b^{x}+c^{x}}{3})}\quad(1^{\infty})\\
-> &=e^{\lim_{x \to 0}\frac{1}{x}\ln[1 + (\frac{a^{x}+b^{x}+c^{x}}{3}-1)]}\\
-> &=e^{\lim_{x \to 0}\frac{1}{x}(\frac{a^{x}+b^{x}+c^{x}}{3}-1)}\\
-> &=e^{\frac{1}{3}(\ln a+\ln b+\ln c)}=\sqrt[3]{abc}
-> \end{align*}
-> $$
->
-> Q.E.D.
+> 如此继续，我们得到子列 $\{a_{n_k}\}$，使得 $a_{n_k} \in (c - 1/k, c + 1/k)$，$k = 1,2,\ldots$。显然，$\{a_{n_k}\}$ 收敛到 $c$。
 
-例：求 $\lim_{x \to +\infty}\frac{\ln(1 + 3^{x})}{\ln(1 + 2^{x})}$。
+从实数系的确界原理出发，我们得到了单调有界数列的收敛性、Cauchy 准则以及本节的这几个基本结果。我们要说明的是，这几个基本结果其实都是相互等价的。
 
-> /solution/
->
-> $$
-> \begin{align*}
-> \text{LHS.}&=\lim_{x \to +\infty}\frac{\ln 3^{x}(1 + 3^{-x})}{\ln 2^{x}(1 + 2^{-x})}\\
-> &=\lim_{x \to +\infty}\frac{\ln 3^{x}+\ln(1 + 3^{-x})}{\ln 2^{x}+\ln(1 + 2^{-x})}\\
-> &=\lim_{x \to +\infty}\frac{x\ln 3+\ln(1 + 3^{-x})}{x\ln 2+\ln(1 + 2^{-x})}\\
-> &=\lim_{x \to +\infty}\frac{\ln 3+\frac{1}{x}\ln(1 + 3^{-x})}{\ln 2+\frac{1}{x}\ln(1 + 2^{-x})}=\frac{\ln 3}{\ln 2}
-> \end{align*}
-> $$
->
-> Q.E.D.
+等价的意思就是在承认其中一个结果的前提之下可以推出另一个结果，即在构造实数系的时候，我们只要验证它满足其中一个基本结果，则其余的结果自然成立。下面的定理将这个等价性补充完整：
 
-### · 证明题训练
+**定理5**：我们有下列命题之间的等价：
 
-/example/   
+(1). **(Bolzano 定理 $\Rightarrow$ Cauchy 准则)**：如果 $\mathbb{R}$ 中有界数列均有收敛子列，则 $\mathbb{R}$ 中 Cauchy 数列必收敛；
 
-设 $f(x)$ 在开区间 $(a,b)$ 内连续（$a,b$ 常），$\lim_{x \to a^{+}}f(x)=A>0$ 常，$\lim_{x \to b^{-}}f(x)=B<0$ 常，
-
-证明存在 $\xi\in(a,b)$，使 $f(\xi)=0$。
-
-> 证法一：
->
-> 不妨令
-> $$
-> F(x)=\begin{cases}A, & x = a\\f(x), & x\in(a,b)\\B, & x = b\end{cases}
-> $$
-> 知 $F(x)$ 在 $[a,b]$ 上连续，且 $F(a)F(b)=AB<0$，
->
-> 由根的存在定理，$\exists\xi\in(a,b)$ 使 $F(\xi)=0$，$x\in(a,b)$ 时 $F(x)=f(x)$，故 $f(\xi)=0$。
->
-> 证法二：
->
-> 由 $\lim_{x \to a^{+}}f(x)=A>0$，由保号性，$\exists\delta_1>0$，当 $a<x<a + \delta_1<b$ 有 $f(x)>0$，取 $a<a_1<a+\delta_1$，有 $f(a_1)>0$。
->
-> 由 $\lim_{x \to b^{-}}f(x)=B<0$，由保号性，$\exists\delta_2>0$，当 $a<b - \delta_2<x<b$ 有 $f(x)<0$，取 $b - \delta_2<b_1<b$，有 $f(b_1)<0$。
->
-> $f(x)\in C[a_1,b_1]$，$\exists\xi\in(a_1,b_1)\subseteq(a,b)$ 使得 $f(\xi)=0$。
-
-/example/    设 $P_n(x)=a_0x^n + a_1x^{n - 1}+\cdots + a_n$，$a_0,a_1,\cdots,a_n$ 均为实常数，$a_0\neq0$。
-
-证明：当 $n$ 为奇数时，$P_n(x)=0$ 至少有一个实根。
+(2). **(Cauchy 准则 $\Rightarrow$ 确界原理)**：如果 $\mathbb{R}$ 中 Cauchy 数列均收敛，则 $\mathbb{R}$ 中有上（下）界的集合必有上（下）确界。
 
 > /proof/
 >
-> 由 $P_n(x)$ 在 $\mathbb{R}$ 上连续，由 $a_0\neq0$，不妨设 $a_0>0$。
->
+> **(1)** 设 $\{a_n\}$ 为 Cauchy 列，则 $\{a_n\}$ 有界，从而有收敛子列 $\{a_{n_k}\}$，记其极限为 $A$。根据 Cauchy 列和数列极限的定义，任给 $\varepsilon > 0$，存在 $N_0, K$，使得当 $m, n > N_0$, $k > K$ 时，
 > $$
-> \begin{align*}
-> \lim_{x \to +\infty}P_n(x)&=\lim_{x \to +\infty}x^n\left(a_0+\frac{a_1}{x}+\cdots+\frac{a_{n - 1}}{x^{n - 1}}+\frac{a_n}{x^n}\right)\\
-> &=+\infty
-> \end{align*}
+> |a_m - a_n| < \frac{1}{2}\varepsilon,\quad |a_{n_k} - A| < \frac{1}{2}\varepsilon.
 > $$
 >
-> 取 $M = 1>0$，$\exists X>0$，当 $x>X$ 时，都有 $P_n(x)>1>0$，取 $b>X$，有 $P_n(b)>1>0$。
->
+> 取 $k > \max\{N_0, K\}$，则 $n_k \geq k > \max\{N_0, K\}$。于是当 $n > n_k$ 时，
 > $$
-> \lim_{x \to -\infty}P_n(x)=-\infty
-> $$
->
-> 取 $M = 1>0$，$\exists X_1>0$，当 $x<-X_1$ 时，都有 $P_n(x)< - 1<0$，取 $a<-X_1$，$P_n(a)< - 1<0$。
->
-> $P_n(x)\in C[a,b]$，存在一点 $\xi\in(a,b)$，使 $P_n(\xi)=0$。
-
-### · 确定函数的间断点及分类
-
-1. 若 $f(x)$ 是初等函数，如果 $f(x)$ 在 $x_0$ 处没有定义，但是要在 $x_0$ 的两侧或一侧要有定义，则 $x_0$ 为间断点，再按间断点的分类讨论。
-
-2. 若 $f(x)$ 是分段函数，则分界点 $x_0$ 是间断点的可疑点。由于分段函数是 $x$ 在不同范围用不同的初等函数表达式表示，该表达式在所属范围内没有定义的点就是间断点。
-
-   ***
-
-/example/    $f(x)=\begin{cases}\frac{1}{x - 2},&x<1\\x^2,&x\geq1\end{cases}$，讨论 $f(x)$ 的间断点类型。
-
-> /solution/
-> $$
-> \begin{align*}
-> \lim_{x \to 1^{-}}f(x)&=\lim_{x \to 1^{-}}\frac{1}{x - 2}=-1\\
-> \lim_{x \to 1^{+}}f(x)&=\lim_{x \to 1^{+}}x^2 = 1
-> \end{align*}
+> |a_n - A| \leq |a_n - a_{n_k}| + |a_{n_k} - A| < \frac{1}{2}\varepsilon + \frac{1}{2}\varepsilon = \varepsilon.
 > $$
 >
-> 因 $1\neq - 1$，知 $x = 1$ 为跳跃间断点。
-
-/example/    $f(x)=\begin{cases}\frac{1}{x - 1},&x\leq2\\x^2-3,&x>2\end{cases}$，讨论 $f(x)$ 的间断点，指出类型。
-
-> /solution/
-> $$
-> \begin{align*}
-> \lim_{x \to 2^{-}}f(x)&=\lim_{x \to 2^{-}}\frac{1}{x - 1}=1\\
-> \lim_{x \to 2^{+}}f(x)&=\lim_{x \to 2^{+}}(x^2 - 3)=1
-> \end{align*}
-> $$
-> $\Rightarrow\lim_{x \to 2}f(x)=1=f(2)=1$，知 $x = 2$ 为连续点。
-> $$
-> \lim_{x \to 1^{-}}f(x)=\lim_{x \to 1^{-}}\frac{1}{x - 1}=-\infty
-> $$
-> $\therefore x = 1$ 为第二类间断点。
-
-/example/    $f(x)=\frac{x^2 - 1}{x - 1}$，讨论 $f(x)$ 的间断点，指出类型。
-
-> /solution/
+> 这说明 $\{a_n\}$ 收敛到 $A$。
 >
-> 由 $f(x)$ 在 $x = 1$ 处无定义，$x = 1$ 为间断点。
+> ---
+>
+> **(2)** 不妨设集合 $A$ 有上界 $M$。如果 $M \in A$，则 $M$ 就是 $A$ 的上确界。下设 $M \notin A$。取 $m \in A$，则闭区间 $[m, M]$ 含有 $A$ 中的数。将 $[m, M]$ 二等分：如果 $\left[\dfrac{m + M}{2}, M\right]$ 中含有 $A$ 中的数，则记
 > $$
-> \begin{align*}
-> \lim_{x \to 1}f(x)&=\lim_{x \to 1}\frac{x^2 - 1}{x - 1}\\
-> &=\lim_{x \to 1}\frac{(x + 1)(x - 1)}{x - 1}\\
-> &=\lim_{x \to 1}(x + 1)=2
-> \end{align*}
+> a_1 = \frac{m + M}{2},\quad b_1 = M;
 > $$
-> 知 $x = 1$ 为可去间断点。
+> 否则就记 $a_1 = m$, $b_1 = \dfrac{m + M}{2}$。
+>
+> 总之，$[a_1, b_1]$ 中含有 $A$ 中的数，$b_1$ 为 $A$ 的上界，且 $b_1 \notin A$（为什么？）。
+>
+> 对 $[a_1, b_1]$ 作同样的事情，并如此继续，我们就得到了两个数列 $\{a_n\}$ 与 $\{b_n\}$，满足条件：
+>
+> > (1).
+> > $$
+> > [a_n, b_n] \cap A \neq \varnothing,\quad\forall\, n \geq 1
+> > $$
+> > (2). $b_n$ 均为 $A$ 的上界，且 $b_n \notin A$，$\forall\, n \geq 1$；
+> >
+> > (3).
+> > $$
+> > b_n - a_n = \dfrac{M - m}{2^n}
+> > $$
+> > (4).
+> > $$
+> > |a_{n+1} - a_n| \leq \dfrac{M - m}{2^{n+1}},\quad |b_n - b_{n+1}| \leq \dfrac{M - m}{2^{n+1}}
+> > $$
+>
+>  $\{a_n\}$ 和 $\{b_n\}$ 均为 Cauchy 数列，它们收敛到同一数 $c$。不难看出 $c$ 为 $A$ 的上确界。
 
-/example/    $f(x)=\tan x$，讨论间断点，指出类型。
+结束.
 
-> /solution/
->
-> 由 $f(x)$ 在 $x = k\pi+\frac{\pi}{2}(k\in\mathbb{Z})$ 处无定义，在左侧有定义。
-> $$
-> \lim_{x \to k\pi+\frac{\pi}{2}^{-}}f(x)=\lim_{x \to k\pi+\frac{\pi}{2}^{-}}\tan x=+\infty
-> $$
->
-> $$
-> \lim_{x \to k\pi+\frac{\pi}{2}^{+}}f(x)=\lim_{x \to k\pi+\frac{\pi}{2}^{+}}\tan x=-\infty
-> $$
->
-> 知 $x = k\pi+\frac{\pi}{2}(k\in\mathbb{Z})$ 为第二类间断点（无穷型间断点）。

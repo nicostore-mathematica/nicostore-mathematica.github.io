@@ -1,669 +1,487 @@
 ---
-title: Chapter 5 微分中值定理
-createTime: 2025/09/18 18:11:08
+title: Chapter 5 连续函数
 permalink: /integral/integral-5/
+createTime: 2025/09/16 20:57:28
 ---
 
-## Part 1 微分中值定理
+## Part 1 连续函数
 
-**定义1**： $\exists \delta > 0, \forall x \in U(x_0, \delta), f(x) \leq f(x_0)$ ，则称 $x_0$ 为极大值点， $f(x_0)$ 为极大值，类似地可以定义极小值点和极小值。极大值和极小值统称为极值。
+### · 定义
 
-> **注意**：
->
-> 1. 极值点也是局部性质
-> 2. 前提是 $f(x)$ 在 $U(x_0, \delta)$ 内有定义
-> 3. 函数定义区间的端点不是极值点
+连续变化的量用数学的语言来刻画就是连续函数。
 
-**定理1（费马引理）**：设  $f(x)$  在  $x_0$  点附近有定义。若  $x_0$  是  $f(x)$  的极值点，且  $f(x)$  在  $x_0$  点可导，则  $f'(x_0) = 0$ （驻点）。
+**定义1**（连续性）：如果 $f$ 在 $x_0$ 的一个邻域中有定义且 $f$ 在 $x_0$ 处的极限等于 $f(x_0)$，则称 $f$ 在 $x_0$ 处连续，$x_0$ 称为 $f$ 的一个连续点；如果 $f$ 在 $x_0$ 处的左极限等于 $f(x_0)$，则称 $f$ 在 $x_0$ 处左连续；如果 $f$ 在 $x_0$ 处的右极限等于 $f(x_0)$，则称 $f$ 在 $x_0$ 处右连续；在定义域内每一点都连续的函数称为连续函数。
 
-> **证明**：不妨设  $x_0$  为极大值点，根据定义
-> $$
-> \exists \delta > 0, \forall x \in U(x_0, \delta), f(x) - f(x_0) \leq 0
-> $$
-> 所以  $\forall x \in (x_0 - \delta, x_0)$ 
->
-> $$
-> \frac{f(x) - f(x_0)}{x - x_0} \geq 0 \implies f'(x_0) = \lim_{x \to x_0^-} \frac{f(x) - f(x_0)}{x - x_0} \geq 0
-> $$
-> 且  $\forall x \in (x_0, x_0 + \delta)$ 
->
-> $$
-> \frac{f(x) - f(x_0)}{x - x_0} \leq 0 \implies f'(x_0) = \lim_{x \to x_0^+} \frac{f(x) - f(x_0)}{x - x_0} \leq 0
-> $$
-> 故  $f'(x_0) = 0$ ，若  $x_0$  为极小值点同理可证
-
-> [!important]
->
-> 1. 逆否命题：若  $f'(x_0) \neq 0$ ，则  $x_0$  非极值点
-> 2. 逆命题：若  $f'(x_0) = 0$ ，则  $x_0$  为极值点（**反例**： $y = x^3$ ， $y'(0) = 0$ ）
-> 3. 极值点：不可导点 + 驻点
-
-**定理2（最值定理）**： $f \in C[a, b]$ ，则  $f$  在  $[a, b]$  上可以取到最大值与最小值（从而有界），即  $\exists \xi_1, \xi_2 \in [a, b], \forall x \in [a, b]$  有  $f(\xi_1) \leq f(x) \leq f(\xi_2)$ 。
-
-> [!important]
->
-> **注意**：最值定理只对**闭区间**成立。
-
-**定理3（罗尔定理）**： $f \in C[a, b]$  且  $f$  在  $(a, b)$  上可导，若  $f(a) = f(b)$ ，则  $\exists \xi \in (a, b)$  使得  $f'(\xi) = 0$ 。
-
-> **证明**： $f \in C[a, b]$ 
->
-> 根据最值定理，存在最大值  $M$ ，最小值  $m$ 
->
-> 若  $f$  是常值函数，则定理显然成立
->
-> 若  $f$  不是常值函数，则  $M$  与  $m$  至少有一个不等于  $f(a) = f(b)$ 
->
-> 不妨设  $M > f(a) = f(b)$ 
->
-> 故  $\exists \xi \in (a, b), f(\xi) = M$ ， $\xi$  也是极大值点
->
-> 根据费马引理， $f'(\xi) = 0$ 
-
-> [!important]
->
-> **注意**：
->
-> 1. 几何意义：端点高度相同的光滑曲线存在水平切线
-> 2. 物理意义：一段时间内位移不变必有零速度时刻
-> 3. 逆否： $f \in C[a, b]$  且  $f$  在  $(a, b)$  上可导，若  $\forall x \in (a, b), f'(x) \neq 0$ ，则  $f(a) \neq f(b)$ 。
->
-> > 推广： $f \in C[a, b]$  且  $f$  在  $(a, b)$  上可导，若  $\forall x \in (a, b), f''(x) \neq 0$ ，则  $[a, b]$  上任意两点不同。
-
-/example/： $f \in C[a, b]$  且  $f$  在  $(a, b)$  上二阶可导， $f(a) = f(c) = f(b)$ ，证明  $\exists \xi \in (a, b)$  使得  $f''(\xi) = 0$ 
-
-> **证明**：
-> $$
-> [a, c]: \exists \xi_1 \in (a, c), f'(\xi_1) = 0
-> $$
->
-> $$
-> [c, b]: \exists \xi_2 \in (c, b), f'(\xi_2) = 0
-> $$
->
-> 对区间  $[\xi_1, \xi_2] \subset (a, b)$ 
->
->  $f' \in C(\xi_1, \xi_2)$  且  $f'$  在  $(\xi_1, \xi_2)$  上可导， $f'(\xi_1) = f'(\xi_2)$ 
->
-> 由罗尔定理， $\exists \xi \in (\xi_1, \xi_2)$  使得  $f''(\xi) = 0$ 
-
-> [!important]
->
-> **注意**：逆否命题： $f \in C[a, b]$  且  $f$  在  $(a, b)$  上二阶可导，若  $\forall x \in (a, b), f''(x) \neq 0$ ，则  $[a, b]$  上至多有两点函数值相等。
->
-> **推广**： $f \in C[a, b]$  且  $f$  在  $(a, b)$  上  $n$  阶可导， $n+1$  个点函数值相等，则  $\exists \xi \in (a, b)$  使得  $f^{(n)}(\xi) = 0$ 。
->
-> **注意**：逆否命题： $f \in C[a, b]$  且  $f$  在  $(a, b)$  上  $n$  阶可导，若  $\forall x \in (a, b), f^{(n)}(\xi) \neq 0$ ，则  $[a, b]$  上至多有  $n$  点函数值相等。
-
-**定理4**（拉格朗日中值定理）: $f \in C[a, b]$  且  $f$  在  $(a, b)$  上可导，则  $\exists \xi \in (a, b)$  使得
-$$
-f'(\xi) = \frac{f(b) - f(a)}{b - a}.
-$$
-
-> **注**：
->
-> 1. 罗尔定理经过旋转可以得到拉格朗日中值定理
->
-> 2. 几何意义：存在某点的切线平行于弦
->
-> 3. 物理意义：存在某时刻瞬时速度等于平均速度
->
-> 4. $$
->    f'(\xi) = \frac{f(b) - f(a)}{b - a} \Leftrightarrow f(b) - f(a) = f'(\xi)(b - a)
->    $$
->
-> $$
->    \Rightarrow f(b) = f(a) + f'(\xi)(b - a)
-> $$
->
-> 5. 令  $\theta = \frac{\xi - a}{b - a} \in (0, 1) \Leftrightarrow \exists \theta \in (0, 1)$  使得 
->    $$
->    f'(a + \theta(b - a)) = \frac{f(b) - f(a)}{b - a}
->    $$
->
-
-**定理5（柯西中值定理）**： $f, g$  在  $[a, b]$  上连续，在  $(a, b)$  上可导且  $g'(x) \neq 0$ ，则  $\exists \xi \in (a, b)$  使得
-$$
-\frac{f'(\xi)}{g'(\xi)} = \frac{f(b) - f(a)}{g(b) - g(a)}.
-$$
-
-> **注**：
->
-> 1. $g(x) = x$ 则退化为拉格朗日中值定理
->
-> 2. $\frac{f'(\xi)}{g'(\xi)}$ 是同一个 $\xi$ 
->
-> 3. 命题
->    $$
->    \forall x \in (a, b), g'(x) \neq 0 \Rightarrow g(a) \neq g(b)
->    $$
->
-> 4. 几何意义：参数式函数
->    $$
->    \begin{cases} y = f(t) \\ x = g(t) \end{cases}\quad \quad t \in [a, b]
->    $$
->    存在切线平行于弦
-
-### · 中值定理应用
-
-中值定理相关的证明题通常需要构造函数，以下给出两种经典方法。
-
-(1). 常数变易法（不推荐）
-
-常数变易法的核心思想是，将欲证明的结论中的某个常量用变量代替，构造成辅助函数，最后再对辅助函数检验罗尔定理的使用条件。值得一提的是，并不是所有题目都适用本方法，慎用。
-
-(2). 原函数法
-
-> 为了利用罗尔定理，我们需要构造出一个辅助函数，使得其导数为零恰好与欲证的结论等价。
->
-> 1. 根据结论凑  $F'(\xi) = 0$ ，即  $F'(x)|_{x=\xi} = 0$ 
-> 2. 求出原函数  $F(x)$  即所需辅助函数（有时需要将上式乘以某些乘子，如例4）
-> 3. 对  $F(x)$  检验罗尔定理的使用条件
-
-尝试证明**定理4**：拉格朗日中值定理
-
-> **法一（常数变易法）**：
->
-> 令
-> $$
-> k = \frac{f(b) - f(a)}{b - a} \Leftrightarrow f(b) - f(a) - k(b - a) = 0
-> $$
-> 将此式中的  $b$  用变量  $x$  代替，构成辅助函数
->
-> $$
-> F(x) = f(x) - f(a) - k(x - a)
-> $$
-> 则  $F \in C[a, b]$  且  $F$  在  $(a, b)$  上可导， $F(a) = F(b) = 0$ 
->
-> 由罗尔定理， $\exists \xi \in (a, b)$  使得  $F'(\xi) = 0 \Rightarrow f'(\xi) = k$ 
->
-> **法二（原函数法）**：
->
-> 分析：
-> $$
-> f'(\xi) - \frac{f(b) - f(a)}{b - a} = 0
-> $$
-> 将 $\xi$ 用 $x$ 替换， $f'(x) - \frac{f(b) - f(a)}{b - a} = 0$ ，即
-> $$
-> [f(x) - \frac{f(b) - f(a)}{b - a}x]' = 0
-> $$
-> 构造辅助函数
-> $$
-> F(x) = f(x) - \frac{f(b) - f(a)}{b - a}x
-> $$
-> 证明：令
-> $$
-> F(x) = f(x) - \frac{f(b) - f(a)}{b - a}x
-> $$
-> 则  $F \in C[a, b]$  且  $F$  在  $(a, b)$  上可导， $F(a) = F(b)$ 
->
-> 由罗尔定理， $\exists \xi \in (a, b)$  使得  $F'(\xi) = 0$ 
->
-> 即  $f'(\xi) = \frac{f(b) - f(a)}{b - a}$ 
-
-证明**定理5**：柯西中值定理
-
-> **法一（常数变易法）**：
->
-> 令
-> $$
-> k = \frac{f(b) - f(a)}{g(b) - g(a)} \Leftrightarrow f(b) - f(a) - k(g(b) - g(a)) = 0
-> $$
-> 将此式中的  $b$  用变量  $x$  代替，构成辅助函数
->
->
->  $$F(x) = f(x) - f(a) - k(g(x) - g(a))$$ 
->
-> 则  $F \in C[a, b]$  且  $F$  在  $(a, b)$  上可导， $F(a) = F(b) = 0$ 
->
-> 由罗尔定理， $\exists \xi \in (a, b)$  使得  $
-> $$
-> F'(\xi) = 0 \Rightarrow f'(\xi) - kg'(\xi) = 0 \Leftrightarrow \frac{f'(\xi)}{g'(\xi)} = k
-> $$
-> **法二（原函数法）**：
->
-> 分析：
-> $$
-> \frac{f'(\xi)}{g'(\xi)} = \frac{f(b) - f(a)}{g(b) - g(a)}
-> $$
->
-> $$
-> \Leftrightarrow f'(\xi)[g(b) - g(a)] - g'(\xi)[f(b) - f(a)] = 0
-> $$
->
-> 将  $\xi$  用  $x$  替换，
-> $$
-> [f(x)g(b) - g(a) - g(x)f(b) - f(a)]' = 0
-> $$
-> 证明：构造辅助函数
-> $$
-> F(x) = f(x)[g(b) - g(a)] - g(x)[f(b) - f(a)]
-> $$
-> 则  $F \in C[a, b]$  且  $F$  在  $(a, b)$  上可导， $F(a) = F(b)$ 
->
-> 由罗尔定理， $\exists \xi \in (a, b)$  使得  $F'(\xi) = 0$ 
->
-> 即
-> $$
-> f'(\xi)[g(b) - g(a)] - g'(\xi)[f(b) - f(a)] = 0
-> $$
-> 即
-> $$
-> \frac{f'(\xi)}{g'(\xi)} = \frac{f(b) - f(a)}{g(b) - g(a)}
-> $$
-
-/example/： $f \in C[a, b]$  且  $f$  在  $(a, b)$  上可导，证明  $\exists \xi \in (a, b)$  使得
-$$
-f(\xi) + \xi f'(\xi) = \frac{bf(b) - af(a)}{b - a}
-$$
-
-> **证明**：令
-> $$
-> k = \frac{bf(b) - af(a)}{b - a} \Leftrightarrow bf(b) - af(a) - k(b - a) = 0
-> $$
-> 令
-> $$
-> F(x) = xf(x) - af(a) - k(x - a)
-> $$
-> 则  $F \in C[a, b]$  且  $F$  在  $(a, b)$  上可导， $F(a) = F(b) = 0$ 
->
-> 由罗尔定理， $\exists \xi \in (a, b)$  使得  $F'(\xi) = 0$ 
->
-> 即
-> $$
-> f(\xi) + \xi f'(\xi) - k = 0 \Leftrightarrow f(\xi) + \xi f'(\xi) = k
-> $$
-
-/example/： $f \in C[a, b]$  且  $f$  在  $(a, b)$  上可导，若  $f(a) = f(b) = 0$ ，证明  $\exists \xi \in (a, b)$  使得  $\lambda f(\xi) + f'(\xi) = 0$ 
-
-> **分析**：将  $\xi$  用  $x$  替换， $\lambda f(x) + f'(x) = 0$ 
-> $$
-> \Leftrightarrow \lambda e^{\lambda x} f(x) + e^{\lambda x} f'(x) = 0
-> $$
->
-> $$
-> \Leftrightarrow [e^{\lambda x} f(x)]' = 0
-> $$
->
-> 构造辅助函数  
-> $$
-> F(x) = e^{\lambda x} f(x)
-> $$
-> **证明**：令  $F(x) = e^{\lambda x} f(x)$ 
->
-> 则  $F \in C[a, b]$  且  $F$  在  $(a, b)$  上可导， $F(a) = F(b) = 0$ 
+> (1) 如果 $x_0$ 不是 $f$ 的连续点，则称 $x_0$ 是 $f$ 的一个间断点。显然，$f$ 在 $x_0$ 处连续当且仅当 $f$ 在 $x_0$ 处左连续和右连续。我们还可以用 Heine 定理来描述连续性：$f$ 在 $x_0$ 处连续当且仅当对任意收敛到 $x_0$ 的点列 $x_n$，均有 $f(x_n) \to f(x_0)$ ($n \to \infty$)。
 >
-> 由罗尔定理， $\exists \xi \in (a, b)$  使得  $F'(\xi) = 0$ 
->
-> 即  $\lambda f(\xi) + f'(\xi) = 0$ 
-
-/example/：$0 < a < b$ ， $f \in C[a, b]$  且 $f$ 在 $(a, b)$ 上可导，证明  $\exists \xi \in (a, b)$  使得
-
-$$
-f(\xi) - \xi f'(\xi) = \frac{1}{a-b} \begin{vmatrix} a & b \\ f(a) & f(b) \end{vmatrix}.
-$$
-
-> **法一（原函数法）**：
->
-> **分析**：将  $\xi$  用  $x$  替换，
-> $$
-> f(x) - xf'(x) = \frac{1}{a-b} \begin{vmatrix} a & b \\ f(a) & f(b) \end{vmatrix} = k
-> $$
->
-> $$
-> \Leftrightarrow \frac{xf'(x) - xf(x)}{x^2} + \frac{k}{x^2} = 0
-> $$
->
-> $$
-> \Leftrightarrow \left(\frac{f(x)}{x} - k\right)' = 0
-> $$
->
-> **证明**：令  $F(x) = \frac{f(x) - k}{x}$ 
->
-> 则  $F$  在  $[a, b]$  连续，在  $(a, b)$  可导且  $F(a) = F(b)$ 
->
-> 故  $\exists \xi \in (a, b)$  使得
-> $$
-> F'(\xi) = 0 \Leftrightarrow f(\xi) - \xi f'(\xi) = \frac{1}{a-b} \begin{vmatrix} a & b \\ f(a) & f(b) \end{vmatrix}
-> $$
-> **法二（柯西中值定理）**：
->
-> **分析**：
->
-> $$
-> \frac{af(b) - bf(a)}{a-b} = \frac{\begin{vmatrix} f(b) & f(a) \\ b & a \end{vmatrix}}{\begin{vmatrix} b & 1 \\ a & 1 \end{vmatrix}} = \frac{F(x)}{G(x)} = \frac{F(b) - F(a)}{G(b) - G(a)}
-> $$
->
-> $$
-> f(\xi) - \xi f'(\xi) = \frac{\xi f''(\xi) - \xi' f(\xi)}{\xi^2} = \frac{F'(\xi)}{G'(\xi)}
-> $$
->
-> **证明**：令  $F(x) = \frac{f(x)}{x}, G(x) = \frac{1}{x}$ 
->
-> 则  $F, G$  在  $[a, b]$  上连续，在  $(a, b)$  上可导且
-> $$
-> G'(x) = -\frac{1}{x^2} \neq 0
-> $$
-> 故  $\exists \xi \in (a, b)$  使得
-> $$
-> \frac{F'(\xi)}{G'(\xi)} = \frac{F(b) - F(a)}{G(b) - G(a)}
-> $$
->
-> $$
-> \Leftrightarrow f(\xi) - \xi f'(\xi) = \frac{1}{a-b} \begin{vmatrix} a & b \\ f(a) & f(b) \end{vmatrix}
-> $$
-
-(3). 证明显式不等式
-
-/example/：证明  $\forall x > 0, \frac{x}{1+x} < \ln(1+x) < x$ 
-
-> **注**：用拉格朗日中值定理证显式不等式，出发点： $\frac{f(b) - f(a)}{b - a}$ 
->
-> **分析**：结论
-> $$
-> \Leftrightarrow \forall x > 0, \frac{1}{1+x} < \frac{\ln(1+x) - \ln(1+0)}{x - 0} < 1
-> $$
-> **证明**：令  $f(x) = \ln(1+x)$ 
->
-> 则  $f$  在  $[0, x]$  上连续，在 $(0, x)$ 上可导
->
-> 故 $\exists\ \xi \in (0, x)$ 使
-> $$
-> f'(\xi) = \frac{f(x) - f(0)}{x - 0} = \frac{\ln(1+x)}{x}
-> $$
-> 又
-> $$
-> \xi \in (0, x) \Rightarrow \frac{1}{1+x} < f'(\xi) = \frac{1}{1+\xi} < 1
-> $$
-> 故
-> $$
-> \frac{1}{1+x} < \frac{\ln(1+x)}{x} < 1 \Leftrightarrow \frac{x}{1+x} < \ln(1+x) < x
-> $$
-
-**推论1**： $\forall x \in (a, b), f'(x) = 0 \Rightarrow f$  为  $(a, b)$  上的常值函数。
-
-> **证明**： $\forall x_1, x_2 \in (a, b)$ 不妨设 $x_1 < x_2$ 
->
-> 因为 $f$ 在 $[x_1, x_2] \subset (a, b)$ 上连续，在 $(x_1, x_2)$ 上可导
->
->  $\exists \xi \in (x_1, x_2)$  使得
-> $$
-> 0 = f'(\xi) = \frac{f(x_2) - f(x_1)}{x_2 - x_1} \Rightarrow f(x_1) = f(x_2)
-> $$
-
-**推论2**： $f \in C[a, b]$  且  $f$  在  $(a, b)$  上可导，若  $\forall x \in (a, b), f'(x) = 0 \Rightarrow f$  为  $[a, b]$  上的常值函数.
-
-> **证明**：由上得  $\forall x \in (a, b), f(x) = c$ 
->
-> 根据连续的定义
-> $$
-> f(a) = \lim_{x \to a^+} f(x) = c = \lim_{x \to b^-} f(x) = f(b)
-> $$
-
-### · 洛必达法则
-
-**类型**： $\frac{0}{0}$ 或 $\frac{\infty}{\infty}$ 
-
-**定理6**（ $\frac{0}{0}$ ， $x \to a^+$ ）：设  $f$ ， $g$ 在 $(a, a + \delta)$ 上可导且 $g'(x) \neq 0$ ，
-$$
-\begin{cases}
-(1).\ \lim\limits_{x \to a^+} f(x) = \lim\limits_{x \to a^+} g(x) = 0 \\
-(2).\ \lim\limits_{x \to a^+} \frac{f'(x)}{g'(x)} = A(\infty, +\infty, -\infty)
-\end{cases}
-\Rightarrow \lim\limits_{x \to a^+} \frac{f(x)}{g(x)} = A(\infty, +\infty).
-$$
-
-> **证明**：
->
-> 令
-> $$
-> F(x) = \begin{cases} f(x) & x \in (a, a + \delta) \\ 0 & x = a \end{cases}
-> $$
->
+> (2) 用 $\varepsilon - \delta$ 的语言来描述 $f$ 在 $x_0$ 处连续就是：任给 $\varepsilon > 0$，存在 $\delta > 0$，当 $|x - x_0| < \delta$ 时，有
 > $$
-> G(x) = \begin{cases} g(x) & x \in (a, a + \delta) \\ 0 & x = a \end{cases}
+> |f(x) - f(x_0)| < \varepsilon.
 > $$
 >
-> 任取  $x \in (a, a + \delta)$ 
->
-> 则  $F$ ， $G$  在  $[a, x]$  连续，在  $(a, x)$  上可导且  $G'(x) = g'(x) \neq 0$ 
->
-> 由柯西中值定理， $\exists \xi \in (a, x)$  使得
-> $$
-> \frac{F'(\xi)}{G'(\xi)} = \frac{F(x) - F(a)}{G(x) - G(a)} \Leftrightarrow \frac{f(\xi)}{g(\xi)} = \frac{f(x)}{g(x)}
-> $$
-> 注意此处的  $\xi$  依赖于  $x$  的选取，且  $a < \xi < x$ 
->
-> 由追敛性定理， $x \to a^+ \Rightarrow \xi \to a^+$ ， $\xi$  可视为  $x$  趋近  $a^+$  过程中的一个子列
->
-> 故
-> $$
-> \lim_{x \to a^+} \frac{f(x)}{g(x)} = \lim_{x \to a^+} \frac{f'(\xi)}{g'(\xi)} = \lim_{\xi \to a^+} \frac{f'(\xi)}{g'(\xi)} \overset{Heine}{=} \lim_{x \to a^+} \frac{f'(x)}{g'(x)} = A
-> $$
-
-> [!important]
->
-> **注意**：
->
-> 1. 引入负代换可以证明  $x \to a^-$  的情况，所以  $x \to a^+, a^-, a: A \in \mathbb{R}, \infty, +\infty, -\infty$  时定理成立
->
-> 2. $$
->    \lim_{x \to a^+} \frac{f(x)}{g(x)} \overset{\frac{0}{0}}{=} \lim_{x \to a^+} \frac{f'(x)}{g'(x)} \overset{(2)}{=} A
->    $$
->
-
-**定理7**：（ $\frac{0}{0}$ ，$x \to +\infty$ ）：设  $f$ ， $g$  在  $(a, +\infty)$  上可导且  $g'(x) \neq 0$ ，
-$$
-\begin{cases}
-\lim\limits_{x \to +\infty} f(x) = \lim\limits_{x \to +\infty} g(x) = 0 \\
-\lim\limits_{x \to +\infty} \frac{f'(x)}{g'(x)} = A(\infty, +\infty, -\infty)
-\end{cases}
-\Rightarrow \lim\limits_{x \to +\infty} \frac{f(x)}{g(x)} = A(\infty, +\infty).
-$$
-
-> **证明**：
->
-> $$
-> \lim_{x \to +\infty} \frac{f(x)}{g(x)} = \lim_{t \to 0^+} \frac{f\left(\frac{1}{t}\right)}{g\left(\frac{1}{t}\right)} = \lim_{t \to 0^+} \frac{f'\left(\frac{1}{t}\right)}{g'\left(\frac{1}{t}\right)} \left(-\frac{1}{t^2}\right)
-> $$
->
-> $$
-> = \lim_{t \to 0^+} \frac{f'\left(\frac{1}{t}\right)}{g'\left(\frac{1}{t}\right)} = \lim_{x \to +\infty} \frac{f'(x)}{g'(x)} = A
-> $$
->
-
-> [!caution]
->
-> **注意**：
->
-> 1. 引入负代换可以证明  $x \to -\infty$  的情况，所以  $x \to a^+, a^-, a, +\infty, -\infty, \infty; A \in \mathbb{R}, \infty, +\infty, -\infty$  时定理成立
->
-> 2. $$
->    \lim_{x \to \square} \frac{f(x)}{g(x)} \overset{0}{=} \lim_{x \to \square} \frac{f'(x)}{g'(x)} \overset{(2)}{=} A
->    $$
->
-> 3. 可以连续进行有限次洛必达
->
-> 4. 洛必达要与等价无穷小替换、四则运算法则等结合使用
-
-**定理8**：（ $\frac{*}{\infty}$ ， $x \to a^+$ ）：设  $f$ ， $g$  在  $(a, a + \delta)$  上可导且  $g'(x) \neq 0$ ，
-$$
-\begin{cases}
-\lim\limits_{x \to a^+} g(x) = \infty \\
-\lim\limits_{x \to a^+} \frac{f'(x)}{g'(x)} = A(\infty, +\infty, -\infty)
-\end{cases}
-\Rightarrow \lim\limits_{x \to a^+} \frac{f(x)}{g(x)} = A(\infty, +\infty, -\infty).
-$$
-
-**注意**：由于柯西中值定理只适用于有限区间，因此本定理的证明不能完全沿用定理6的证明，我们尝试从极限的定义出发证明。
-
-> **证明**： $\lim_{x \to a^+} \frac{f'(x)}{g'(x)} = A$ ，根据定义
-> $$
-> \forall 2 > \varepsilon > 0, \exists 0 < \delta_1 < \delta, \forall x \in (a, a + \delta_1) \subset (a, a + \delta), \left|\frac{f'(x)}{g'(x)} - A\right| < \frac{\varepsilon}{2}
-> $$
-> 任取  $x \in (a, a + \delta_1)$ （回避  $a$  点），对  $[x, a + \delta_1]$  使用柯西中值定理
->
->  $\exists \xi \in (x, a + \delta_1)$  使得
+> (3)* 上半连续和下半连续：如果任给 $\varepsilon > 0$，存在 $\delta > 0$，当 $|x - x_0| < \delta$ 时，有
 > $$
-> \frac{f'(\xi)}{g'(\xi)} = \frac{f(x) - f(a + \delta_1)}{g(x) - g(a + \delta_1)}
+> f(x) > f(x_0) - \varepsilon,
 > $$
-> 因为  $\xi \in (x, a + \delta_1)$ ，所以  $\left|\frac{f'(\xi)}{g'(\xi)} - A\right| < \frac{\varepsilon}{2}$ 
->
-> 所以  $\left|\frac{f(x) - f(a + \delta_1)}{g(x) - g(a + \delta_1)} - A\right| < \frac{\varepsilon}{2}$ 
->
->
-> $$
-> \Leftrightarrow \left|\frac{f(x)}{g(x)} - \frac{f(a + \delta_1)}{g(x)} - A\right| = \left|\frac{f(x)}{g(x)} - A + \frac{Ag(a + \delta_1) - f(a + \delta_1)}{g(x)}\right| < \frac{\varepsilon}{2}\left|1 - \frac{g(a + \delta_1)}{g(x)}\right|
-> $$
->
->
-> $$
-> \Rightarrow \left|\frac{f(x)}{g(x)} - A + \frac{Ag(a + \delta_1) - f(a + \delta_1)}{g(x)}\right| < \frac{\varepsilon}{2}\left|1 - \frac{g(a + \delta_1)}{g(x)}\right|
-> $$
->
->
-> $$
-> \leq \frac{\varepsilon}{2} + \frac{\varepsilon}{2}\left|\frac{g(a + \delta_1)}{g(x)}\right| < \frac{\varepsilon}{2} + \left|\frac{g(a + \delta_1)}{g(x)}\right|
-> $$
->
-> 使用不等式  $|a| = |a + b - b| \leq |a + b| + |b|$ 
->
->
-> $$
-> \left|\frac{f(x)}{g(x)} - A\right| \leq \left|\frac{f(x)}{g(x)} - A + \frac{Ag(a + \delta_1) - f(a + \delta_1)}{g(x)}\right| + \left|\frac{Ag(a + \delta_1) - f(a + \delta_1)}{g(x)}\right|
-> $$
->
->
+> 则称 $f$ 在 $x_0$ 处下半连续；如果任给 $\varepsilon > 0$，存在 $\delta > 0$，当 $|x - x_0| < \delta$ 时，有
 > $$
-> < \frac{\varepsilon}{2} + \left|\frac{g(a + \delta_1)}{g(x)}\right| + \left|\frac{Ag(a + \delta_1) - f(a + \delta_1)}{g(x)}\right| = \frac{\varepsilon}{2} + \frac{B(\delta_1)}{|g(x)|}
+> f(x) < f(x_0) + \varepsilon,
 > $$
->
-> 因为  $\lim_{x \to a^+} \frac{B(\delta_1)}{|g(x)|} = 0$ ，根据定义
->
-> 对上述  $\varepsilon$ ，
-> $$
-> \exists 0 < \delta_2 < \delta_1, \forall x \in (a, a + \delta_2), \frac{B(\delta_1)}{|g(x)|} < \frac{\varepsilon}{2} \Rightarrow \left|\frac{f(x)}{g(x)} - A\right| < \varepsilon
-> $$
-> 故  $\lim_{x \to a^+} \frac{f(x)}{g(x)} = A$  得证
-
-> [!important]
->
-> **注意**：
->
-> 1. $f(x)$  在  $(a, a + \delta)$  局部有界： $\frac{f}{g} = \frac{*}{\infty} = * \cdot 0 = 0$  确定型
->
->     $\lim_{x \to a^+} f(x) = \infty: \frac{f}{g} = \frac{\infty}{\infty}$  未定型
+> 则称 $f$ 在 $x_0$ 处上半连续。
 >
-> 2. 类似于定理6，本定理也可以进行推广 $x \to a^+, a^-, a, +\infty, -\infty, \infty; A \in \mathbb{R}, \infty, +\infty, -\infty$  时定理成立
+> (4) 连续点和连续性的概念可以推广到在 $\mathbb{R}$ 的子集 $X$ 上定义的函数 $f: X \to \mathbb{R}$ 上：$x_0 \in X$ 为 $f$ 的连续点是指当 $x \in X$，$x \to x_0$ 时 $f(x) \to f(x_0)$。因此，当 $X = [a,b]$ 时，$f$ 为 $[a,b]$ 上的连续函数是指 $f$ 在 $(a,b)$ 中每一点都连续，且在 $a$ 处右连续，在 $b$ 处左连续。
 
 下面给出几个例子：
 
+> 根据前面两节的计算，我们已经知道下面的初等函数都是连续的：
+> $$
+> C ,\ x,\ \sin x,\ \cos x,\ \sqrt{x},\ \log_a x\ (a > 0, a \ne 1).
+> $$
+> 如果 $f$ 为连续函数，则 $|f|$ 也是连续函数
+>
+> > 设 $f$ 在 $x_0$ 处连续，则由
+> > $$
+> > 0 \le ||f(x)| - |f(x_0)|| \le |f(x) - f(x_0)|
+> > $$
+> > 以及夹逼原理知 $|f(x)|$ 在 $x_0$ 处连续
+>
+> 研究函数 $f(x) = \frac{1}{x}\ (x \ne 0)$ 的连续性
+>
+> > 设 $x_0 > 0$。任给 $\varepsilon > 0$，取 $\delta = \min\left\{\frac{1}{2}x_0, \frac{1}{2}x_0^2\varepsilon\right\}$，当 $|x - x_0| < \delta$ 时
+> > $$
+> > \left|\frac{1}{x} - \frac{1}{x_0}\right| = \frac{|x - x_0|}{|x x_0|} \le \frac{2|x - x_0|}{x_0^2} < \varepsilon,
+> > $$
+> > 因此 $f(x)$ 在 $x_0$ 处连续。完全类似地可证明，当 $x_0 < 0$ 时，$f$ 在 $x_0$ 处也连续。因此 $\frac{1}{x}$ 为连续函数
+>
+> 研究函数 $f(x) = a^x\ (a > 0)$ 的连续性
+>
+> > $a = 1$ 时 $f(x) = 1$ 为常值函数，因此是连续函数。设 $a \ne 1$，$x_0 \in \mathbb{R}$，则
+> > $$
+> > \lim_{x \to x_0} a^x = \lim_{x \to x_0} a^{x_0} a^{x - x_0} = a^{x_0} \lim_{y \to 0} a^y = a^{x_0}.
+> > $$
+> > 因此 $f(x)$ 为连续函数
+
+利用下面的两个定理可以得到连续函数的更多例子
+
+**定理1**（连续函数的四则运算）．设 $f(x), g(x)$ 都在 $x_0$ 处连续，则 
+
+
+(1) $\alpha f(x) + \beta g(x)$ 在 $x_0$ 处连续，其中 $\alpha, \beta$ 为常数；  
+
+(2) $f(x)g(x)$ 在 $x_0$ 处连续；  
+
+(3) 当 $g(x_0) \ne 0$ 时，$f(x)/g(x)$ 在 $x_0$ 处连续。
+
+> 由函数极限的四则运算性质即可得到
+
+**定理2**（复合函数的连续性）．设函数 $f(y)$ 在 $y_0$ 处连续，函数 $g(x)$ 在 $x_0$ 处的极限为 $y_0$，则有
+$$
+\lim_{x \to x_0} f(g(x)) = f\left(\lim_{x \to x_0} g(x)\right) = f(y_0),
+$$
+特别地，当 $g$ 在 $x_0$ 处连续时，复合函数 $f(g(x))$ 在 $x_0$ 处也连续。
+
+> /proof/
+>
+> 因为函数 $f(y)$ 在 $y_0$ 处连续，故任给 $\varepsilon > 0$，存在 $\delta > 0$，当 $|y - y_0| < \delta$ 时，
+> $$
+> |f(y) - f(y_0)| < \varepsilon.
+> $$
+> 对于这个 $\delta$，因为 $g(x) \to y_0\ (x \to x_0)$，故存在 $\eta > 0$，使得当 $0 < |x - x_0| < \eta$ 时，
+> $$
+> |g(x) - y_0| < \delta,
+> $$
+> 从而
+> $$
+> |f(g(x)) - f(y_0)| < \varepsilon,
+> $$
+> 即
+> $$
+> f(g(x)) \to f(y_0) = f\left(\lim_{x \to x_0} g(x)\right).
+> $$
+
+下面再给出一些例子：
+
+> 如果 $f, g$ 为连续函数，则 $\max\{f,g\}$ 和 $\min\{f,g\}$ 均为连续函数
+>
+> > 当 $f, g$ 连续时，$f + g$, $f - g$ 均连续。并且可以直接验证
+> > $$
+> > \max\{f,g\} = \frac{1}{2}\{(f + g) + |f - g|\},\quad \min\{f,g\} = \frac{1}{2}\{(f + g) - |f - g|\}.
+> > $$
+> > 于是 $\max\{f,g\}$ 和 $\min\{f,g\}$ 均为连续函数
+>
+> 有理函数的连续性
+>
+> > 因为 $f(x) = x$ 为连续函数，因此 $x^2 = x \cdot x$, $x^3 = x \cdot x \cdot x, \cdots, x^n\ (n \ge 1)$ 都是连续函数；同理，因为 $f(x) = x^{-1}$ 连续，因此 $x^n\ (n \le -1)$ 也是连续函数。
+> >
+> > 进一步，有理函数（即两个多项式之商）在定义域内均为连续函数
+>
+> 三角函数的连续性
+>
+> > 因为 $\sin x, \cos x$ 为连续函数，故三角函数
+> > $$
+> > \csc x = \frac{1}{\sin x},\ \sec x = \frac{1}{\cos x},\ \tan x = \frac{\sin x}{\cos x},\ \cot x = \frac{\cos x}{\sin x}
+> > $$
+> > 在定义域内均为连续函数
+>
+> 设 $\alpha \ne 0$，研究幂函数 $f(x) = x^\alpha$ 的连续性
+>
+> > 设 $\alpha > 0$。先来说明 $f(x)$ 在 $x = 0$ 处是连续的。事实上，任给 $\varepsilon > 0$，取 $\delta = \varepsilon^{1/\alpha}$，当 $|x| < \delta$ 时
+> > $$
+> > |x^\alpha - 0| = (|x|)^\alpha \le (\varepsilon^{1/\alpha})^\alpha = \varepsilon.
+> > $$
+> > 因此 $f(x)$ 在 $x = 0$ 处连续。
+> >
+> > 如果 $x > 0$，则 $x^\alpha = e^{\alpha \ln x}$，根据复合函数的连续性，我们知道 $f(x)$ 连续；如果 $x < 0$，则 $x^\alpha = (-1)^\alpha e^{\alpha \ln |x|}$，仍由复合函数的连续性知 $f(x)$ 连续。
+> >
+> > 如果 $\alpha < 0$，则
+> > $$
+> > x^\alpha = \left(\frac{1}{x}\right)^{-\alpha},
+> > $$
+> > 因此当 $x \ne 0$ 时函数是连续的。总之，在定义域内，幂函数是连续的
+
+### · 间断点
+
+单调函数和可逆函数之间有很密切的联系，我们先来研究单调函数的连续性
+
+**定义2**：设 $x_0$ 为 $f(x)$ 的一个间断点。如果 $f(x)$ 在 $x_0$ 处的左极限 $f(x_0 - 0)$ 和右极限 $f(x_0 + 0)$ 都存在且有限，则称 $x_0$ 为第一类间断点；其它的间断点都称为第二类间断点。左极限和右极限不相等的第一类间断点称为跳跃间断点；左极限和右极限相等的第一类间断点称为可去间断点。
+
 /example/
 
-$$
-\lim_{x \to +\infty} \frac{\ln x}{x^\alpha} \overset{\alpha > 0}{=} \lim_{x \to +\infty} \frac{1}{x} \frac{1}{\alpha x^{\alpha - 1}} = \lim_{x \to +\infty} \frac{1}{\alpha x^\alpha} = 0
-$$
-
-
-$$
-\lim_{x \to +\infty} \frac{x^\alpha}{a^x} \overset{\alpha > 0, a > 1}{=} \lim_{x \to +\infty} \frac{\alpha x^{\alpha - 1}}{a^x \ln a} = \cdots = \lim_{x \to +\infty} \frac{\alpha(\alpha - 1)\cdots(\alpha - [\alpha])x^{\alpha - (\alpha | + 1)}}{a^x (\ln a)^{|\alpha | + 1}} = 0
-$$
-
-
-$$
-\lim_{x \to +\infty} \frac{a^x}{x^x} \overset{*/\infty}{=} \lim_{x \to +\infty} e^{x \ln(\frac{a}{x})} \overset{e^{-\infty}}{=} 0
-$$
-
-**定理9**（阶指幂对原理）：( $\alpha > 0, a > 1$ ) 从左到右：快 (高阶) --- 慢 (低阶)
-
-$$
-x \to +\infty : x^x \quad a^x \quad x^\alpha \quad \ln x
-$$
-
-$$
-n \to \infty^n : n^n \quad n! \quad a^n \quad n^\alpha \quad \ln n
-$$
-
-> **注意**：
+> 研究单调函数 $f(x) = [x]$ 的连续性，其中 $[x]$ 表示不超过 $x$ 的最大整数
 >
-> 1. 等级差别： $n!, a^n, n^\alpha, \ln n$ （不包括  $n^n$ ）
->
->    有限个低等级的乘在一起也抵不过一个高等级的
->
->    例如  $\lim_{x \to +\infty} \frac{\ln^{100} x}{x} = 0$ ， $\lim_{x \to +\infty} \frac{e^n \cdot n^{10000} \cdot \ln^{100} n}{n!} = 0$ 
->
-> 2. $n^n$  只比  $n!$  快一点
->
->    $$
->    (1 + \frac{1}{n})^n < e < (1 + \frac{1}{n})^{n+1} \Rightarrow \frac{n^n}{n! e^n} < 1
->    $$
->    思考： $\sqrt[n]{n} \sim \frac{n}{e}$ ， $\ln n \sim 1 + \frac{1}{2} + \cdots + \frac{1}{n}$ 
+> > 当 $k \le x < k + 1$ ($k$ 为整数) 时，$[x] = k$。因此，当 $x$ 不是整数时，$f(x)$ 在 $x$ 处连续。当 $x = k$ 为整数时，$f(x)$ 在 $k$ 处的左极限为 $k - 1$，右极限为 $k$。这说明 $f(x)$ 的间断点恰为所有的整数点。$\square$
+> >
+> > 根据定义，函数 $f(x) = [x]$ 的间断点都是跳跃间断点。
 
-/example/
+下面的结果说明单调函数在定义域内部的间断点都是跳跃间断点。
 
-$$
-\lim_{x \to +\infty} x^\alpha \ln x \overset{\alpha > 0}{=} \lim_{y \to +\infty} -\frac{\ln y}{y^\alpha} = 0
-$$
+**命题3**．设 $f(x)$ 是区间 $(a,b)$ 中的单调函数，$x_0 \in (a,b)$。如果 $x_0$ 为 $f(x)$ 的间断点，则 $x_0$ 是跳跃间断点。
 
-/example/
-
-> 
+> /proof/
 >
+> 由单调性知 $f(x)$ 在 $x_0$ 处的左极限和右极限都存在且有限，当 $f$ 单调递增时，有
 > $$
-> \lim_{x \to +\infty} \frac{x}{x + \sin x} {=} \lim_{x \to +\infty} \frac{1}{1 + \cos x}
+> f(x_0 - 0) \le f(x_0) \le f(x_0 + 0),
 > $$
+> 当 $f$ 单调递减时，有
+> $$
+> f(x_0 - 0) \ge f(x_0) \ge f(x_0 + 0).
+> $$
+> 因此，如果 $x_0$ 为 $f(x)$ 的间断点，则 $x_0$ 必为跳跃间断点
+
+**命题4**：设 $f(x)$ 是定义在区间 $I$ 中的单调函数，则 $f(x)$ 的间断点为至多可数多个
+
+> /proof/
 >
-> 振荡，洛不达！
+> 不妨设 $f(x)$ 单调递增，且 $I$ 为开区间。假设 $x_1 < x_2$ 为间断点，则
 > $$
-> \lim_{x \to +\infty} \frac{x}{x + \sin x} = \lim_{x \to +\infty} \frac{1}{\sin x} \frac{1}{1 + \frac{1}{x}} = 1
+> f(x_1 - 0) \le f(x_1) \le f(x_1 + 0) \le f(x_2 - 0) \le f(x_2) \le f(x_2 + 0).
 > $$
+> 因此，区间 $(f(x_1 - 0), f(x_1 + 0))$ 和 $(f(x_2 - 0), f(x_2 + 0))$ 不相交。如果我们把每一个间断点 $x$ 均对应到开区间 $(f(x - 0), f(x + 0))$，则这些开区间互不相交。这样的开区间只有至多可数多个，因此 $f(x)$ 的间断点也至多可数
 
-**其他类型**：
+**命题5**：设 $f(x)$ 是定义在区间 $I$ 中的严格单调函数，则 $f(x)$ 连续当且仅当 $f(I)$ 也是区间
 
-(1). $\infty - \infty$  —— 通分
+> 不妨设 $f(x)$ 严格单调递增。如果 $f(I)$ 为区间，则 $f(x)$ 没有间断点，这是因为间断点 $x_0$ 对应的区间 $(f(x_0 - 0), f(x_0 + 0))$ 不在值域内，从而会分割值域。即值域为区间时 $f$ 是连续的。
+>
+> 如果 $f$ 连续，则由**介值定理**知 $f(I)$ 为区间
 
+**推论6**．定义在区间 $I$ 中的严格单调连续函数 $f(x)$ 一定是可逆的，且其逆也是严格单调连续的
+
+> 不妨设 $f(x)$ 严格单调递增。由上一命题知 $f(I) = J$ 是区间。因为映射 $f: I \to J$ 是一一映射，故它是可逆的。设 $y_1 < y_2 \in J$，记 $x_1 = f^{-1}(y_1)$, $x_2 = f^{-1}(y_2)$。如果 $x_1 \ge x_2$，则因为 $f$ 单调递增，故 $y_1 = f(x_1) \ge f(x_2) = y_2$，这就得到矛盾。这说明
+> $$
+> x_1 = f^{-1}(y_1) < x_2 = f^{-1}(y_2),
+> $$
+> 因此 $f^{-1}$ 是 $J$ 上的严格单调递增函数。因为 $f^{-1}(J) = I$ 为区间，由上一命题即知 $f^{-1}$ 连续。
+>
+> **注意**．利用介值定理可以证明，区间上的连续函数可逆当且仅当它是严格单调的。
+
+**定理7**．初等函数在其定义域内均为连续函数
+
+> 我们已经证明了常值函数、三角函数、幂函数、指数函数与对数函数在其定义域内是连续的。根据上面的推论，反三角函数在其定义域内也是连续的。这些基本初等函数在四则运算以及复合之下也都是连续函数
+>
+> 利用初等函数的连续性，求函数极限的时候通常就可以直接代入定义域内的变量值来计算
+
+## Part 2 闭区间连续函数
+
+函数的性质密切依赖于实数系的基本性质
+
+### · 介值定理
+
+**定理1** (有界性定理). 设 $f(x)$ 为闭区间 $[a,b]$ 上的连续函数, 则 $f(x)$ 在 $[a,b]$ 上有界.
+
+> /proof/
+>
+> **证法一**: 用反证法. 假设 $f(x)$ 无界, 则存在点列 $\{x_n\} \subset [a,b]$, 使得
+> $$
+> |f(x_n)| \geq n,\quad n = 1,2,\cdots.
+> $$
+> 因为 $\{x_n\}$ 为有界点列, 故存在收敛子列 $\{x_{n_i}\}$, 使得
+> $$
+> \lim_{i \to \infty} x_{n_i} = x_0 \in [a,b].
+> $$
+> 又因为 $f(x)$ 在 $x_0$ 处连续, 故
+> $$
+> \lim_{i \to \infty} f(x_{n_i}) = f(x_0).
+> $$
+> 特别地, $\{f(x_{n_i})\}$ 是有界点列, 这和 $|f(x_{n_i})| \geq n_i\ (\forall\ i \geq 1)$ 相矛盾.
+>
+> **证法二**: 任取 $x \in [a,b]$, 因为 $f$ 在 $x$ 处连续, 故存在 $\delta_x > 0$, 使得
+> $$
+> |f(x') - f(x)| \leq 1,\quad \forall\ x' \in (x - \delta_x, x + \delta_x) \cap [a,b].
+> $$
+> 区间族 $\{(x - \delta_x, x + \delta_x)\}_{x \in [a,b]}$ 组成了闭区间 $[a,b]$ 的一个开覆盖, 因此存在有限子覆盖, 记为
+> $$
+> \{(x_i - \delta_{x_i}, x_i + \delta_{x_i})\},\ i = 1,2,\ldots,k.
+> $$
+> 令 $M = \max\limits_{1 \leq i \leq k} \{|f(x_i)| + 1\}$. 任取 $x \in [a,b]$, 设 $x \in (x_i - \delta_{x_i}, x_i + \delta_{x_i})$, 则
+> $$
+> |f(x)| \leq |f(x) - f(x_i)| + |f(x_i)| \leq 1 + |f(x_i)| \leq M,
+> $$
+> 这说明 $f(x)$ 是有界的. $\square$
+>
+> > 闭区间的条件不能减弱, 例如函数 $f(x) = \dfrac{1}{x}$ 在 $(0,1]$ 上连续, 但无界.
+
+**定理2** (最值定理). 设 $f(x)$ 为闭区间 $[a,b]$ 上的连续函数, 则 $f(x)$ 在 $[a,b]$ 上必取到最大值和最小值, 即存在 $x_*, x^* \in [a,b]$, 使得
 $$
-\lim_{x \to 0} \left( \frac{1}{\sin^2 x} - \frac{1}{x^2} \right) = \lim_{x \to 0} \left( \frac{x^2 - \sin^2 x}{x^2 \sin^2 x} \right)
+f(x_*) \leq f(x) \leq f(x^*),\quad \forall\ x \in [a,b].
 $$
 
-(2). $0 \cdot \infty$  —— 倒数
+> /proof/
+>
+> **证法一**: 根据有界性定理, $f(x)$ 有界, 因此 $f([a,b])$ 必有上确界和下确界. 记上确界为 $M$, 则存在点列 $\{x_n\} \subset [a,b]$, 使得
+> $$
+> M - \frac{1}{n} \leq f(x_n) \leq M.
+> $$
+> 根据夹逼原理, $f(x_n) \to M\ (n \to \infty)$. 因为 $\{x_n\}$ 为有界点列, 故存在收敛子列 $\{x_{n_i}\}$, 使得
+> $$
+> \lim_{i \to \infty} x_{n_i} = x^* \in [a,b].
+> $$
+> 因为 $f(x)$ 在 $x^*$ 处连续, 故 $f(x_{n_i}) \to f(x^*)\ (i \to \infty)$. 这说明 $M = f(x^*)$, $M$ 即为 $f(x)$ 的最大值. 同理可证最小值可以取到, 或考虑 $-f$ 的最大值即可.
+>
+> **证法二**: 用反证法. 设 $M$ 为 $f$ 的上确界, 但 $f(x) \neq M,\ \forall\ x \in [a,b]$. 考虑函数
+> $$
+> F(x) = \frac{1}{M - f(x)},\quad x \in [a,b].
+> $$
+> $F(x)$ 是 $[a,b]$ 上的正的连续函数. 由有界性定理, 存在正数 $K > 0$, 使得 $F(x) \leq K$. 从而
+> $$
+> f(x) \leq M - \frac{1}{K},\quad \forall\ x \in [a,b].
+> $$
+> 这与 $M$ 为 $f$ 的上确界相矛盾, 因此 $M$ 必被 $f(x)$ 取到. 下确界的情形同理可证. $\square$
+>
+> **注意**. 闭区间的条件不能减弱, 如 $f(x) = x,\ x \in (0,1]$ 是连续的, 但在 $(0,1]$ 上达不到最小值.
 
+**定理3** (零值定理, Bolzano). 设 $f(x)$ 为闭区间 $[a,b]$ 上的连续函数, 且 $f(a)f(b) < 0$, 则存在 $\xi \in (a,b)$, 使得 $f(\xi) = 0$.
+
+> **证法一**: 用闭区间套原理. 不妨设 $f(a) < 0,\ f(b) > 0$. 
+>
+> (反证法) 假设 $f(x) \neq 0,\ \forall\ x \in (a,b)$. 将 $[a,b]$ 二等分, 如果 $f\left(\dfrac{a+b}{2}\right) > 0$, 则取 $a_1 = a,\ b_1 = \dfrac{a+b}{2}$; 如果 $f\left(\dfrac{a+b}{2}\right) < 0$, 则取 $a_1 = \dfrac{a+b}{2},\ b_1 = b$, 
+>
+> 总之 $f(a_1) < 0,\ f(b_1) > 0$. 再将 $[a_1,b_1]$ 二等分, 用 $[a_2,b_2]$ 表示满足 $f(a_2) < 0,\ f(b_2) > 0$ 的那一半小区间. 如此继续, 我们得到闭区间套
+> $$
+> [a_1,b_1] \supset [a_2,b_2] \supset \cdots \supset [a_n,b_n] \supset \cdots,
+> $$
+> 满足 $f(a_n) < 0,\ f(b_n) > 0$, 且
+> $$
+> b_n - a_n = \frac{b-a}{2^n} \to 0,\quad n \to \infty.
+> $$
+> 由闭区间套原理, 存在 $x_0 \in [a,b]$, 使得
+> $$
+> \lim_{n \to \infty} a_n = \lim_{n \to \infty} b_n = x_0.
+> $$
+> 根据 $f$ 的连续性, 有
+> $$
+> 0 \geq \lim_{n \to \infty} f(a_n) = f(x_0) = \lim_{n \to \infty} f(b_n) \geq 0,
+> $$
+> 从而 $f(x_0) = 0$. 显然 $x_0 \neq a,b$, 这就导出了矛盾.
+>
+> **证法二**: 不妨设 $f(a) < 0,\ f(b) > 0$. 令
+> $$
+> A = \{x \in [a,b]\mid f(x) < 0\},
+> $$
+> 则 $a \in A$. 记 $\xi$ 为 $A$ 的上确界, 由 $f$ 的连续性易见 $\xi > a$. 由确界的定义, 存在 $x_n \in [a,b]$, 使得 $f(x_n) < 0,\ x_n \to \xi$, 因此
+> $$
+> f(\xi) = \lim_{n \to \infty} f(x_n) \leq 0,
+> $$
+> 特别地, $\xi < b$. 由 $A$ 的定义知 $f$ 在 $(\xi,b]$ 上非负, 由 $f$ 的连续性知 $f(\xi) \geq 0$, 这说明 $f(\xi) = 0$. 显然 $\xi \in (a,b)$.
+>
+> > **注意**. 如果条件改为 $f(a)f(b) \leq 0$, 则存在 $\xi \in [a,b]$, 使得 $f(\xi) = 0$. 事实上, 如果 $f(a)f(b) = 0$, 则 $f(a) = 0$ 或 $f(b) = 0$, 从而取 $\xi = a$ 或 $\xi = b$ 即可; 当 $f(a)f(b) < 0$ 时用零值定理的结论即可
+
+**定理4** (介值定理). 设 $f(x)$ 为 $[a,b]$ 上的连续函数, $\mu$ 是严格介于 $f(a)$ 和 $f(b)$ 之间的数, 则存在 $\xi \in (a,b)$, 使得 $f(\xi) = \mu$.
+
+> /proof/
+>
+> 设 $\mu$ 是严格介于 $f(a)$ 和 $f(b)$ 之间的数, 则 $(f(a) - \mu)(f(b) - \mu) < 0$. 因此, 由零值定理, 连续函数 $f(x) - \mu$ 在 $(a,b)$ 内存在零点 $\xi$, 即 $f(\xi) = \mu$.
+
+**推论5**. 设 $f(x)$ 是 $[a,b]$ 上的连续函数, 则 $f([a,b]) = [m,M]$, 其中 $m$, $M$ 分别是 $f$ 在 $[a,b]$ 上的最小值和最大值.
+
+> 当 $m = M$ 时 $f(x)$ 为常值函数, 结论自然成立. 
+>
+> 设 $m < M$. 显然, $f([a,b]) \subset [m,M]$. 另一方面, 由最值定理, 存在 $x_*, x^*$, 使得 $f(x_*) = m,\ f(x^*) = M$.
+>
+>  由介值定理, 介于 $m$ 和 $M$ 之间的值也能被 $f(x)$ 取到, 因此 $[m,M] \subset f([a,b])$. 这说明 $f([a,b]) = [m,M]$.
+
+**推论6**. 设 $f(x)$ 是区间 $I$ 中的连续函数, 则 $f(I)$ 也是区间 (可退化为一点).
+
+> 如果 $f(x)$ 为常值函数, 则 $f(I)$ 退化为一点. 否则, 任取 $y_1 < y_2 \in f(I)$, 设 $f(x_1) = y_1,\ f(x_2) = y_2$, 在以 $x_1,\ x_2$ 为端点的闭区间上用介值定理, 我们就知道 $[y_1,y_2] \subset f(I)$. 由 $y_1,\ y_2$ 的任意性知 $f(I)$ 为一个区间.
+
+**推论7**. 设 $f(x)$ 是区间 $I$ 中的连续函数, 则 $f(x)$ 可逆当且当 $f(x)$ 是严格单调函数.
+
+> 只要证明必要性就可以了. 设 $x_1 < x_2 \in I$. 因为 $f(x)$ 可逆, 故 $f(x_1) \neq f(x_2)$. 如果 $f(x_1) < f(x_2)$, 我们将证明 $f(x)$ 在 $[x_1,x_2]$ 上是严格单调递增的. (反证法) 设 $x' < x'' \in [x_1,x_2],\ f(x') \geq f(x'')$. 分情况讨论:
+>
+> (1) $f(x'') < f(x_1)$. 这时 $f(x'') < f(x_1) < f(x_2)$, 由介值定理, 存在 $\xi \in [x'',x_2]$, 使得 $f(\xi) = f(x_1)$, 这与 $f(x)$ 可逆相矛盾;
+>
+> (2) $f(x'') > f(x_1)$. 这时 $f(x') \geq f(x'') > f(x_1)$, 由介值定理, 存在 $\xi \in [x_1,x']$, 使得 $f(\xi) = f(x'')$, 这与 $f(x)$ 可逆相矛盾.
+>
+> 如果 $f(x_1) > f(x_2)$, 完全类似地可以证明 $f(x)$ 在 $[x_1,x_2]$ 上是严格单调递减的. 总之, $f(x)$ 在任何闭区间上都是严格单调的, 从而不难得出 $f(x)$ 在 $I$ 中是严格单调的.
+
+### · 一致连续
+
+**定义1** (一致连续). 设函数 $f(x)$ 定义在区间 $I$ 中, 如果任给 $\varepsilon > 0$, 均存在 $\delta = \delta(\varepsilon) > 0$, 使得当 $x_1,x_2 \in I$, 且 $|x_1 - x_2| < \delta$ 时有
 $$
-\lim_{x \to 0} x \ln x = \lim_{x \to 0} \frac{\ln x}{\frac{1}{x}} = \lim_{x \to 0} \frac{\frac{1}{x}}{-\frac{1}{x^2}} = \lim_{x \to 0} -x = 0
+|f(x_1) - f(x_2)| < \varepsilon,
 $$
+则称 $f(x)$ 在 $I$ 中一致连续.
 
-(3). $\infty^0, 0^0, 1^\infty$  —— 对数
+> (1) 显然, 一致连续函数一定是连续函数. 一致连续性和连续性的区别就是, 用 $\varepsilon-\delta$ 语言定义 $x_0$ 处的连续性时, 定义中出现的 $\delta$ 一般会依赖于连续点 $x_0$ 以及 $\varepsilon$, 而一致连续性定义中出现的 $\delta$ 是不依赖于具体连续点的, 即对所有的连续点都能取到一个公共的 $\delta$, 一致性就体现在这儿.
+>
+> (2) 用逆反命题的形式改写定义, 就得到: $f(x)$ 在 $I$ 中不一致连续当且仅当存在 $\varepsilon_0 > 0$, 以及 $I$ 中点列 $\{a_n\}, \{b_n\}$, 使得 $a_n - b_n \to 0\ (n \to \infty)$, 且
+> $$
+> |f(a_n) - f(b_n)| \geq \varepsilon_0.
+> $$
 
+/example/ 研究函数 $f(x) = \sin x,\ x \in \mathbb{R}$ 的一致连续性.
+
+> 任给 $\varepsilon > 0$, 取 $\delta = \varepsilon$. 当 $x_1,x_2 \in \mathbb{R}$, 且 $|x_1 - x_2| < \delta$ 时, 有
+> $$
+> |\sin x_1 - \sin x_2| = \left|2\sin\frac{x_1 - x_2}{2}\cos\frac{x_1 + x_2}{2}\right| \\
+> \leq 2\left|\sin\frac{x_1 - x_2}{2}\right| \\
+> \leq |x_1 - x_2| < \varepsilon.
+> $$
+> 这说明 $\sin x$ 在 $(-\infty,+\infty)$ 中是一致连续的.
+>
+> $\sin x$ 是所谓 Lipschitz 函数的特殊情形.
+
+设 $f(x)$ 是定义在区间 $I$ 中的函数. 如果存在 $0 < \alpha \leq 1$, 以及常数 $M$, 使得
 $$
-\lim_{x \to 0^+} x^x = \exp \left( \lim_{x \to 0^+} x \ln x \right) = 1
+|f(x_1) - f(x_2)| \leq M|x_1 - x_2|^\alpha,\quad \forall\ x_1,x_2 \in I,
 $$
+则称 $f(x)$ 是 $I$ 中的 $\alpha$ 阶 Hölder 函数. 当 $\alpha = 1$ 时也称为 Lipschitz 函数.
 
-> /example/
+Hölder 函数都是一致连续的: 任给 $\varepsilon > 0$, 取
+$$
+\delta = \left(\frac{\varepsilon}{M}\right)^{\frac{1}{\alpha}},
+$$
+则当 $x_1,x_2 \in I,\ |x_1 - x_2| < \delta$ 时, 有
+$$
+|f(x_1) - f(x_2)| \leq M|x_1 - x_2|^\alpha < M\left(\frac{\varepsilon}{M}\right) = \varepsilon.
+$$
+**命题8**. 设 $f(x), g(x)$ 为区间 $I$ 中的一致连续函数. 则  
+
+(1) $\alpha f(x) + \beta g(x)$ 在 $I$ 中也是一致连续的;  
+
+(2) 如果 $f(x), g(x)$ 为有界函数, 则 $f(x)g(x)$ 也是一致连续的;  
+
+(3) 如果 $f(x)$ 有界, 且存在 $\varepsilon_0 > 0$, 使得 $g(x) \geq \varepsilon_0,\ \forall\ x \in I$, 则 $f(x)/g(x)$ 也是一致连续的;  
+
+(4) 一致连续函数的复合函数仍为一致连续函数.
+
+**定理9** (Cantor). 闭区间上的连续函数是一致连续的.
+
+> /proof/
 >
-> 
+> 设 $f(x)$ 是 $[a,b]$ 上的连续函数.
 >
+> **证法一**: (反证法) 如果 $f(x)$ 不是一致连续的, 则存在 $\varepsilon_0 > 0$, 以及点列 $\{a_n\}, \{b_n\} \subset [a,b]$, 使得 $a_n - b_n \to 0\ (n \to \infty)$, 且
 > $$
-> \lim_{x \to 0} \left( \frac{a_1^x + a_2^x + \cdots + a_n^x}{n} \right)^{\frac{1}{x}} (a_i > 0)
+> |f(a_n) - f(b_n)| \geq \varepsilon_0.
 > $$
+> 因为 $\{b_n\}$ 为有界点列, 故存在收敛子列 $\{b_{n_i}\}$, 设 $b_{n_i} \to x_0 \in [a,b]$. 此时
+> $$
+> a_{n_i} = (a_{n_i} - b_{n_i}) + b_{n_i} \to 0 + x_0 = x_0\quad (i \to \infty).
+> $$
+> 因为 $f(x)$ 在 $x_0$ 处连续, 故
+> $$
+> \varepsilon_0 \leq |f(a_{n_i}) - f(b_{n_i})| \to |f(x_0) - f(x_0)| = 0\quad (i \to \infty),
+> $$
+> 这就导出了矛盾.
 >
+> **证法二**: 任给 $\varepsilon > 0$, 因为 $f(x)$ 连续, 故对于任意 $x \in [a,b]$, 存在 $\delta_x > 0$, 使得
 > $$
-> = \exp \left( \lim_{x \to 0} \frac{\ln(a_1^x + a_2^x + \cdots + a_n^x) - \ln n}{x} \right)
+> |f(x') - f(x)| < \frac{\varepsilon}{2},\quad \forall\ x' \in (x - \delta_x, x + \delta_x) \cap [a,b].
 > $$
+> 显然, $\left\{(x - \frac{\delta_x}{2}, x + \frac{\delta_x}{2})\right\}_{x \in [a,b]}$ 为闭区间 $[a,b]$ 的一个开覆盖, 因而存在有限子覆盖, 即存在 $x_i\ (1 \leq i \leq k)$, 使得
+> $$
+> [a,b] \subset \bigcup_{i=1}^k \left(x_i - \frac{\delta_{x_i}}{2}, x_i + \frac{\delta_{x_i}}{2}\right).
+> $$
+> 记
+> $$
+> \delta = \min\left\{\frac{\delta_{x_i}}{2} \mid i = 1,2,\ldots,k\right\},
+> $$
+> 则对于任意的 $x',x'' \in [a,b]$, 如果 $|x' - x''| < \delta$, 设
+> $$
+> x' \in \left(x_i - \frac{\delta_{x_i}}{2}, x_i + \frac{\delta_{x_i}}{2}\right),\ \text{(对某个 } i\text{)},
+> $$
+> 则
+> $$
+> |x'' - x_i| \leq |x'' - x'| + |x' - x_i| < \delta + \frac{\delta_{x_i}}{2} \leq \delta_{x_i},
+> $$
+> 从而有 $x'' \in (x_i - \delta_{x_i}, x_i + \delta_{x_i})$. 因此, 我们有
+> $$
+> |f(x') - f(x'')| \leq |f(x') - f(x_i)| + |f(x_i) - f(x'')| \leq 2\frac{\varepsilon}{2} = \varepsilon,
+> $$
+> 这说明 $f(x)$ 在 $[a,b]$ 上是一致连续的. 
+
+最后引出函数振幅的概念, 并利用它来刻画连续性和一致连续性. 某个变化量的振幅, 是指其“最大”和“最小”值的差. 如果这个变化量的值趋于一个定数, 则其振幅应趋于零. 
+
+**定义2** (振幅). 设 $f(x)$ 在 $x_0$ 的一个开邻域内有定义, 称
+$$
+\omega_f(x_0,r) = \sup\left\{|f(x') - f(x'')| \mid x',x'' \in (x_0 - r, x_0 + r)\right\}\quad (r > 0)
+$$
+为 $f$ 在区间 $(x_0 - r, x_0 + r)$ 上的振幅. 显然, $\omega_f(x_0,r)$ 关于 $r \to 0^+$ 单调递减, 因此
+$$
+\omega_f(x_0) = \lim_{r \to 0^+} \omega_f(x_0,r)
+$$
+存在 (不一定有限), 称为 $f$ 在 $x_0$ 处的振幅.
+
+> (1) $\omega_f(x_0,r)$ 也可以定义为
+> $$
+> \omega_f(x_0,r) = \sup_{x \in (x_0 - r, x_0 + r)} f(x) - \inf_{x \in (x_0 - r, x_0 + r)} f(x),
+> $$
+> (2) 也可类似地对闭区间以及 $x_0$ 的一侧定义函数的振幅.
+
+**命题10**. $f(x)$ 在 $x_0$ 处连续当且仅当 $\omega_f(x_0) = 0$.
+
+> 设 $f(x)$ 在 $x_0$ 处连续. 任给 $\varepsilon > 0$, 存在 $\delta > 0$, 当 $|x - x_0| < \delta$ 时
+> $$
+> |f(x) - f(x_0)| < \frac{\varepsilon}{2}.
+> $$
+> 因此, 对于 $\forall\ x',x'' \in (x_0 - r, x_0 + r)\ (0 < r \leq \delta)$, 有
+> $$
+> |f(x') - f(x'')| \leq |f(x') - f(x_0)| + |f(x_0) - f(x'')| < 2\frac{\varepsilon}{2} = \varepsilon.
+> $$
+> 即当 $0 < r \leq \delta$ 时
+> $$
+> \omega_f(x_0,r) \leq \varepsilon.
+> $$
+> 这说明 $\omega_f(x_0) = \lim_{r \to 0^+} \omega_f(x_0,r) = 0$.
 >
+> 反之, 设 $\lim_{r \to 0^+} \omega_f(x_0,r) = \omega_f(x_0) = 0$, 则任给 $\varepsilon > 0$, 存在 $\delta > 0$, 使得
 > $$
-> = \exp \left( \lim_{x \to 0} \frac{a_1^x \ln a_1 + a_2^x \ln a_2 + \cdots + a_n^x \ln a_n}{a_1^x + a_2^x + \cdots + a_n^x} \right)
+> \omega_f(x_0,r) < \varepsilon,\quad \forall\ 0 < r \leq \delta.
 > $$
->
+> 特别地, 对于满足 $|x - x_0| < \delta$ 的点 $x$, 有
 > $$
-> = \exp \left( \frac{\ln(a_1 a_2 \cdots a_n)}{n} \right) = \sqrt[n]{a_1 a_2 \cdots a_n}
+> |f(x) - f(x_0)| \leq \omega_f(x_0,\delta) < \varepsilon,
 > $$
->
+> 这说明 $f(x)$ 在 $x_0$ 处连续.
 
-**注意**：数列极限  $\overset{Heine}{=}$  函数极限
+我们可以类似地用振幅来刻画一致连续性. 设 $f$ 定义在区间 $I$ 中, $r > 0$. 令
+$$
+\omega_f(r) = \sup\left\{|f(x') - f(x'')| \mid \forall\ x',x'' \in I,\ |x' - x''| < r\right\},
+$$
+则 $\omega_f(r)$ 关于 $r \to 0^+$ 单调递减. 利用一致连续的定义可得如下命题：
 
-### · 泰勒公式
+**命题11**. $f$ 在 $I$ 中一致连续当且仅当 $\displaystyle\lim_{r \to 0^+} \omega_f(r) = 0$.
 
-
-
-
+结束.
 

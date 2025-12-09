@@ -1,1707 +1,847 @@
 ---
-title: Chapter 8 空间解析几何
-createTime: 2025/02/06 10:48:41
+title: Chapter 8 不定积分
 permalink: /integral/integral-8/
+createTime: 2025/09/16 20:57:28
 ---
 
-## Fragment 1 向量
+## Part 1 连续函数积分
 
-### · 向量基本运算
+### · 定义
 
-1.以量度或不变来分：变量与常量
+许多实际的应用问题都涉及到积分, 积分的内容占据了本课程的半壁江山.
 
-2.以量的特征来分：
+设 $f$ 为闭区间 $[a, b]$ 上的连续函数，我们考虑由 $f$ 的图像、直线 $x = a$、$x = b$ 以及 $y = 0$（$x$ 轴）在平面上所围成的曲边梯形的面积，我们用记号 $\int_a^b f(x)\,dx$ 表示这个面积的值，称为 $f$ 在 $[a, b]$ 上的积分. 
 
-(1) 只有大小的量称为数量，或称为标量，或称为纯量
-
-(2) 不仅有大小，而且还有方向称向量，或称为向量，常用 $\vec{a}$, $\vec{b}$, $\vec{c}$ 表示
-
-而 $|\vec{a}|$, $|\vec{b}|$, $|\vec{c}|$ 表示矢量的大小，称为模长；有时也用 $\overrightarrow{AB}$ 表示，模长 $|\overrightarrow{AB}| = AB$
-
-定义：若 $\vec{a}$, $\vec{b}$ 大小相等，方向一致，称 $\vec{a} = \vec{b}$
-
-大小 $|m \vec{a}| = |m| |\vec{a}|$
-
-> 性质：
->
+> (1) 设 $f(x) \equiv c$ 为常值函数，则所求面积是矩形的面积，因此自然地定义
 > $$
-> (mn) \vec{a} = m (n \vec{a}) = (nm) \vec{a}\\
-> (n + m) \vec{a} = n \vec{a} + m \vec{a}
-> $$
-
-***
-
-#### · 向量加减
-
-> /property/
->
-> 交换律：
-> $$
-> \vec{a} + \vec{b} = \vec{b} + \vec{a}
+> \int_a^b f(x)\,dx = c(b - a).
 > $$
 >
-> 结合律：
+> (2) 设 $f(x)$ 为 $[a, b]$ 上的线性函数，则所求面积是一个梯形的面积，因此定义
 > $$
-> \begin{align*}
-> \vec{a} + \vec{b} + \vec{c} = \vec{a} + (\vec{b} + \vec{c})\\
-> = (\vec{a} + \vec{b}) + \vec{c}
-> \end{align*}
-> $$
-
-#### · 数量积
-
-/example/  一个质点M在恒力下的作用下，沿直线从A点移动到B点所做的功W
-$$
-\begin{align*}
-W &= |\vec{F}| \cdot \cos \theta \cdot |\overrightarrow{AB}|\\
-&= |\vec{F}| |\overrightarrow{AB}| \cos \theta\\
-&= \vec{F} \cdot \overrightarrow{AB}\\
-\end{align*}
-$$
-
-> /Define/
->
-> 定义：设 $\vec{a}$, $\vec{b}$ 为两个向量
->
-> 定义两向量 $\vec{a}$, $\vec{b}$ 的夹角 $\theta$ ($0 \leq \theta \leq \pi$)
->
-> $$
-> \vec{a} \cdot \vec{b} = |\vec{a}| |\vec{b}| \cos \theta
+> \int_a^b f(x)\,dx = \frac{1}{2}[f(a) + f(b)](b - a).
 > $$
 >
-> 称为两向量 $\vec{a}$ 与 $\vec{b}$ 的点乘积，或点积，或数量积，或内积
-
-然后给出性质：
-
->  /property/
+> 当 $f$ 为常值函数时，这个定义和 (1) 是一致的. 并且，从定义可得
 >
->  性质1:
->  $$
->  \vec{a} \cdot \vec{b} = \vec{b} \cdot \vec{a}
->  $$
->
->  ***
->
->  性质2:
->  $$
->  \vec{a} \cdot (\vec{b} + \vec{c}) = \vec{a} \cdot \vec{b} + \vec{a} \cdot \vec{c}
->  $$
->
->  ***
->
->  性质3:
->  $$
->  \vec{a} \perp \vec{b} \iff \vec{a} \cdot \vec{b} = 0
->  $$
->  反之，若 $\vec{a} \cdot \vec{b} = 0$
->
->  $\Rightarrow |\vec{a}| |\vec{b}| \cos \theta = 0$
->
->  $\Rightarrow \cos \theta = 0 \text{ 或 } |\vec{a}| = 0 \text{ 或 } |\vec{b}| = 0$
->
->  $\Rightarrow \theta = \frac{\pi}{2}, \text{ 即 } \vec{a} \perp \vec{b}$
->
->  或 $|\vec{a}| = 0 \Rightarrow \vec{a} = \vec{0}$
->
->  写成 $\vec{a} = 0$
->
->  ***
->
->  性质4：
->
->  $$
->  \vec{a} \cdot \vec{a} = |\vec{a}| |\vec{a}| \cos 0 = |\vec{a}|^2\\
->  |\vec{a}| = \sqrt{\vec{a} \cdot \vec{a}}
->  $$
->
-
-点乘积的物理意义：一个质点M在恒力$\vec{F}$的作用下沿直线由A点移动到B点所做的功W = $\vec{F} \cdot \overrightarrow{AB}$
-
-> /Define/
->
-> 设 $\vec{a} \neq \vec{0}$，即 $|\vec{a}| \neq 0$，
->
-> 称 $\frac{\vec{a}}{|\vec{a}|}$ 为 $\vec{a}$ 的单位矢量，记作 $\hat{a}$，即 $\hat{a} = \frac{\vec{a}}{|\vec{a}|}$
->
+> - 如果 $f$, $g$ 均为线性函数，则
 > $$
-> \Rightarrow \vec{a} = |\vec{a}| \hat{a}\\
-> |\hat{a}| = \left| \frac{\vec{a}}{|\vec{a}|} \right| = \frac{1}{|\vec{a}|} |\vec{a}| = 1
+> \int_a^b [f(x) + g(x)]\,dx = \int_a^b f(x)\,dx + \int_a^b g(x)\,dx,
 > $$
-
- $\hat{a}$ 是单位矢量，求矢量 $\vec{a}$ 在非零矢量 $\vec{b}$ 上的投影：
-
-$$
-\begin{align*}
-P_{rj\vec{b}} \cdot \vec{a} &= OP = |\vec{a}| \cos \theta\\
-&= |\vec{a}| \left| \hat{b} \right| \cos \theta\\
-&= \vec{a} \cdot \hat{b}\\
-&= \vec{a} \cdot \frac{\vec{b}}{|\vec{b}|}\\
-&= \frac{\vec{a} \cdot \vec{b}}{|\vec{b}|}\\
-\end{align*}
-$$
-
-投影矢量 $\overrightarrow {OP} = OP \hat{b}$
-
-$$
-= (\vec{a} \cdot \hat{b}) \hat{b}
-$$
-
-
-
-### · 向量叉乘
-
-我们引入一个开门的模型：
-
-门径里开往处开大小定义为 $|\overrightarrow{F}| |\overrightarrow{AB}| \sin \theta$，方向与 $\overrightarrow{F}$，$\overrightarrow{AB}$ 确定的平面垂直
-
-且 $\overrightarrow{n}$, $\overrightarrow{m}$ 与方向构成右手系  (符合右手法则)，这个矢量记为 $\overrightarrow{F} \times \overrightarrow{AB}$
-
-> /Define/
->
-> 设 $\overrightarrow{a}$, $\overrightarrow{b}$ 为任意向量 
->
-> 定义一个新的向量 $\overrightarrow{a} \times \overrightarrow{b}$ ：$|\overrightarrow{a} \times \overrightarrow{b}| = |\overrightarrow{a}| |\overrightarrow{b}| \sin \theta$
->
-> $\overrightarrow{a} \times \overrightarrow{b}$ 的方向如下确定：$\overrightarrow{a} \times \overrightarrow{b}$ 与 $\vec a$ ，$\vec b$  确定的平面垂直 ，且 $\overrightarrow{a}$ ， $\overrightarrow{b}$ ， $\overrightarrow{a} \times \overrightarrow{b}$ 构成右手系
->
-> 称为 $\overrightarrow{a}$ 与 $\overrightarrow{b}$ 的叉乘积，或叉积，或矢量积，或外积
-
-性质如下：
-
-> /property/
->
-> 1. $\overrightarrow{a} \times \overrightarrow{b} = -\overrightarrow{b} \times \overrightarrow{a}$
->
-> 2. $\overrightarrow{a} \times (\overrightarrow{b} + \overrightarrow{c}) = \overrightarrow{a} \times \overrightarrow{b} + \overrightarrow{a} \times \overrightarrow{c}$
->
-> 3. $\overrightarrow{a} \parallel \overrightarrow{b} \Leftrightarrow \overrightarrow{a} \times \overrightarrow{b} = \overrightarrow{0}$ 
->
->   若 $\overrightarrow{a} \parallel \overrightarrow{b} \Leftrightarrow \overrightarrow{a}$, $\overrightarrow{b}$ 线性相关， 存在不全为 0 的常数 $k_1$, $k_2$， 使 $k_1 \overrightarrow{a} + k_2 \overrightarrow{b} = \overrightarrow{0}$ 
->
->   不妨设 $k_1 \neq 0$, 有 $\overrightarrow{a} = -\frac{k_2}{k_1} \overrightarrow{b}$ ，令 $-\frac{k_2}{k_1} = \lambda$, 有 $\overrightarrow{a} = \lambda \overrightarrow{b}$
->
-> 4. $(\overrightarrow{a} \cdot \overrightarrow{b})^2 + |\overrightarrow{a} \times \overrightarrow{b}|^2 = |\overrightarrow{a}|^2 |\overrightarrow{b}|^2$
->
-> PS：点乘可为负，叉乘必非负
-
-然后补充了一条数量级的性质（高中知识）
-
-> $\overrightarrow{a} \cdot \overrightarrow{b} = |\overrightarrow{a}| |\overrightarrow{b}| \cos \theta \quad (0 \leq \theta \leq \pi)$
->
-> 当 $\overrightarrow{a} \neq \overrightarrow{0}$, $\overrightarrow{b} \neq \overrightarrow{0}$ 时，
->
-> $\cos \theta = \frac{\overrightarrow{a} \cdot \overrightarrow{b}}{|\overrightarrow{a}| |\overrightarrow{b}|}$
-
-### · 空间直角坐标
-
-#### · 集合直积
-
-/example/ $A = \{0, 1\}$, $B = \{1, 2\}$
-
-定义 $A$ 与 $B$ 的直积$A \times B = \{(0, 1), (0, 2), (1, 1), (1, 2)\}$ ， $A \times A = A^2$
-
-设 $R = (-\infty, +\infty)$，$R \times R = R^2 = \{(x, y) | x, y \in R\}$
-
-二维平面： $R \times R \times R = R^3 = \{(x, y, z) | x, y, z \in R\}$
-
-三维空间： $\underbrace{R \times R \times \cdots \times R}_{n \text{个}} = R^n$
-
-$R^n = \{(x_1, x_2, \ldots, x_n) | x_1, x_2, \ldots, x_n \in R\}$
-
-$n > 3$ 时，称为抽象空间
-
-#### · 空间直角坐标系
-
-全体空间点组成的集合与 $\{(x,y,z) | x,y,z \in \mathbb{R}\} = \mathbb{R}^3$ 建立一一对应。
-
-三个平面把空间分成八个卦限
-
-第一卦限：$x > 0$, $y > 0$, $z > 0$
-
-$xOy$ 平面方程：$z = 0$ ， $yOz$ 平面方程：$x = 0$ ， $zOx$ 平面方程：$y = 0$
-
-$x$ 轴方程：$\begin{cases} y = 0 \\ z = 0 \end{cases}$ ， $y$ 轴方程：$\begin{cases} x = 0 \\ z = 0 \end{cases}$ ， $z$ 轴方程：$\begin{cases} x = 0 \\ y = 0 \end{cases}$
-
-$M(x, y, z)$ 关于 $xOy$ 平面对称点为 $(x, y, -z)$
-
-$oz$ 轴对称点为 $(-x, -y, z)$ ， $O$ 点对称点为 $(-x, -y, -z)$
-
-#### · 空间两点间距离
-
-设 $P_1(x_1, x_2, \ldots, x_n)$, $P_2(y_1, y_2, \ldots, y_n) \in \mathbb{R}^n$
-
-$$
-|P_1 P_2| = \sqrt{\sum_{i=1}^{n} (y_i - x_i)^2}
-$$
-
-> /Define/
->
-> 定义：设 $X$ 是一个非空集合，$\forall P_1, P_2 \in X$，$d(P_1, P_2)$ 表达式是一个实数
->
-> 而且满足下列条件：
->
-> 1. $d(P_1, P_2) \geq 0$ （非负性）
->
-> 2. $d(P_1, P_2) = d(P_2, P_1)$ （对称性）
->
-> 3. $\forall P_3 \in X$ （三角形法则）
->
->    $d(P_1, P_2) \leq d(P_1, P_3) + d(P_2, P_3)$
->
->    称 $d(P_1, P_2)$ 是 $\mathbb{R}^3$ 上的一个距离
-
-/additional/ 
-
-$P_1(x_1, y_1, z_1) \in \mathbb{R}^3$ ， $P_2(x_2, y_2, z_2) \in \mathbb{R}^3$
-
-$d(P_1, P_2) = |x_2 - x_1| + |y_2 - y_1| + |z_2 - z_1|$
-
-验证满足距离定义，但是并非日常所讲距离
-
-(实际上是三维空间中的曼哈顿距离)
-
-#### · 向量坐标式
-
-矢量的 $\overrightarrow{i}$, $\overrightarrow{j}$, $\overrightarrow{k}$ 坐标分解式，简称为坐标式：
-$$
-\overrightarrow{a} = x \overrightarrow{i} + y \overrightarrow{j} + z \overrightarrow{k}
-$$
-称为 ${i}$, ${j}$, ${k}$ 的坐标分量式
-
-$$
-\overrightarrow{a} = \{x, y, z\} = [x, y, z] = (x, y, z)
-$$
-$\{x, y, z\}$ 称为坐标式
-
-***
-
-然后是单位向量有关的部分：
-
-我们想象一个空间向量，与 $x$ ， $y$ ， $z$ 的夹角为 $\alpha$ ， $\beta$ ， $\gamma$
-$$
-z = \vec{a} \cdot \hat{k} = |\vec{a}| \cos \gamma\\
-x = \vec{a} \cdot \hat{i} = |\vec{a}| \cos \alpha\\
-y = \vec{a} \cdot \hat{j} = |\vec{a}| \cos \beta
-$$
-$\vec{a} = \{|\vec{a}| \cos \alpha, |\vec{a}| \cos \beta, |\vec{a}| \cos \gamma\}= \{\vec{a} \cdot \hat{i}, \vec{a} \cdot \hat{j}, \vec{a} \cdot \hat{k}\}$
-
-$$
-\cos \alpha = \frac{x}{|\vec{a}|} = \frac{x}{\sqrt{x^2 + y^2 + z^2}} \\
-\cos \beta = \frac{y}{|\vec{a}|} = \frac{y}{\sqrt{x^2 + y^2 + z^2}} \\
-\cos \gamma = \frac{z}{|\vec{a}|} = \frac{z}{\sqrt{x^2 + y^2 + z^2}}
-$$
-其中 $|\vec{a}| = \sqrt{x^2 + y^2 + z^2}$
-
-$$
-\cos^2 \alpha + \cos^2 \beta + \cos^2 \gamma = 1
-$$
-
-$$
-\vec{a} = \{x, y, z\}
-$$
-
-$$
-\hat{a} = \frac{\vec{a}}{|\vec{a}|}= \frac{1}{|\vec{a}|} \{x, y, z\}= \{\cos \alpha, \cos \beta, \cos \gamma\}
-$$
-
-称为单位向量
-
-***
-
-#### · 坐标运算
-
- $\vec{a} = \{x_1, y_1, z_1\}$，$k$是一个常数，则$k \vec{a} = \{k x_1, k y_1, k z_1\}$
-
-> /proof/
 > $$
-> \begin{align*}
-> k \vec{a} &= k (x_1 \hat{i} + y_1 \hat{j} + z_1 \hat{k})\\
-> &= (k x_1) \hat{i} + (k y_1) \hat{j} + (k z_1) \hat{k}\\
-> &= \{k x_1, k y_1, k z_1\}
-> \end{align*}
+> \int_a^b [f(x) - g(x)]\,dx = \int_a^b f(x)\,dx - \int_a^b g(x)\,dx,
 > $$
-> 结束.
-
-不妨给出 $\vec{b} = \{x_2, y_2, z_2\}$
-
-$$
-\begin{align*}
-\vec{a} + \vec{b} &= x_1 \hat{i} + y_1 \hat{j} + z_1 \hat{k} + x_2 \hat{i} + y_2 \hat{j} + z_2 \hat{k}\\
-&= (x_1 + x_2) \hat{i} + (y_1 + y_2) \hat{j} + (z_1 + z_2) \hat{k}\\
-&= \{x_1 + x_2, y_1 + y_2, z_1 + z_2\}
-\end{align*}
-$$
-同理，
-$$
-\vec{a} - \vec{b} = \{x_1 - x_2, y_1 - y_2, z_1 - z_2\}
-$$
-对于数量级运算：
-$$
-\begin{align*}
-\vec{a} \cdot \vec{b} &= (x_1 \hat{i} + y_1 \hat{j} + z_1 \hat{k}) \cdot (x_2 \hat{i} + y_2 \hat{j} + z_2 \hat{k})\\
-&= x_1 x_2 + y_1 y_2 + z_1 z_2
-\end{align*}
-$$
-那对于向量叉乘运算？不难发现如下轮换式：
-$$
-\hat{i} \times \hat{j} = \hat{k}\\
-\hat{j} \times \hat{k} = \hat{i}\\
-\hat{k} \times \hat{i} = \hat{j}
-$$
-根据如上轮换式：
-$$
-\begin{align*}
-\vec{a} \times \vec{b} &= (x_1 \hat{i} + y_1 \hat{j} + z_1 \hat{k}) \times (x_2 \hat{i} + y_2 \hat{j} + z_2 \hat{k})\\
-&= x_1 y_2 \hat{k} - x_1 z_2 \hat{j} - y_1 x_2 \hat{k}\\
-&+ y_1 z_2 \hat{i} + z_1 x_2 \hat{j} - z_1 y_2 \hat{i}\\
-&= (y_1 z_2 - z_1 y_2) \hat{i} - (x_1 z_2 - z_1 x_2) \hat{j}+ (x_1 y_2 - y_1 x_2) \hat{k}
-\end{align*}
-$$
-不难发现，这个展开式似乎与行列式有关:
-$$
-\vec{a} \times \vec{b} = \begin{vmatrix}
-    \hat{i} & \hat{j} & \hat{k} \\
-    x_1 & y_1 & z_1 \\
-    x_2 & y_2 & z_2
-\end{vmatrix}
-$$
-按第一行展开即可得到结果
-
-#### · 混合积
-
-设 $\vec{a} = \{x_1, y_1, z_1\}$,$\vec{b} = \{x_2, y_2, z_2\}$,$\vec{c} = \{x_3, y_3, z_3\}$
-
-积 $(\vec{a} \times \vec{b}) \cdot \vec{c}$ 称为 $\vec{a}$，$\vec{b}$，$\vec{c}$ 的混合积，结果是一个数量。
-
-混合积不能等成：$\vec{a} \times \vec{b} \cdot \vec{c}$
-
-$(\vec{a} \times \vec{b}) \cdot \vec{c} = (\vec{a} \times \vec{b}) \cdot \vec{c} \quad$	数量
-
-$\vec{a} \times \vec{b} \cdot \vec{c} = \vec{a} \times (\vec{b} \cdot \vec{c}) \quad$	矢量
-
-混合积 $(\vec{a} \times \vec{b}) \cdot \vec{c} =$
-$$
-\begin{align*}
-(\vec{a} \times \vec{b}) \cdot \vec{c} &=[(y_1z_2-z_1y_2)\vec{i}-(x_1z_2-z_1x_2)\vec{j}+(x_1y_2-y_1x_2)\vec{k}\text{ }]
-(x_3 \hat{i} + y_3 \hat{j} + z_3 \hat{k})\\
-&= (y_1 z_2 - z_1 y_2) x_3 + (x_1 z_2 - z_1 x_2) y_3 + (x_1 y_2 - y_1 x_2) z_3\\
-\end{align*}
-$$
-
-$$
-= \begin{vmatrix}
-x_3 & y_3 & z_3 \\
-x_1 & y_1 & z_1 \\
-x_2 & y_2 & z_2
-\end{vmatrix}
-= \begin{vmatrix}
-x_1 & y_1 & z_1 \\
-x_2 & y_2 & z_2 \\
-x_3 & y_3 & z_3
-\end{vmatrix}
-$$
-
-/example/
-
- $(\vec{a} \times \vec{b}) \cdot \vec{c} = -(\vec{c} \times \vec{b}) \cdot \vec{a}$
-
-$(\vec{a} \times \vec{b}) \cdot \vec{c} = (\vec{b} \times \vec{c}) \cdot \vec{a}$
-
-证明 $(\vec{a} \times \vec{b}) \cdot \vec{c} = \vec{a} \cdot (\vec{b} \times \vec{c})$
-
-> /proof/
+> 这可从定义直接得到. 
 >
-> 证：右边
+> - 如果 $f$ 为线性函数，且存在常数 $M$，使得 $|f(x)| \le M$，$\forall x \in [a, b]$，则
 > $$
-> = \vec{a} \cdot (\vec{b} \times \vec{c})= (\vec{b} \times \vec{c}) \cdot \vec{a}
-> = -(\vec{a} \times \vec{c}) \cdot \vec{b}= (\vec{a} \times \vec{b}) \cdot \vec{c}
+> \left|\int_a^b f(x)\,dx\right| \le M(b - a).
 > $$
-> $=$ 左式
-
-然后给出混合积性质：
-
-> /property/
->
-> $\vec{a}$ ， $\vec{b}$ ， $\vec{c}$共面的充要条件是 $(\vec{a} \times \vec{b}) \cdot \vec{c} = 0$
->
+> 事实上，由定义，有
 > $$
-> \Leftrightarrow \begin{vmatrix}
-> x_1 & y_1 & z_1 \\
-> x_2 & y_2 & z_2 \\
-> x_3 & y_3 & z_3
-> \end{vmatrix} = 0
-> $$
-> 若$\vec{a} = \{x_1, y_1, z_1\}$ , $\vec{b} = \{x_2, y_2, z_2\}$ , $\vec{c} = \{x_3, y_3, z_3\}$, 有下列性质:
->
-> 性质1
->
-> $\vec{a} \perp \vec{b} \Leftrightarrow \vec{a} \cdot \vec{b} = 0$
->
-> $\Leftrightarrow x_1 x_2 + y_1 y_2 + z_1 z_2 = 0$
->
-> 性质 2
->
-> $\vec{a} \parallel \vec{b} \iff \vec{a} \times \vec{b} = \vec{0}$
->
-> $$
-> \iff  \vec{b} \neq \vec{0}, \text{  } \vec{a} = \lambda \vec{b}\\
-> \iff \frac{x_1}{x_2} = \frac{y_1}{y_2} = \frac{z_1}{z_2}
-> $$
-> 向量中分量可以一个或两个为 0
->
-> 比如：
-> $$
-> \frac{x_1}{x_2} = \frac{y_1}{0} = \frac{z_1}{z_2} = \lambda
-> $$
-> “建立形式上的比”
->
-> 可以推出 $y_1 = 0 \cdot \lambda = 0$
-
-***
-
-#### · 几何意义
-
-向量叉乘几何意义：
-
-$|\vec{a} \times \vec{b}| = |\vec{a}| |\vec{b}| \sin \theta$ ， $S = \frac{1}{2} |\vec{a} \times \vec{b}|$ （与 $\vec{a}$ ， $\vec{b}$ ， $\theta$ 相关的平行四边形面积）
-
-混合积的几何意义：
-
-$$
-|(\vec{a} \times \vec{b}) \cdot \vec{c}|= |\vec{a} \times \vec{b}| |\vec{c}| |\cos \langle \vec{a} \times \vec{b}, \vec{c} \rangle|= |\vec{a} \times \vec{b}| |\vec{c}| |\cos \theta|
-$$
-
-$$
-V_{O-ABC} = \frac{1}{2} S \cdot h = \frac{1}{6} |(\vec{a} \times \vec{b}) \cdot \vec{c}|
-$$
-
-## Fragment 2 平面与直线方程
-
-### · 空间曲面曲线方程
-
-> /Define/
->
-> 设 $\Sigma(\Omega)$ 是空间一张曲面，$F(x, y, z) = 0$ 是一个三元方程，
-> $$
-> M(x_1, y_1, z_1) \in \Sigma\Rightarrow F(x_1, y_1, z_1) = 0
-> $$
-> 反之，若对 $M(x_1, y_1, z_1)$ 有 $F(x_1, y_1, z_1) = 0$  
-> $$
-> \Rightarrow M(x_1, y_1, z_1) \in \Sigma
-> $$
-> 知 { ${ M |\text{ } M \in \Sigma}$ } 与 {$(x, y, z)|F(x, y, z) = 0$} 建立一一对应
->
-> 称 $f(x, y, z) = 0$ 是曲面 $\Sigma$ 的方程
->
-> 而曲面 $\Sigma$ 是方程 $F(x, y, z) = 0$ 表示的曲面
->
-> 方程 $f(x, y, z) = 0$ 称为曲面 $\Sigma$ 的一般方程
->
-> 如果从方程可以解出 $z = f(x, y)$，称为曲面 $\Sigma$ 的显函数表达式
-
-求曲面 $\Sigma$ 方程的方法：
-
-设 $M(x, y, z)$ 是 $\Sigma$ 上任意一点，找到 $M$ 点满足的等式
-
-$$
-\Leftrightarrow F(x, y, z) = 0
-$$
-就是曲面 $\Sigma$ 的方程
-
-曲线 $\Gamma$ 的方程，用
-$$
-\begin{cases}
-F(x, y, z) = 0 \\
-G(x, y, z) = 0
-\end{cases}
-$$
-称为曲线方程的一般式
-
-空间曲线$\Gamma$参数式:
-
-$$
-\Gamma = \left\{
-\begin{array}{l}
-x = x(t) \\
-y = y(t) \\
-z = z(t)
-\end{array}
-\right.
-$$
-$t$为参数
-
-空间曲面$\Sigma$参数式:
-
-$$
-\Sigma = \left\{
-\begin{array}{l}
-x = x(u, v) \\
-y = y(u, v) \\
-z = z(u, v)
-\end{array}
-\right.
-$$
-$u, v$为参数
-
-***
-
-### · 平面与直线方程
-
-#### · 平面方程
-
-1.点法式
-
-设平面$\pi$经过已知点$P_0(x_0, y_0, z_0)$，且与非零常矢量$\vec{n} = \{A, B, C\}$垂直，求平面$\pi$的方程：
-
-设 $\vec{n} = (A, B, C)$ 是平面 $\pi$ 的法向量，$\mathbf{P}_0 = (x_0, y_0, z_0)$ 是平面上一点，则平面 $\pi$ 的点法式方程为：
-$$
-A(x - x_0) + B(y - y_0) + C(z - z_0) = 0
-$$
-这就是所求的平面方程，这个方程称为平面 $\pi$ 的点法式方程。
-
-> 求平面 $\pi$ 法向量 $\mathbf{n}$ 的方法：
->
-> 1. 若 $\overrightarrow{a} \in \pi$，$\overrightarrow{b} \in \pi$，$\overrightarrow{a} \times \overrightarrow{b}$ ，则 $\vec{n} = \overrightarrow{a} \times \overrightarrow{b}$
->
-> 2. 若 $\overrightarrow{a} \in \pi$，$\overrightarrow{b} \parallel \pi$，$\overrightarrow{a} \times \overrightarrow{b}$ ，则 $\vec{n} = \overrightarrow{a} \times \overrightarrow{b}$
->
-> 3. 若 $\overrightarrow{a} \parallel \pi$，$\overrightarrow{b} \parallel \pi$，$\overrightarrow{a} \neq \overrightarrow{b}$ ，则 $\vec{n} = \overrightarrow{a} \times \overrightarrow{b}$
-
-***
-
-2.一般式：
-
-由平面方程的点法式 $A(x - x_0) + B(y - y_0) + C(z - z_0) = 0$
-$$
-\Rightarrow Ax + By + Cz - (Ax_0 + By_0 + Cz_0) = 0
-$$
-设 $D = -(Ax_0 + By_0 + Cz_0)$  $\Rightarrow  Ax + By + Cz + D = 0$
-
-其中 $A$, $B$, $C$ 不全为 0。
-
-反之，若 $Ax + By + Cz + D = 0$  其中 $A$, $B$, $C$ 不全为 0。
-
-不妨设 $A \neq 0$，取 $y = y_0$，$z = z_0$
-$$
-x = \frac{-By_0 - Cz_0 - D}{A} \triangleq x_0
-$$
-得到了方程的一组解 $(x_0, y_0, z_0)$。
-
-有 $Ax_0 + By_0 + Cz_0 + D = 0$
-
-$$
-\Rightarrow D = -(Ax_0 + By_0 + Cz_0)
-$$
-
-$$
-\Rightarrow Ax + By + Cz + (Ax_0 + By_0 + Cz_0) = 0
-$$
-
-$$
-\Rightarrow A(x - x_0) + B(y - y_0) + C(z - z_0) = 0
-$$
-
-知 $Ax + By + Cz + D = 0$ 表示一个平面。
-
-即全体平面组成的集合
-
-与 $\{Ax + By + Cz + D = 0 | A, B, C \in \mathbb{R}, \text{不全为} 0\}$
-
-建立了一一对应。
-
-所以 $Ax + By + Cz + D = 0$ ，称为平面方程的一般式。
-
-> (1) 若平面 $\pi$ 经过原点，方程为 $Ax + By + Cz = 0$。
->
-> (2) 若平面 $\pi$ 平行于 $Oz$ 轴，
->
-> $\{A,B,C \}\cdot \{0,0,1\}=0$ ， $C = 0$
->
-> 方程为 $Ax + By + D = 0$
->
-> (3) 若平面 $\pi$ 经过 $Oz$ 轴，方程为 $Ax + By = 0$
-
-***
-
-3.截距式
-
-若平面方程为
-$$
-\frac{x}{a} + \frac{y}{b} + \frac{z}{c} = 1
-$$
-且 $a, b, c \neq 0$ ，称为截距式，该平面经过点 $(a, 0, 0)$, $(0, b, 0)$, $(0, 0, c)$。
-
-$a$, $b$, $c$ 称为平面方程在 $x$ 轴、$y$ 轴、$z$ 轴的截距。
-
-$$
-V_{O-ABC} = \frac{1}{6} |abc|
-$$
-
-平面的一般式 $Ax + By + Cz + D = 0$ 写成截距式，要求 $ABCD \neq 0$。
-$$
-\Rightarrow \frac{x}{-\frac{D}{A}} + \frac{y}{-\frac{D}{B}} + \frac{z}{-\frac{D}{C}} = 1
-$$
-
-***
-
-4.三点式
-
-若平面 $\pi$ 经过不在同一条直线上的三点 $M_1(x_1, y_1, z_1)$，$M_2(x_2, y_2, z_2)$，$M_3(x_3, y_3, z_3)$，求平面的方程。
-
-> /proof/
->
-> 解法一：由条件知
->
-> $$
-> \overrightarrow{M_1M_2} \subset \pi, \quad \overrightarrow{M_1M_3} \subset \pi\\
-> \overrightarrow{M_1M_2} \neq \overrightarrow{M_1M_3}
+> \left|\int_a^b f(x)\,dx\right| = \left|\frac{1}{2}[f(a) + f(b)](b - a)\right| \le \frac{1}{2}[|f(a)| + |f(b)|](b - a) \le M(b - a).
 > $$
 >
->
+> - 如果 $f$ 为线性函数，$c \in (a, b)$，则
 > $$
-> \overrightarrow{n} = \overrightarrow{M_1M_2} \times \overrightarrow{M_1M_3}= \begin{vmatrix}
-> \overrightarrow{i} & \overrightarrow{j} & \overrightarrow{k} \\
-> x_2 - x_1 & y_2 - y_1 & z_2 - z_1 \\
-> x_3 - x_1 & y_3 - y_1 & z_3 - z_1
-> \end{vmatrix}
+> \int_a^b f(x)\,dx = \int_a^c f(x)\,dx + \int_c^b f(x)\,dx.
 > $$
->
-> 按第一行展开，求出 $\overrightarrow{n}$。
->
-> 再经过 $M_1$，然后用点法式。
->
-> ***
->
-> 解法二:
+> 这是因为，$[a, b]$ 上的线性函数 $f(x)$ 可以写为
 > $$
-> \forall M(x, y, z) \in \pi
+> f(x) = f(a) + \frac{f(b) - f(a)}{b - a}(x - a)\quad\text{or}\quad f(x) = f(b) + \frac{f(b) - f(a)}{b - a}(x - b),
 > $$
->
+> 因此有
 > $$
-> \overrightarrow{MM_1}, \quad \overrightarrow{M_1M_2}, \quad \overrightarrow{M_1M_3} \text{ are coplanar}
+> \int_a^c f(x)\,dx + \int_c^b f(x)\,dx = \frac{1}{2}[f(a) + f(c)](c - a) + \frac{1}{2}[f(c) + f(b)](b - c)
 > $$
->
-> 混合积为 0
->
 > $$
-> \begin{vmatrix}
-> x - x_1 & y - y_1 & z - z_1 \\
-> x_2 - x_1 & y_2 - y_1 & z_2 - z_1 \\
-> x_3 - x_1 & y_3 - y_1 & z_3 - z_1
-> \end{vmatrix}
+> = \frac{1}{2}[f(a) + f(b) + \frac{f(b) - f(a)}{b - a}(c - b)](c - a)
+> + \frac{1}{2}[f(a) + f(b) + \frac{f(b) - f(a)}{b - a}(c - a)](b - c)
+> $$
+> $$
+> = \frac{1}{2}[f(a) + f(b)](c - a) + \frac{1}{2}[f(a) + f(b)](b - c)
+> $$
+> $$
+> = \frac{1}{2}[f(a) + f(b)](b - a)
+> = \int_a^b f(x)\,dx.
 > $$
 >
-> 按第一行展开，写成点向式。
-
-#### · 直线方程
-
-1.点向式
-
-设 $L$ 经过已知点 $M_0(x_0, y_0, z_0)$，且与非零的常矢量 $\overrightarrow{v} = \{l, m, n\}$ 平行，求 $L$ 的方程。
-
-$$
-\frac{\overrightarrow{v} \neq 0}{M_0(x_0, y_0, z_0)} \Rightarrow L
-$$
-
-得 $\forall M(x, y, z) \in L$ ， $\overrightarrow{M_0M} \subset L$
-
-由 $\overrightarrow{v} \parallel L \iff \overrightarrow{M_0M} \parallel \overrightarrow{v}$
-
-由 $\overrightarrow{v} \neq 0$，则
-$$
-\frac{x-x_0}{l} = \frac{y-y_0}{m} = \frac{z-z_0}{n}
-$$
-
-这就是所求直线 $L$ 的方程，称为点向式（对称式）， $\overrightarrow{v}$ 称为 $L$ 的方向向量
-
-***
-
-2.直线的参数式
-$$
-\begin{cases}
-x = x_0 + lt \\
-y = y_0 + mt \\
-z = z_0 + nt
-\end{cases}
-$$
-
-$t$ 为参数，$-\infty < t < +\infty$
-
-***
-
-3.两点式
-
-若直线 $L$ 经过不同的两点 $M_1(x_1, y_1, z_1)$ 和 $M_2(x_2, y_2, z_2)$，求 $L$ 的方程。
-
-得 $\overrightarrow{v} = \overrightarrow{M_1M_2} = (x_2 - x_1, y_2 - y_1, z_2 - z_1)$ ， $L$ 经过 $M_1(x_1, y_1, z_1)$。
-
-由点向式，得 $L$ 的方程为
-$$
-\frac{x - x_1}{x_2 - x_1} = \frac{y - y_1}{y_2 - y_1} = \frac{z - z_1}{z_2 - z_1}
-$$
-
-***
-
-4.一般式
-$$
-L: \begin{cases}
-A_1 x + B_1 y + C_1 z + D_1 = 0 \\
-A_2 x + B_2 y + C_2 z + D_2 = 0
-\end{cases}
-$$
-要求两平面不平行，即
-$$
-[A_1, B_1, C_1] \times [A_2, B_2, C_2] \neq 0
-$$
-
-$L$ 的方向向量
-
-$$
-\overrightarrow{v} = \begin{vmatrix}
-\overrightarrow{i} & \overrightarrow{j} & \overrightarrow{k} \\
-A_1 & B_1 & C_1 \\
-A_2 & B_2 & C_2
-\end{vmatrix}
-$$
-
-
-***
-
-直线方程常用点向式
-
-/question/    如何求直线 $L$ 的方向向量
-
-> /proof/
->
-> 1. 若 $L \perp \overrightarrow{a}$, $L \perp \overrightarrow{b}$, 且 $\overrightarrow{a} \times \overrightarrow{b}$
->
->    $\overrightarrow{v} = \overrightarrow{a} \times \overrightarrow{b}$
->
-> 2. 若 $L \perp \overrightarrow{a}$, $L \parallel \pi$, $\pi$ 的法向量为 $\overrightarrow{n}$
->
->    $\overrightarrow{n} \perp \pi, L \parallel \pi \Rightarrow L \perp \overrightarrow{n}$
->
->    $\therefore \overrightarrow{v} = \overrightarrow{a} \times \overrightarrow{n}$
-
-#### · 平面方程的平面束
-
-经过直线 $L = \left\{ \begin{aligned} A_1 x + B_1 y + C_1 z + D_1 &= 0 \\ A_2 x + B_2 y + C_2 z + D_2 &= 0 \end{aligned} \right.$
-
-的平面方程一定可以写成
-$$
-\lambda (A_1 x + B_1 y + C_1 z + D_1) + \mu (A_2 x + B_2 y + C_2 z + D_2) = 0
-$$
-其中，$\lambda$, $\mu$ 为待求的参数，称为平面束方程。
-
-### · 距离问题
-
-#### · 点到平面距离
-
-设平面 $\pi = Ax + By + Cz + D = 0$
-
-$P(x_1, y_1, z_1)$ 是空间一点，求 $P$ 到 $\pi$ 的距离 $d$
-
-$$
-d = \frac{|Ax_1 + By_1 + Cz_1 + D|}{\sqrt{A^2 + B^2 + C^2}}
-$$
-设$\mathbf{P} \in \pi$,$\mathbf{P} \neq \mathbf{P}_0$
-
-$$
-\begin{align*}
-d &= |\overrightarrow{\mathbf{P}_1\mathbf{P}} \cdot \overrightarrow{n}
-= \frac{|\overrightarrow{\mathbf{P}_1\mathbf{P}} \cdot \overrightarrow{n}|}{|\overrightarrow{n}|}\\
-&= \frac{|A(x - x_1) + B(y - y_1) + C(z - z_1)|}{\sqrt{A^2 + B^2 + C^2}}\\
-&= \frac{|Ax + By + Cz - (Ax_1 + By_1 + Cz_1)|}{\sqrt{A^2 + B^2 + C^2}}\\
-&= \frac{|Ax_1 + By_1 + Cz_1 + D|}{\sqrt{A^2 + B^2 + C^2}}
-\end{align*}
-$$
-
-#### · 点到直线的距离
-
-设
-$$
-L: \frac{x - x_0}{l} = \frac{y - y_0}{m} = \frac{z - z_0}{n}
-$$
-$\mathbf{P}_1(x_1, y_1, z_1)$是空间一点，求$\mathbf{P}_1$到$L$的距离
-
-$$
-d = |\overrightarrow{\mathbf{P}'\mathbf{P}_1}| = \frac{|\overrightarrow{\mathbf{P}_0\mathbf{P}_1} \times \overrightarrow{v}|}{|\overrightarrow{v}|} = \frac{S_{parallelogram}}{a}
-$$
-
-### · 直线方程转化
-
-(1) 点向式转化为一般式
-
-根据
-$$
-\frac{x - x_0}{l} = \frac{y - y_0}{m} = \frac{z - z_0}{n}
-$$
-消元：
-
-$$
-\Rightarrow \left\{ \begin{aligned}
-\frac{x - x_0}{l} &= \frac{y - y_0}{m} \\
-\frac{y - y_0}{m} &= \frac{z - z_0}{n}
-\end{aligned} \right.
-$$
-
-$$
-\iff \left\{ \begin{aligned}
-m(x - x_0) - l(y - y_0) &= 0 \\
-n(y - y_0) - m(z - z_0) &= 0
-\end{aligned} \right.
-$$
-
-***
-
-(2) 一般式转化为点向式
-
-由 $\left\{ \begin{aligned}
-A_1 x + B_1 y + C_1 z + D_1 &= 0 \\
-A_2 x + B_2 y + C_2 z + D_2 &= 0
-\end{aligned} \right.$
-
-方法一：L 的方向向量
-
-$$
-\overrightarrow{v} = \{A_1, B_1, C_1\} \times \{A_2, B_2, C_2\}= \begin{vmatrix}
-\overrightarrow{i} & \overrightarrow{j} & \overrightarrow{k} \\
-A_1 & B_1 & C_1 \\
-A_2 & B_2 & C_2
-\end{vmatrix}
-$$
-
-求出 L 的一个点 $P_0(x_0, y_0, z_0)$，用点向式写出方程
-
-方法二：消元法
-
-/example/ 转化为点向式：
-$$
-L = \left\{ \begin{aligned}
-x + y + z &= 1 \\
-x + 2y + 3z &= 0
-\end{aligned} \right.
-$$
-
-> /proof/
->
-> 选取 $z$ 为参数。
->
-> 消去 $x$：(2) - (1)
+> (3) 设 $f(x)$ 为 $[a, b]$ 上连续的分段线性函数，即存在区间 $[a, b]$ 中的分点
 > $$
-> y + 2z = -1, \quad z = \frac{y + 1}{-2}
+> a = x_0 < x_1 < \cdots < x_n = b
 > $$
-> 消去 $y$：(2) - (1) $\times$ 2
+> 使得 $f(x)$ 在每一个小区间 $[x_{i-1}, x_i]$ 上均为线性函数，则定义
 > $$
-> -x + z = -2, \quad z = x - 2\\
-> \Rightarrow \frac{x - 2}{1} = \frac{y + 1}{-2} = \frac{z - 0}{1}
+> \int_a^b f(x)\,dx = \sum_{i=1}^n \int_{x_{i-1}}^{x_i} f(x)\,dx,
 > $$
-> 知直线经过 $(2, -1, 0)$，
+> 这个定义是恰当的：如果存在 $[a, b]$ 的另外一些分点
+> $$
+> a = x'_0 < x'_1 < \cdots < x'_m = b
+> $$
+> 使得 $f(x)$ 在每一个小区间 $[x'_{i-1}, x'_i]$ 上均为线性函数，则所有这些分点 $\{x_i, x'_i\}$ 按从小到大的顺序排列后依然将 $[a, b]$ 分割为一些小区间，在每个小区间上 $f$ 仍为线性函数，且根据 (2) 中线性函数积分性质的第三条可知，$f$ 在这些新的小区间上的积分之和与分点 $\{x_i\}$ 或 $\{x'_i\}$ 分割后形成的小区间上 $f$ 的积分之和是一致的. 
 >
-> 方向向量 $\overrightarrow{v} = \{1, -2, 1\}$
-
-/example/ $L = \left\{ \begin{aligned}
-x + y + z &= 1 \\
-x - y + z &= 2
-\end{aligned} \right.$
-
-> /proof/
+> 以上说明了分段线性函数的积分与区间中分点的选取无关. 利用这一点不难看出，(2) 中线性函数积分的三条性质对于分段线性函数也完全成立. 
 >
-> 以 $z$ 为参数
->
-> 消去 $y$：(1) + (2)
+> (4) 现在假设 $f$ 是 $[a, b]$ 上的连续函数，不一定是分段线性的，我们要定义 $f$ 在 $[a, b]$ 上的积分. 一个自然的想法是用分段线性的函数去逼近 $f$. 事实上，任给正整数 $n$，将 $[a, b]$ 作 $n$ 等分，分点为 $x_i = a + \frac{i}{n}(b - a)$，$i = 0, 1, \cdots, n$. 在每一个小区间 $[x_{i-1}, x_i]$ 上定义 $l_i(x)$ 为满足条件 $l_i(x_{i-1}) = f(x_{i-1})$，$l_i(x_i) = f(x_i)$ 的线性函数，$l_i(x)$ 的表达式为
 > $$
-> 2x + 2z = 3, \quad z = \frac{x - \frac{3}{2}}{-1}
+> l_i(x) = f(x_{i-1}) + \frac{f(x_i) - f(x_{i-1})}{x_i - x_{i-1}}(x - x_{i-1}).
 > $$
-> 消去 $x$：(1) - (2)
->
+> 在 $[a, b]$ 上定义连续分段线性函数 $f_n(x)$ 为
 > $$
-> 2y = -1 \Rightarrow 2y + 1 = 0\\
-> \Rightarrow z = \frac{2y + 1}{0} = \frac{y + \frac{1}{2}}{0}
-> $$
-> 形式上的比
-> $$
-> \frac{x - \frac{3}{2}}{-1} = \frac{y + \frac{1}{2}}{0} = \frac{z - 0}{1}
+> f_n(x) = l_i(x),\quad x \in [x_{i-1}, x_i],\quad i = 1, \cdots, n.
 > $$
 
-### · 直线投影问题
-
-/example/    求直线 $L = \left\{ \begin{aligned}
-x + y - z - 1 &= 0 \\
-x - y + z + 1 &= 0
-\end{aligned} \right.$ 在平面 $\pi = x + y + z = 0$ 上投影直线 $L'$ 的方程
-
-<img src="https://nicostore-mathematica.github.io/picx-images-hosting/c1.9kgaaygm0n.webp" alt=/>
-
-***
-
-解法一：直线的两点式
-
-$L$ 上任取 $P_1$, $P_2$ 两点， $P_1$ 与 $\pi$ 点向式，得到 $P_1P_1'$，与 $\pi$ 交于 $P_1'$ ， $P_2$ 同理。
-
-***
-
-解法二：直线的一般式
-
-$L'$ 为 $\pi$ 与 $\pi'$ 联立，点法式求 $\pi' = L$ 上任取一点 $P_1$
-
-$L$ 的方向向量 $\overrightarrow{l} = \{1, -1, 1\} \times \{1, -1, 1\}$ 与 $\pi$ 的法向量 $\overrightarrow{n} = \{1, 1, 1\}$ 叉乘，得 $\pi'$ 的法向量
-
-***
-
-解法三：设 $L$ 与 $L'$ 确定的平面为 $\pi'$
-
-设 $\pi'$ 的方程为：
+**命题1.** 设 $f$, $f_n$ 如上，则任给 $\varepsilon > 0$，存在 $N = N(\varepsilon)$，当 $n > N$ 时
 $$
-\lambda (x + y - z - 1) + \mu (x - y + z + 1) = 0
-$$
- $\pi'$ 的法向量 $\overrightarrow{n'} = \{1, 1, 1\}$
-
-由 $(\lambda + \mu)x + (\lambda - \mu)y + (\mu - \lambda)z = 0$
-
-$$
-\overrightarrow{n'} = \{\lambda + \mu, \lambda - \mu, \mu - \lambda\}
-$$
-由 $\overrightarrow{n} \perp \overrightarrow{n'}$，有
-$$
-\lambda + \mu + \lambda - \mu + \mu - \lambda = 0
+|f(x) - f_n(x)| < \varepsilon,\quad \forall x \in [a, b].
 $$
 
-$$
-\mu = -\lambda
-$$
-
-$$
-2\lambda y - 2\lambda z - 2\lambda = 0
-$$
-
-$$
-\Rightarrow y - z - 1 = 0
-$$
-
-$$
-\therefore L' = \left\{ \begin{aligned}
-x + y + z &= 0 \\
-y - z - 1 &= 0
-\end{aligned} \right.
-$$
-
-### · 直线平面关系
-
-<img src="https://nicostore-mathematica.github.io/picx-images-hosting/c2.54xv5p4dks.webp" alt=/>
-
-$L_1: \frac{x - x_1}{l_1} = \frac{y - y_1}{m_1} = \frac{z - z_1}{n_1}$
-
-$L_2: \frac{x - x_2}{l_2} = \frac{y - y_2}{m_2} = \frac{z - z_2}{n_2}$
-
-直线 $L_1$ 和 $L_2$ 的关系
-
-1. 若 $(\overrightarrow{v}_1 \times \overrightarrow{v}_2) \cdot \overrightarrow{M_1M_2} = 0$ $\iff L_1, L_2$ 共面
-
-2. 若 $(\overrightarrow{v}_1 \times \overrightarrow{v}_2) \cdot \overrightarrow{M_1M_2} = 0$, 且 $\overrightarrow{v}_1 \neq \overrightarrow{v}_2$  $\iff L_1, L_2$  相交
-
-3. $\overrightarrow{v}_1 \parallel \overrightarrow{v}_2 \iff L_1 \parallel L_2$
-
-4. 若 $(\overrightarrow{v}_1 \times \overrightarrow{v}_2) \cdot \overrightarrow{M_1M_2} \neq 0$  $\iff L_1, L_2$  为异面直线
-
-#### · 异面直线距离
-
-若 $L_1, L_2$ 为异面直线，求 $|\overrightarrow{O_1O_2}|$ (公垂线)
-
-<img src="https://nicostore-mathematica.github.io/picx-images-hosting/c3.3d4wasl0oq.webp" alt=/>
-
-***
-
-解法一 过$O_1$ 作$L_2' \parallel L_2$
-
-由$L_1$,$L_2'$ 构成一平面，$L_2$ 任意一点到平面一点均相等。
-
-问题：如何确定$O_1$
-
-***
-
-解法二 过$M_1$ 作$L_2' \parallel L_2$
-
-则高度$|\overrightarrow{O_1O_2}| = |\overrightarrow{M_1M_2} \cdot \overrightarrow{n^0}|$ ，其中，$\overrightarrow{n^0}$ 为$\overrightarrow{v_1} \times \overrightarrow{v_2}$ 的单位矢量
-
-$$
-\overrightarrow{n^0} = \frac{\overrightarrow{v_1} \times \overrightarrow{v_2}}{|\overrightarrow{v_1} \times \overrightarrow{v_2}|}
-$$
-
-***
-
-解法三 精彩一刻
-$$
-|\overrightarrow{O_1O_2}| = \frac{|(\overrightarrow{v_1} \times \overrightarrow{v_2}) \cdot \overrightarrow{M_1M_2}|}{|\overrightarrow{v_1} \times \overrightarrow{v_2}|}
-$$
-$h = \frac{V}{S}$
-
-/question/    求$O_1O_2$ 的方程
-
-设$O_1O_2$ 与$L_1$ 确定的平面为$\pi_1$
-$$
-M_1 \in \pi_1, \quad \overrightarrow{n_1} = (\overrightarrow{v_1} \times \overrightarrow{v_2}) \times \overrightarrow{v_1}
-$$
-点法式写出$\pi_1$ 方程
-
-设$O_1O_2$ 与$L_2$ 确定的平面为$\pi_2$
-
-$$
-M_2 \in \pi_2, \quad \overrightarrow{n_2} = (\overrightarrow{v_1} \times \overrightarrow{v_2}) \times \overrightarrow{v_2}
-$$
-点法式写出$\pi_2$ 方程
-
-***
-
-转化思路，使用参数方程：
-
-不妨设
-$$
-L_1 = \left\{\begin{aligned}
-x &= x_1(s) \\
-y &= y_1(s) \\
-z &= z_1(s)
-\end{aligned}\right. \quad
-L_2 = \left\{\begin{aligned}
-x &= x_2(t) \\
-y &= y_2(t) \\
-z &= z_2(t)
-\end{aligned}\right.
-$$
-设 $O_1(x_1(s), y_1(s), z_1(s))$
-
-设 $O_2(x_2(t), y_2(t), z_2(t))$
-
-$\overrightarrow{O_1O_2} \parallel \overrightarrow{v_1} \times \overrightarrow{v_2} = \{a, b, c\} \neq 0$，有
-
-$$
-\frac{x_2(t) - x_1(s)}{a} = \frac{y_2(t) - y_1(s)}{b} = \frac{z_2(t) - z_1(s)}{c}
-$$
-
-***
-
-### · 向量表示夹角
-
-求 $L_1$ 与 $L_2$ 的夹角 $\theta$ ($0 \leq \theta \leq \frac{\pi}{2}$)
-
-(1) $0 \leq <\overrightarrow{v_1}, \overrightarrow{v_2}> \leq \frac{\pi}{2}$
-
-$$
-\cos \theta = \cos <\overrightarrow{v_1}, \overrightarrow{v_2}> = \frac{\overrightarrow{v_1} \cdot \overrightarrow{v_2}}{|\overrightarrow{v_1}| |\overrightarrow{v_2}|}= \frac{|\overrightarrow{v_1} \cdot \overrightarrow{v_2}|}{|\overrightarrow{v_1}| |\overrightarrow{v_2}|}
-$$
-(2) $\frac{\pi}{2} \leq <\overrightarrow{v_1}, \overrightarrow{v_2}> \leq \pi$
-
-$$
-\cos \theta = \cos [\pi - <\overrightarrow{v_1}, \overrightarrow{v_2}>]
-= -\cos <\overrightarrow{v_1}, \overrightarrow{v_2}>
-= -\frac{\overrightarrow{v_1} \cdot \overrightarrow{v_2}}{|\overrightarrow{v_1}| |\overrightarrow{v_2}|}
-= \frac{|\overrightarrow{v_1} \cdot \overrightarrow{v_2}|}{|\overrightarrow{v_1}| |\overrightarrow{v_2}|}
-$$
-总之，
-
-$$
-\cos \theta = \frac{|\overrightarrow{v_1} \cdot \overrightarrow{v_2}|}{|\overrightarrow{v_1}| |\overrightarrow{v_2}|} \quad (0 \leq \theta \leq \frac{\pi}{2})
-$$
-($\overrightarrow{v_1} \neq 0$, $\overrightarrow{v_2} \neq 0$)
-
-2.求平面 $\pi_1$ 与 $\pi_2$ 的夹角 $\theta$ ($0 \leq \theta \leq \frac{\pi}{2}$)
-$$
-\cos \theta = \frac{|\overrightarrow{n_1} \cdot \overrightarrow{n_2}|}{|\overrightarrow{n_1}| |\overrightarrow{n_2}|}
-$$
-
-3.直线 $L$ 与平面 $\pi$ 的夹角 $\theta$ ($0 \leq \theta \leq \frac{\pi}{2}$)
-$$
-\iff \sin \theta = \frac{|\overrightarrow{v_1} \cdot \overrightarrow{v_2}|}{|\overrightarrow{v_1}| |\overrightarrow{v_2}|} \quad (0 \leq \theta \leq \frac{\pi}{2})
-$$
-
-***
-
-## Fragment 3 一般曲面方程
-
-### · 球面
-
-设一动点到一定点 $P_0(x_0, y_0, z_0)$ 的距离为 $R$，求此轨迹方程。
-
-> /solution/
->
-> 设 $P(x, y, z)$ 是轨迹上任意一点。
->
-> 由条件知，$|P_0P| = R \iff |P_0P|^2 = R^2$
->
-> $(x - x_0)^2 + (y - y_0)^2 + (z - z_0)^2 = R^2$
->
-> 表示以 $P_0(x_0, y_0, z_0)$ 为中心，半径为 $R$ 的球面。
-
-### · 柱面
-
-> /Define/
->
-> 设 $\Gamma$ 为一定曲线，$\vec{\nu}$ 为一个非零的常矢量，$L$ 为一动直线，当 $L$ 沿着曲线 $\Gamma$（$L$ 与 $\Gamma$ 相交）且与 $\vec{\nu}$ 平行移动所产生的曲面，称为柱面，称 $L$ 为母线，$\Gamma$ 称为准线
-
-请问：$x^2 + y^2 = R^2$ ($R > 0$，常数)  表示什么？
-
-***
-
-/example/ 求以曲线 $\left\{\begin{aligned}
-&f(x, y) = 0 \\
-&z = k (\text{Constant})
-\end{aligned}\right.$ 为准线，母线平行于 $Oz$ 轴的柱面的方程
-
-<img src="https://nicostore-mathematica.github.io/picx-images-hosting/c5.2yygk49prd.webp" alt=/>
-
-> 设 $M(x, y, z)$ 是柱面上任意一点。
->
-> 过 $M$ 点作平行于 $Oz$ 轴的母线与 $\Gamma$ 交于 $M_1(x_1, y_1, z_1)$，有
->
+> 这需要用到闭区间上连续函数的一致连续性. 任给 $\varepsilon > 0$，存在 $\delta > 0$，使得
 > $$
-> \left\{
-> \begin{aligned}
-> f(x_1, y_1) &= 0 \\
-> z_1 &= k
-> \end{aligned}
-> \right.
+> |f(x') - f(x'')| \le \varepsilon,\quad \forall |x' - x''| < \delta.
+> $$
+> 取正整数 $N > (b - a)/\delta$，则当 $n > N$ 时 $\frac{1}{n}(b - a) < \delta$. 此时，设 $x \in [x_{i-1}, x_i]$ ($1 \le i \le n$)，则有
+> $$
+> |f(x) - f_n(x)| = |f(x) - l_i(x)|
+> = \left|f(x) - f(x_{i-1}) - \frac{f(x_i) - f(x_{i-1})}{x_i - x_{i-1}}(x - x_{i-1})\right|
+> $$
+> $$
+> = \left|(f(x) - f(x_{i-1}))\frac{x_i - x}{x_i - x_{i-1}} + (f(x) - f(x_i))\frac{x - x_{i-1}}{x_i - x_{i-1}}\right|
+> \le \varepsilon \frac{x_i - x}{x_i - x_{i-1}} + \varepsilon \frac{x - x_{i-1}}{x_i - x_{i-1}}
+> = \varepsilon.
+> $$
+> 这就证明了命题
+
+利用这个命题，当 $m, n > N$ 时，就有
+$$
+|f_m(x) - f_n(x)| \le |f_m(x) - f(x)| + |f(x) - f_n(x)| \le 2\varepsilon,
+$$
+因为 $f_m(x) - f_n(x)$ 也是分段线性函数，故有
+$$
+\left|\int_a^b f_m(x)\,dx - \int_a^b f_n(x)\,dx\right| = \left|\int_a^b (f_m(x) - f_n(x))\,dx\right| \le 2\varepsilon(b - a),
+$$
+这说明，数列 $\left\{\int_a^b f_n(x)\,dx\right\}$ 是 Cauchy 列，因此其极限存在，我们现在就定义
+$$
+\int_a^b f(x)\,dx = \lim_{n \to \infty} \int_a^b f_n(x)\,dx.
+$$
+
+如果 $f(x)$ 本来就是 $[a, b]$ 上的连续分段线性函数，则这个定义与 (3) 中的积分定义是一致的，我们把这个一致性证明留给读者思考. 根据分段线性函数积分的定义，$f$ 的积分可以表示为
+$$
+\int_a^b f(x)\,dx = \lim_{n \to \infty} \sum_{i=1}^n \frac{1}{2}[f(a + \frac{i-1}{n}(b - a)) + f(a + \frac{i}{n}(b - a))]\frac{1}{n}(b - a)
+$$
+$$
+= \lim_{n \to \infty} \frac{1}{n} \sum_{i=1}^n f(a + \frac{i}{n}(b - a))(b - a),
+$$
+
+**注意.** 和式 $\frac{1}{n} \sum_{i=1}^n f(a + \frac{i}{n}(b - a))$ 是一个平均数，其极限可以认为是 $f(x)$ 在区间 $[a, b]$ 上的平均值. 在这个意义上，$f(x)$ 在 $[a, b]$ 上的积分就等于 $f(x)$ 的平均值乘以区间长度，这是连续函数积分的几何含义.
+
+下面我们按照积分的定义计算. 
+
+/example/ 求函数 $f(x) = a^x$ 在区间 $[0, 1]$ 上的积分，其中 $a > 0$, $a \ne 1$.
+
+> 将 $[0, 1]$ 作 $n$ 等分，利用定义得
+> $$
+> \int_0^1 a^x\,dx = \lim_{n \to \infty} \frac{1}{n} \sum_{i=1}^n a^{\frac{i}{n}}
+> = \lim_{n \to \infty} \frac{1}{n} \cdot \frac{a - 1}{a^{\frac{1}{n}} - 1}
+> = \lim_{t \to 0^+} (a - 1) \frac{t a^t}{a^t - 1}
+> = \frac{a - 1}{\ln a}.
+> $$
+
+利用连续函数的一致连续性，我们可以改写定义式. 事实上，沿用前面的记号如 $\varepsilon$, $N$ 等，当 $n > N$ 时，在等分小区间 $[x_{i-1}, x_i]$ 中任取一点 $\xi_i$，则有
+$$
+|f(x_i) - f(\xi_i)| \le \varepsilon,\quad i = 1, 2, \cdots, n.
+$$
+因此
+$$
+\left|\frac{1}{n} \sum_{i=1}^n f(x_i)(b - a) - \frac{1}{n} \sum_{i=1}^n f(\xi_i)(b - a)\right| \le \frac{1}{n} \sum_{i=1}^n |f(x_i) - f(\xi_i)|(b - a) \le \varepsilon(b - a),
+$$
+这说明
+$$
+\int_a^b f(x)\,dx = \lim_{n \to \infty} \frac{1}{n} \sum_{i=1}^n f(\xi_i)(b - a),\quad \forall\ \xi_i \in [a + \frac{i-1}{n}(b - a),\ a + \frac{i}{n}(b - a)].
+$$
+这个极限等式也可以作为积分的定义，它的好处是无须总在小区间的端点取 $f(x)$ 的值，而极限仍然不变.
+
+### · 积分性质
+
+前一小节定义了连续函数 $f$ 在闭区间 $[a, b]$ 上的积分，现在我们做如下约定：
+$$
+\int_a^a f(x)\,dx = 0;\quad \int_b^a f(x)\,dx = -\int_a^b f(x)\,dx.
+$$
+
+从积分定义的讨论，我们可以得到积分的如下简单性质：
+
+线性性： 
+
+> 如果 $f, g$ 为 $[a, b]$ 上的连续函数，$\alpha, \beta \in \mathbb{R}$，则
+> $$
+> \int_a^b (\alpha f(x) + \beta g(x))\,dx = \alpha \int_a^b f(x)\,dx + \beta \int_a^b g(x)\,dx;
 > $$
 >
-> 因
+> 如果 $|f(x)| \le M$，$\forall x \in [a, b]$，则
 > $$
-> \left\{
-> \begin{aligned}
-> x &= x_1 \\
-> y &= y_1
-> \end{aligned}
-> \right.
-> $$
->
-> $\therefore M$ 点坐标满足方程为 $f(x, y) = 0$
->
-> 就是该曲面的方程
-
-曲面 $f(x, z) = 0$ 表示什么？
-
-柱面，$f(x, z) = 0$ 与 $y = k$（常数）交线为准线，母线平行于 $Oy$ 轴。
-
-知 $x^2 + y^2 = R^2$，表示以 
-$$
-\left\{
-\begin{aligned}
-x^2 + y^2 &= R^2 \\
-z &= 0
-\end{aligned}
-\right.
-$$
-为准线，母线平行于 $Oz$ 轴的圆柱面。
-
-<img src="https://nicostore-mathematica.github.io/picx-images-hosting/c6.1lbxg3fyrq.webp" alt=/>
-
-***
-
-/example/    $y = x^2$ 的曲面
-
-> /proof/
-> $$
-> \left\{
-> \begin{aligned}
-> y &= x^2 \\
-> z &= 0
-> \end{aligned}
-> \right.
-> $$
-> 为准线，母线平行于 $Oz$ 轴的抛物柱面
-
-<img src="https://nicostore-mathematica.github.io/picx-images-hosting/c7.60uclcsczo.webp" alt=/>
-
-***
-
-平行于 $Oz$ 轴的平面，方程为 $Ax + By + D = 0$ （可看成一柱面）
-
-/example/   侧面 $x + y = 1$ 表示的平面
-
-> /proof/
->
-> 以 $\left\{
-> \begin{aligned}
-> x + y &= 1 \\
-> z &= 0
-> \end{aligned}
-> \right.$ 为准线，
->
-> 母线平行于 $Oz$ 轴。
-
-### · 锥面
-
-设 $O$ 是空间一定点，$\Gamma$ 是一定曲线，$O \notin \Gamma$，有一动直线 $L$ 经过 $O$ 点，与 $\Gamma$ 相交，设 $\Gamma$ 移动所生成的曲面称为锥面，
-
-$O$ 点称为顶点，动直线称为母线，$\Gamma$ 称为准线。
-
-<img src="https://nicostore-mathematica.github.io/picx-images-hosting/c8.7lk3ku3iqn.webp" alt=/>
-
-求锥面方程的方法：
-
-设 $M$ 点是锥面上任意一点，连接 $OM$，与 $\Gamma$ 相交于 $M_1(x_1, y_1, z_1)$，
-
-$M_1(x_1, y_1, z_1)$ 满足 $\Gamma$ 的方程，$\overrightarrow{OM} \parallel \overrightarrow{OM_1} \iff$ 向量对应成比例。
-
-### · 旋转曲面
-
-/example/    求曲线 $\Gamma = \left\{
-\begin{aligned}
-&f(y, z) = 0 \\
-&x = 0
-\end{aligned}
-\right.$  绕 $Oz$ 轴旋转一周所形成的旋转曲面的方程。
-
-<img src="https://nicostore-mathematica.github.io/picx-images-hosting/c9.64dyj2zdzy.webp" alt=/>
-
-> /proof/
->
-> 设 $M(x, y, z)$ 是曲面上任意一点，
->
-> 则 $M(x, y, z)$ 是由曲线 $\Gamma$ 上某点 $M_1(x_1, y_1, z_1)$ 旋转形成的圆周上的一点。
->
-> 已知
-> $$
-> \left\{
-> \begin{aligned}
-> f(y_1, z_1) &= 0 \\
-> x_1 &= 0
-> \end{aligned}
-> \right.
-> $$
->
-> $z = z_1, \quad |O_1M| = |O_1M_1|$
->
-> $x^2 + y^2 = x_1^2 + y_1^2 = y_1^2$
->
-> $y_1 = \pm \sqrt{x^2 + y^2}$
->
-> 知曲面的方程为 $f(\pm \sqrt{x^2 + y^2}, z) = 0$
-
-***
-
-/example/
-$$
-\left\{
-\begin{aligned}
-f(y, z) &= 0 \\
-x &= 0
-\end{aligned}
-\right.
-$$
-
-绕 $Oy$ 轴旋转得到曲面方程为  $f(y, \pm \sqrt{z^2 + x^2})$
-
-/example/
-$$
-\left\{
-\begin{aligned}
-f(x, y) &= 0 \\
-z &= 0
-\end{aligned}
-\right.
-$$
-
-绕 $Ox$ 轴旋转得到曲面方程为  $f(x, \pm \sqrt{y^2 + z^2})$
-
-***
-
-/example/ $\frac{x^2}{a^2} + \frac{y^2}{b^2} - \frac{z^2}{c^2} = 1$ 是否是旋转曲面？
-
-> 是旋转曲面
-
-它是如何形成的？
-
-> $$
-> \left\{
-> \begin{aligned}
-> \frac{y^2}{b^2} - \frac{z^2}{c^2} &= 1 \\
-> x &= 0
-> \end{aligned}
-> \right.
-> $$
->
-> 绕 $Oz$ 轴旋转所得到
-
-验证：$\frac{(\pm \sqrt{y^2 + x^2})^2}{a^2} - \frac{z^2}{c^2} = 1$
-
-$$
-\iff \frac{x^2}{a^2} + \frac{y^2}{a^2} - \frac{z^2}{c^2} = 1
-$$
-
-<img src="https://nicostore-mathematica.github.io/picx-images-hosting/c10.ic858gjn6.webp" alt=/>
-
-也可以看成由 $\left\{
-\begin{aligned}
-\frac{x^2}{a^2} - \frac{z^2}{c^2} &= 1 \\
-y &= 0
-\end{aligned}
-\right.$
-
-绕 $Oz$ 轴旋转得到
-
-验证：$\frac{x^2 + y^2}{a^2} - \frac{z^2}{c^2} = 1$
-
-即 $\frac{x^2}{a^2} + \frac{y^2}{a^2} - \frac{z^2}{c^2} = 1$
-
-<img src="https://nicostore-mathematica.github.io/picx-images-hosting/c11.13lvrjazxv.webp" alt=/>
-
-#### · 绕轴旋转曲面方程求解
-
-把曲线$\Gamma$表示为
-$$
-\left\{
-\begin{aligned}
-x &= f(z) \\
-y &= g(z) \\
-z &= z
-\end{aligned}
-\right.
-$$
-
-解 设$M(x, y, z)$是曲面上任意一点。
-
-$M$由$\Gamma$上某点$M_1(x_1, y_1, z_1)$绕$Oz$轴
-
-旋转形成的圆周上的一点，有
-
-$$
-\left\{
-\begin{aligned}
-x_1 &= f(z_1) \\
-y_1 &= g(z_1)
-\end{aligned}
-\right.
-$$
-
-$$
-\begin{align*}
-z = z_1, \quad x^2 + y^2 &= x_1^2 + y_1^2\\
-&= f^2(z_1) + g^2(z_1)\\
-&= f^2(z) + g^2(z)
-\end{align*}
-$$
-
-就是我们所求的曲面方程。
-
-## Fragment 4 二次曲面
-
-面一般方程$F(x, y, z) = 0$表示的曲面：用一系列平行于坐标平面的平面去截这个曲面，截口是一个曲线
-
-/example/
-
-
-$$
-\left\{
-\begin{aligned}
-f(x, y, z) &= 0 \\
-z &= k
-\end{aligned}
-\right.
-
-\iff \left\{
-\begin{aligned}
-f(x, y, k) &= 0 \\
-z &= k
-\end{aligned}
-\right.
-$$
-是一个曲线，由一系列的曲线，可以画出曲面的草图。
-
-这种方法称为平面截割法。
-
-### · 椭球面
-
-$$
-\frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} = 1 \quad (a > 0, b > 0, c > 0)
-$$
-
-由如下方程组
-$$
-\left\{
-\begin{aligned}
-\frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} &= 1 \\
-z &= k \quad |k| < c
-\end{aligned}
-\right.
-$$
-可以推出
-$$
-\iff \left\{
-\begin{aligned}
-\frac{x^2}{a^2} + \frac{y^2}{b^2} &= 1 - \frac{k^2}{c^2} \\
-z &= k
-\end{aligned}
-\right.
-$$
-
-$$
-\iff \left\{
-\begin{aligned}
-\frac{x^2}{(a \sqrt{1 - \frac{k^2}{c^2}})^2} + \frac{y^2}{(b \sqrt{1 - \frac{k^2}{c^2}})^2} = 1 \\
-z = k \quad |k| < c
-\end{aligned}
-\right.
-$$
-
-
-
-<img src="https://nicostore-mathematica.github.io/picx-images-hosting/c12.175hq3po16.webp" alt=/>
-
-（由特殊图画一般曲面的草图）
-
-当 $a = b$ 时，椭球面方程为
-
-$$
-\frac{x^2}{a^2} + \frac{y^2}{a^2} + \frac{z^2}{c^2} = 1
-$$
-
-是旋转曲面，是由 $\left\{
-\begin{aligned}
-\frac{y^2}{a^2} + \frac{z^2}{c^2} &= 1 \\
-x &= 0
-\end{aligned}
-\right.$ 绕 $Oz$ 轴旋转所得曲面
-
-<img src="https://nicostore-mathematica.github.io/picx-images-hosting/c13.1ovjeox6f7.webp" alt=/>
-
-适用情况：方程中有两个变量的平方，符号相同，画草图时可令其系数相同，变为旋转曲面。
-
-### · 单叶双曲面
-
-$$
-\frac{x^2}{a^2} + \frac{y^2}{b^2} - \frac{z^2}{c^2} = 1
-$$
-
-令 $a = b$，得
-
-$$
-\frac{x^2}{a^2} + \frac{y^2}{a^2} - \frac{z^2}{c^2} = 1
-$$
-
-是旋转曲面，由 
-
-$$
-\left\{
-\begin{aligned}
-\frac{x^2}{a^2} - \frac{z^2}{c^2} &= 1 \\
-x &= 0
-\end{aligned}
-\right.
-$$
-绕 $Oz$ 轴旋转得到
-
-<img src="https://nicostore-mathematica.github.io/picx-images-hosting/c14.8add5q18ed.webp" alt=/>
-
-### · 双叶双曲面
-
-$$
-\frac{x^2}{a^2} + \frac{y^2}{b^2} - \frac{z^2}{c^2} = -1
-$$
-
-令 $a = b$，得
-
-$$
-\left\{
-\begin{aligned}
-\frac{y^2}{a^2} - \frac{z^2}{c^2} &= -1 \\
-x &= 0
-\end{aligned}
-\right.
-$$
-
-绕 $Oz$ 轴旋转所得曲面
-
-<img src="https://nicostore-mathematica.github.io/picx-images-hosting/c15.1vyra4jbup.webp" alt=/>
-
-### · 二次锥面
-
-$$
-\frac{x^2}{a^2} + \frac{y^2}{b^2} - \frac{z^2}{c^2} = 0
-$$
-
-令 $a = b$，有
-
-$$
-\frac{x^2}{a^2} + \frac{y^2}{a^2} - \frac{z^2}{c^2} = 0
-$$
-
-由
-
-$$
-\left\{
-\begin{aligned}
-\frac{y^2}{a^2} - \frac{z^2}{c^2} &= 0 \\
-x &= 0
-\end{aligned}
-\right.
-$$
-
-绕 $Oz$ 轴旋转所得曲面
-
-$$
-\iff
-\left\{
-\begin{aligned}
-\frac{y}{a} + \frac{z}{c} &= 0 \\
-x &= 0
-\end{aligned}
-\right.
-\quad \text{or} \quad
-\left\{
-\begin{aligned}
-\frac{y}{a} - \frac{z}{c} &= 0 \\
-x &= 0
-\end{aligned}
-\right.
-$$
-<img src="https://nicostore-mathematica.github.io/picx-images-hosting/c16.m6hi6w8y.webp" alt=/>
-
-### · 椭圆抛物面
-
-$$
-z = \frac{x^2}{a^2} + \frac{y^2}{b^2}
-$$
-
-当 $a = b$ 时，$z = \frac{x^2}{a^2} + \frac{y^2}{a^2}$ ，由 $\left\{
-\begin{aligned}
-z &= \frac{y^2}{a^2} \\
-x &= 0
-\end{aligned}
-\right.$  绕 $Oz$ 轴旋转所得曲面
-
-<img src="https://nicostore-mathematica.github.io/picx-images-hosting/c17.6f0sd3p1qi.webp" alt=/>
-
-### · 双曲抛物面
-
-$$
-z = -\frac{x^2}{a^2} + \frac{y^2}{b^2} 
-$$
-
-由 $\left\{
-\begin{aligned}
-z &= -\frac{x^2}{a^2} + \frac{y^2}{b^2} \\
-x &= 0
-\end{aligned}
-\right.$
-
-
-$$
-\iff
-\left\{
-\begin{aligned}
-z &= \frac{y^2}{b^2} \\
-x &= 0
-\end{aligned}
-\right.
-$$
-
-(1) 是抛物线
-
-根据
-$$
-\left\{
-\begin{aligned}
-z &= -\frac{x^2}{a^2} + \frac{y^2}{b^2} \\
-y &= k
-\end{aligned}
-\right.
-$$
-
-$$
-\iff \left\{
-\begin{aligned}
-z - \frac{k^2}{b^2} &= -\frac{x^2}{a^2} \\
-y &= k
-\end{aligned}
-\right.
-$$
-
-(2) 是抛物线，顶点是 $(0, k, \frac{k^2}{b^2})$
-
-在抛物线 (1) 上
-$$
-\left\{
-\begin{aligned}
-z  &= -\frac{x^2}{a^2}+\frac{k^2}{b^2} \\
-z &= k
-\end{aligned}
-\right.
-$$
-<img src="https://nicostore-mathematica.github.io/picx-images-hosting/c18.3yejy6i5u2.webp" alt=/>
-
-## Fragment 5 空间曲线研究方法
-
-1.画曲线的草图
-
-注意把方程组进行恒等变形，以使清楚知道是什么曲线，如何画草图
-
-/example/
-$$
-\left\{
-\begin{aligned}
-x^2 + y^2 + z^2 &= 1 \\
-x^2 + y^2 + z^2 &= z + \frac{3}{4}
-\end{aligned}
-\right.
-$$
-
-面该曲线的图形
-
-> /proof/
->
-> (2) - (1)： $0 = z - \frac{1}{4}$
-> $$
-> \left\{
-> \begin{aligned}
-> x^2 + y^2 &= \frac{15}{16} \\
-> z &= \frac{1}{4}
-> \end{aligned}
-> \right.
+> \left|\int_a^b f(x)\,dx\right| \le M(b - a);
 > $$
 >
 > 
 
-2.求曲线$\Gamma$
+保序性： 
+
+> 如果 $f \ge g$ 为 $[a, b]$ 上的连续函数，则
+> $$
+> \int_a^b f(x)\,dx \ge \int_a^b g(x)\,dx;
+> $$
+> 特别地，由 $-|f| \le f \le |f|$ 可得
+> $$
+> \left|\int_a^b f(x)\,dx\right| \le \int_a^b |f(x)|\,dx;
+> $$
+>
+
+关于区间的可加性： 
+
+> 设 $f$ 为连续函数，$a, b, c$ 为定义域中三点，则
+> $$
+> \int_a^c f(x)\,dx = \int_a^b f(x)\,dx + \int_b^c f(x)\,dx;
+> $$
+> 事实上，不妨设 $a < b < c$。任给 $\varepsilon > 0$，分别在区间 $[a, b]$、$[b, c]$ 上取连续的分段线性函数 $\varphi$ 和 $\psi$，使得 $\varphi(b) = \psi(b)$，且
+> $$
+> |f(x) - \varphi(x)| \le \varepsilon,\quad \forall x \in [a, b];\quad |f(x) - \psi(x)| \le \varepsilon,\quad \forall x \in [b, c].
+> $$
+> 在 $[a, c]$ 上定义分段线性函数 $g(x)$，使得在 $[a, b]$ 上 $g = \varphi$，在 $[b, c]$ 上 $g = \psi$，于是
+> $$
+> |f(x) - g(x)| \le \varepsilon,\quad \forall x \in [a, c].
+> $$
+> 根据积分的保序性以及分段线性函数的积分关于区间的可加性，得
+> $$
+> \left|\int_a^c f(x)\,dx - \int_a^b f(x)\,dx - \int_b^c f(x)\,dx\right|
+> \le \left|\int_a^c g(x)\,dx - \int_a^b f(x)\,dx - \int_b^c f(x)\,dx\right| + \varepsilon(c - a)
+> $$
+>
+> $$
+> = \left|\int_a^b [g(x) - f(x)]\,dx + \int_b^c [g(x) - f(x)]\,dx\right| + \varepsilon(c - a)
+> \le \varepsilon(b - a) + \varepsilon(c - b) + \varepsilon(c - a) = 2\varepsilon(c - a),
+> $$
+>
+> 由于 $\varepsilon$ 是任取的，故积分关于区间的可加性成立
+
+如果 $f(x)$ 为 $[a, b]$ 上的非负连续函数，则
 $$
-\left\{
-\begin{aligned}
-F(x, y, z) &= 0 \\
-G(x, y, z) &= 0
-\end{aligned}
-\right.
+\int_a^b f(x)\,dx \ge 0,
+$$
+且等号成立当且仅当 $f = 0$。这条性质的前半部分从积分的保序性得到。至于后半部分，如果 $f(x_0) > 0$，则由 $f$ 的连续性可知，存在区间 $[c, d] \subset [a, b]$，使得
+$$
+f(x) \ge \frac{1}{2}f(x_0),\quad \forall x \in [c, d].
+$$
+此时由积分关于区间的可加性以及保序性可得
+$$
+\int_a^b f(x)\,dx = \int_a^c f(x)\,dx + \int_c^d f(x)\,dx + \int_d^b f(x)\,dx
+\ge \int_c^d f(x)\,dx \ge \frac{f(x_0)}{2}(d - c) > 0,
+$$
+即此时 $f(x)$ 在 $[a, b]$ 上的积分为正
+
+在定义积分时，我们使用的是将区间作等分然后求极限的方法。我们要说明的是，作区间划分时不必取等分分点。事实上，在 $[a, b]$ 中任取分点 $a = x_0 < x_1 < \cdots < x_n = b$，称
+$$
+\pi: a = x_0 < x_1 < \cdots < x_n = b
+$$
+为 $[a, b]$ 的一个分划（或分割）。记 $\|\pi\| = \max\limits_{1 \le i \le n} |x_i - x_{i-1}|$。任给 $\varepsilon > 0$，由连续函数的一致连续性，存在 $\delta > 0$，当 $\|\pi\| < \delta$ 时
+$$
+|f(x) - f(x_i)| < \varepsilon,\quad \forall x \in [x_{i-1}, x_i],\quad i = 1, 2, \cdots, n.
+$$
+由
+$$
+\int_a^b f(x)\,dx = \sum_{i=1}^n \int_{x_{i-1}}^{x_i} f(x)\,dx
+= \sum_{i=1}^n f(x_{i-1})(x_i - x_{i-1}) + \sum_{i=1}^n \int_{x_{i-1}}^{x_i} (f(x) - f(x_{i-1}))\,dx
+$$
+得
+$$
+\left|\int_a^b f(x)\,dx - \sum_{i=1}^n f(x_{i-1})(x_i - x_{i-1})\right|
+\le \sum_{i=1}^n \varepsilon(x_i - x_{i-1}) = \varepsilon(b - a),
+$$
+这说明
+$$
+\int_a^b f(x)\,dx = \lim_{\|\pi\| \to 0} \sum_{i=1}^n f(x_{i-1})(x_i - x_{i-1}),
+$$
+同理，如果任取 $\xi_i \in [x_{i-1}, x_i]$，则仍有
+$$
+\int_a^b f(x)\,dx = \lim_{\|\pi\| \to 0} \sum_{i=1}^n f(\xi_i)(x_i - x_{i-1}),\quad \forall\ \xi_i \in [x_{i-1}, x_i].
+$$
+**命题2** (积分中值定理). 设 $f, g$ 为 $[a, b]$ 上的连续函数。如果 $g$ 不变号，则存在 $\xi \in [a, b]$，使得
+$$
+\int_a^b f(x)g(x)\,dx = f(\xi) \int_a^b g(x)\,dx.
 $$
 
-在$xoy$平面上投影曲线 $\Gamma'$ 的方程
+> 不妨设 $g \ge 0$。$f$ 在 $[a, b]$ 上的最小值和最大值分别记为 $m, M$，则
+> $$
+> mg(x) \le f(x)g(x) \le Mg(x),\quad \forall x \in [a, b].
+> $$
+> 根据积分的保序性和线性性，有
+> $$
+> m \int_a^b g(x)\,dx \le \int_a^b f(x)g(x)\,dx \le M \int_a^b g(x)\,dx.
+> $$
+> 如果 $\int_a^b g(x)\,dx = 0$，则任取 $\xi \in [a, b]$ 即可。如果 $\int_a^b g(x)\,dx > 0$，则
+> $$
+> m \le \frac{\int_a^b f(x)g(x)\,dx}{\int_a^b g(x)\,dx} \le M,
+> $$
+> 由连续函数的介值定理知存在 $\xi \in [a, b]$，使得
+> $$
+> f(\xi) = \frac{\int_a^b f(x)g(x)\,dx}{\int_a^b g(x)\,dx},
+> $$
+> 此 $\xi$ 即为所求的点
 
-<img src="https://nicostore-mathematica.github.io/picx-images-hosting/c19.51e992dzpk.webp" alt=/>
+在此命题中取 $g = 1$，则得到简单推论：存在 $\xi \in [a, b]$，使得
+$$
+f(\xi) = \frac{\int_a^b f(x)\,dx}{b - a},\quad \text{or}\quad \int_a^b f(x)\,dx = f(\xi)(b - a).
+$$
+这里 $f(\xi)$ 也就是 $f(x)$ 在 $[a, b]$ 上的平均值
+
+## Part 2 不定积分
+
+### · 定义
+
+现在我们考虑这样的问题，即一个给定的函数是另一个可导函数的导数吗？如果函数 $f$ 给定，问题就是考虑方程  
+$$
+F'(x) = f(x)
+$$
+的解. 我们要问，方程的解存在吗？如果存在的话，有多少个解？如果 $F$ 是一个解，则显然 $F + C$ ($C$ 为常数) 也是一个解，我们来说明这也是所有可能的其它解. 
+
+**命题1**. 设 $f$ 为区间上的可微函数，则 $f' = 0$ 当且仅当 $f = C$ 为常值函数.
+
+> 只要证明必要性即可. 设 $f' = 0$，在定义域中任取两点 $a < b$，我们证明必有 $f(a) = f(b)$. 设 $\varepsilon > 0$ 是任意取定的正数. 考虑集合  
+> $$
+> A = \{y \in [a,b] \mid |f(x) - f(a)| \le \varepsilon|x - a|,\ \forall\ x \in [a,y]\} \subset [a,b].
+> $$
+> 因为 $a \in A$，因此 $A$ 不是空集. 设 $y_0$ 为 $A$ 的上确界. 由 $f$ 的连续性知 $y_0 \in A$. 我们断言 $y_0 = b$. 事实上，如果 $y_0 < b$，则因为 $f'(y_0) = 0$，由导数的定义知存在 $\delta > 0$，使得 $y_0 + \delta \le b$，且  
+> $$
+> \left|\frac{f(x) - f(y_0)}{x - y_0}\right| = \left|\frac{f(x) - f(y_0)}{x - y_0} - f'(y_0)\right| \le \varepsilon,\quad \forall\ x \in (y_0, y_0 + \delta].
+> $$
+> 因此，当 $x \in [y_0, y_0 + \delta]$ 时  
+> $$
+> \begin{aligned}
+> |f(x) - f(a)| &\le |f(x) - f(y_0)| + |f(y_0) - f(a)| \\
+> &\le \varepsilon|x - y_0| + \varepsilon|y_0 - a| = \varepsilon|x - a|.
+> \end{aligned}
+> $$
+> 这说明 $[y_0, y_0 + \delta] \subset A$，这和 $y_0$ 的选取相矛盾，因此只能有 $y_0 = b$. 即  
+> $$
+> |f(a) - f(b)| \le \varepsilon|a - b|.
+> $$
+> 因为 $\varepsilon$ 是任取的，令 $\varepsilon \to 0$，上式表明 $f(a) = f(b)$.
+>
+> > (1) 如果将导数解释为速度，则命题说的就是速度为零时，质点位移不变. 从直观看这是显然的，但从数学上来讲就必须严格证明. 
+> >
+> > (2) 如果存在常数 $M$ 使得 $|f'| \le M$，则把命题证明过程中的 $\varepsilon$ 换成 $M + \varepsilon$ 后可以得出下面的估计  
+> > $$
+> > |f(a) - f(b)| \le M|a - b|,
+> > $$
+> > 即 $f$ 为 Lipschitz 函数. 
+> >
+> > 现在，如果 $F_1$, $F_2$ 都是方程的解，则 $(F_1 - F_2)' = 0$，从而 $F_1 - F_2 = C$ 为常数. 
+
+**定义1**（原函数）. 方程的一个可微解 $F$ 称为函数 $f$ 的一个原函数. 根据上面的讨论，任何两个原函数之间只相差一个常数. 对于一般的原函数我们给出下面的定义：
+
+**定义2**（不定积分）. 设函数 $f$ 在区间 $I$ 上有原函数，则我们用记号  
+$$
+\int f(x)\,dx
+$$
+表示 $f$ 的原函数的一般表达式，即如果 $F$ 为 $f$ 的一个原函数，则  
+$$
+\int f(x)\,dx = F(x) + C,\quad x \in I,
+$$
+其中 $C$ 为常数. 
+
+根据定义，如果 $F$ 是 $f$ 的原函数，则 $dF = f(x)\,dx$，因此  
+$$
+d\left(\int f(x)\,dx\right) = f(x)\,dx,
+$$
+因此求原函数的过程是求微分过程之逆. 
+
+我们可以给出如下计算结果：
+
+> (1). 
+> $$
+> \displaystyle \int 0\,dx = C
+> $$
+> (2). 
+> $$
+> \displaystyle \int x^\alpha\,dx = \frac{x^{\alpha+1}}{\alpha+1} + C\ (\alpha \ne -1)
+> $$
+> (3). 
+> $$
+> \displaystyle \int e^x\,dx = e^x + C
+> $$
+> (4). 
+> $$
+> \displaystyle \int a^x\,dx = \frac{a^x}{\ln a} + C\ (a > 0, a \ne 1)
+> $$
+> (5). 
+> $$
+> \displaystyle \int \frac{1}{x}\,dx = \ln|x| + C
+> $$
+> (6). 
+> $$
+> \displaystyle \int \frac{1}{\sqrt{1+x^2}}\,dx = \ln(x + \sqrt{1+x^2}) + C
+> $$
+> (7). 
+> $$
+> \displaystyle \int \cos x\,dx = \sin x + C
+> $$
+> (8). 
+> $$
+> \displaystyle \int \frac{1}{\sqrt{1-x^2}}\,dx = \arcsin x + C
+> $$
+> (9). 
+> $$
+> \displaystyle \int \sin x\,dx = -\cos x + C
+> $$
+> (10). 
+> $$
+> \displaystyle \int \frac{1}{\sqrt{1-x^2}}\,dx = -\arccos x + C
+> $$
+> (11). 
+> $$
+> \displaystyle \int \sec^2 x\,dx = \tan x + C
+> $$
+> (12). 
+> $$
+> \displaystyle \int \frac{1}{1+x^2}\,dx = \arctan x + C
+> $$
+> (13). 
+> $$
+> \displaystyle \int \csc^2 x\,dx = -\cot x + C
+> $$
+> (14). 
+> $$
+> \displaystyle \int \frac{1}{1+x^2}\,dx = -\operatorname{arccot} x + C
+> $$
+> (15). 
+> $$
+> \displaystyle \int \cosh x\,dx = \sinh x + C
+> $$
+> (16). 
+> $$
+> \displaystyle \int \sinh x\,dx = \cosh x + C
+> $$
+> (17). 
+> $$
+> \displaystyle \int \tanh^2 x\,dx = x - \tanh x + C
+> $$
+> (18). 
+> $$
+> \displaystyle \int \coth^2 x\,dx = x - \coth x + C
+> $$
+
+我们当然要问，除了上面列出的函数之外，还有哪些函数有原函数？
+
+### · Newton-Leibniz
+
+**定理2**（Newton-Leibniz）. 区间 $I$ 中的连续函数都有原函数. 具体来说，设 $f$ 连续，$a \in I$，则函数  
+$$
+F(x) = \int_a^x f(t)\,dt,\quad x \in I
+$$
+是 $f$ 的一个原函数.
+
+> 设 $x_0 \in I$. 因为 $f$ 连续，任给 $\varepsilon > 0$，存在 $\delta > 0$，使得  
+> $$
+> |f(x) - f(x_0)| < \varepsilon,\quad \forall\ x \in (x_0 - \delta, x_0 + \delta) \cap I.
+> $$
+> 此时
+> $$
+> \begin{aligned}
+> \left|\frac{F(x) - F(x_0)}{x - x_0} - f(x_0)\right|& = \left|\frac{\int_{x_0}^x f(t)\,dt}{x - x_0} - f(x_0)\right|\\
+> &= \left|\frac{\int_{x_0}^x (f(t) - f(x_0))\,dt}{x - x_0}\right|\\
+> &\le \frac{\int_{x_0}^x |f(t) - f(x_0)|\,dt}{|x - x_0|} \le \varepsilon,
+> \end{aligned}
+> $$
+> 这就推出 $F$ 在 $x_0$ 处可导，且  
+> $$
+> F'(x_0) = f(x_0).
+> $$
+> 由 $x_0$ 的任意性即知 $F$ 为 $f$ 的原函数.
+>
+> > (1) 这个定理又称为微积分基本定理，它将微分和积分联系在了一起.
+> >
+> > (2) 在后面我们会稍稍降低定理中对 $f$ 的连续性要求，得到一样的结论.
+
+我们现在将 Newton-Leibniz 的这个重要定理改写一下. 设 $f$ 在区间 $I$ 中连续，$G$ 为 $f$ 的任一原函数，则存在常数 $C$，使得  
+$$
+G(x) = \int_a^x f(t)\,dt + C,
+$$
+因此  
+$$
+\int_a^b f(x)\,dx = G(b) - G(a) = G\big|_a^b.
+$$
+因为 $f$ 的不定积分为原函数，因此上式也可写为
+$$
+\int_a^b f(x)\,dx = \left(\int f(x)\,dx\right)\bigg|_a^b,
+$$
+从这个等式来看，连续函数在区间上的积分就好象是在它的不定积分中代入上下积分限一样.
+
+Newton-Leibniz 公式还可写为（当 $G$ 连续可微时）  
+$$
+\int_a^b G'(x)\,dx = G(b) - G(a) = G\big|_a^b\quad \text{(Newton-Leibniz)}.
+$$
+这是一个很常用的形式，它有一个物理的解释：如果 $G$ 是随时间 $x$ 变化的物理量，$G'$ 就表示物理量的变化率. $G'$ 的积分表示无穷小变化量在某一段时间内的积累，最终就等于总的变化量（右式差值）.
+
+有了这些 Newton-Leibniz 公式，某些情形下连续函数积分的计算就变得很简单了.
+
+**命题3**（不定积分的线性性质）. 设 $f$, $g$ 在区间 $I$ 中均有原函数，则  
+$$
+\int [\alpha f(x) + \beta g(x)]\,dx = \alpha \int f(x)\,dx + \beta \int g(x)\,dx,
+$$
+其中 $\alpha$, $\beta$ 为常数.
+
+**命题4**. 设 $f$ 的原函数为 $F$. 如果 $f$ 可逆，且其逆函数 $g$ 可微，则  
+$$
+\int g(x)\,dx = xg(x) - F(g(x)) + C.
+$$
+
+> 记 $G(x) = xg(x) - F(g(x))$，由 $f(g(x)) = x$ 以及复合求导，有  
+> $$
+> \begin{aligned}
+> G'(x) &= g(x) + xg'(x) - F'(g(x))g'(x)\\
+> &= g(x) + xg'(x) - f(g(x))g'(x)\\
+> &= g(x) + xg'(x) - xg'(x) = g(x).
+> \end{aligned}
+> $$
+> 因此 $G(x)$ 为 $g$ 的原函数.
+
+/example/ 求不定积分 $\displaystyle \int \frac{1}{\sin^2 x \cos^2 x}\,dx$.
+
+> 由不定积分的线性性质，有  
+> $$
+> \begin{aligned}
+> \int \frac{1}{\sin^2 x \cos^2 x}\,dx &= \int \frac{\sin^2 x + \cos^2 x}{\sin^2 x \cos^2 x}\,dx\\
+> &= \int \frac{1}{\sin^2 x}\,dx + \int \frac{1}{\cos^2 x}\,dx\\
+> &= \tan x - \cot x + C.
+> \end{aligned}
+> $$
+
+/example/ 设 $a \ne 0$，求不定积分 $\displaystyle \int \frac{1}{x^2 - a^2}\,dx$.
+
+> 由不定积分的线性性质，有  
+> $$
+> \begin{aligned}
+> \int \frac{1}{x^2 - a^2}\,dx &= \frac{1}{2a}\left[\int \frac{1}{x - a}\,dx - \int \frac{1}{x + a}\,dx\right]\\
+> &= \frac{1}{2a}\left[\ln|x - a| - \ln|x + a|\right] + C\\
+> &= \frac{1}{2a} \ln\left|\frac{x - a}{x + a}\right| + C.
+> \end{aligned}
+> $$
+
+## Part 3 积分计算
+
+不定积分是微分的逆运算. 微分运算满足线性性、导性和形式不变性，对应到不定积分就有相应的积分方法.
+
+不定积分的各种计算方法实际上是为了计算定积分而作的预备.
+
+### · 换元法
+
+**命题1**（换元积分法）. 设 $f(u)$ 是在区间 $J$ 中有定义的函数，$u = \phi(x)$ 是区间 $I$ 中的可微函数，且 $\phi(I) \subset J$. 
+
+(1) 如果 $f$ 在 $J$ 中存在原函数 $F$，则 $F(\phi)$ 是 $f(\phi)\phi'$ 在区间 $I$ 中的原函数，即
+$$
+\int f(\phi(x))\phi'(x)dx = \int f(u)du + C = F(\phi(x)) + C;
+$$
+
+(2) 设 $\phi$ 可逆，且其逆可微，$\phi(I) = J$. 如果 $f(\phi(x))\phi'(x)$ 有原函数 $G$，则 $f$ 有原函数 $G(\phi^{-1}(u))$，即
+$$
+\int f(u)du = G(\phi^{-1}(u)) + C.
+$$
 
 > /proof/
 >
-> 设 $\Gamma '$ 即为准线 $\Gamma$，母线平行于 $Oz$ 轴
+> (1) 如果 $F' = f$，则由复合求导，有
+> $$
+> [F(\phi)]' = f(\phi)\phi',
+> $$
+> 所以 $F(\phi)$ 是 $f(\phi)\phi'$ 的原函数. 
 >
-> 的线形成的柱面，与 $xoy$ 平面 $(z = 0)$ 的交线
+> (2) 当 $\phi^{-1}$ 可微时，对 $\phi(\phi^{-1}(u)) = u$ 求导，得
+> $$
+> [\phi^{-1}(u)]' = \frac{1}{\phi'(x)},\quad x = \phi^{-1}(u).
+> $$
+> 因此
+> $$
+> [G(\phi^{-1}(u))]' = G'(\phi^{-1}(u))[\phi^{-1}(u)]' = f(u)\phi'(\phi^{-1}(u))\frac{1}{\phi'(x)} = f(u),
+> $$
+> 所以 $G(\phi^{-1}(u))$ 是 $f(u)$ 的原函数.
+
+(1) 换元积分法又称变量替换法，其要点是将变量 $u$ 通过 $u = \phi(x)$ 换成 $x$（或反之）. 
+
+(2) 在下一章中我们将知道，如果 $\phi'(x) \ne 0,\ \forall\ x \in I$，则 $\phi$ 可逆，因此逆函数 $\phi^{-1}$ 也可微. 
+
+(3) 由 Newton-Leibniz 公式，如果 $f$ 连续，$\phi$ 连续可微，则相应地有关于连续函数定积分的换元公式. 
+
+> 实际上我们学习的时候经常强调“第一换元法”和“第二换元法”，
 >
-> 由 $\left\{
-> \begin{aligned}
-> F(x, y, z) &= 0 \\
-> G(x, y, z) &= 0
-> \end{aligned}
-> \right.$
+> 第一换元法
+> $$
+> \int f(x) \, \mathrm{d} x
+> \stackrel{\text{discover}}{\Longrightarrow}
+> \int g\big(\alpha(x)\big) \, \mathrm{d}\!\big(\alpha(x)\big)
+> \stackrel{t=\alpha(x)}{\Longrightarrow}
+> \int g(t) \, \mathrm{d}t
+> $$
+> 第二换元法
+> $$
+> \int f(x)\text{d}x\overset{\text{find }\beta(\alpha(x))=x}{\underset{t=\alpha(x),x=\beta(t)}{\iff}}\int f(\beta(t))\beta'(t)\text{d}t
+> $$
+> 第一换元法事~~注意到~~，基于强大的注意力（Attention is all you need！）
 >
-> 消去 $z$，得到 $H(x, y) = 0$
->
-> 知该曲面是以 $\Gamma$ 为准线，
->
-> 母线平行于 $Oz$ 轴的柱面，
->
-> 则投影曲线 $\Gamma'$：
+> 第二换元法一般有很明确的需求，比如：
+> $$
+> \sqrt{a^{2}-x^{2}},\quad x = a\sin t,\quad t\in[-\frac{\pi}{2},\frac{\pi}{2}]
+> $$
 >
 > $$
-> \Gamma' : \left\{
-> \begin{aligned}
-> H(x, y) &= 0 \\
-> z &= 0
-> \end{aligned}
-> \right.
+> \sqrt{a^{2}+x^{2}},\quad x = a\tan t,\quad t\in[-\frac{\pi}{2},\frac{\pi}{2}]
+> $$
+>
+> $$
+> \sqrt{x^{2}-a^{2}},\quad x = a\sec t,\quad t\in[0,\frac{\pi}{2})\cup(\frac{\pi}{2},\pi]
 > $$
 
-向量代数结束，大家新年快乐
+### · 分部积分
+
+**命题2**（分部积分法）. 设 $u(x), v(x)$ 在区间 $I$ 中可微，如果 $u'(x)v(x)$ 有原函数，则 $u(x)v'(x)$ 也有原函数，且
+$$
+\int u(x)v'(x)dx = u(x)v(x) - \int u'(x)v(x)dx.
+$$
+
+> 设 $u'(x)v(x)$ 有原函数，则由
+> $$
+> [u(x)v(x)]' = u'(x)v(x) + u(x)v'(x)
+> $$
+> 得
+> $$
+> \left[u(x)v(x) - \int u'(x)v(x)dx\right]' = u(x)v'(x).
+> $$
+> 这说明 $u(x)v(x) - \int u'(x)v(x)dx$ 是 $u(x)v'(x)$ 的原函数.
+
+(1) 分部积分法也可改写为
+$$
+\int u(x)dv(x) = u(x)v(x) - \int v(x)du(x).
+$$
+
+(2) 如果 $u, v$ 均连续可微，则分部积分法条件满足. 特别地，对于定积分有
+$$
+\int_a^b u(x)v'(x)dx = u(x)v(x)\Big|_a^b - \int_a^b u'(x)v(x)dx.
+$$
+/example/ 求不定积分 $\int x^2\ln x\,dx$. 
+
+>  取 $u(x) = \ln x$, $v(x) = \frac{1}{3}x^3$，则
+> $$
+> \begin{aligned}
+> \int x^2\ln x\,dx &= \int \ln x\,d\left(\frac{1}{3}x^3\right)\\
+> &= \frac{1}{3}x^3\ln x - \int \frac{1}{3}x^3\,d(\ln x)\\
+> &= \frac{1}{3}x^3\ln x - \int \frac{1}{3}x^3\cdot\frac{1}{x}\,dx\\
+> &= \frac{1}{3}x^3\ln x - \frac{1}{9}x^3 + C.
+> \end{aligned}
+> $$
+
+ /example/ 设 $a \ne 0$，求不定积分 $I = \int e^{ax}\cos bx\,dx$ 和 $J = \int e^{ax}\sin bx\,dx$. 
+
+> 利用分部积分，有
+> $$
+> \begin{aligned}
+> I &= \int e^{ax}\cos bx\,dx = \frac{1}{a}\int \cos bx\,d(e^{ax})\\
+> &= \frac{1}{a}\left[e^{ax}\cos bx + b\int e^{ax}\sin bx\,dx\right]\\
+> &= \frac{1}{a}e^{ax}\cos bx + \frac{b}{a}J.
+> \end{aligned}
+> $$
+> 同理，有
+> $$
+> \begin{aligned}
+> J &= \int e^{ax}\sin bx\,dx = \frac{1}{a}\int \sin bx\,d(e^{ax})\\
+> &= \frac{1}{a}\left[e^{ax}\sin bx - b\int e^{ax}\cos bx\,dx\right]\\
+> &= \frac{1}{a}e^{ax}\sin bx - \frac{b}{a}I.
+> \end{aligned}
+> $$
+> 因此解出 $I, J$ 为
+> $$
+> I = \frac{b\sin bx + a\cos bx}{a^2 + b^2}e^{ax} + C_1,\quad\\
+> J = \frac{a\sin bx - b\cos bx}{a^2 + b^2}e^{ax} + C_2.
+> $$
+
+/example/ 求积分 $\int_0^{\frac{\pi}{4}} \tan^4 x\,dx$. 
+
+> 记 $I_n = \int_0^{\frac{\pi}{4}} \tan^n x\,dx$，则 $I_0 = \frac{\pi}{4}$. 一般地，有
+> $$
+> \begin{aligned}
+> I_n &= \int_0^{\frac{\pi}{4}} \tan^n x\,dx = \int_0^{\frac{\pi}{4}} \tan^{n-2} x(\sec^2 x - 1)\,dx\\
+> &= \int_0^{\frac{\pi}{4}} \tan^{n-2} x\,d(\tan x) - I_{n-2}\\
+> &= \frac{\tan^{n-1} x}{n-1}\Big|_0^{\frac{\pi}{4}} - I_{n-2}\\
+> &= \frac{1}{n-1} - I_{n-2}.
+> \end{aligned}
+> $$
+> 特别地，$I_2 = 1 - I_0 = 1 - \frac{\pi}{4}$，$I_4 = \frac{1}{3} - I_2 = \frac{\pi}{4} - \frac{2}{3}$.
+
+/example/ 求不定积分
+$$
+I_n = \int \frac{dx}{(x^2 + a^2)^n}
+$$
+其中 $a > 0$，$n$ 为非负整数.
+
+> 显然 $I_0 = x + C$，$I_1 = \frac{1}{a}\arctan\frac{x}{a} + C$. 当 $n \ge 1$ 时，
+> $$
+> \begin{aligned}
+> I_n &= \int \frac{dx}{(x^2 + a^2)^n}\\
+> &= \frac{x}{(x^2 + a^2)^n} + 2n\int \frac{x^2}{(x^2 + a^2)^{n+1}}\,dx\\
+> &= \frac{x}{(x^2 + a^2)^n} + 2n\left[\int \frac{x^2 + a^2}{(x^2 + a^2)^{n+1}}\,dx - a^2\int \frac{1}{(x^2 + a^2)^{n+1}}\,dx\right]\\
+> &= \frac{x}{(x^2 + a^2)^n} + 2nI_n - 2na^2I_{n+1}.
+> \end{aligned}
+> $$
+> 这样就得到了递推公式
+> $$
+> I_{n+1} = \frac{2n - 1}{2na^2}I_n + \frac{1}{2na^2}\frac{x}{(x^2 + a^2)^n},
+> $$
+> 由此可以求出所有的 $I_n$.
+
+### · 有理函数积分
+
+有理函数是指形如
+$$
+R(x) = \frac{P(x)}{Q(x)}
+$$
+的函数，其中 $P, Q$ 均为关于变量 $x$ 的多项式. 如果 $P$ 的次数小于 $Q$，则称 $R$ 为真分式. 
+
+显然，任何有理函数都可以写成一个多项式和一个真分式之和. 因此，有理函数的积分就只要考虑真分式的情形就可以了. 根据实系数多项式的因式分解可以证明，真分式可以进一步分解为下面两种简单真分式之和：
+$$
+\frac{A}{(x - a)^k},\ k \ge 1;\quad
+\frac{Ax + B}{(x^2 + px + q)^k},\ k \ge 1,\ p^2 - 4q < 0.
+$$
+它们的不定积分可以计算如下：
+
+**(1)**. $k = 1$:
+$$
+\int \frac{A}{x - a}\,dx = A\ln|x - a| + C;
+$$
+
+**(2)**. $k > 1$:
+$$
+\int \frac{A}{(x - a)^k}\,dx = A\frac{(x - a)^{1-k}}{1 - k} + C;
+$$
+
+**(3)**. $k = 1$:
+$$
+\begin{aligned}
+\int \frac{Ax + B}{x^2 + px + q}\,dx
+&= \int \frac{\frac{A}{2}(2x + p) + (B - \frac{Ap}{2})}{x^2 + px + q}\,dx\\
+&= \frac{A}{2}\int \frac{2x + p}{x^2 + px + q}\,dx + (B - \frac{Ap}{2})\int \frac{dx}{x^2 + px + q}\\
+&= \frac{A}{2}\int \frac{d(x^2 + px + q)}{x^2 + px + q} + (B - \frac{Ap}{2})\int \frac{dx}{(x + \frac{p}{2})^2 + (q - \frac{p^2}{4})}\\
+&= \frac{A}{2}\ln|x^2 + px + q| + \frac{2B - Ap}{\sqrt{4q - p^2}}\arctan\frac{2x + p}{\sqrt{4q - p^2}} + C;
+\end{aligned}
+$$
+
+**(4)**. $k > 1$ 时，和 (3) 类似，有
+$$
+\int \frac{Ax + B}{(x^2 + px + q)^k}\,dx
+= \frac{A}{2}\frac{(x^2 + px + q)^{1-k}}{1 - k} + (B - \frac{Ap}{2})\int \frac{dt}{(t^2 + a^2)^k},
+$$
+其中 $t = x + \frac{p}{2}$，$a = \frac{1}{2}\sqrt{4q - p^2}$. 上式右端的不定积分我们在前一小节中已经用递推的办法算过. 
+
+总之，有理函数的不定积分可以用初等函数表示. 在具体的分解计算过程中我们通常可以用待定系数法. 
+
+### · 有理三角函数积分
+
+如果我们对三角函数和常数做有限次的四则运算，则得到的函数称为有理三角函数. 因为 $\tan x, \cot x, \sec x$ 和 $\csc x$ 可以看成由 $\sin x$ 和 $\cos x$ 生成的有理三角函数，故一般的有理三角函数可记为 $R(\sin x, \cos x)$. 
+
+对有理三角函数的积分有一个通用的处理方法，称为万能变换：令
+$$
+t = \tan\frac{x}{2},
+$$
+则
+$$
+x = 2\arctan t,\quad dx = \frac{2}{1 + t^2}dt,
+$$
+且有
+$$
+\sin x = \frac{2\sin\frac{x}{2}\cos\frac{x}{2}}{\sin^2\frac{x}{2} + \cos^2\frac{x}{2}}
+= \frac{2\tan\frac{x}{2}}{\tan^2\frac{x}{2} + 1}
+= \frac{2t}{1 + t^2},
+$$
+以及
+$$
+\cos x = \frac{\cos^2\frac{x}{2} - \sin^2\frac{x}{2}}{\cos^2\frac{x}{2} + \sin^2\frac{x}{2}}
+= \frac{1 - \tan^2\frac{x}{2}}{1 + \tan^2\frac{x}{2}}
+= \frac{1 - t^2}{1 + t^2},
+$$
+这说明有理三角函数的积分可以通过万能变换成有理函数的积分，因此是可以计算出来的. 在实际计算过程中，有时也可以视情形采用变换 $t = \sin x$, $t = \cos x$ 或 $t = \tan x$ 等.
+
+### · 某些无理积分
+
+以下讨论几种可以转化为有理积分的某些无理函数的不定积分. 我们用记号 $R(x_1, x_2, \cdots, x_n)$ 表示关于 $x_1, x_2, \cdots, x_n$ 的有理函数. 
+
+**(1)**. 形如
+$$
+R\left(x, \sqrt[n]{\frac{ax + b}{cx + d}}, \cdots, \sqrt[m]{\frac{ax + b}{cx + d}}\right)
+$$
+的无理函数的积分，其中 $ad - bc \ne 0$，而 $n, \cdots, m$ 是大于 1 的整数. 设 $k$ 为这些整数的最小公倍数，令
+$$
+t = \left(\frac{ax + b}{cx + d}\right)^{\frac{1}{k}},
+$$
+则
+$$
+x = \frac{dt^k - b}{a - ct^k},\quad dx = \frac{ad - bc}{(a - ct^k)^2}kt^{k-1}dt,
+$$
+从而 $R$ 的积分可以转化为关于 $t$ 的有理积分. 
+
+**(2)**. 形如 $R(x, \sqrt{ax^2 + bx + c})$ 的函数积分，其中 $R(x, y)$ 为关于 $x, y$ 的有理函数，$a > 0$ 时 $b^2 - 4ac \ne 0$，或 $a \ne 0$, $b^2 - 4ac > 0$. 由于
+$$
+ax^2 + bx + c = a\left[\left(x + \frac{b}{2a}\right)^2 + \frac{4ac - b^2}{4a^2}\right],
+$$
+故当 $a > 0$ 时，令
+$$
+u = x + \frac{b}{2a},\quad k^2 = \left|\frac{4ac - b^2}{4a^2}\right|,
+$$
+原积分化为如下形式的积分：
+$$
+\int R(u, \sqrt{u^2 - k^2}),\quad \text{or}\quad \int R(u, \sqrt{u^2 + k^2}),
+$$
+分别进一步令 $u = k\sec t$, $u = k\tan t$ 就把不定积分变成了有理三角函数的积分，从而可以计算出来. 
+
+当 $a \ne 0$, $b^2 - 4ac > 0$ 时，令
+$$
+u = x + \frac{b}{2a},\quad k = \sqrt{\frac{b^2 - 4ac}{4a^2}},
+$$
+则原积分化为如下形式积分：
+$$
+\int R(u, \sqrt{u^2 - k^2}),\quad \text{或}\quad \int R(u, \sqrt{k^2 - u^2}),
+$$
+分别进一步令 $u = k\sec t$, $u = k\sin t$ 就把不定积分变成了有理三角函数的积分，从而可以计算出来. 
+
+还有一些别的办法来计算这些积分. 
+
+> 例如，如果 $a > 0$，令
+> $$
+> \sqrt{ax^2 + bx + c} = \sqrt{a}x + t\quad (\text{or } t - \sqrt{a}x),
+> $$
+> 则 $x$ 为 $t$ 的有理函数：
+> $$
+> x = \frac{t^2 - c}{b - 2\sqrt{a}t},
+> $$
+> 从而可以把原积分化为关于 $t$ 的有理积分；如果 $c > 0$，令
+> $$
+> \sqrt{ax^2 + bx + c} = tx + \sqrt{c}\quad (\text{或 } tx - \sqrt{c}),
+> $$
+> 则 $x$ 为 $t$ 的有理函数：
+> $$
+> x = \frac{2\sqrt{c}t - b}{a - t^2},
+> $$
+> 从而也可以把原积分化为关于 $t$ 的有理积分；如果 $b^2 - 4ac > 0$，则 $ax^2 + bx + c = 0$ 有两个实根：
+> $$
+> ax^2 + bx + c = a(x - \alpha)(x - \beta),
+> $$
+> 令
+> $$
+> \sqrt{ax^2 + bx + c} = t(x - \alpha),
+> $$
+> 则 $x$ 为 $t$ 的有理函数：
+> $$
+> x = \frac{a\beta - \alpha t^2}{a - t^2},
+> $$
+> 从而也可以把原积分化为关于 $t$ 的有理积分；这里用到的变量替换统称为 Euler 替换，在实际的计算过程中当然也可灵活选择其它的变量替换方法. 
+
+并非所有的不定积分都可以用初等函数表示，例如下面函数的不定积分都不能用初等函数表示：
+$$
+e^{\pm x^2},\ \sin(x^2),\ \cos(x^2),\ \frac{\sin x}{x},\ \frac{\cos x}{x},\ \sqrt{1 - k^2\sin^2 x},\ \frac{1}{\sqrt{1 - k^2\sin^2 x}}\quad (0 < k < 1).
+$$
+
