@@ -41,7 +41,7 @@ createTime: 2025/09/16 20:57:28
 >   $$
 >   则称函数 $f(x)$ 在 $x_0$ 处（当 $x$ 趋于 $x_0^+$ 时）有**右极限** $A$，记为
 >   $$
->   \lim_{x \to x_0^+} f(x) = A \quad \text{或} \quad f(x) \to A \quad (x \to x_0^+).
+>   \lim_{x \to x_0^+} f(x) = A \quad \text{or} \quad f(x) \to A \quad (x \to x_0^+).
 >   $$
 >   $f(x)$ 在 $x_0$ 处的右极限也记为 $f(x_0^+)$ 或 $f(x_0 + 0)$。
 >
@@ -375,11 +375,11 @@ $$
 >
 > (3) （四则运算）设$f, g$在$x_0$处有有限极限，则
 >
-> - $\displaystyle \lim_{x \to x_0} [\alpha f(x) + \beta g(x)] = \alpha \lim_{x \to x_0} f(x) + \beta \lim_{x \to x_0} g(x)$，其中$\alpha, \beta$为常数；
+> - $\displaystyle \displaystyle\lim_{x \to x_0} [\alpha f(x) + \beta g(x)] = \alpha \displaystyle\lim_{x \to x_0} f(x) + \beta \displaystyle\lim_{x \to x_0} g(x)$，其中$\alpha, \beta$为常数；
 >
-> - $\displaystyle \lim_{x \to x_0} f(x)g(x) = \lim_{x \to x_0} f(x) \cdot \lim_{x \to x_0} g(x)$；
+> - $\displaystyle \displaystyle\lim_{x \to x_0} f(x)g(x) = \displaystyle\lim_{x \to x_0} f(x) \cdot \displaystyle\lim_{x \to x_0} g(x)$；
 >
-> - $\displaystyle \lim_{x \to x_0} \frac{f(x)}{g(x)} = \frac{\lim_{x \to x_0} f(x)}{\lim_{x \to x_0} g(x)}$，其中$\lim_{x \to x_0} g(x) \ne 0$。
+> - $\displaystyle\lim_{x \to x_0} \frac{f(x)}{g(x)} = \frac{\displaystyle\lim_{x \to x_0} f(x)}{\displaystyle\lim_{x \to x_0} g(x)}$，其中$\displaystyle\lim_{x \to x_0} g(x) \ne 0$。
 >
 > > **注**：对于无穷远处的极限有完全类似的结论成立。
 
@@ -387,7 +387,7 @@ $$
 
 **定理9** (复合函数的极限)：设$f(y)$在$y_0$处的极限为$A$，$g(x)$在$x_0$处的极限为$y_0$，且存在$x_0$的一个空心开邻域，在此开邻域内$g(x) \ne y_0$，则复合函数$f(g(x))$在$x_0$处的极限为$A$。
 
-> 任给 $\varepsilon > 0$，由 $\displaystyle \lim_{y \to y_0} f(y) = A$ 知，存在 $\delta > 0$，当 $0 < |y - y_0| < \delta$ 时，有
+> 任给 $\varepsilon > 0$，由 $\displaystyle \displaystyle\lim_{y \to y_0} f(y) = A$ 知，存在 $\delta > 0$，当 $0 < |y - y_0| < \delta$ 时，有
 > $$
 > |f(y) - A| < \varepsilon.
 > $$
@@ -410,7 +410,7 @@ $$
 > > 0, & y = 0,
 > > \end{cases}
 > > $$
-> > 以及 $g(x) \equiv 0$，则 $\displaystyle \lim_{y \to 0} f(y) = 1$，但 $f(g(x)) = 0$。不过，当 $f(y_0) = A$ 时这个条件是可以去掉的
+> > 以及 $g(x) \equiv 0$，则 $\displaystyle \displaystyle\lim_{y \to 0} f(y) = 1$，但 $f(g(x)) = 0$。不过，当 $f(y_0) = A$ 时这个条件是可以去掉的
 > >
 > > (2) 对于无穷远处的极限以及极限为无穷大的情形也有完全类似的结果。
 
@@ -430,7 +430,7 @@ $$
 > \lim_{x \to 0} (1 + x)^{\frac{1}{x}} = \lim_{y \to \infty} \left(1 + \frac{1}{y}\right)^y = e.
 > $$
 
-/example/ 设 $P(x), Q(x)$ 是次数相同的多项式，求极限 $\displaystyle \lim_{x \to \infty} \frac{P(x)}{Q(x)}$。
+/example/ 设 $P(x), Q(x)$ 是次数相同的多项式，求极限 $\displaystyle \displaystyle\lim_{x \to \infty} \frac{P(x)}{Q(x)}$。
 
 > 设 $P(x), Q(x)$ 次数为 $n$。记
 > $$
@@ -516,14 +516,14 @@ $$
 >
 > 等价代换在无穷远处也可进行
 
-/example/ 求极限 $\lim_{x \to 0} \frac{\sin \alpha x}{\sin \beta x}$
+/example/ 求极限 $\displaystyle\lim_{x \to 0} \frac{\sin \alpha x}{\sin \beta x}$
 
 > 因为当 $x \to 0$ 时 $\sin \alpha x \sim \alpha x$，$\sin \beta x \sim \beta x$，故
 > $$
 > \lim_{x \to 0} \frac{\sin \alpha x}{\sin \beta x} = \lim_{x \to 0} \frac{\alpha x}{\beta x} = \frac{\alpha}{\beta}.
 > $$
 
-/example/ 求极限 $\lim_{x \to 0} \frac{\tan x - \sin x}{x^3}$。
+/example/ 求极限 $\displaystyle\lim_{x \to 0} \frac{\tan x - \sin x}{x^3}$。
 
 > 当 $x \to 0$ 时，
 > $$
@@ -539,7 +539,7 @@ $$
 > $$
 > 但 $\tan x - \sin x$ 不能替换为零
 
-/example/ 求极限 $\lim_{x \to 0} \frac{\ln \cos x}{\tan^2 x}$
+/example/ 求极限 $\displaystyle\lim_{x \to 0} \frac{\ln \cos x}{\tan^2 x}$
 
 > 先来说明
 > $$

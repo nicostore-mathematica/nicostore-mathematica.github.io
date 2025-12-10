@@ -233,7 +233,7 @@ $$
 > $$
 > \{(x_i - \delta_{x_i}, x_i + \delta_{x_i})\},\ i = 1,2,\ldots,k.
 > $$
-> 令 $M = \max\limits_{1 \leq i \leq k} \{|f(x_i)| + 1\}$. 任取 $x \in [a,b]$, 设 $x \in (x_i - \delta_{x_i}, x_i + \delta_{x_i})$, 则
+> 令 $M = \max\displaystyle\limits_{1 \leq i \leq k} \{|f(x_i)| + 1\}$. 任取 $x \in [a,b]$, 设 $x \in (x_i - \delta_{x_i}, x_i + \delta_{x_i})$, 则
 > $$
 > |f(x)| \leq |f(x) - f(x_i)| + |f(x_i)| \leq 1 + |f(x_i)| \leq M,
 > $$
@@ -463,9 +463,9 @@ $$
 > $$
 > \omega_f(x_0,r) \leq \varepsilon.
 > $$
-> 这说明 $\omega_f(x_0) = \lim_{r \to 0^+} \omega_f(x_0,r) = 0$.
+> 这说明 $\omega_f(x_0) = \displaystyle\lim_{r \to 0^+} \omega_f(x_0,r) = 0$.
 >
-> 反之, 设 $\lim_{r \to 0^+} \omega_f(x_0,r) = \omega_f(x_0) = 0$, 则任给 $\varepsilon > 0$, 存在 $\delta > 0$, 使得
+> 反之, 设 $\displaystyle\lim_{r \to 0^+} \omega_f(x_0,r) = \omega_f(x_0) = 0$, 则任给 $\varepsilon > 0$, 存在 $\delta > 0$, 使得
 > $$
 > \omega_f(x_0,r) < \varepsilon,\quad \forall\ 0 < r \leq \delta.
 > $$

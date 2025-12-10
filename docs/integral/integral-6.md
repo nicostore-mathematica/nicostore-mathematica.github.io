@@ -619,7 +619,7 @@ $$
 $$
 则 $f$ 在 $\mathbb{R}$ 上达到最小(大)值.
 
-> 我们不妨设 $\lim_{x \to -\infty} f(x) = \lim_{x \to +\infty} f(x) = +\infty$. 由极限的定义, 存在 $M > 0$ 使得当 $|x| \ge M$ 时 $f(x) > f(0) + 1$. 因为 $f$ 为连续函数, 故在闭区间 $[-M,M]$ 上取到最小值. 设 $f$ 在 $x_0$ 处取到此最小值, 则 $f(x_0) \le f(0)$ (因为 $0 \in [-M,M]$). 另一方面,
+> 我们不妨设 $\displaystyle\lim_{x \to -\infty} f(x) = \displaystyle\lim_{x \to +\infty} f(x) = +\infty$. 由极限的定义, 存在 $M > 0$ 使得当 $|x| \ge M$ 时 $f(x) > f(0) + 1$. 因为 $f$ 为连续函数, 故在闭区间 $[-M,M]$ 上取到最小值. 设 $f$ 在 $x_0$ 处取到此最小值, 则 $f(x_0) \le f(0)$ (因为 $0 \in [-M,M]$). 另一方面,
 > $$
 > f(x_0) \le f(0) < f(0) + 1 < f(x),\quad \forall\ x \in (-\infty, M) \cup (M, +\infty),
 > $$

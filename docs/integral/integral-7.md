@@ -521,7 +521,7 @@ $$
 $$
 \sum_{n=0}^\infty \frac{f^{(n)}(x_0)}{n!}(x - x_0)^n
 $$
-为 $f$ 在 $x_0$ 处的 Taylor 展开或 Taylor 公式. Taylor 公式在 $x_0 = 0$ 的特殊情形也称 Maclaurin 展开公式. 如果 $\lim_{n \to \infty} R_n(x) = 0$，则记  
+为 $f$ 在 $x_0$ 处的 Taylor 展开或 Taylor 公式. Taylor 公式在 $x_0 = 0$ 的特殊情形也称 Maclaurin 展开公式. 如果 $\displaystyle\lim_{n \to \infty} R_n(x) = 0$，则记  
 $$
 f(x) = \sum_{n=0}^\infty \frac{f^{(n)}(x_0)}{n!}(x - x_0)^n.
 $$
@@ -780,7 +780,7 @@ $x_2$ 要比 $x_1$ 更靠近 $\xi$.
 $$
 x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)},\quad n \ge 0.
 $$
-其中 $x_0 = b$. $\{x_n\}$ 为单调递减数列，且 $\xi < x_n < b$，$\forall\ n \ge 1$. 因此极限 $\lim_{n \to \infty} x_n$ 存在，记为 $\xi'$. 于是 $\xi \le \xi' < b$. 在上式中令 $n \to \infty$ 得  
+其中 $x_0 = b$. $\{x_n\}$ 为单调递减数列，且 $\xi < x_n < b$，$\forall\ n \ge 1$. 因此极限 $\displaystyle\lim_{n \to \infty} x_n$ 存在，记为 $\xi'$. 于是 $\xi \le \xi' < b$. 在上式中令 $n \to \infty$ 得  
 $$
 \xi' = \xi' - \frac{f(\xi')}{f'(\xi')},
 $$

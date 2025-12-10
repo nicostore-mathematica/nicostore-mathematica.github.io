@@ -41,7 +41,7 @@ $$
 > >
 > > 为了用准确的数学语言来代替“越来越靠近”和“当  $n$  越来越大”这样的描述性语言，我们要用到定义中的  $\varepsilon$  和  $N$ ，这里的  $N$  一般是依赖于给定的  $\varepsilon$  的。这种定义极限的方法也称为  $\varepsilon - N$  语言法。
 > >
-> > 按照定义，我们也可以这样来描述极限： $\lim_{n \to \infty} a_n = A$  当且仅当对于任意  $\varepsilon > 0$ ，数列  $\{a_n\}$  只有至多有限项位于区间  $(A - \varepsilon, A + \varepsilon)$  之外。
+> > 按照定义，我们也可以这样来描述极限： $\displaystyle\lim_{n \to \infty} a_n = A$  当且仅当对于任意  $\varepsilon > 0$ ，数列  $\{a_n\}$  只有至多有限项位于区间  $(A - \varepsilon, A + \varepsilon)$  之外。
 > >
 > > 因此，如果存在  $\varepsilon_0 > 0$ ，使得  $\{a_n\}$  中有无限项位于区间  $(A - \varepsilon_0, A + \varepsilon_0)$  之外，则数列  $\{a_n\}$  不以  $A$  为极限（这时该数列的极限可能不存在，如果存在则极限也不等于  $A$ ）。
 > >
@@ -59,7 +59,7 @@ $$
 >
 > (3). 几何意义：
 >
-> > $\lim_{n \to \infty}a_{n}=a$ ，即 $\forall\varepsilon > 0$ ，$\exists N$ ，当 $n > N$ 时，都有 $|a_{n}-a|<\varepsilon$ 。
+> > $\displaystyle\lim_{n \to \infty}a_{n}=a$ ，即 $\forall\varepsilon > 0$ ，$\exists N$ ，当 $n > N$ 时，都有 $|a_{n}-a|<\varepsilon$ 。
 > >
 > > $$
 > > \begin{align*}
@@ -90,7 +90,7 @@ $$
 > $$
 > 2\varepsilon > |a_n - A| + |a_n - B| \geqslant |A - B|.
 > $$
-> 如果  $A \neq B$ ，则对于  $\varepsilon = \frac{|A - B|}{2}$ ，上式不可能成立，因此只能  $A = B$ 
+> 如果  $A \neq B$ ，则对于  $\varepsilon = \dfrac{|A - B|}{2}$ ，上式不可能成立，因此只能  $A = B$ 
 
 如果数列没有极限，则称它是发散的。讨论数列的收敛与发散的问题简称为数列的敛散性问题。从定义不难看出，改变数列的有限项的值不改变其敛散性，如果收敛的话也不改变极限的值。
 
@@ -107,9 +107,9 @@ $$
 > $$
 > |q^n - 0| = |q|^n < |q|^N < \varepsilon,
 > $$
-> 因此 $\lim_{n \to \infty} q^n = 0$。
+> 因此 $\displaystyle\lim_{n \to \infty} q^n = 0$。
 >
-> 上面的这个证明用到了对数函数的性质。下面我们还可以用更初等的不等式估计的办法另给一个证明如下：当 $0 < |q| < 1$ 时，$\frac{1}{|q|} > 1$。记 $\alpha = \frac{1}{|q|} - 1 > 0$。任给 $\varepsilon > 0$，取正整数 $N > \frac{1}{\alpha \varepsilon}$，当 $n > N$ 时，
+> 上面的这个证明用到了对数函数的性质。下面我们还可以用更初等的不等式估计的办法另给一个证明如下：当 $0 < |q| < 1$ 时，$\dfrac{1}{|q|} > 1$。记 $\alpha = \dfrac{1}{|q|} - 1 > 0$。任给 $\varepsilon > 0$，取正整数 $N > \dfrac{1}{\alpha \varepsilon}$，当 $n > N$ 时，
 >
 > $$
 > |q^n - 0| = |q|^n = \frac{1}{(1 + \alpha)^n} < \frac{1}{n\alpha} < \varepsilon,
@@ -119,13 +119,13 @@ $$
 > $$
 > (1 + \alpha)^n = 1 + n\alpha + \frac{1}{2}n(n - 1)\alpha^2 + \cdots + \alpha^n > n\alpha.
 > $$
-> 这说明 $\lim_{n \to \infty} q^n = 0$ .
+> 这说明 $\displaystyle\lim_{n \to \infty} q^n = 0$ .
 
-/example/ 设 $\alpha > 0$，则 $\lim_{n \to \infty} \frac{1}{n^\alpha} = 0$。
+/example/ 设 $\alpha > 0$，则 $\displaystyle\lim_{n \to \infty} \dfrac{1}{n^\alpha} = 0$。
 
 > /proof/
 >
-> 任给定 $\varepsilon > 0$，取 $N > \frac{1}{\varepsilon^\alpha}$，当 $n > N$ 时
+> 任给定 $\varepsilon > 0$，取 $N > \dfrac{1}{\varepsilon^\alpha}$，当 $n > N$ 时
 >
 > $$
 > \left|\frac{1}{n^\alpha} - 0\right| = \frac{1}{n^\alpha} < \frac{1}{N^\alpha} < \varepsilon,
@@ -142,19 +142,19 @@ $$
 
 > /proof/
 >
-> 不妨设 $q > 1$。任给定 $\varepsilon > 0$，取 $N > q^{\frac{1}{\varepsilon}}$，则当 $n > N$ 时
+> 不妨设 $q > 1$。任给定 $\varepsilon > 0$，取 $N > q^{\dfrac{1}{\varepsilon}}$，则当 $n > N$ 时
 >
 > $$
 > \left|\frac{1}{\log_q n} - 0\right| = \frac{1}{\log_q n} < \frac{1}{\log_q N} < \varepsilon,
 > $$
 
-因此 $\lim_{n \to \infty} \frac{1}{\log_q n} = 0$。
+因此 $\displaystyle\lim_{n \to \infty} \dfrac{1}{\log_q n} = 0$。
 
-/example/ 设 $C$ 为常数，如果 $\lim_{n \to \infty} a_n = 0$，则 $\lim_{n \to \infty} C a_n = 0$。
+/example/ 设 $C$ 为常数，如果 $\displaystyle\lim_{n \to \infty} a_n = 0$，则 $\displaystyle\lim_{n \to \infty} C a_n = 0$。
 
 > /proof/
 >
-> 任给定 $\varepsilon > 0$，记 $\varepsilon_0 = \frac{\varepsilon}{|C| + 1}$。因为 $\lim_{n \to \infty} a_n = 0$，故存在 $N$，当 $n > N$ 时
+> 任给定 $\varepsilon > 0$，记 $\varepsilon_0 = \dfrac{\varepsilon}{|C| + 1}$。因为 $\displaystyle\lim_{n \to \infty} a_n = 0$，故存在 $N$，当 $n > N$ 时
 >
 > $$
 > |a_n| < \varepsilon_0,
@@ -164,7 +164,7 @@ $$
 > $$
 > |Ca_n| = |C||a_n| \leqslant |C|\varepsilon_0 < \varepsilon,
 > $$
-> 因此 $\lim_{n \to \infty} Ca_n = 0$。
+> 因此 $\displaystyle\lim_{n \to \infty} Ca_n = 0$。
 
 ### · 夹逼定理
 
@@ -178,7 +178,7 @@ $$
 $$
 \lim_{n \to \infty} a_n = A = \lim_{n \to \infty} c_n,
 $$
-则  $\lim_{n \to \infty} b_n = A$ 。
+则  $\displaystyle\lim_{n \to \infty} b_n = A$ 。
 
 > /proof/
 >
@@ -196,9 +196,9 @@ $$
 > $$
 > A - \varepsilon < a_n \leqslant b_n \leqslant c_n < A + \varepsilon,
 > $$
-> 这说明  $\lim_{n \to \infty} b_n = A$ 。
+> 这说明  $\displaystyle\lim_{n \to \infty} b_n = A$ 。
 >
-> > 如果  $|a_n| \leqslant b_n$ ，则  $\lim_{n \to \infty} b_n = 0$  时  $\lim_{n \to \infty} a_n = 0$ 。这只要注意到夹逼不等式  $-b_n \leqslant a_n \leqslant b_n$  即可。
+> > 如果  $|a_n| \leqslant b_n$ ，则  $\displaystyle\lim_{n \to \infty} b_n = 0$  时  $\displaystyle\lim_{n \to \infty} a_n = 0$ 。这只要注意到夹逼不等式  $-b_n \leqslant a_n \leqslant b_n$  即可。
 
 /example/ 考虑无限循环小数  $A = 0.999999$ ，问：$A$  是否小于 1？
 
@@ -217,7 +217,7 @@ $$
 >
 > 然而，这种直观上得来的经验只对有限小数有效，对于无限的情形往往要用极限来处理才行。
 
-/example/ 设  $0 < \alpha < 1$ ，证明  $\lim_{n \to \infty} [(n + 1)^\alpha - n^\alpha] = 0$ 。
+/example/ 设  $0 < \alpha < 1$ ，证明  $\displaystyle\lim_{n \to \infty} [(n + 1)^\alpha - n^\alpha] = 0$ 。
 
 > 当  $n \geq 1$  时，有
 >
@@ -229,7 +229,7 @@ $$
 > \lim_{n \to \infty} [(n + 1)^\alpha - n^\alpha] = 0
 > $$
 
-/example/. 设  $\alpha > 0, a > 1$ ，则  $\lim_{n \to \infty} \frac{n^\alpha}{a^n} = 0$ 。
+/example/. 设  $\alpha > 0, a > 1$ ，则  $\displaystyle\lim_{n \to \infty} \dfrac{n^\alpha}{a^n} = 0$ 。
 
 > /proof/
 >
@@ -334,7 +334,7 @@ $$
 
 > /proof/
 >
-> 设  $\lim_{n \to \infty} a_n = A$ ，则任给  $\varepsilon > 0$ ，存在  $N$ ，当  $n > N$  时
+> 设  $\displaystyle\lim_{n \to \infty} a_n = A$ ，则任给  $\varepsilon > 0$ ，存在  $N$ ，当  $n > N$  时
 > $$
 > |a_n - A| < \varepsilon,
 > $$
@@ -343,7 +343,7 @@ $$
 > $$
 > ||a_n| - |A|| \leq |a_n - A| < \varepsilon, \quad \forall n > N.
 > $$
-> 即  $\lim_{n \to \infty} |a_n| = |A|$ 。
+> 即  $\displaystyle\lim_{n \to \infty} |a_n| = |A|$ 。
 
 **推论5**. 数列  $\{a_n\}$  收敛到 0 当且仅当  $|a_n|$  收敛到 0；数列  $\{a_n\}$  收敛到  $A$  当且仅当  $|a_n - A|$  收敛到 0。
 
@@ -369,7 +369,7 @@ $$
 > $$
 > 因为  $\varepsilon$  是任意取的，上式表明  $A - B \geqslant 0$ ，即  $A \geqslant B$ 。
 >
-> (2) 如果  $A > B$ ，取  $\varepsilon = \frac{A - B}{2} > 0$ ，则存在  $N_1, N_2$ ，使得
+> (2) 如果  $A > B$ ，取  $\varepsilon = \dfrac{A - B}{2} > 0$ ，则存在  $N_1, N_2$ ，使得
 >
 > $$
 > |a_n - A| < \varepsilon, \forall n > N_1; \quad |b_n - B| < \varepsilon, \forall n > N_2.
@@ -381,7 +381,7 @@ $$
 > $$
 > 即  $a_n > b_n, \forall n > N$ 
 
-**推论7**. 设  $\lim_{n \to \infty} a_n = A$ ，如果  $A \neq 0$ ，则存在  $N$ ，使得当  $n > N$  时，有
+**推论7**. 设  $\displaystyle\lim_{n \to \infty} a_n = A$ ，如果  $A \neq 0$ ，则存在  $N$ ，使得当  $n > N$  时，有
 
 $$
 \frac{1}{2}|A| < |a_n| < \frac{3}{2}|A|.
@@ -426,7 +426,7 @@ $$
 > < \frac{1}{2} \varepsilon + \frac{1}{2} \varepsilon = \varepsilon.
 > $$
 >
-> 这说明  $\lim_{n \to \infty} (\alpha a_n + \beta b_n) = \alpha A + \beta B$ 。
+> 这说明  $\displaystyle\lim_{n \to \infty} (\alpha a_n + \beta b_n) = \alpha A + \beta B$ 。
 >
 > (2). 利用极限的有界性质，存在  $M$ ，使得
 > $$
@@ -437,13 +437,13 @@ $$
 > $$
 > 0 \leq |a_n b_n - AB| = |(a_n - A)b_n + A(b_n - B)| \leq M|a_n - A| + |A||b_n - B|,
 > $$
-> 利用 (1) 和夹逼原理即知  $\lim_{n \to \infty} a_n b_n = AB$ 。
+> 利用 (1) 和夹逼原理即知  $\displaystyle\lim_{n \to \infty} a_n b_n = AB$ 。
 >
-> (3). 根据 (2)，我们只要证明  $\lim_{n \to \infty} \frac{1}{b_n} = \frac{1}{B}$  即可。根据极限保序性质的推论，存在  $N$ ，当  $n > N$  时， $|b_n| > \frac{|B|}{2}$ 。因此
+> (3). 根据 (2)，我们只要证明  $\displaystyle\lim_{n \to \infty} \dfrac{1}{b_n} = \dfrac{1}{B}$  即可。根据极限保序性质的推论，存在  $N$ ，当  $n > N$  时， $|b_n| > \dfrac{|B|}{2}$ 。因此
 > $$
 > 0 \leq \left|\frac{1}{b_n} - \frac{1}{B}\right| = \frac{|b_n - B|}{|b_n||B|} \leq \frac{2}{|B|^2}|b_n - B|, \quad \forall n > N.
 > $$
-> 由夹逼原理即知  $\lim_{n \to \infty} \frac{1}{b_n} = \frac{1}{B}$ 。
+> 由夹逼原理即知  $\displaystyle\lim_{n \to \infty} \dfrac{1}{b_n} = \dfrac{1}{B}$ 。
 
 下面我们引入数列的子列的概念，并研究数列的极限和其子列的极限之间的关系。设
 
@@ -537,7 +537,7 @@ $$
 >
 > 为了简单起见，下面我们假设 $a_n < A,\ \forall\ n \geq 1$。我们要从 $\{a_n\}$ 中找一个单调递增的子列出来。
 >
-> 这个子列可以这样构造：取 $n_1 = 1$。由于 $\lim_{n \to \infty} a_n = A$，故存在 $n_2 > n_1 = 1$，使得 $a_{n_2} \in (a_1, A)$。同理，存在 $n_3 > n_2$，使得 $a_{n_3} \in (a_{n_2}, A)$。如此继续，我们就找到了（严格）单调递增的子列 $\{a_{n_k}\}$。
+> 这个子列可以这样构造：取 $n_1 = 1$。由于 $\displaystyle\lim_{n \to \infty} a_n = A$，故存在 $n_2 > n_1 = 1$，使得 $a_{n_2} \in (a_1, A)$。同理，存在 $n_3 > n_2$，使得 $a_{n_3} \in (a_{n_2}, A)$。如此继续，我们就找到了（严格）单调递增的子列 $\{a_{n_k}\}$。
 
 /example/  设 $a_1 = 1$, $a_{n+1} = \dfrac{1}{1 + a_n},\ n \geq 1$。研究数列 $\{a_n\}$ 的极限。
 
